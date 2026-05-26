@@ -71,6 +71,7 @@ export const pricingTiers = [
       'Custom-coded site on Cloudflare Pages (or your platform of choice)',
       'GHL CRM + A2P-compliant SMS configured to your real pipeline',
       'Email automation + monthly newsletter',
+      'Automated invoicing, billing reminders, payment-receipt flows',
       'DNS, domain, SPF/DKIM/DMARC handled',
       'On-page + technical SEO + Google Search Console',
       'GHL Pro sub-account + Cloudflare hosting — bundled (~$300/mo value)',
@@ -149,31 +150,33 @@ export const services = [
   },
   {
     id: 'automation',
-    title: 'Email & workflow automation',
-    summary: 'The drip sequences, nurtures, and triggers that close.',
+    title: 'Email, billing & workflow automation',
+    summary: 'The drip sequences, invoice flows, and triggers that close — and collect.',
     bullets: [
       'Verified sending subdomain with SPF/DKIM/DMARC',
       'Branded HTML email templates',
       'Multi-step nurture sequences (welcome, lead magnet, re-engagement)',
+      'Automated invoice notifications, payment receipts, billing reminders',
       'Trigger-based automations (form submit, status change, deadline)',
       'A/B test setup for subject lines and CTAs',
       'Monthly newsletter cadence handled',
     ],
-    outcome: 'Your follow-up runs without you babysitting it.',
+    outcome: 'Your follow-up and your billing both run without you babysitting them.',
   },
   {
     id: 'integration',
-    title: 'Integration & glue work',
-    summary: 'Connecting tools that don\'t talk natively.',
+    title: 'Integration & back-office glue',
+    summary: 'Connecting tools that don\'t talk natively + automating the boring admin work.',
     bullets: [
       'Cloudflare DNS, domain transfers, email authentication',
-      'Square + Stripe payment integration',
+      'Square + Stripe + GHL invoicing — full payment + billing flow integration',
+      'Recurring billing workflows, late-payment reminders, receipt automation',
       'Zapier middleware for non-supported connections',
       'ClickUp workflows for internal ops',
       'GitHub Actions for deploy automation',
       'API webhooks for custom integrations',
     ],
-    outcome: 'Your stack works as one system, not five disconnected ones.',
+    outcome: 'Your stack works as one system, and the admin runs itself.',
   },
 ];
 
@@ -370,7 +373,7 @@ export const coreExpertise = [
   },
   {
     label: 'Technical & Integrations',
-    items: 'Cloudflare DNS & Pages, domain management, GHL domain connect, Square payments, Google Apps Script back-office logic, Gmail-to-task pipelines, DistroKid distribution',
+    items: 'Cloudflare DNS & Pages, domain management, GHL domain connect, Square + Stripe + GHL invoicing flows, automated billing & receipt workflows, Google Apps Script back-office logic, Gmail-to-task pipelines, DistroKid distribution',
   },
 ];
 
