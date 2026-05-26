@@ -109,18 +109,6 @@ export default function Services() {
             </div>
           </Reveal>
 
-          {/* Payment clarity — no setup on retainer tiers */}
-          <Reveal delay={0.15}>
-            <div className="max-w-4xl mx-auto mt-10 bg-white/5 border border-white/10 rounded-2xl p-6 md:p-7">
-              <div className="text-xs uppercase tracking-widest font-bold text-emerald mb-3">✓ No setup fee on Core or Full Marketing</div>
-              <div className="text-sm text-white/80 leading-relaxed">
-                <strong className="text-white">Your first invoice = your first month's retainer.</strong> Core: $1,000 day one, then $1,000/mo. Full Marketing: $2,000 day one, then $2,000/mo. No build fee, no onboarding fee, no surprises.
-                <br /><br />
-                The One-Time Build path is the only upfront-only option — $1,500 once, on your own GHL, no retainer.
-              </div>
-            </div>
-          </Reveal>
-
           {/* The "leaving" honest paragraph */}
           <Reveal delay={0.25}>
             <div className="max-w-4xl mx-auto mt-8 bg-white/5 border border-white/10 rounded-2xl p-6 md:p-7">
