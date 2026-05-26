@@ -22,7 +22,7 @@ export default function Resume() {
                   Open to Freelance Retainers &amp; Full-Time Remote Roles
                 </div>
               </div>
-              <a href="/Joshua_Solomon_Resume_v4.pdf" download className="btn-ghost">
+              <a href="/Joshua_Solomon_Resume_v5.pdf" download className="btn-ghost">
                 <Download size={16} /> Download .pdf
               </a>
             </div>
