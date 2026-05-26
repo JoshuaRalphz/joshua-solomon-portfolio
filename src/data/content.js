@@ -58,8 +58,8 @@ export const benefits = [
   },
 ];
 
-// Three pricing tiers — designed for psychological anchoring.
-// Growth (middle) makes Full Marketing feel like obvious value (+$500 for content engine).
+// Three pricing paths — Core + Full Marketing as recurring retainers,
+// One-Time Build as the alternative for clients who don't want a relationship.
 export const pricingTiers = [
   {
     id: 'core',
@@ -78,18 +78,20 @@ export const pricingTiers = [
     ],
   },
   {
-    id: 'growth',
-    name: 'Growth',
-    tagline: 'Foundation + paid lead generation. For when you need volume, not just better systems.',
+    id: 'one-time',
+    name: 'One-Time Build',
+    tagline: "For clients who already have GHL Pro and don't want a retainer relationship.",
     price: '$1,500',
-    period: '/ month',
+    period: 'one-time',
+    alternative: true,
     bullets: [
-      'Everything in Core, plus:',
-      'Paid ads setup & management — Google or Meta',
-      'Ad creative direction wired into your CRM pipeline',
-      'Monthly ad performance review + optimization',
-      'Lead-routing tuned for paid traffic vs organic',
-      'Recommended ad spend: $1,000/mo+ (paid to platforms, not me)',
+      'GHL CRM configured on YOUR own GHL Pro account',
+      'Pipelines, automations, A2P SMS — all built',
+      'You own everything from day one',
+      'Hand-off + 30-day support window',
+      'No retainer, no recurring relationship after hand-off',
+      'You handle ongoing maintenance yourself',
+      'Heads-up: Core retainer is $1k/mo and INCLUDES this same build + ongoing support',
     ],
   },
   {
@@ -99,14 +101,14 @@ export const pricingTiers = [
     price: '$2,000',
     period: '/ month',
     recommended: true,
-    badge: 'Most popular · $500 more than Growth for all the content',
+    badge: 'Most popular · everything bundled into one number',
     bullets: [
-      'Everything in Growth, plus:',
+      'Everything in Core, plus:',
+      'Paid ads setup & management — Google or Meta',
+      'Ad creative + lead-routing tuned for paid traffic',
       '30-day content calendar — I plan, my team executes',
-      'Social media posts (graphics + captions) on schedule',
-      'Reels editing — short clips from your raw footage',
+      'Social posts, reels editing, graphic design',
       'Expanded newsletter cadence',
-      'Light graphic design for emails, lead magnets, banners',
       'You provide raw video + photos; we handle the rest',
     ],
   },
@@ -375,15 +377,14 @@ export const coreExpertise = [
 // Mirrors the "Service Offer" block in the PDF resume
 export const serviceOffer = {
   title: 'Done-For-You Marketing System',
-  price: 'Core $1,000/mo · Growth $1,500/mo · Full Marketing $2,000/mo — no setup fee',
+  price: 'Core $1,000/mo · Full Marketing $2,000/mo — no setup fee on retainers · or $1,500 one-time build',
   bullets: [
     'Custom-coded website on Cloudflare Pages (or your platform of choice)',
     'GoHighLevel CRM + A2P-compliant SMS configured to your real pipeline',
     'Email automation, monthly newsletter, lead-routing',
     'GHL Pro sub-account + Cloudflare hosting bundled into the retainer',
-    'Growth tier adds: paid ads setup & management',
-    'Full Marketing tier adds: 30-day content calendar, social posts, reels editing',
-    'No setup fee on any retainer tier — first invoice is just your first month',
+    'Full Marketing tier adds: paid ads + 30-day content calendar + social + reels',
+    'No setup fee on retainer tiers — first invoice is just your first month',
     'Alternative: $1,500 one-time GHL build on your own account (no retainer)',
   ],
 };

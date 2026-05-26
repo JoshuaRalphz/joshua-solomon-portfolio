@@ -47,31 +47,25 @@ const QUESTIONS = [
   },
   {
     id: 'creative',
-    label: 'Beyond the core system, what else do you need?',
+    label: 'Which path fits you best?',
     options: [
       {
-        value: 'content-full',
-        label: 'Content + social media handled',
-        hint: '30-day calendar, reels editing, graphics, design',
+        value: 'full',
+        label: 'Full marketing — content + paid ads + system',
+        hint: '30-day calendar, reels, social, paid ads, all in one number',
         priceChip: { tier: 'Full Marketing', price: '$2,000/mo' },
       },
       {
-        value: 'paid-ads',
-        label: 'Paid ad campaigns running on top',
-        hint: 'Google or Meta ads wired into your CRM',
-        priceChip: { tier: 'Growth', price: '$1,500/mo' },
-      },
-      {
-        value: 'both',
-        label: 'Both — full content + paid ads',
-        hint: 'Same tier as content — paid ads are bundled into Full Marketing',
-        priceChip: { tier: 'Full Marketing', price: '$2,000/mo' },
-      },
-      {
-        value: 'none',
-        label: 'Just the core system — no extras',
-        hint: 'Technical stack only; you handle marketing on top',
+        value: 'core',
+        label: 'Just the core system — I handle my own marketing',
+        hint: 'Technical stack only; no content or ads management',
         priceChip: { tier: 'Core', price: '$1,000/mo' },
+      },
+      {
+        value: 'one-time',
+        label: 'One-time build only — no retainer, my own GHL',
+        hint: "I already have GHL Pro; just want a build, then I'm on my own",
+        priceChip: { tier: 'One-Time', price: '$1,500 once' },
       },
     ],
   },
@@ -156,16 +150,14 @@ function buildRecommendation(answers) {
     });
   }
 
-  // ───── TIER SELECTION based on Q5 — picks one of three tiers ─────
-  const wantsContent = answers.creative === 'content-full' || answers.creative === 'both';
-  const wantsAds = answers.creative === 'paid-ads' || answers.creative === 'both';
+  // ───── TIER SELECTION based on Q5 — picks one of three paths ─────
   let tier;
-  if (wantsContent) {
-    tier = { id: 'full', name: 'Full Marketing', price: 2000, label: '$2,000/mo' };
-  } else if (wantsAds) {
-    tier = { id: 'growth', name: 'Growth', price: 1500, label: '$1,500/mo' };
+  if (answers.creative === 'full') {
+    tier = { id: 'full', name: 'Full Marketing', price: 2000, label: '$2,000/mo', isOneTime: false };
+  } else if (answers.creative === 'one-time') {
+    tier = { id: 'one-time', name: 'One-Time Build', price: 1500, label: '$1,500 once', isOneTime: true };
   } else {
-    tier = { id: 'core', name: 'Core', price: 1000, label: '$1,000/mo' };
+    tier = { id: 'core', name: 'Core', price: 1000, label: '$1,000/mo', isOneTime: false };
   }
 
   // (Tier recommendation surfaces in its own dedicated callout in the result UI —
@@ -199,12 +191,10 @@ function buildRecommendation(answers) {
     },
   ];
 
-  // ───── Pricing math — NO setup fee on retainer tiers ─────
-  // Setup is included in the retainer; first invoice IS the first month.
-  const adsAdd = 0; // Paid ads bundled into Growth + Full Marketing tiers
-  const monthlyTotal = tier.price + adsAdd;
-  const firstInvoice = monthlyTotal;  // = first month only, no setup
-  const year1Total = monthlyTotal * 12;
+  // ───── Pricing math — retainer = no setup, just first month. One-time = $1,500 single payment ─────
+  const monthlyTotal = tier.isOneTime ? 0 : tier.price;
+  const firstInvoice = tier.price; // for retainers = first month; for one-time = the $1,500
+  const year1Total = tier.isOneTime ? tier.price : tier.price * 12;
   const setupFee = 0;
 
   const fmt = (n) => `$${n.toLocaleString()}`;
@@ -217,10 +207,10 @@ function buildRecommendation(answers) {
   return {
     recs,
     tier,
+    isOneTime: tier.isOneTime,
     setupFee: fmt(setupFee),
     monthlyRetainer: fmt(tier.price),
     monthlyTotal: fmt(monthlyTotal),
-    adsAdd: adsAdd ? fmt(adsAdd) : null,
     firstInvoice: fmt(firstInvoice),
     year1Total: fmt(year1Total),
     liveBy,
@@ -361,31 +351,41 @@ export default function Quiz() {
                     <div className="text-white font-extrabold text-2xl">{result.tier.label}</div>
                   </div>
 
-                  {/* FIRST INVOICE — no setup fee, just first month */}
+                  {/* FIRST INVOICE — wording flips for one-time vs retainer */}
                   <div className="bg-white/5 border border-white/10 rounded-xl p-6 mb-4">
-                    <div className="text-xs uppercase tracking-widest font-bold text-white/55 mb-2">Your first invoice — day you sign</div>
-                    <div className="text-4xl font-extrabold text-white mb-2">{result.firstInvoice}</div>
-                    <div className="text-sm text-white/65 mb-4">Just your first month — no setup fee, no onboarding fee, no surprises.</div>
-                    <div className="border-t border-white/10 pt-4 flex items-baseline justify-between gap-3 text-sm">
-                      <span className="text-white/85">{result.tier.name} retainer · month 1</span>
-                      <span className="text-white font-bold">{result.monthlyRetainer}</span>
+                    <div className="text-xs uppercase tracking-widest font-bold text-white/55 mb-2">
+                      {result.isOneTime ? 'Your one-time payment' : 'Your first invoice — day you sign'}
                     </div>
+                    <div className="text-4xl font-extrabold text-white mb-2">{result.firstInvoice}</div>
+                    <div className="text-sm text-white/65 mb-4">
+                      {result.isOneTime
+                        ? 'Single payment — covers the build + 30-day support window. After that, no recurring relationship.'
+                        : 'Just your first month — no setup fee, no onboarding fee, no surprises.'}
+                    </div>
+                    {!result.isOneTime && (
+                      <div className="border-t border-white/10 pt-4 flex items-baseline justify-between gap-3 text-sm">
+                        <span className="text-white/85">{result.tier.name} retainer · month 1</span>
+                        <span className="text-white font-bold">{result.monthlyRetainer}</span>
+                      </div>
+                    )}
                   </div>
 
-                  {/* ONGOING */}
-                  <div className="bg-white/5 border border-white/10 rounded-xl p-6 mb-4">
-                    <div className="text-xs uppercase tracking-widest font-bold text-white/55 mb-2">Every month after that</div>
-                    <div className="mb-3">
-                      <span className="text-4xl font-extrabold text-white">{result.monthlyTotal}</span>
-                      <span className="text-base font-bold text-white/55 ml-2">/ month{result.adsAdd ? ' + ad spend' : ''}</span>
+                  {/* ONGOING — only shown for retainer tiers */}
+                  {!result.isOneTime && (
+                    <div className="bg-white/5 border border-white/10 rounded-xl p-6 mb-4">
+                      <div className="text-xs uppercase tracking-widest font-bold text-white/55 mb-2">Every month after that</div>
+                      <div className="mb-3">
+                        <span className="text-4xl font-extrabold text-white">{result.monthlyTotal}</span>
+                        <span className="text-base font-bold text-white/55 ml-2">/ month</span>
+                      </div>
+                      <div className="text-sm text-white/70 leading-relaxed">
+                        {result.tier.id === 'full'
+                          ? 'Full Marketing retainer — covers core system maintenance, new builds, new automations, paid ads management, the 30-day content engine, plus bundled infrastructure (GHL Pro + Cloudflare). Cancel anytime; on cancel, you migrate to your own accounts and keep everything.'
+                          : 'Core retainer — covers all maintenance, new builds, new automations, plus bundled infrastructure (GHL Pro sub-account + Cloudflare hosting — ~$300/mo of platform costs you don\'t see). Cancel anytime; on cancel, you migrate to your own accounts and keep everything.'
+                        }
+                      </div>
                     </div>
-                    <div className="text-sm text-white/70 leading-relaxed">
-                      {result.tier.id === 'full'
-                        ? 'Full Marketing retainer — covers core system maintenance, new builds, new automations, the 30-day content engine, plus bundled infrastructure (GHL Pro + Cloudflare). Cancel anytime; on cancel, you migrate to your own accounts and keep everything.'
-                        : 'Core System retainer — covers all maintenance, new builds, new automations, plus bundled infrastructure (GHL Pro sub-account + Cloudflare hosting — ~$300/mo of platform costs you don\'t see). Cancel anytime; on cancel, you migrate to your own accounts and keep everything.'
-                      }
-                    </div>
-                  </div>
+                  )}
 
                   <div className="grid grid-cols-2 gap-3 mb-6">
                     <div className="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
@@ -393,7 +393,9 @@ export default function Quiz() {
                       <div className="text-xl font-extrabold text-white">{result.liveBy}</div>
                     </div>
                     <div className="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
-                      <div className="text-[10px] uppercase tracking-widest font-bold text-white/55 mb-1">Year-1 total</div>
+                      <div className="text-[10px] uppercase tracking-widest font-bold text-white/55 mb-1">
+                        {result.isOneTime ? 'Total cost' : 'Year-1 total'}
+                      </div>
                       <div className="text-xl font-extrabold text-white">{result.year1Total}</div>
                     </div>
                   </div>

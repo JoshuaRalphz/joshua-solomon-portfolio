@@ -64,68 +64,59 @@ export default function Services() {
           {/* Tier cards — 3 columns */}
           <Reveal delay={0.1}>
             <div className="max-w-6xl mx-auto mt-14 grid md:grid-cols-3 gap-5 items-stretch">
-              {pricingTiers.map((t) => (
-                <div
-                  key={t.id}
-                  className={
-                    t.recommended
-                      ? 'bg-gradient-to-br from-gold/20 to-gold/5 backdrop-blur rounded-2xl border-2 border-gold/50 p-7 relative shadow-2xl md:-mt-4 md:mb-0'
-                      : 'bg-white/5 backdrop-blur rounded-2xl border border-white/10 p-7'
-                  }
-                >
-                  {t.recommended && (
-                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 inline-flex items-center gap-1.5 bg-gold text-ink text-[10px] font-extrabold uppercase tracking-widest px-3 py-1 rounded-full whitespace-nowrap">
-                      <Star size={11} fill="currentColor" /> Most popular
+              {pricingTiers.map((t) => {
+                let cardClass = 'bg-white/5 backdrop-blur rounded-2xl border border-white/10 p-7';
+                if (t.recommended) cardClass = 'bg-gradient-to-br from-gold/20 to-gold/5 backdrop-blur rounded-2xl border-2 border-gold/50 p-7 relative shadow-2xl md:-mt-4 md:mb-0';
+                if (t.alternative) cardClass = 'bg-white/3 backdrop-blur rounded-2xl border-2 border-dashed border-white/25 p-7 relative';
+                const accentColor = t.recommended ? 'text-gold' : t.alternative ? 'text-white/70' : 'text-white/55';
+                const checkColor = t.recommended ? 'text-gold' : t.alternative ? 'text-white/60' : 'text-emerald';
+                return (
+                  <div key={t.id} className={cardClass}>
+                    {t.recommended && (
+                      <div className="absolute -top-3 left-1/2 -translate-x-1/2 inline-flex items-center gap-1.5 bg-gold text-ink text-[10px] font-extrabold uppercase tracking-widest px-3 py-1 rounded-full whitespace-nowrap">
+                        <Star size={11} fill="currentColor" /> Most popular
+                      </div>
+                    )}
+                    {t.alternative && (
+                      <div className="absolute -top-3 left-1/2 -translate-x-1/2 inline-flex items-center gap-1.5 bg-ink text-white/85 text-[10px] font-extrabold uppercase tracking-widest px-3 py-1 rounded-full whitespace-nowrap border border-white/25">
+                        Alternative · No retainer
+                      </div>
+                    )}
+                    <div className={`text-xs uppercase tracking-widest font-bold mb-3 ${accentColor}`}>{t.name}</div>
+                    <div className="flex flex-wrap items-baseline gap-2 mb-2">
+                      <div className="text-4xl font-extrabold text-white">{t.price}</div>
+                      <div className="text-sm text-white/65 font-medium">{t.period}</div>
                     </div>
-                  )}
-                  <div className={`text-xs uppercase tracking-widest font-bold mb-3 ${t.recommended ? 'text-gold' : 'text-white/55'}`}>{t.name}</div>
-                  <div className="flex flex-wrap items-baseline gap-2 mb-2">
-                    <div className="text-4xl font-extrabold text-white">{t.price}</div>
-                    <div className="text-sm text-white/65 font-medium">{t.period}</div>
+                    <div className="text-sm text-white/70 mb-5 leading-snug">{t.tagline}</div>
+
+                    <ul className="space-y-2 text-sm">
+                      {t.bullets.map(li => (
+                        <li key={li} className="flex items-start gap-2 text-white/90">
+                          <Check size={13} className={`flex-shrink-0 mt-0.5 ${checkColor}`} />
+                          <span className="leading-snug">{li}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    {t.badge && (
+                      <div className="mt-5 pt-4 border-t border-white/10 text-xs text-gold font-bold">
+                        💡 {t.badge}
+                      </div>
+                    )}
                   </div>
-                  <div className="text-sm text-white/70 mb-5 leading-snug">{t.tagline}</div>
-
-                  <ul className="space-y-2 text-sm">
-                    {t.bullets.map(li => (
-                      <li key={li} className="flex items-start gap-2 text-white/90">
-                        <Check size={13} className={`flex-shrink-0 mt-0.5 ${t.recommended ? 'text-gold' : 'text-emerald'}`} />
-                        <span className="leading-snug">{li}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  {t.badge && (
-                    <div className="mt-5 pt-4 border-t border-white/10 text-xs text-gold font-bold">
-                      💡 {t.badge}
-                    </div>
-                  )}
-                </div>
-              ))}
+                );
+              })}
             </div>
           </Reveal>
 
-          {/* Payment clarity — no setup, just monthly */}
+          {/* Payment clarity — no setup on retainer tiers */}
           <Reveal delay={0.15}>
             <div className="max-w-4xl mx-auto mt-10 bg-white/5 border border-white/10 rounded-2xl p-6 md:p-7">
-              <div className="text-xs uppercase tracking-widest font-bold text-emerald mb-3">✓ No setup fee on any retainer tier</div>
+              <div className="text-xs uppercase tracking-widest font-bold text-emerald mb-3">✓ No setup fee on Core or Full Marketing</div>
               <div className="text-sm text-white/80 leading-relaxed">
-                <strong className="text-white">Your first invoice = your tier's first month.</strong> Core: $1,000 day one, then $1,000/mo. Growth: $1,500 day one, then $1,500/mo. Full Marketing: $2,000 day one, then $2,000/mo. That's it. No build fee, no onboarding fee, no surprise line items.
-              </div>
-            </div>
-          </Reveal>
-
-          {/* One-time off-ramp — the ONLY path with an upfront fee */}
-          <Reveal delay={0.2}>
-            <div className="max-w-4xl mx-auto mt-6 bg-white/5 border border-white/10 rounded-2xl p-6 md:p-7">
-              <div className="text-xs uppercase tracking-widest font-bold text-white/55 mb-2">Don't want a retainer at all?</div>
-              <div className="flex flex-wrap items-baseline gap-3 mb-3">
-                <div className="text-3xl font-extrabold text-white">$1,500 one-time</div>
-                <div className="text-sm text-white/65">— GHL build on your own GHL account</div>
-              </div>
-              <div className="text-sm text-white/70 leading-relaxed">
-                For clients who already have their own GHL Pro and just want a one-time build with no ongoing relationship. I configure your CRM, pipelines, and automation on <strong>your</strong> account, then hand it off. You own everything day one, you handle maintenance yourself.
+                <strong className="text-white">Your first invoice = your first month's retainer.</strong> Core: $1,000 day one, then $1,000/mo. Full Marketing: $2,000 day one, then $2,000/mo. No build fee, no onboarding fee, no surprises.
                 <br /><br />
-                <strong className="text-white">Quick math:</strong> a Core retainer is $1,000/mo and includes <em>this same build</em> PLUS ongoing maintenance, new automations, and bundled infrastructure (GHL Pro + Cloudflare ≈ $300/mo value). This one-time path is $500 <em>more</em> for the build alone. Most clients pick the retainer.
+                The One-Time Build path is the only upfront-only option — $1,500 once, on your own GHL, no retainer.
               </div>
             </div>
           </Reveal>
