@@ -160,6 +160,11 @@ export default function Services() {
                       <div className="text-4xl font-extrabold text-white">{t.price}</div>
                       <div className="text-sm text-white/65 font-medium">{t.period}</div>
                     </div>
+                    {t.commitment && (
+                      <div className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-widest font-bold bg-white/10 text-white/75 px-2 py-0.5 rounded mb-3">
+                        🔒 {t.commitment}
+                      </div>
+                    )}
                     <div className="text-sm text-white/70 mb-5 leading-snug">{t.tagline}</div>
 
                     <ul className="space-y-2 text-sm">
@@ -182,13 +187,18 @@ export default function Services() {
             </div>
           </Reveal>
 
-          {/* The "leaving" honest paragraph */}
+          {/* Honest commitment + leaving paragraph */}
           <Reveal delay={0.25}>
             <div className="max-w-4xl mx-auto mt-8 bg-white/5 border border-white/10 rounded-2xl p-6 md:p-7">
-              <div className="text-xs uppercase tracking-widest font-bold text-gold mb-3">If you ever want to leave</div>
-              <p className="text-white/80 text-sm leading-relaxed">
-                Your contacts, your code, your brand assets — all yours, exported on request. The only thing that moves is the infrastructure: you'd set up your own GHL Pro ($297/mo direct to GHL) and your own Cloudflare account (free) and I hand the keys over. No hostage situation, no exit fees. The retainer just bundles the platform costs so you only see one number.
-              </p>
+              <div className="text-xs uppercase tracking-widest font-bold text-gold mb-3">🔒 Why the minimum commitment + what happens after</div>
+              <div className="space-y-3 text-sm text-white/80 leading-relaxed">
+                <p>
+                  <strong className="text-white">The system needs time to work.</strong> A CRM with 0 days of email data doesn't convert. One with 90+ days of data, optimization, and a few automation iterations does. The minimum commitment is what makes my "no setup fee" math sustainable — Core (6 months) and Full Marketing (3 months) each amount to the same $6,000 floor, which covers the build + the time the system needs to actually produce results.
+                </p>
+                <p>
+                  <strong className="text-white">After your minimum, you cancel any month.</strong> No exit fees. No surprise charges. Your contacts, your code, your brand assets — all yours, exported on request. You'd set up your own GHL Pro ($297/mo direct to GHL) and your own Cloudflare account (free), and I hand the keys over. The retainer just bundles platform costs so you only see one number while we're working together.
+                </p>
+              </div>
             </div>
           </Reveal>
 

@@ -68,6 +68,7 @@ export const pricingTiers = [
     tagline: 'The technical foundation. You handle your own marketing on top.',
     price: '$1,000',
     period: '/ month',
+    commitment: '6-month minimum',
     bullets: [
       'Website on YOUR stack — Cloudflare custom code (default), Wix Studio, WordPress, or Squarespace',
       'GHL CRM + A2P-compliant SMS configured to your real pipeline',
@@ -102,8 +103,9 @@ export const pricingTiers = [
     tagline: 'Foundation + paid leads + the content engine. End-to-end.',
     price: '$2,000',
     period: '/ month',
+    commitment: '3-month minimum',
     recommended: true,
-    badge: 'Most popular · everything bundled into one number',
+    badge: 'Most popular · shorter commitment than Core, more bundled in',
     bullets: [
       'Everything in Core, plus:',
       'Paid ads setup & management — Google or Meta',

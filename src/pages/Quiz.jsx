@@ -380,8 +380,8 @@ export default function Quiz() {
                       </div>
                       <div className="text-sm text-white/70 leading-relaxed">
                         {result.tier.id === 'full'
-                          ? 'Full Marketing retainer — covers core system maintenance, new builds, new automations, paid ads management, the 30-day content engine, plus bundled infrastructure (GHL Pro + Cloudflare). Cancel anytime; on cancel, you migrate to your own accounts and keep everything.'
-                          : 'Core retainer — covers all maintenance, new builds, new automations, plus bundled infrastructure (GHL Pro sub-account + Cloudflare hosting — ~$300/mo of platform costs you don\'t see). Cancel anytime; on cancel, you migrate to your own accounts and keep everything.'
+                          ? 'Full Marketing retainer — covers core system maintenance, new builds, new automations, paid ads management, the 30-day content engine, plus bundled infrastructure (GHL Pro + Cloudflare). 3-month minimum commitment so the system has time to optimize; cancel any month after that, migrate to your own accounts, keep everything.'
+                          : 'Core retainer — covers all maintenance, new builds, new automations, plus bundled infrastructure (GHL Pro sub-account + Cloudflare hosting — ~$300/mo of platform costs you don\'t see). 6-month minimum commitment so the system has time to produce results; cancel any month after that, migrate to your own accounts, keep everything.'
                         }
                       </div>
                     </div>
