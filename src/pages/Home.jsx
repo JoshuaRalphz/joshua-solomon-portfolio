@@ -146,11 +146,11 @@ export default function Home() {
         <div className="container-x">
           <Reveal>
             <div className="text-center mb-10">
-              <div className="text-xs uppercase tracking-widest text-muted font-bold mb-3">Tools I work in every week</div>
+              <div className="text-xs uppercase tracking-widest text-muted font-bold mb-3">My working tech stack</div>
               <h2 className="text-2xl md:text-3xl font-bold text-ink">
-                {tools.length}+ tools. One person. End-to-end stack.
+                {tools.length}+ tools across CRM, automation, code & infrastructure.
               </h2>
-              <p className="mt-3 text-sm text-muted">Hover the strip to pause. Click any logo on the About page to read more.</p>
+              <p className="mt-3 text-sm text-muted">Hover the strip to pause. See the full categorized stack on the About page.</p>
             </div>
           </Reveal>
         </div>

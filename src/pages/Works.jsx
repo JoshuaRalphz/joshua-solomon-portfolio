@@ -135,14 +135,14 @@ export default function Works() {
           <div className="space-y-6">
             {rest.map((w, i) => (
               <Reveal key={w.id} delay={i * 0.07}>
-                <article className="bg-white border border-line rounded-2xl overflow-hidden flex flex-col md:flex-row hover:border-navy hover:shadow-soft transition-all">
+                <article className="bg-white border border-line rounded-2xl overflow-hidden flex flex-col lg:flex-row hover:border-navy hover:shadow-soft transition-all">
                   {/* Thumb — clickable if there's a live URL */}
                   {w.liveUrl ? (
                     <a
                       href={w.liveUrl}
                       target="_blank"
                       rel="noopener"
-                      className="block md:w-1/3 aspect-[16/10] md:aspect-auto md:min-h-[260px] bg-gradient-to-br from-navy-tint to-blue-100 relative overflow-hidden flex-shrink-0"
+                      className="block lg:w-1/3 aspect-[16/10] lg:aspect-auto lg:min-h-[260px] bg-gradient-to-br from-navy-tint to-blue-100 relative overflow-hidden flex-shrink-0"
                     >
                       <div className="absolute inset-0 flex items-center justify-center text-navy text-6xl font-extrabold">
                         {w.initials}
@@ -159,7 +159,7 @@ export default function Works() {
                       )}
                     </a>
                   ) : (
-                    <div className="md:w-1/3 aspect-[16/10] md:aspect-auto md:min-h-[260px] bg-gradient-to-br from-navy-tint to-blue-100 relative overflow-hidden flex-shrink-0">
+                    <div className="lg:w-1/3 aspect-[16/10] lg:aspect-auto lg:min-h-[260px] bg-gradient-to-br from-navy-tint to-blue-100 relative overflow-hidden flex-shrink-0">
                       <div className="absolute inset-0 flex items-center justify-center text-navy text-6xl font-extrabold">
                         {w.initials}
                       </div>
@@ -167,7 +167,7 @@ export default function Works() {
                   )}
 
                   {/* Card body — wider, more breathing room */}
-                  <div className="p-6 md:p-8 flex-1 flex flex-col">
+                  <div className="p-6 lg:p-8 flex-1 flex flex-col">
                     <div className="flex flex-wrap items-center gap-2 mb-3">
                       <span className="inline-block text-xs font-semibold px-2 py-1 bg-navy-tint text-navy rounded">{w.tag}</span>
                       {w.location && (
@@ -176,8 +176,8 @@ export default function Works() {
                         </span>
                       )}
                     </div>
-                    <h3 className="text-lg md:text-xl font-bold text-ink mb-3 leading-snug">{w.title}</h3>
-                    <p className="text-sm md:text-base text-body leading-relaxed flex-1">{w.summary}</p>
+                    <h3 className="text-lg lg:text-xl font-bold text-ink mb-3 leading-snug">{w.title}</h3>
+                    <p className="text-sm lg:text-base text-body leading-relaxed flex-1">{w.summary}</p>
 
                     <div className="mt-5 pt-4 border-t border-line text-xs text-muted font-mono">
                       {w.stack.join(' · ')}
