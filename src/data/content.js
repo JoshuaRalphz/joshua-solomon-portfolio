@@ -260,6 +260,8 @@ export const works = [
       },
     ],
     stack: ['HTML', 'CSS', 'JS', 'GoHighLevel', 'Cloudflare Pages', 'Cloudflare DNS', 'Mailgun', 'GitHub auto-deploy'],
+    wins: ['Interactive in-browser GHL backend demo', '6-page custom-coded site', 'Two live workflows (WF1 + WF3)', '12-page lead-magnet PDF'],
+    previewLine: 'This same architecture is what you\'d get for your business — just configured for your pipeline, your brand, your offers.',
   },
   {
     id: 'alliance',

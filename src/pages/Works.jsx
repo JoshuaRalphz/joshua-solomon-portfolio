@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, ExternalLink, MapPin, ShieldCheck } from 'lucide-react';
+import { ArrowRight, ExternalLink, MapPin, ShieldCheck, FileText, MousePointerClick } from 'lucide-react';
 import PageTransition, { Reveal } from '../components/PageTransition.jsx';
-import { works } from '../data/content.js';
+import { works, profile } from '../data/content.js';
 
-// thum.io — fast auto-screenshot, no API key, no ugly placeholder. Lifetime cached on their CDN.
-const shotUrl = (url) => {
-  const clean = url.replace(/^https?:\/\//, '');
-  return `https://image.thum.io/get/width/800/crop/500/noanimate/https://${clean}`;
+// Pre-fills an email asking for the full breakdown (private case-study PDF Josh sends back manually).
+const breakdownMailto = (workTitle) => {
+  const subject = `Full case study request — ${workTitle}`;
+  const body = `Hi Joshua,\n\nI'd like the full case study for "${workTitle}" — including backend screenshots and your specific role.\n\nA bit about me / my business:\n\nThanks!`;
+  return `mailto:${profile.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 };
 
 export default function Works() {
@@ -23,7 +24,7 @@ export default function Works() {
               Real builds. Anonymized where needed.
             </h1>
             <p className="mt-5 text-lg text-body max-w-2xl">
-              Each project below was shipped end-to-end by me. Want to see something specific live? Ask on a call.
+              Each project below was shipped end-to-end by me. Want backend proof — A2P approvals, GHL workflows, DNS panels? Email me from any card for the full breakdown.
             </p>
           </Reveal>
         </div>
@@ -54,7 +55,15 @@ export default function Works() {
                   <h2 className="text-2xl md:text-3xl font-bold text-ink leading-tight mb-3">
                     {featured.title}
                   </h2>
-                  <p className="text-body leading-relaxed mb-6">{featured.summary}</p>
+                  <p className="text-body leading-relaxed mb-4">{featured.summary}</p>
+
+                  {/* "What you'd see in your own build" framing */}
+                  {featured.previewLine && (
+                    <div className="mb-6 p-4 bg-gold/10 border-l-4 border-gold rounded-r-lg">
+                      <div className="text-[10px] uppercase tracking-widest text-amber-700 font-extrabold mb-1">👇 What you'd see in your own build</div>
+                      <p className="text-sm text-ink font-medium leading-relaxed">{featured.previewLine}</p>
+                    </div>
+                  )}
 
                   <div className="grid md:grid-cols-2 gap-5">
                     {featured.videos.map(v => (
@@ -77,12 +86,14 @@ export default function Works() {
                     ))}
                   </div>
 
-                  {/* BIG primary CTA — visible right under the videos */}
+                  {/* BIG primary CTA — emphasized: try the backend live */}
                   <div className="mt-8 p-6 md:p-7 bg-gradient-to-br from-navy to-navy-dark rounded-2xl flex flex-col md:flex-row md:items-center md:justify-between gap-5">
-                    <div>
-                      <div className="text-xs uppercase tracking-widest font-bold text-gold mb-1.5">Don't take my word for it</div>
+                    <div className="flex-1">
+                      <div className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest font-bold text-gold mb-1.5">
+                        <MousePointerClick size={13} /> Try the GHL backend live
+                      </div>
                       <div className="text-white font-bold text-lg leading-snug">
-                        Try the live demo yourself — submit a form and watch the GHL backend fire in real-time.
+                        Submit any form on the demo site, then watch the GHL workflow fire in real-time in the embedded backend view. Most portfolios show screenshots. This one lets you poke it.
                       </div>
                     </div>
                     <a
@@ -96,7 +107,21 @@ export default function Works() {
                     </a>
                   </div>
 
-                  <div className="mt-7 pt-5 border-t border-line text-xs text-muted font-mono">
+                  {/* Technical wins badges */}
+                  {featured.wins && featured.wins.length > 0 && (
+                    <div className="mt-7 pt-5 border-t border-line">
+                      <div className="text-[10px] uppercase tracking-widest text-emerald font-extrabold mb-3">✓ Technical wins on this build</div>
+                      <div className="flex flex-wrap gap-2">
+                        {featured.wins.map(win => (
+                          <span key={win} className="inline-flex items-center text-xs font-semibold bg-emerald/10 text-emerald border border-emerald/30 px-3 py-1 rounded">
+                            {win}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  <div className="mt-5 pt-4 border-t border-line text-xs text-muted font-mono">
                     Stack: {featured.stack.join(' · ')}
                   </div>
                 </div>
@@ -120,25 +145,40 @@ export default function Works() {
           </Reveal>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {rest.map((w, i) => {
-              const CardInner = (
-                <article className="bg-white border border-line rounded-2xl overflow-hidden h-full flex flex-col hover:border-navy hover:shadow-soft hover:-translate-y-0.5 transition-all">
-                  <div className="aspect-[16/10] bg-gradient-to-br from-navy-tint to-blue-100 relative overflow-hidden">
-                    {/* Initials behind — visible if no image/thumb yet; image will cover when loaded */}
-                    <div className="absolute inset-0 flex items-center justify-center text-navy text-5xl font-extrabold">
-                      {w.initials}
+            {rest.map((w, i) => (
+              <Reveal key={w.id} delay={i * 0.07}>
+                <article className="bg-white border border-line rounded-2xl overflow-hidden h-full flex flex-col hover:border-navy hover:shadow-soft transition-all">
+                  {/* Thumb — clickable if there's a live URL */}
+                  {w.liveUrl ? (
+                    <a
+                      href={w.liveUrl}
+                      target="_blank"
+                      rel="noopener"
+                      className="block aspect-[16/10] bg-gradient-to-br from-navy-tint to-blue-100 relative overflow-hidden"
+                    >
+                      <div className="absolute inset-0 flex items-center justify-center text-navy text-5xl font-extrabold">
+                        {w.initials}
+                      </div>
+                      {w.thumb && (
+                        <img
+                          src={w.thumb}
+                          alt={`${w.title} — screenshot`}
+                          loading="lazy"
+                          decoding="async"
+                          onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                          className="absolute inset-0 w-full h-full object-cover object-top"
+                        />
+                      )}
+                    </a>
+                  ) : (
+                    <div className="aspect-[16/10] bg-gradient-to-br from-navy-tint to-blue-100 relative overflow-hidden">
+                      <div className="absolute inset-0 flex items-center justify-center text-navy text-5xl font-extrabold">
+                        {w.initials}
+                      </div>
                     </div>
-                    {w.thumb && (
-                      <img
-                        src={w.thumb}
-                        alt={`${w.title} — screenshot`}
-                        loading="lazy"
-                        decoding="async"
-                        onError={(e) => { e.currentTarget.style.display = 'none'; }}
-                        className="absolute inset-0 w-full h-full object-cover object-top"
-                      />
-                    )}
-                  </div>
+                  )}
+
+                  {/* Card body */}
                   <div className="p-6 flex-1 flex flex-col">
                     <div className="flex flex-wrap items-center gap-2 mb-3">
                       <span className="inline-block text-xs font-semibold px-2 py-1 bg-navy-tint text-navy rounded">{w.tag}</span>
@@ -150,6 +190,7 @@ export default function Works() {
                     </div>
                     <h3 className="text-base font-bold text-ink mb-2 leading-snug">{w.title}</h3>
                     <p className="text-sm text-body leading-relaxed flex-1">{w.summary}</p>
+
                     {w.wins && w.wins.length > 0 && (
                       <div className="mt-4 pt-3 border-t border-line">
                         <div className="text-[10px] uppercase tracking-widest text-emerald font-bold mb-2">✓ Technical wins</div>
@@ -162,29 +203,34 @@ export default function Works() {
                         </div>
                       </div>
                     )}
+
                     <div className={`${w.wins ? 'mt-3' : 'mt-4'} pt-3 border-t border-line text-xs text-muted font-mono`}>
                       {w.stack.join(' · ')}
                     </div>
-                    {w.liveUrl && (
-                      <div className="mt-3 inline-flex items-center gap-1.5 text-xs font-bold text-navy">
-                        <ExternalLink size={13} /> {w.liveUrl.replace('https://', '').replace('www.', '')}
-                      </div>
-                    )}
+
+                    {/* Action area — explicit links, not whole-card click */}
+                    <div className="mt-4 pt-3 border-t border-line flex flex-wrap items-center gap-x-4 gap-y-2">
+                      {w.liveUrl && (
+                        <a
+                          href={w.liveUrl}
+                          target="_blank"
+                          rel="noopener"
+                          className="inline-flex items-center gap-1.5 text-xs font-bold text-navy hover:text-navy-dark hover:underline"
+                        >
+                          <ExternalLink size={13} /> {w.liveUrl.replace('https://', '').replace('www.', '')}
+                        </a>
+                      )}
+                      <a
+                        href={breakdownMailto(w.title)}
+                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-muted hover:text-navy transition-colors ml-auto"
+                      >
+                        <FileText size={12} /> Full breakdown on request →
+                      </a>
+                    </div>
                   </div>
                 </article>
-              );
-              return (
-                <Reveal key={w.id} delay={i * 0.07}>
-                  {w.liveUrl ? (
-                    <a href={w.liveUrl} target="_blank" rel="noopener" className="block h-full">
-                      {CardInner}
-                    </a>
-                  ) : (
-                    CardInner
-                  )}
-                </Reveal>
-              );
-            })}
+              </Reveal>
+            ))}
           </div>
 
           <div className="mt-14 text-center">
