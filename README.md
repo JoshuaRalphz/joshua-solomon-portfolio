@@ -62,7 +62,7 @@ The `public/_redirects` file handles client-side React Router routes on Cloudfla
 
 Search and replace:
 
-1. **`REPLACE-FORMSPREE-ID`** in `src/pages/Contact.jsx` → paste your real Formspree endpoint
+1. ~~`REPLACE-FORMSPREE-ID`~~ → done. Contact form now POSTs JSON to the GHL `WF-PORTFOLIO` inbound webhook (`PORTFOLIO_GHL_WEBHOOK` in `src/data/content.js`).
 2. **`REPLACE-LINKEDIN-HANDLE`** in `src/components/Footer.jsx` and `src/data/content.js` → real LinkedIn URL
 3. **`Joshua_Solomon_Resume_v4.docx`** — drop the actual file in `public/` for the resume download to work
 

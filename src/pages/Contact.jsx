@@ -3,10 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { Mail, MessageCircle, Linkedin, Facebook, CheckCircle2, AlertCircle } from 'lucide-react';
 import PageTransition, { Reveal } from '../components/PageTransition.jsx';
-import { profile } from '../data/content.js';
-
-// REPLACE-FORMSPREE — paste your real endpoint from formspree.io
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/REPLACE-FORMSPREE-ID';
+import { profile, PORTFOLIO_GHL_WEBHOOK } from '../data/content.js';
 
 export default function Contact() {
   const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm();
@@ -16,26 +13,45 @@ export default function Contact() {
 
   const onSubmit = async (data) => {
     try {
-      const formData = new FormData();
-      Object.entries(data).forEach(([k, v]) => formData.append(k, v));
-      if (fromPlan) {
-        formData.append('_subject', 'New lead from project planner');
-        formData.append('plan_tier', `${fromPlan.tier.name} (${fromPlan.tier.label})`);
-        formData.append('plan_setup_fee', fromPlan.setupFee);
-        formData.append('plan_monthly_total', fromPlan.monthlyTotal);
-        formData.append('plan_first_invoice', fromPlan.firstInvoice);
-        formData.append('plan_year1_total', fromPlan.year1Total);
-        formData.append('plan_live_by', fromPlan.liveBy);
-        formData.append('plan_recs', fromPlan.recs.map(r => `${r.tag}: ${r.service}`).join(' | '));
-        if (fromPlan.addOnSuggestions?.length) {
-          formData.append('plan_addons', fromPlan.addOnSuggestions.map(a => `${a.name} (${a.price})`).join(' | '));
-        }
+      // Field shape mirrors the test payload used to map WF-PORTFOLIO in GHL.
+      // Keep keys stable — renaming will silently break the GHL custom-field mappings.
+      const payload = {
+        name: data.name || '',
+        email: data.email || '',
+        company: data.company || '',
+        message: data.message || '',
+        source: 'portfolio_contact_form',
+        page: location.pathname || '/contact',
+        submitted_at: new Date().toISOString(),
+        from_planner: Boolean(fromPlan),
+        plan_tier_name: fromPlan ? fromPlan.tier.name : '',
+        plan_tier_label: fromPlan ? fromPlan.tier.label : '',
+        plan_setup_fee: fromPlan ? fromPlan.setupFee : '',
+        plan_monthly_total: fromPlan ? fromPlan.monthlyTotal : '',
+        plan_first_invoice: fromPlan ? fromPlan.firstInvoice : '',
+        plan_year1_total: fromPlan ? fromPlan.year1Total : '',
+        plan_live_by: fromPlan ? fromPlan.liveBy : '',
+        plan_recs: fromPlan ? fromPlan.recs.map(r => `${r.tag}: ${r.service}`).join(' | ') : '',
+        plan_addons: fromPlan && fromPlan.addOnSuggestions?.length
+          ? fromPlan.addOnSuggestions.map(a => `${a.name} (${a.price})`).join(' | ')
+          : '',
+      };
+
+      if (!PORTFOLIO_GHL_WEBHOOK) {
+        // Defensive: webhook not configured. Fail loudly in console, show error UI.
+        // eslint-disable-next-line no-console
+        console.error('PORTFOLIO_GHL_WEBHOOK is not set in content.js');
+        setSubmitStatus('error');
+        return;
       }
-      const res = await fetch(FORMSPREE_ENDPOINT, {
+
+      const res = await fetch(PORTFOLIO_GHL_WEBHOOK, {
         method: 'POST',
-        body: formData,
-        headers: { Accept: 'application/json' },
+        mode: 'cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
       });
+
       if (res.ok) {
         setSubmitStatus('success');
         reset();

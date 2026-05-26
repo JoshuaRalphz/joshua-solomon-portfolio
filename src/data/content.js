@@ -23,8 +23,9 @@ export const stats = [
 ];
 
 // GHL Inbound Webhook for the portfolio contact form + planner submission.
-// TODO: paste the webhook URL from your "WF-PORTFOLIO" workflow trigger.
-export const PORTFOLIO_GHL_WEBHOOK = null;
+// Trigger lives in WF-PORTFOLIO workflow (sub-account: Joshua Solomon).
+export const PORTFOLIO_GHL_WEBHOOK =
+  'https://services.leadconnectorhq.com/hooks/n3Mhd91c4sG1CNdf5zdN/webhook-trigger/c93afe4a-d360-4235-9be8-55771da5e86f';
 
 export const benefits = [
   {
