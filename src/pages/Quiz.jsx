@@ -12,7 +12,7 @@ const QUESTIONS = [
       { value: 'agency',       label: 'Marketing agency (2-15 people)', hint: 'I need a subcontractor for client builds.' },
       { value: 'service',      label: 'Service business owner',         hint: 'Real estate, coach, med spa, contractor, etc.' },
       { value: 'saas',         label: 'SaaS or tech founder',           hint: 'I need lead-gen infrastructure.' },
-      { value: 'other',        label: 'Something else',                 hint: 'Tell me on the call.' },
+      { value: 'other',        label: 'Something else',                 hint: 'Mention it in your message.' },
     ],
   },
   {
@@ -172,7 +172,7 @@ function buildRecommendation(answers) {
     {
       phase: isAccelerated ? 'Days 1–3' : 'Week 1',
       title: 'Kickoff + discovery',
-      do: 'I audit your existing accounts, brand, and pipelines. You hand me access; I take it from there. No long onboarding deck — just a 30-min call and a shared checklist.',
+      do: 'I audit your existing accounts, brand, and pipelines. You hand me access; I take it from there. No long onboarding deck — just a shared checklist + async Loom walkthroughs from me as I go.',
     },
     {
       phase: isAccelerated ? 'Days 4–10' : 'Week 2',
@@ -182,7 +182,7 @@ function buildRecommendation(answers) {
     {
       phase: isAccelerated ? 'Days 11–14' : 'Week 3',
       title: 'Launch + walkthrough',
-      do: 'Site goes live. CRM goes live. First lead routes end-to-end without your intervention. 30-min walkthrough call so your team knows where everything is.',
+      do: 'Site goes live. CRM goes live. First lead routes end-to-end without your intervention. I record a Loom walkthrough of the whole system so your team has it forever — not just a one-time meeting.',
     },
     {
       phase: 'Ongoing',
@@ -451,7 +451,7 @@ export default function Quiz() {
 
                   <div className="flex flex-wrap gap-3">
                     <Link to="/contact" state={{ recommendation: result }} className="btn-gold">
-                      Book a call to discuss <ArrowRight size={18} />
+                      Send me your project details <ArrowRight size={18} />
                     </Link>
                     <button onClick={restart} className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/15 text-white rounded-lg font-semibold transition-colors">
                       <RotateCcw size={16} /> Start over
