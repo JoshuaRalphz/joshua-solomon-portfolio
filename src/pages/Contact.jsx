@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { Mail, MessageCircle, Linkedin, Github, CheckCircle2, AlertCircle } from 'lucide-react';
+import { Mail, MessageCircle, Linkedin, Facebook, CheckCircle2, AlertCircle } from 'lucide-react';
 import PageTransition, { Reveal } from '../components/PageTransition.jsx';
 import { profile } from '../data/content.js';
 
@@ -145,7 +145,7 @@ export default function Contact() {
             <ContactCard icon={Mail} label="Email · replies in hours" value={profile.email} href={`mailto:${profile.email}`} />
             <ContactCard icon={MessageCircle} label="WhatsApp · fastest channel" value={profile.whatsapp} href={profile.whatsappLink} />
             <ContactCard icon={Linkedin} label="LinkedIn" value="Joshua Solomon" href={profile.linkedin} />
-            <ContactCard icon={Github} label="GitHub" value="JoshuaRalphz" href={profile.github} />
+            <ContactCard icon={Facebook} label="Facebook · Messenger" value="Joshua Solomon" href={profile.facebook} />
 
             <div className="pt-6 mt-6 border-t border-line text-xs text-muted leading-relaxed">
               <div className="font-bold text-ink mb-1.5">Working hours</div>

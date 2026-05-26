@@ -11,6 +11,7 @@ export const profile = {
   whatsappLink: 'https://wa.me/639615562117',
   github: 'https://github.com/JoshuaRalphz',
   linkedin: 'https://linkedin.com/in/REPLACE-LINKEDIN-HANDLE',
+  facebook: 'https://www.facebook.com/lionheart016',
   bishopUrl: 'https://bishoproofing.company',
 };
 

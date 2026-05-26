@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Wordmark } from './Logo.jsx';
-import { Mail, MessageCircle, Linkedin, Github } from 'lucide-react';
+import { Mail, MessageCircle, Linkedin, Facebook } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -45,8 +45,8 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a href="https://github.com/JoshuaRalphz" target="_blank" rel="noopener" className="inline-flex items-center gap-2 hover:text-white transition-colors">
-                <Github size={14} /> GitHub
+              <a href="https://www.facebook.com/lionheart016" target="_blank" rel="noopener" className="inline-flex items-center gap-2 hover:text-white transition-colors">
+                <Facebook size={14} /> Facebook · Messenger
               </a>
             </li>
           </ul>
