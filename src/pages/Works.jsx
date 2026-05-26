@@ -150,7 +150,19 @@ export default function Works() {
                     </div>
                     <h3 className="text-base font-bold text-ink mb-2 leading-snug">{w.title}</h3>
                     <p className="text-sm text-body leading-relaxed flex-1">{w.summary}</p>
-                    <div className="mt-4 pt-3 border-t border-line text-xs text-muted font-mono">
+                    {w.wins && w.wins.length > 0 && (
+                      <div className="mt-4 pt-3 border-t border-line">
+                        <div className="text-[10px] uppercase tracking-widest text-emerald font-bold mb-2">✓ Technical wins</div>
+                        <div className="flex flex-wrap gap-1.5">
+                          {w.wins.map(win => (
+                            <span key={win} className="inline-flex items-center text-[10px] font-semibold bg-emerald/10 text-emerald border border-emerald/30 px-2 py-0.5 rounded">
+                              {win}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                    <div className={`${w.wins ? 'mt-3' : 'mt-4'} pt-3 border-t border-line text-xs text-muted font-mono`}>
                       {w.stack.join(' · ')}
                     </div>
                     {w.liveUrl && (
