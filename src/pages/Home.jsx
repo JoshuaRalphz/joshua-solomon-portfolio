@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Zap, UserCheck, Wrench, Layers, Shield, TrendingUp, CheckCircle2 } from 'lucide-react';
 import PageTransition, { Reveal } from '../components/PageTransition.jsx';
 import LogoMarquee from '../components/LogoMarquee.jsx';
+import PlannerTeaser from '../components/PlannerTeaser.jsx';
 import { profile, stats, benefits, tools } from '../data/content.js';
 
 const ICONS = { Zap, UserCheck, Wrench, Layers, Shield, TrendingUp };
@@ -167,44 +168,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============ CTA BLOCK ============ */}
-      <section className="py-24">
-        <div className="container-x">
-          <Reveal>
-            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-ink via-navy-dark to-navy p-12 md:p-16 text-white">
-              {/* Decorative shapes */}
-              <div className="absolute -top-20 -right-20 w-80 h-80 bg-gold/20 rounded-full blur-3xl" />
-              <div className="absolute -bottom-16 -left-10 w-64 h-64 bg-blue-400/10 rounded-full blur-3xl" />
-
-              <div className="relative max-w-2xl">
-                <div className="text-xs uppercase tracking-widest font-bold text-gold mb-4">Not sure where to start?</div>
-                <h2 className="text-3xl md:text-4xl font-bold leading-tight mb-5">
-                  Use the project planner. I'll map exactly what you need.
-                </h2>
-                <p className="text-white/75 leading-relaxed mb-7">
-                  Five quick questions, ~90 seconds, no email gate. You'll get a custom recommendation
-                  for which systems to build, in what order, and how it fits your stack.
-                </p>
-                <ul className="space-y-3 mb-9">
-                  {[
-                    'Identifies the bottleneck in your current setup',
-                    'Maps the right tool + workflow for your business',
-                    'Gives you a price estimate before any sales call',
-                  ].map(li => (
-                    <li key={li} className="flex items-start gap-2.5">
-                      <CheckCircle2 size={18} className="text-gold flex-shrink-0 mt-0.5" />
-                      <span className="text-white/85 text-sm">{li}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Link to="/plan" className="btn-gold">
-                  Get my plan <ArrowRight size={18} />
-                </Link>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      {/* Sitewide planner teaser */}
+      <PlannerTeaser
+        title="Not sure where to start? Map your project in 90 seconds."
+        subtitle="Five quick questions, no email gate. You'll get a custom recommendation — which systems to build, in what order, and how they fit your stack."
+      />
     </PageTransition>
   );
 }

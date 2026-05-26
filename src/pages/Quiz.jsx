@@ -1,8 +1,27 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, ArrowLeft, CheckCircle2, RotateCcw } from 'lucide-react';
 import PageTransition from '../components/PageTransition.jsx';
+
+// Single source of truth for the planner sessionStorage key.
+// Shared with PlannerTeaser so prefill from teaser pages "just works".
+export const PLANNER_SS_KEY = 'jsplanner:state';
+
+function readPersistedState() {
+  if (typeof window === 'undefined') return { step: 0, answers: {} };
+  try {
+    const raw = window.sessionStorage.getItem(PLANNER_SS_KEY);
+    if (!raw) return { step: 0, answers: {} };
+    const parsed = JSON.parse(raw);
+    return {
+      step: Number.isFinite(parsed.step) ? parsed.step : 0,
+      answers: parsed.answers && typeof parsed.answers === 'object' ? parsed.answers : {},
+    };
+  } catch {
+    return { step: 0, answers: {} };
+  }
+}
 
 const QUESTIONS = [
   {
@@ -51,21 +70,15 @@ const QUESTIONS = [
     options: [
       {
         value: 'full',
-        label: 'Full marketing — content + paid ads + system',
-        hint: '30-day calendar, reels, social, paid ads, all in one number',
+        label: 'Full marketing — everything in Core + content + paid ads',
+        hint: 'Core (build + automation + email) PLUS 30-day calendar, reels, social, paid ads — one number.',
         priceChip: { tier: 'Full Marketing', price: '$2,000/mo' },
       },
       {
         value: 'core',
-        label: 'Just the core system — I handle my own marketing',
-        hint: 'Technical stack only; no content or ads management',
+        label: 'Core — build + automation + email',
+        hint: 'Website, CRM, automation, and email/newsletter. I handle social + paid ads myself.',
         priceChip: { tier: 'Core', price: '$1,000/mo' },
-      },
-      {
-        value: 'one-time',
-        label: 'One-time build only — no retainer, my own GHL',
-        hint: "I already have GHL Pro; just want a build, then I'm on my own",
-        priceChip: { tier: 'One-Time', price: '$1,500 once' },
       },
     ],
   },
@@ -150,14 +163,12 @@ function buildRecommendation(answers) {
     });
   }
 
-  // ───── TIER SELECTION based on Q5 — picks one of three paths ─────
+  // ───── TIER SELECTION based on Q5 — Core or Full Marketing ─────
   let tier;
   if (answers.creative === 'full') {
-    tier = { id: 'full', name: 'Full Marketing', price: 2000, label: '$2,000/mo', isOneTime: false };
-  } else if (answers.creative === 'one-time') {
-    tier = { id: 'one-time', name: 'One-Time Build', price: 1500, label: '$1,500 once', isOneTime: true };
+    tier = { id: 'full', name: 'Full Marketing', price: 2000, label: '$2,000/mo' };
   } else {
-    tier = { id: 'core', name: 'Core', price: 1000, label: '$1,000/mo', isOneTime: false };
+    tier = { id: 'core', name: 'Core', price: 1000, label: '$1,000/mo' };
   }
 
   // (Tier recommendation surfaces in its own dedicated callout in the result UI —
@@ -191,10 +202,10 @@ function buildRecommendation(answers) {
     },
   ];
 
-  // ───── Pricing math — retainer = no setup, just first month. One-time = $1,500 single payment ─────
-  const monthlyTotal = tier.isOneTime ? 0 : tier.price;
-  const firstInvoice = tier.price; // for retainers = first month; for one-time = the $1,500
-  const year1Total = tier.isOneTime ? tier.price : tier.price * 12;
+  // ───── Pricing math — retainer = no setup, first invoice = first month ─────
+  const monthlyTotal = tier.price;
+  const firstInvoice = tier.price;
+  const year1Total = tier.price * 12;
   const setupFee = 0;
 
   const fmt = (n) => `$${n.toLocaleString()}`;
@@ -207,7 +218,6 @@ function buildRecommendation(answers) {
   return {
     recs,
     tier,
-    isOneTime: tier.isOneTime,
     setupFee: fmt(setupFee),
     monthlyRetainer: fmt(tier.price),
     monthlyTotal: fmt(monthlyTotal),
@@ -220,8 +230,23 @@ function buildRecommendation(answers) {
 }
 
 export default function Quiz() {
-  const [step, setStep] = useState(0); // 0..n-1 = questions, n = result
-  const [answers, setAnswers] = useState({});
+  // Hydrate from sessionStorage so that pre-fills from PlannerTeaser
+  // (and page refreshes mid-quiz) are preserved.
+  const persisted = readPersistedState();
+  const [step, setStep] = useState(persisted.step); // 0..n-1 = questions, n = result
+  const [answers, setAnswers] = useState(persisted.answers);
+
+  // Persist on every change.
+  useEffect(() => {
+    try {
+      window.sessionStorage.setItem(
+        PLANNER_SS_KEY,
+        JSON.stringify({ step, answers })
+      );
+    } catch {
+      /* sessionStorage disabled — fall back to in-memory state only */
+    }
+  }, [step, answers]);
 
   const isDone = step >= QUESTIONS.length;
   const currentQ = QUESTIONS[step];
@@ -233,7 +258,11 @@ export default function Quiz() {
   };
 
   const back = () => step > 0 && setStep(step - 1);
-  const restart = () => { setAnswers({}); setStep(0); };
+  const restart = () => {
+    setAnswers({});
+    setStep(0);
+    try { window.sessionStorage.removeItem(PLANNER_SS_KEY); } catch { /* noop */ }
+  };
 
   const result = useMemo(() => isDone ? buildRecommendation(answers) : null, [isDone, answers]);
 
@@ -351,41 +380,35 @@ export default function Quiz() {
                     <div className="text-white font-extrabold text-2xl">{result.tier.label}</div>
                   </div>
 
-                  {/* FIRST INVOICE — wording flips for one-time vs retainer */}
+                  {/* FIRST INVOICE */}
                   <div className="bg-white/5 border border-white/10 rounded-xl p-6 mb-4">
                     <div className="text-xs uppercase tracking-widest font-bold text-white/55 mb-2">
-                      {result.isOneTime ? 'Your one-time payment' : 'Your first invoice — day you sign'}
+                      Your first invoice — day you sign
                     </div>
                     <div className="text-4xl font-extrabold text-white mb-2">{result.firstInvoice}</div>
                     <div className="text-sm text-white/65 mb-4">
-                      {result.isOneTime
-                        ? 'Single payment — covers the build + 30-day support window. After that, no recurring relationship.'
-                        : 'Just your first month — no setup fee, no onboarding fee, no surprises.'}
+                      Just your first month — no setup fee, no onboarding fee, no surprises.
                     </div>
-                    {!result.isOneTime && (
-                      <div className="border-t border-white/10 pt-4 flex items-baseline justify-between gap-3 text-sm">
-                        <span className="text-white/85">{result.tier.name} retainer · month 1</span>
-                        <span className="text-white font-bold">{result.monthlyRetainer}</span>
-                      </div>
-                    )}
+                    <div className="border-t border-white/10 pt-4 flex items-baseline justify-between gap-3 text-sm">
+                      <span className="text-white/85">{result.tier.name} retainer · month 1</span>
+                      <span className="text-white font-bold">{result.monthlyRetainer}</span>
+                    </div>
                   </div>
 
-                  {/* ONGOING — only shown for retainer tiers */}
-                  {!result.isOneTime && (
-                    <div className="bg-white/5 border border-white/10 rounded-xl p-6 mb-4">
-                      <div className="text-xs uppercase tracking-widest font-bold text-white/55 mb-2">Every month after that</div>
-                      <div className="mb-3">
-                        <span className="text-4xl font-extrabold text-white">{result.monthlyTotal}</span>
-                        <span className="text-base font-bold text-white/55 ml-2">/ month</span>
-                      </div>
-                      <div className="text-sm text-white/70 leading-relaxed">
-                        {result.tier.id === 'full'
-                          ? 'Full Marketing retainer — covers core system maintenance, new builds, new automations, paid ads management, the 30-day content engine, plus bundled infrastructure (GHL Pro + Cloudflare). 3-month minimum commitment so the system has time to optimize; cancel any month after that, migrate to your own accounts, keep everything.'
-                          : 'Core retainer — covers all maintenance, new builds, new automations, plus bundled infrastructure (GHL Pro sub-account + Cloudflare hosting — ~$300/mo of platform costs you don\'t see). 6-month minimum commitment so the system has time to produce results; cancel any month after that, migrate to your own accounts, keep everything.'
-                        }
-                      </div>
+                  {/* ONGOING */}
+                  <div className="bg-white/5 border border-white/10 rounded-xl p-6 mb-4">
+                    <div className="text-xs uppercase tracking-widest font-bold text-white/55 mb-2">Every month after that</div>
+                    <div className="mb-3">
+                      <span className="text-4xl font-extrabold text-white">{result.monthlyTotal}</span>
+                      <span className="text-base font-bold text-white/55 ml-2">/ month</span>
                     </div>
-                  )}
+                    <div className="text-sm text-white/70 leading-relaxed">
+                      {result.tier.id === 'full'
+                        ? 'Full Marketing retainer — covers core system maintenance, new builds, new automations, paid ads management, the 30-day content engine, plus bundled infrastructure (GHL Pro + Cloudflare). 3-month minimum commitment so the system has time to optimize; cancel any month after that, migrate to your own accounts, keep everything.'
+                        : 'Core retainer — covers all maintenance, new builds, new automations, plus bundled infrastructure (GHL Pro sub-account + Cloudflare hosting — ~$300/mo of platform costs you don\'t see). 6-month minimum commitment so the system has time to produce results; cancel any month after that, migrate to your own accounts, keep everything.'
+                      }
+                    </div>
+                  </div>
 
                   <div className="grid grid-cols-2 gap-3 mb-6">
                     <div className="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
@@ -393,9 +416,7 @@ export default function Quiz() {
                       <div className="text-xl font-extrabold text-white">{result.liveBy}</div>
                     </div>
                     <div className="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
-                      <div className="text-[10px] uppercase tracking-widest font-bold text-white/55 mb-1">
-                        {result.isOneTime ? 'Total cost' : 'Year-1 total'}
-                      </div>
+                      <div className="text-[10px] uppercase tracking-widest font-bold text-white/55 mb-1">Year-1 total</div>
                       <div className="text-xl font-extrabold text-white">{result.year1Total}</div>
                     </div>
                   </div>

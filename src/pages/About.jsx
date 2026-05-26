@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import PageTransition, { Reveal } from '../components/PageTransition.jsx';
+import PlannerTeaser from '../components/PlannerTeaser.jsx';
 import { tools } from '../data/content.js';
 
 export default function About() {
@@ -105,18 +106,11 @@ export default function About() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20">
-        <div className="container-x text-center">
-          <Reveal>
-            <h2 className="text-3xl font-bold text-ink mb-4">Want to work together?</h2>
-            <p className="text-body mb-8 max-w-xl mx-auto">Use the project planner — 5 questions, ~90 seconds, no email gate — and I'll send back a scoped recommendation.</p>
-            <Link to="/plan" className="btn-primary">
-              Get my plan <ArrowRight size={18} />
-            </Link>
-          </Reveal>
-        </div>
-      </section>
+      {/* Sitewide planner teaser */}
+      <PlannerTeaser
+        title="Want to work together?"
+        subtitle="Five quick questions, no email gate. You'll get back a scoped recommendation tailored to where you're at right now."
+      />
     </PageTransition>
   );
 }

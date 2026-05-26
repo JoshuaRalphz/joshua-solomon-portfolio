@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, Download, Briefcase, MapPin, Mail, MessageCircle, Sparkles, Package } from 'lucide-react';
 import PageTransition, { Reveal } from '../components/PageTransition.jsx';
+import PlannerTeaser from '../components/PlannerTeaser.jsx';
 import { profile, experience, coreExpertise, serviceOffer, tools } from '../data/content.js';
 
 export default function Resume() {
@@ -165,17 +166,11 @@ export default function Resume() {
         </div>
       </section>
 
-      {/* ============ CTA ============ */}
-      <section className="py-20">
-        <div className="container-x text-center">
-          <Reveal>
-            <h2 className="text-3xl font-bold text-ink mb-4">Ready to talk?</h2>
-            <Link to="/plan" className="btn-primary">
-              Get my plan (90 sec) <ArrowRight size={18} />
-            </Link>
-          </Reveal>
-        </div>
-      </section>
+      {/* Sitewide planner teaser */}
+      <PlannerTeaser
+        title="Ready to talk?"
+        subtitle="If you've got a project in mind, the planner gives me the context I need to send back a scoped reply. Otherwise, just hit Contact directly."
+      />
     </PageTransition>
   );
 }

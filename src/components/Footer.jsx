@@ -31,8 +31,12 @@ export default function Footer() {
           <h4 className="text-xs uppercase tracking-widest font-bold text-white mb-4">Contact</h4>
           <ul className="space-y-3 text-sm">
             <li>
-              <a href={`mailto:${profile.email}`} className="inline-flex items-center gap-2 hover:text-white transition-colors break-all">
-                <Mail size={14} className="flex-shrink-0" /> {profile.email}
+              <a
+                href={`mailto:${profile.email}`}
+                title={profile.email}
+                className="inline-flex items-center gap-2 hover:text-white transition-colors"
+              >
+                <Mail size={14} className="flex-shrink-0" /> Email
               </a>
             </li>
             <li>

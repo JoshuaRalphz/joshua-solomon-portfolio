@@ -60,8 +60,7 @@ export const benefits = [
   },
 ];
 
-// Three pricing paths — Core + Full Marketing as recurring retainers,
-// One-Time Build as the alternative for clients who don't want a relationship.
+// Two retainer paths — Core for foundation, Full Marketing for end-to-end.
 export const pricingTiers = [
   {
     id: 'core',
@@ -79,23 +78,6 @@ export const pricingTiers = [
       'On-page + technical SEO + Google Search Console',
       'GHL Pro sub-account + Cloudflare hosting — bundled (~$300/mo value)',
       'Direct messaging · US business hours',
-    ],
-  },
-  {
-    id: 'one-time',
-    name: 'One-Time Build',
-    tagline: "For clients who already have GHL Pro and don't want a retainer relationship.",
-    price: '$1,500',
-    period: 'one-time',
-    alternative: true,
-    bullets: [
-      'GHL CRM configured on YOUR own GHL Pro account',
-      'Pipelines, automations, A2P SMS — all built',
-      'You own everything from day one',
-      'Hand-off + 30-day support window',
-      'No retainer, no recurring relationship after hand-off',
-      'You handle ongoing maintenance yourself',
-      'Heads-up: Core retainer is $1k/mo and INCLUDES this same build + ongoing support',
     ],
   },
   {
@@ -119,9 +101,45 @@ export const pricingTiers = [
   },
 ];
 
-// No standalone add-ons — everything bundles into the three tiers above.
+// No standalone add-ons — everything bundles into the two tiers above.
 // This array is kept for backwards-compat with old imports; intentionally empty.
 export const addOns = [];
+
+// Vite auto-imports every graphic in src/assets/samples/graphics/.
+// Drop a file in that folder → it shows up here at build time. No manual
+// editing required. Sorted with natural numeric ordering, so 1.jpg comes
+// before 2.jpg comes before 10.jpg.
+const graphicsModules = import.meta.glob(
+  '../assets/samples/graphics/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}',
+  { eager: true, import: 'default' }
+);
+
+const autoGraphics = Object.entries(graphicsModules)
+  .sort(([a], [b]) => a.localeCompare(b, undefined, { numeric: true }))
+  .map(([path, src]) => {
+    const filename = path.split('/').pop();
+    return { src, alt: `Graphic sample — ${filename}` };
+  });
+
+// Content samples shown on the Services page under the Full Marketing tier.
+// Disclosure copy is shown at the top of the section so visitors know my team
+// produces these — I plan + QC.
+export const contentSamples = {
+  disclosure:
+    'These are deliverables from my Full Marketing tier — I plan + QC, my team produces.',
+  graphics: autoGraphics,
+  videos: [
+    // Long-form / 16:9 — promotional videos, logo animations, event recaps
+    { id: '54eYZKVqTK4', label: 'Promotional app video', vertical: false },
+    { id: 'NHhRFoTk1rE', label: 'Promotional event video', vertical: false },
+    { id: 'VKBRePCRE6w', label: 'Logo animation · ADAP', vertical: false },
+    { id: 'Ax-o06kIDSI', label: 'Logo animation · Shotoboy', vertical: false },
+    // Short-form / 9:16 — reels for IG, TikTok, YouTube Shorts
+    { id: 'IwHT1dxwr70', label: 'Short-form reel', vertical: true },
+    { id: 'n9sJrxJx0Zk', label: 'Street team taco review · Michigan', vertical: true },
+    { id: 'FI5a3G5bY6s', label: 'Dr. Wine promo reel', vertical: true },
+  ],
+};
 
 export const services = [
   {
@@ -181,6 +199,20 @@ export const services = [
       'API webhooks for custom integrations',
     ],
     outcome: 'Your stack works as one system, and the admin runs itself.',
+  },
+  {
+    id: 'ai-automation',
+    title: 'AI automation — kill your repetitive work',
+    summary: 'The manual tasks eating your week — posting, inbound replies, lead scoring, data entry. I build AI + workflow pipelines that handle them while you focus on actual work.',
+    bullets: [
+      'Auto-publish social posts across LinkedIn, IG, X, FB on a content calendar',
+      'AI-drafted replies to inbound DMs + emails (you approve, never auto-send)',
+      'AI lead scoring + qualification before anything hits your inbox',
+      'Custom Claude / OpenAI API agents tailored to your specific repetitive tasks',
+      'n8n + Zapier workflows that move data between tools automatically',
+      'Audit your day — you tell me what you repeat, I build it away',
+    ],
+    outcome: 'Hours back every week. The manual work happens without you in the loop.',
   },
 ];
 
@@ -399,14 +431,13 @@ export const coreExpertise = [
 // Mirrors the "Service Offer" block in the PDF resume
 export const serviceOffer = {
   title: 'Done-For-You Marketing System',
-  price: '$1,000/mo Core · $2,000/mo Full Marketing · $1,500 one-time build',
+  price: '$1,000/mo Core · $2,000/mo Full Marketing',
   bullets: [
     'Custom-coded website on Cloudflare Pages (or your platform of choice)',
     'GoHighLevel CRM + A2P-compliant SMS configured to your real pipeline',
     'Email automation, monthly newsletter, lead-routing',
     'GHL Pro sub-account + Cloudflare hosting bundled into the retainer',
     'Full Marketing tier adds: paid ads + 30-day content calendar + social + reels',
-    'No setup fee on retainer tiers — first invoice is just your first month',
-    'Alternative: $1,500 one-time GHL build on your own account (no retainer)',
+    'No setup fee on either tier — first invoice is just your first month',
   ],
 };
