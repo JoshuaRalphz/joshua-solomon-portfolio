@@ -18,7 +18,7 @@ export const stats = [
   { value: '3+',  label: 'Years shipping marketing systems' },
   { value: '14d', label: 'Average project turnaround' },
   { value: '$1k', label: 'Flat monthly retainer · no agency layers' },
-  { value: '1',   label: 'Direct line · no PM layer · US hours' },
+  { value: '1',   label: 'Point of contact · you message me, I respond · US hours' },
 ];
 
 // GHL Inbound Webhook for the portfolio contact form + planner submission.
@@ -380,7 +380,7 @@ export const coreExpertise = [
 // Mirrors the "Service Offer" block in the PDF resume
 export const serviceOffer = {
   title: 'Done-For-You Marketing System',
-  price: 'Core $1,000/mo · Full Marketing $2,000/mo — no setup fee on retainers · or $1,500 one-time build',
+  price: '$1,000/mo Core · $2,000/mo Full Marketing · $1,500 one-time build',
   bullets: [
     'Custom-coded website on Cloudflare Pages (or your platform of choice)',
     'GoHighLevel CRM + A2P-compliant SMS configured to your real pipeline',
