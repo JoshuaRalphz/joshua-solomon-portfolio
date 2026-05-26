@@ -375,13 +375,15 @@ export const coreExpertise = [
 // Mirrors the "Service Offer" block in the PDF resume
 export const serviceOffer = {
   title: 'Done-For-You Marketing System',
-  price: '$1,000 flat setup · Core $1,000/mo · Full Marketing $2,000/mo',
+  price: 'Core $1,000/mo · Growth $1,500/mo · Full Marketing $2,000/mo — no setup fee',
   bullets: [
     'Custom-coded website on Cloudflare Pages (or your platform of choice)',
     'GoHighLevel CRM + A2P-compliant SMS configured to your real pipeline',
     'Email automation, monthly newsletter, lead-routing',
     'GHL Pro sub-account + Cloudflare hosting bundled into the retainer',
+    'Growth tier adds: paid ads setup & management',
     'Full Marketing tier adds: 30-day content calendar, social posts, reels editing',
-    'Ongoing maintenance, new builds, new automations — included in both tiers',
+    'No setup fee on any retainer tier — first invoice is just your first month',
+    'Alternative: $1,500 one-time GHL build on your own account (no retainer)',
   ],
 };

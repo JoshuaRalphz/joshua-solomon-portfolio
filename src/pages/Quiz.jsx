@@ -199,12 +199,13 @@ function buildRecommendation(answers) {
     },
   ];
 
-  // ───── Pricing math, tier-aware ─────
-  const setupFee = 1000;
-  const adsAdd = 0; // No standalone add-ons; paid ads is bundled into Growth + Full Marketing tiers
+  // ───── Pricing math — NO setup fee on retainer tiers ─────
+  // Setup is included in the retainer; first invoice IS the first month.
+  const adsAdd = 0; // Paid ads bundled into Growth + Full Marketing tiers
   const monthlyTotal = tier.price + adsAdd;
-  const firstInvoice = setupFee + monthlyTotal;
-  const year1Total = setupFee + monthlyTotal * 12;
+  const firstInvoice = monthlyTotal;  // = first month only, no setup
+  const year1Total = monthlyTotal * 12;
+  const setupFee = 0;
 
   const fmt = (n) => `$${n.toLocaleString()}`;
 
@@ -360,25 +361,14 @@ export default function Quiz() {
                     <div className="text-white font-extrabold text-2xl">{result.tier.label}</div>
                   </div>
 
-                  {/* FIRST INVOICE — payment timeline, tier-aware */}
+                  {/* FIRST INVOICE — no setup fee, just first month */}
                   <div className="bg-white/5 border border-white/10 rounded-xl p-6 mb-4">
                     <div className="text-xs uppercase tracking-widest font-bold text-white/55 mb-2">Your first invoice — day you sign</div>
-                    <div className="text-4xl font-extrabold text-white mb-4">{result.firstInvoice}</div>
-                    <div className="space-y-2 text-sm border-t border-white/10 pt-4">
-                      <div className="flex items-baseline justify-between gap-3">
-                        <span className="text-white/85">One-time setup fee (the build)</span>
-                        <span className="text-white font-bold">{result.setupFee}</span>
-                      </div>
-                      <div className="flex items-baseline justify-between gap-3">
-                        <span className="text-white/85">First month — {result.tier.name} retainer</span>
-                        <span className="text-white font-bold">+ {result.monthlyRetainer}</span>
-                      </div>
-                      {result.adsAdd && (
-                        <div className="flex items-baseline justify-between gap-3">
-                          <span className="text-white/85">First month — Paid Ads add-on</span>
-                          <span className="text-white font-bold">+ {result.adsAdd}</span>
-                        </div>
-                      )}
+                    <div className="text-4xl font-extrabold text-white mb-2">{result.firstInvoice}</div>
+                    <div className="text-sm text-white/65 mb-4">Just your first month — no setup fee, no onboarding fee, no surprises.</div>
+                    <div className="border-t border-white/10 pt-4 flex items-baseline justify-between gap-3 text-sm">
+                      <span className="text-white/85">{result.tier.name} retainer · month 1</span>
+                      <span className="text-white font-bold">{result.monthlyRetainer}</span>
                     </div>
                   </div>
 

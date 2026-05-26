@@ -57,7 +57,7 @@ export default function Services() {
             <div className="text-center max-w-2xl mx-auto">
               <div className="text-xs uppercase tracking-widest font-bold text-gold mb-3">Pricing — three tiers</div>
               <h2 className="text-3xl md:text-4xl font-bold leading-tight">Pick how hands-off you want to be.</h2>
-              <p className="mt-4 text-white/75 text-lg">Flat $1,000 setup on every tier. Same speed. Same direct line. Just different ongoing scope.</p>
+              <p className="mt-4 text-white/75 text-lg">No setup fee on any tier — your first invoice is just your first month. Same speed. Same direct line. Just different ongoing scope.</p>
             </div>
           </Reveal>
 
@@ -104,21 +104,17 @@ export default function Services() {
             </div>
           </Reveal>
 
-          {/* Setup + payment timeline */}
+          {/* Payment clarity — no setup, just monthly */}
           <Reveal delay={0.15}>
             <div className="max-w-4xl mx-auto mt-10 bg-white/5 border border-white/10 rounded-2xl p-6 md:p-7">
-              <div className="text-xs uppercase tracking-widest font-bold text-white/55 mb-3">+ One-time setup (all three tiers)</div>
-              <div className="flex flex-wrap items-baseline gap-3 mb-3">
-                <div className="text-3xl font-extrabold text-white">$1,000</div>
-                <div className="text-sm text-white/65">paid once at signing — covers the full build</div>
-              </div>
-              <div className="text-sm text-white/70 leading-relaxed">
-                <strong className="text-white">First invoice = $1,000 setup + your tier's first month.</strong> Core starts at $2,000 day one ($1k + $1k), then $1,000/mo. Growth starts at $2,500 day one ($1k + $1.5k), then $1,500/mo. Full Marketing starts at $3,000 day one ($1k + $2k), then $2,000/mo.
+              <div className="text-xs uppercase tracking-widest font-bold text-emerald mb-3">✓ No setup fee on any retainer tier</div>
+              <div className="text-sm text-white/80 leading-relaxed">
+                <strong className="text-white">Your first invoice = your tier's first month.</strong> Core: $1,000 day one, then $1,000/mo. Growth: $1,500 day one, then $1,500/mo. Full Marketing: $2,000 day one, then $2,000/mo. That's it. No build fee, no onboarding fee, no surprise line items.
               </div>
             </div>
           </Reveal>
 
-          {/* One-time setup off-ramp — for clients who don't want a retainer */}
+          {/* One-time off-ramp — the ONLY path with an upfront fee */}
           <Reveal delay={0.2}>
             <div className="max-w-4xl mx-auto mt-6 bg-white/5 border border-white/10 rounded-2xl p-6 md:p-7">
               <div className="text-xs uppercase tracking-widest font-bold text-white/55 mb-2">Don't want a retainer at all?</div>
@@ -127,7 +123,9 @@ export default function Services() {
                 <div className="text-sm text-white/65">— GHL build on your own GHL account</div>
               </div>
               <div className="text-sm text-white/70 leading-relaxed">
-                For clients who already have their own GHL Pro and just want a one-time setup. I configure your CRM, pipelines, and automation on <strong>your</strong> account, then hand it off. You own everything day one, you handle ongoing maintenance yourself. No retainer needed — but you'll notice this is $500 <em>more</em> than the retainer-bundled setup, because there's no recurring relationship to absorb the build cost into.
+                For clients who already have their own GHL Pro and just want a one-time build with no ongoing relationship. I configure your CRM, pipelines, and automation on <strong>your</strong> account, then hand it off. You own everything day one, you handle maintenance yourself.
+                <br /><br />
+                <strong className="text-white">Quick math:</strong> a Core retainer is $1,000/mo and includes <em>this same build</em> PLUS ongoing maintenance, new automations, and bundled infrastructure (GHL Pro + Cloudflare ≈ $300/mo value). This one-time path is $500 <em>more</em> for the build alone. Most clients pick the retainer.
               </div>
             </div>
           </Reveal>
