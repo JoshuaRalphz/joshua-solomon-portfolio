@@ -50,6 +50,79 @@ export default function Services() {
         </div>
       </section>
 
+      {/* RECENT TECHNICAL WINS — proof of capability, anchored to real clients */}
+      <section className="py-20 bg-slate-50 border-y border-line">
+        <div className="container-x">
+          <Reveal>
+            <div className="text-center mb-12">
+              <div className="text-xs uppercase tracking-widest font-bold text-emerald mb-3">✓ Recent technical wins</div>
+              <h2 className="text-3xl md:text-4xl font-bold text-ink tracking-tight">The stuff most agencies fail at.</h2>
+              <p className="mt-4 text-body max-w-2xl mx-auto leading-relaxed">
+                Real shipped work across the retainer book. The kind of capability that's hard to verify until you've actually worked with someone — so here are the receipts.
+              </p>
+            </div>
+          </Reveal>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <Reveal delay={0}>
+              <div className="bg-white border border-line rounded-2xl p-6 h-full hover:border-emerald hover:shadow-soft transition-all">
+                <div className="inline-flex items-center text-[10px] uppercase tracking-widest font-bold bg-emerald/10 text-emerald border border-emerald/30 px-2 py-0.5 rounded mb-4">
+                  A2P 10DLC
+                </div>
+                <h3 className="font-bold text-ink mb-2 leading-snug">Brand-approved SMS at scale</h3>
+                <p className="text-sm text-body leading-relaxed">
+                  The single hardest GHL approval — most agencies fail it. Got it for <strong className="text-ink">Alpha Omega Utility</strong>: verified business number, legal SMS to leads, carrier-compliant on day one.
+                </p>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.05}>
+              <div className="bg-white border border-line rounded-2xl p-6 h-full hover:border-emerald hover:shadow-soft transition-all">
+                <div className="inline-flex items-center text-[10px] uppercase tracking-widest font-bold bg-emerald/10 text-emerald border border-emerald/30 px-2 py-0.5 rounded mb-4">
+                  Email Infra
+                </div>
+                <h3 className="font-bold text-ink mb-2 leading-snug">Dedicated sending infrastructure</h3>
+                <p className="text-sm text-body leading-relaxed">
+                  Built <strong className="text-ink">HOME.FM</strong>'s email infrastructure from scratch: dedicated subdomain, SPF/DKIM/DMARC aligned, SSL issued, warmup completed to <strong className="text-ink">6,500 emails/day</strong> capacity. Inbox, not spam folder.
+                </p>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.1}>
+              <div className="bg-white border border-line rounded-2xl p-6 h-full hover:border-emerald hover:shadow-soft transition-all">
+                <div className="inline-flex items-center text-[10px] uppercase tracking-widest font-bold bg-emerald/10 text-emerald border border-emerald/30 px-2 py-0.5 rounded mb-4">
+                  Custom Code
+                </div>
+                <h3 className="font-bold text-ink mb-2 leading-snug">Multi-brand site architecture</h3>
+                <p className="text-sm text-body leading-relaxed">
+                  Custom-coded <strong className="text-ink">Alliance Service Brands</strong>' site unifying <strong className="text-ink">6 specialized brands</strong> under one visual system — construction, handyman, windows, real estate, lake property, financing.
+                </p>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.15}>
+              <div className="bg-white border border-line rounded-2xl p-6 h-full hover:border-emerald hover:shadow-soft transition-all">
+                <div className="inline-flex items-center text-[10px] uppercase tracking-widest font-bold bg-emerald/10 text-emerald border border-emerald/30 px-2 py-0.5 rounded mb-4">
+                  Apps Script
+                </div>
+                <h3 className="font-bold text-ink mb-2 leading-snug">Custom back-office databases</h3>
+                <p className="text-sm text-body leading-relaxed">
+                  Built <strong className="text-ink">Ada's Closet</strong>'s entire back-office: Google Apps Script database the client views live, multi-platform listing flow across Poshmark / eBay / Depop, notification triggers on every sale.
+                </p>
+              </div>
+            </Reveal>
+          </div>
+
+          <Reveal delay={0.2}>
+            <div className="mt-10 text-center">
+              <Link to="/works" className="inline-flex items-center gap-1.5 text-sm font-bold text-navy hover:text-navy-dark hover:underline">
+                See the full work portfolio <ArrowRight size={14} />
+              </Link>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* PRICING TIERS — 3-tier with anchored middle */}
       <section className="py-20 bg-gradient-to-br from-ink to-navy-dark text-white">
         <div className="container-x">

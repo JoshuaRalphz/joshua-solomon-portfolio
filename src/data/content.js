@@ -19,7 +19,7 @@ export const stats = [
   { value: '3+',  label: 'Years shipping marketing systems' },
   { value: '14d', label: 'Average project turnaround' },
   { value: '$1k', label: 'Flat monthly retainer · no agency layers' },
-  { value: '1',   label: 'Point of contact · you message me, I respond · US hours' },
+  { value: '0',   label: 'Calls required · async-first by default · US hours' },
 ];
 
 // GHL Inbound Webhook for the portfolio contact form + planner submission.
@@ -69,7 +69,7 @@ export const pricingTiers = [
     price: '$1,000',
     period: '/ month',
     bullets: [
-      'Custom-coded site on Cloudflare Pages (or your platform of choice)',
+      'Website on YOUR stack — Cloudflare custom code (default), Wix Studio, WordPress, or Squarespace',
       'GHL CRM + A2P-compliant SMS configured to your real pipeline',
       'Email automation + monthly newsletter',
       'Automated invoicing, billing reminders, payment-receipt flows',
@@ -123,17 +123,17 @@ export const addOns = [];
 export const services = [
   {
     id: 'website',
-    title: 'Custom-coded marketing website',
-    summary: 'Hand-built HTML/CSS/JS site on Cloudflare Pages.',
+    title: 'Marketing website — your platform of choice',
+    summary: 'You pick the stack. I build it. Cloudflare custom code by default — or Wix Studio, WordPress, Squarespace if you want a self-edit platform.',
     bullets: [
-      'No platform bloat (no Wix, no Squarespace, unless you specifically want it)',
-      'Lighthouse 95+ across speed, accessibility, SEO',
-      'Hosted free on Cloudflare Pages with global CDN',
-      'GitHub auto-deploy — push to publish',
-      'Mobile-responsive, modern animations',
-      'Full ownership — site lives in your GitHub',
+      'YOUR choice: Cloudflare custom code (default), Wix Studio, WordPress, or Squarespace',
+      'Lighthouse 95+ on speed, accessibility, SEO (regardless of platform)',
+      'Hosted free on Cloudflare Pages if custom-coded · or stays on your platform of choice',
+      'GitHub auto-deploy on custom builds — push to publish',
+      'Mobile-responsive, modern design language',
+      'Full ownership — site code or platform account lives with you, day one',
     ],
-    outcome: 'A site that loads in under 1 second and converts.',
+    outcome: 'A site that loads fast, converts, and you can hand to anyone if we part ways.',
   },
   {
     id: 'crm',
