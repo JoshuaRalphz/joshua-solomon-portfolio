@@ -136,28 +136,23 @@ function buildRecommendation(answers) {
     });
   }
 
-  // ───── TIER SELECTION based on Q5 ─────
+  // ───── TIER SELECTION based on Q5 — picks one of three tiers ─────
   const wantsContent = answers.creative === 'content-full' || answers.creative === 'both';
   const wantsAds = answers.creative === 'paid-ads' || answers.creative === 'both';
-  const tier = wantsContent
-    ? { id: 'full',  name: 'Full Marketing', price: 2000, label: '$2,000/mo' }
-    : { id: 'core',  name: 'Core System',     price: 1000, label: '$1,000/mo' };
+  let tier;
+  if (wantsContent) {
+    tier = { id: 'full', name: 'Full Marketing', price: 2000, label: '$2,000/mo' };
+  } else if (wantsAds) {
+    tier = { id: 'growth', name: 'Growth', price: 1500, label: '$1,500/mo' };
+  } else {
+    tier = { id: 'core', name: 'Core', price: 1000, label: '$1,000/mo' };
+  }
 
   // (Tier recommendation surfaces in its own dedicated callout in the result UI —
   //  not re-listed in the recs array to avoid duplication.)
 
-  // ───── SUGGESTED ADD-ONS — Paid Ads is FREE on Full Marketing, +$500 on Core ─────
+  // No standalone add-ons — paid ads + content are bundled into Growth/Full Marketing tiers.
   const addOnSuggestions = [];
-  if (wantsAds) {
-    addOnSuggestions.push({
-      name: 'Paid ads setup & management',
-      price: tier.id === 'full' ? 'INCLUDED FREE with Full Marketing' : '+$500/mo + ad spend',
-      free: tier.id === 'full',
-      why: tier.id === 'full'
-        ? 'Already bundled into your Full Marketing tier — Google or Meta ads wired into your CRM, paid leads route automatically. No extra charge.'
-        : 'Google or Meta ads wired into the same CRM — paid leads land in the right pipeline automatically. (Tip: upgrade to Full Marketing and this is included.)',
-    });
-  }
 
   // ───── PHASED TIMELINE — show them exactly what happens, week by week ─────
   const isAccelerated = answers.timeline === 'this-month';
@@ -184,9 +179,9 @@ function buildRecommendation(answers) {
     },
   ];
 
-  // ───── Pricing math, tier-aware (ads are FREE on Full Marketing) ─────
+  // ───── Pricing math, tier-aware ─────
   const setupFee = 1000;
-  const adsAdd = (wantsAds && tier.id !== 'full') ? 500 : 0;
+  const adsAdd = 0; // No standalone add-ons; paid ads is bundled into Growth + Full Marketing tiers
   const monthlyTotal = tier.price + adsAdd;
   const firstInvoice = setupFee + monthlyTotal;
   const year1Total = setupFee + monthlyTotal * 12;

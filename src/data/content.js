@@ -58,12 +58,13 @@ export const benefits = [
   },
 ];
 
-// Two pricing tiers — Core (system only) and Full Marketing (system + content engine).
+// Three pricing tiers — designed for psychological anchoring.
+// Growth (middle) makes Full Marketing feel like obvious value (+$500 for content engine).
 export const pricingTiers = [
   {
     id: 'core',
-    name: 'Core System',
-    tagline: 'The full automation stack.',
+    name: 'Core',
+    tagline: 'The technical foundation. You handle your own marketing on top.',
     price: '$1,000',
     period: '/ month',
     bullets: [
@@ -77,34 +78,43 @@ export const pricingTiers = [
     ],
   },
   {
+    id: 'growth',
+    name: 'Growth',
+    tagline: 'Foundation + paid lead generation. For when you need volume, not just better systems.',
+    price: '$1,500',
+    period: '/ month',
+    bullets: [
+      'Everything in Core, plus:',
+      'Paid ads setup & management — Google or Meta',
+      'Ad creative direction wired into your CRM pipeline',
+      'Monthly ad performance review + optimization',
+      'Lead-routing tuned for paid traffic vs organic',
+      'Recommended ad spend: $1,000/mo+ (paid to platforms, not me)',
+    ],
+  },
+  {
     id: 'full',
     name: 'Full Marketing',
-    tagline: 'Core System + the content engine + paid ads.',
+    tagline: 'Foundation + paid leads + the content engine. End-to-end.',
     price: '$2,000',
     period: '/ month',
     recommended: true,
+    badge: 'Most popular · $500 more than Growth for all the content',
     bullets: [
-      'Everything in Core System, plus:',
+      'Everything in Growth, plus:',
       '30-day content calendar — I plan, my team executes',
       'Social media posts (graphics + captions) on schedule',
       'Reels editing — short clips from your raw footage',
       'Expanded newsletter cadence',
       'Light graphic design for emails, lead magnets, banners',
-      'Paid ads setup & management — included free (Google or Meta)',
       'You provide raw video + photos; we handle the rest',
     ],
   },
 ];
 
-// Optional add-on. Charged on Core tier; FREE on Full Marketing.
-export const addOns = [
-  {
-    icon: 'Megaphone',
-    title: 'Paid ads setup & management',
-    body: 'Google Ads or Meta Ads launch + monthly optimization. Built around the same CRM and lead-routing I configure — so paid leads land in the right pipeline automatically. Recommended min ad spend: $1,000/mo.',
-    pricing: '+$500 / mo on Core · Free on Full Marketing',
-  },
-];
+// No standalone add-ons — everything bundles into the three tiers above.
+// This array is kept for backwards-compat with old imports; intentionally empty.
+export const addOns = [];
 
 export const services = [
   {
