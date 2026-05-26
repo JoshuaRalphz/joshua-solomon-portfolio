@@ -1,0 +1,5 @@
+# Cloudflare Pages config — keeps build settings in source control
+# so any future re-connect or fresh project picks up the right config.
+name = "joshua-solomon-portfolio"
+compatibility_date = "2025-05-26"
+pages_build_output_dir = "./dist"

@@ -118,6 +118,20 @@ export default function Services() {
             </div>
           </Reveal>
 
+          {/* One-time setup off-ramp — for clients who don't want a retainer */}
+          <Reveal delay={0.2}>
+            <div className="max-w-4xl mx-auto mt-6 bg-white/5 border border-white/10 rounded-2xl p-6 md:p-7">
+              <div className="text-xs uppercase tracking-widest font-bold text-white/55 mb-2">Don't want a retainer at all?</div>
+              <div className="flex flex-wrap items-baseline gap-3 mb-3">
+                <div className="text-3xl font-extrabold text-white">$1,500 one-time</div>
+                <div className="text-sm text-white/65">— GHL build on your own GHL account</div>
+              </div>
+              <div className="text-sm text-white/70 leading-relaxed">
+                For clients who already have their own GHL Pro and just want a one-time setup. I configure your CRM, pipelines, and automation on <strong>your</strong> account, then hand it off. You own everything day one, you handle ongoing maintenance yourself. No retainer needed — but you'll notice this is $500 <em>more</em> than the retainer-bundled setup, because there's no recurring relationship to absorb the build cost into.
+              </div>
+            </div>
+          </Reveal>
+
           {/* The "leaving" honest paragraph */}
           <Reveal delay={0.25}>
             <div className="max-w-4xl mx-auto mt-8 bg-white/5 border border-white/10 rounded-2xl p-6 md:p-7">

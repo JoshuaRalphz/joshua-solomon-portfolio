@@ -49,10 +49,30 @@ const QUESTIONS = [
     id: 'creative',
     label: 'Beyond the core system, what else do you need?',
     options: [
-      { value: 'content-full', label: 'Content + social media handled (30-day calendar, reels, graphics)', hint: 'Recommends Full Marketing tier ($2k/mo).' },
-      { value: 'paid-ads',     label: 'Paid ad campaigns running on top',                                   hint: 'Recommends Core + Paid Ads add-on.' },
-      { value: 'both',         label: 'Both — full content + paid ads',                                     hint: 'Full Marketing + Paid Ads add-on.' },
-      { value: 'none',         label: 'Just the core system — no extras',                                   hint: 'Core retainer only ($1k/mo).' },
+      {
+        value: 'content-full',
+        label: 'Content + social media handled',
+        hint: '30-day calendar, reels editing, graphics, design',
+        priceChip: { tier: 'Full Marketing', price: '$2,000/mo' },
+      },
+      {
+        value: 'paid-ads',
+        label: 'Paid ad campaigns running on top',
+        hint: 'Google or Meta ads wired into your CRM',
+        priceChip: { tier: 'Growth', price: '$1,500/mo' },
+      },
+      {
+        value: 'both',
+        label: 'Both — full content + paid ads',
+        hint: 'Same tier as content — paid ads are bundled into Full Marketing',
+        priceChip: { tier: 'Full Marketing', price: '$2,000/mo' },
+      },
+      {
+        value: 'none',
+        label: 'Just the core system — no extras',
+        hint: 'Technical stack only; you handle marketing on top',
+        priceChip: { tier: 'Core', price: '$1,000/mo' },
+      },
     ],
   },
 ];
@@ -280,11 +300,19 @@ export default function Quiz() {
                       className="w-full text-left bg-white border-2 border-line hover:border-navy hover:bg-navy-tint/30 rounded-xl p-5 transition-all group"
                     >
                       <div className="flex items-start justify-between gap-3">
-                        <div>
+                        <div className="flex-1 min-w-0">
                           <div className="font-bold text-ink mb-1">{opt.label}</div>
                           <div className="text-sm text-muted">{opt.hint}</div>
                         </div>
-                        <ArrowRight size={18} className="text-muted group-hover:text-navy group-hover:translate-x-1 transition-all flex-shrink-0 mt-1" />
+                        <div className="flex items-center gap-3 flex-shrink-0">
+                          {opt.priceChip && (
+                            <div className="text-right">
+                              <div className="text-[10px] uppercase tracking-wider text-muted font-bold leading-tight">{opt.priceChip.tier}</div>
+                              <div className="text-sm font-extrabold text-navy leading-tight">{opt.priceChip.price}</div>
+                            </div>
+                          )}
+                          <ArrowRight size={18} className="text-muted group-hover:text-navy group-hover:translate-x-1 transition-all mt-1" />
+                        </div>
                       </div>
                     </button>
                   ))}
