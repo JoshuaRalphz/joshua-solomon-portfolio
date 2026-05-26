@@ -192,6 +192,11 @@ export const tools = [
   { name: 'n8n',         tier: 'Weekly', category: 'Automation' },
   { name: 'Make.com',    tier: 'Weekly', category: 'Automation' },
 
+  // AI & LLM
+  { name: 'Claude API',  tier: 'Weekly', category: 'AI' },
+  { name: 'OpenAI API',  tier: 'Weekly', category: 'AI' },
+  { name: 'GHL Conversation AI', tier: 'Occasional', category: 'AI' },
+
   // SMS & Compliance
   { name: 'GHL A2P 10DLC',  tier: 'Daily',  category: 'SMS' },
   { name: 'SMS Automation', tier: 'Weekly', category: 'SMS' },
@@ -383,6 +388,10 @@ export const coreExpertise = [
   {
     label: 'Technical & Integrations',
     items: 'Cloudflare DNS & Pages, domain management, GHL domain connect, Square + Stripe + GHL invoicing flows, automated billing & receipt workflows, Google Apps Script back-office logic, Gmail-to-task pipelines, DistroKid distribution',
+  },
+  {
+    label: 'AI & LLM Integration',
+    items: 'Building AI-augmented automation workflows — Claude + OpenAI API integration in n8n & Make for outreach personalization, content drafting, and lead-scoring. LLM-augmented marketing automation as a core differentiator vs no-AI agency builds.',
   },
 ];
 

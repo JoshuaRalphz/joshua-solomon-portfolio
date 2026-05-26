@@ -126,8 +126,9 @@ story.append(Paragraph(
     'Marketing systems and automation specialist who builds the technical backbone agencies and '
     'service businesses actually run on. Custom-coded websites on Cloudflare, GoHighLevel CRM '
     'builds, A2P-compliant SMS, Zapier, n8n, Make, ClickUp — turning sales pipelines, lead-routing '
-    'logic, and email workflows into automations that survive a busy week. Currently embedded with '
-    'a US marketing agency; open to senior freelance retainers and remote employment.',
+    'logic, and email workflows into automations that survive a busy week. Building AI-augmented '
+    'pipelines with Claude + OpenAI APIs for outreach personalization and lead-scoring. Currently '
+    'embedded with a US marketing agency; open to senior freelance retainers and remote employment.',
     body_style,
 ))
 
@@ -154,6 +155,12 @@ expertise = [
         'Technical &amp; Integrations:',
         'Cloudflare DNS &amp; Pages, domain management, GHL domain connect, Square + Stripe + GHL '
         'invoicing flows, Google Apps Script back-office logic, Gmail-to-task pipelines, DistroKid distribution',
+    ),
+    (
+        'AI &amp; LLM Integration:',
+        'Building AI-augmented automation workflows — Claude + OpenAI API integration in n8n &amp; Make '
+        'for outreach personalization, content drafting, and lead-scoring. LLM-augmented marketing '
+        'automation as a core differentiator vs no-AI agency builds.',
     ),
 ]
 for label, items in expertise:
