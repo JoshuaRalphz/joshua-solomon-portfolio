@@ -3,11 +3,12 @@ import { ArrowRight, ExternalLink, MapPin, ShieldCheck, FileText, MousePointerCl
 import PageTransition, { Reveal } from '../components/PageTransition.jsx';
 import { works, profile } from '../data/content.js';
 
-// Pre-fills an email asking for the full breakdown (private case-study PDF Josh sends back manually).
+// Opens Gmail compose in a new tab — pre-filled with case study request.
+// Falls back to the user's mailto: handler only if Gmail web isn't accessible.
 const breakdownMailto = (workTitle) => {
   const subject = `Full case study request — ${workTitle}`;
   const body = `Hi Joshua,\n\nI'd like the full case study for "${workTitle}" — including backend screenshots and your specific role.\n\nA bit about me / my business:\n\nThanks!`;
-  return `mailto:${profile.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  return `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(profile.email)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 };
 
 export default function Works() {
@@ -130,20 +131,20 @@ export default function Works() {
             </div>
           </Reveal>
 
-          {/* Horizontal cards — 1-col with thumb-left/content-right layout on tablet+ */}
-          <div className="space-y-6">
+          {/* 3-column grid — vertical cards (reverted from horizontal layout per Josh's preference) */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {rest.map((w, i) => (
               <Reveal key={w.id} delay={i * 0.07}>
-                <article className="bg-white border border-line rounded-2xl overflow-hidden flex flex-col md:flex-row hover:border-navy hover:shadow-soft transition-all">
+                <article className="bg-white border border-line rounded-2xl overflow-hidden h-full flex flex-col hover:border-navy hover:shadow-soft transition-all">
                   {/* Thumb — clickable if there's a live URL */}
                   {w.liveUrl ? (
                     <a
                       href={w.liveUrl}
                       target="_blank"
                       rel="noopener"
-                      className="block md:w-1/2 aspect-[16/10] md:aspect-auto md:min-h-[280px] bg-gradient-to-br from-navy-tint to-blue-100 relative overflow-hidden flex-shrink-0"
+                      className="block aspect-[16/10] bg-gradient-to-br from-navy-tint to-blue-100 relative overflow-hidden"
                     >
-                      <div className="absolute inset-0 flex items-center justify-center text-navy text-6xl font-extrabold">
+                      <div className="absolute inset-0 flex items-center justify-center text-navy text-5xl font-extrabold">
                         {w.initials}
                       </div>
                       {w.thumb && (
@@ -158,15 +159,15 @@ export default function Works() {
                       )}
                     </a>
                   ) : (
-                    <div className="md:w-1/2 aspect-[16/10] md:aspect-auto md:min-h-[280px] bg-gradient-to-br from-navy-tint to-blue-100 relative overflow-hidden flex-shrink-0">
-                      <div className="absolute inset-0 flex items-center justify-center text-navy text-6xl font-extrabold">
+                    <div className="aspect-[16/10] bg-gradient-to-br from-navy-tint to-blue-100 relative overflow-hidden">
+                      <div className="absolute inset-0 flex items-center justify-center text-navy text-5xl font-extrabold">
                         {w.initials}
                       </div>
                     </div>
                   )}
 
-                  {/* Card body — wider, more breathing room */}
-                  <div className="p-6 md:p-8 flex-1 flex flex-col">
+                  {/* Card body */}
+                  <div className="p-6 flex-1 flex flex-col">
                     <div className="flex flex-wrap items-center gap-2 mb-3">
                       <span className="inline-block text-xs font-semibold px-2 py-1 bg-navy-tint text-navy rounded">{w.tag}</span>
                       {w.location && (
@@ -175,10 +176,10 @@ export default function Works() {
                         </span>
                       )}
                     </div>
-                    <h3 className="text-lg md:text-xl font-bold text-ink mb-3 leading-snug">{w.title}</h3>
-                    <p className="text-sm md:text-base text-body leading-relaxed flex-1">{w.summary}</p>
+                    <h3 className="text-base font-bold text-ink mb-2 leading-snug">{w.title}</h3>
+                    <p className="text-sm text-body leading-relaxed flex-1">{w.summary}</p>
 
-                    <div className="mt-5 pt-4 border-t border-line text-xs text-muted font-mono">
+                    <div className="mt-4 pt-3 border-t border-line text-xs text-muted font-mono">
                       {w.stack.join(' · ')}
                     </div>
 
@@ -189,16 +190,18 @@ export default function Works() {
                           href={w.liveUrl}
                           target="_blank"
                           rel="noopener"
-                          className="inline-flex items-center gap-1.5 text-sm font-bold text-navy hover:text-navy-dark hover:underline"
+                          className="inline-flex items-center gap-1.5 text-xs font-bold text-navy hover:text-navy-dark hover:underline"
                         >
-                          <ExternalLink size={14} /> {w.liveUrl.replace('https://', '').replace('www.', '')}
+                          <ExternalLink size={13} /> {w.liveUrl.replace('https://', '').replace('www.', '')}
                         </a>
                       )}
                       <a
                         href={breakdownMailto(w.title)}
+                        target="_blank"
+                        rel="noopener"
                         className="inline-flex items-center gap-1.5 text-xs font-semibold text-muted hover:text-navy transition-colors ml-auto"
                       >
-                        <FileText size={12} /> Full breakdown on request →
+                        <FileText size={12} /> Request a full case study →
                       </a>
                     </div>
                   </div>
