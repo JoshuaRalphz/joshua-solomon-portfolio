@@ -186,7 +186,9 @@ export const tools = [
   { name: 'GoHighLevel', tier: 'Daily', category: 'CRM' },
   { name: 'HubSpot',     tier: 'Daily', category: 'CRM' },
   { name: 'Mailchimp',   tier: 'Weekly', category: 'CRM' },
-  { name: 'Zapier',      tier: 'Daily', category: 'Automation' },
+  { name: 'Zapier',      tier: 'Daily',  category: 'Automation' },
+  { name: 'n8n',         tier: 'Weekly', category: 'Automation' },
+  { name: 'Make.com',    tier: 'Weekly', category: 'Automation' },
 
   // SMS & Compliance
   { name: 'GHL A2P 10DLC',  tier: 'Daily',  category: 'SMS' },

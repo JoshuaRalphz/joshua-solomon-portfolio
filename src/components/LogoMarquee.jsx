@@ -12,6 +12,8 @@ const TOOL_LOGOS = [
   { name: 'HubSpot',         slug: 'hubspot',       color: 'FF7A59' },
   { name: 'Mailchimp',       slug: 'mailchimp',     color: 'FFE01B' },
   { name: 'Zapier',          slug: 'zapier',        color: 'FF4A00' },
+  { name: 'n8n',             slug: 'n8n',           color: 'EA4B71' },
+  { name: 'Make',            slug: null,            initials: 'MK', color: '#6D00CC' },
   { name: 'WordPress',       slug: 'wordpress',     color: '21759B' },
   { name: 'Wix',             slug: 'wix',           color: '0C6EFC' },
   { name: 'Squarespace',     slug: null,            initials: 'SQ',  color: '#000000' },
