@@ -59,7 +59,7 @@ export default function Contact() {
             <p className="mt-5 text-lg text-body max-w-2xl">
               {fromPlan
                 ? 'Your project plan is attached to this message. I\'ll send back a scoped proposal within a few hours.'
-                : 'Send a short note about what you\'re trying to fix. No long sales process — just one message, one reply, then a 15-minute call if it\'s a fit.'}
+                : 'Send a short note about what you\'re trying to fix. No long sales process — async-first, one message, one reply, then a scoped proposal back within hours.'}
             </p>
           </Reveal>
         </div>

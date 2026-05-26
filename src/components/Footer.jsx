@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Wordmark } from './Logo.jsx';
 import { Mail, MessageCircle, Linkedin, Facebook } from 'lucide-react';
+import { profile } from '../data/content.js';
 
 export default function Footer() {
   return (
@@ -30,23 +31,23 @@ export default function Footer() {
           <h4 className="text-xs uppercase tracking-widest font-bold text-white mb-4">Contact</h4>
           <ul className="space-y-3 text-sm">
             <li>
-              <a href="mailto:solomonjoshua101602@gmail.com" className="inline-flex items-center gap-2 hover:text-white transition-colors">
-                <Mail size={14} /> solomonjoshua101602@gmail.com
+              <a href={`mailto:${profile.email}`} className="inline-flex items-center gap-2 hover:text-white transition-colors break-all">
+                <Mail size={14} className="flex-shrink-0" /> {profile.email}
               </a>
             </li>
             <li>
-              <a href="https://wa.me/639615562117" target="_blank" rel="noopener" className="inline-flex items-center gap-2 hover:text-white transition-colors">
-                <MessageCircle size={14} /> +63 961 556 2117
+              <a href={profile.whatsappLink} target="_blank" rel="noopener" className="inline-flex items-center gap-2 hover:text-white transition-colors">
+                <MessageCircle size={14} className="flex-shrink-0" /> {profile.whatsapp}
               </a>
             </li>
             <li>
-              <a href="https://linkedin.com/in/REPLACE-LINKEDIN-HANDLE" target="_blank" rel="noopener" className="inline-flex items-center gap-2 hover:text-white transition-colors">
-                <Linkedin size={14} /> LinkedIn
+              <a href={profile.linkedin} target="_blank" rel="noopener" className="inline-flex items-center gap-2 hover:text-white transition-colors">
+                <Linkedin size={14} className="flex-shrink-0" /> LinkedIn
               </a>
             </li>
             <li>
-              <a href="https://www.facebook.com/lionheart016" target="_blank" rel="noopener" className="inline-flex items-center gap-2 hover:text-white transition-colors">
-                <Facebook size={14} /> Facebook · Messenger
+              <a href={profile.facebook} target="_blank" rel="noopener" className="inline-flex items-center gap-2 hover:text-white transition-colors">
+                <Facebook size={14} className="flex-shrink-0" /> Facebook · Messenger
               </a>
             </li>
           </ul>

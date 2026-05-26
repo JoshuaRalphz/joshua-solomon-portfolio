@@ -45,10 +45,11 @@ export default function Works() {
                     href={featured.liveUrl}
                     target="_blank"
                     rel="noopener"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-navy hover:bg-navy-dark text-white font-bold rounded-lg shadow-lift hover:-translate-y-0.5 transition-all text-sm"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-navy hover:bg-navy-dark text-white font-bold rounded-lg shadow-lift hover:-translate-y-0.5 transition-all text-sm whitespace-nowrap"
                   >
                     <ExternalLink size={15} />
-                    Open live demo: {featured.liveUrl.replace('https://', '')}
+                    <span className="sm:hidden">Open live demo</span>
+                    <span className="hidden sm:inline">Open live demo: {featured.liveUrl.replace('https://', '')}</span>
                   </a>
                 </div>
 

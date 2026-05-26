@@ -39,7 +39,7 @@ export default function Services() {
                 <article className="bg-white border border-line rounded-2xl p-7 md:p-9 flex flex-col md:flex-row gap-6 md:gap-10 hover:border-navy hover:shadow-soft transition-all">
                   {/* Left side: Service number + icon */}
                   <div className="md:w-1/4 flex md:flex-col items-center md:items-start gap-5 md:gap-4 flex-shrink-0">
-                    <div className="text-6xl md:text-7xl font-extrabold text-navy/15 leading-none">0{i + 1}</div>
+                    <div className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-navy/15 leading-none">0{i + 1}</div>
                     <div className="w-14 h-14 rounded-xl bg-navy-tint flex items-center justify-center text-navy">
                       <Icon size={26} />
                     </div>
@@ -158,7 +158,7 @@ export default function Services() {
 
           {/* Tier cards — 3 columns */}
           <Reveal delay={0.1}>
-            <div className="max-w-6xl mx-auto mt-14 grid md:grid-cols-3 gap-5 items-stretch">
+            <div className="max-w-6xl mx-auto mt-14 grid gap-5 lg:grid-cols-3 items-stretch">
               {pricingTiers.map((t) => {
                 let cardClass = 'bg-white/5 backdrop-blur rounded-2xl border border-white/10 p-7';
                 if (t.recommended) cardClass = 'bg-gradient-to-br from-gold/20 to-gold/5 backdrop-blur rounded-2xl border-2 border-gold/50 p-7 relative shadow-2xl md:-mt-4 md:mb-0';
