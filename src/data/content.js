@@ -10,7 +10,7 @@ export const profile = {
   whatsapp: '+63 961 556 2117',
   whatsappLink: 'https://wa.me/639615562117',
   github: 'https://github.com/JoshuaRalphz',
-  linkedin: 'https://linkedin.com/in/REPLACE-LINKEDIN-HANDLE',
+  linkedin: 'https://www.linkedin.com/in/joshua-ralph-adrian-solomon-1a0745347/',
   facebook: 'https://www.facebook.com/lionheart016',
   bishopUrl: 'https://bishoproofing.company',
 };

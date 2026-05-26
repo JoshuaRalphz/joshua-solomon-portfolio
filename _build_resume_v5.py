@@ -131,8 +131,13 @@ story.append(Paragraph('JOSHUA RALPH ADRIAN SOLOMON', name_style))
 story.append(Paragraph('CRM &amp; Automation Specialist  |  Marketing Systems Builder', title_style))
 story.append(Paragraph(
     'Olongapo City, Philippines  ·  +63 961 556 2117  ·  '
-    '<a href="mailto:solomonjoshua101602@gmail.com" color="#1E4D8C">solomonjoshua101602@gmail.com</a>  ·  '
-    '<a href="https://solomonjoshua.com" color="#1E4D8C"><b>solomonjoshua.com</b></a>',
+    '<a href="mailto:solomonjoshua101602@gmail.com" color="#1E4D8C">solomonjoshua101602@gmail.com</a>',
+    contact_style,
+))
+story.append(Paragraph(
+    '<a href="https://solomonjoshua.com" color="#1E4D8C"><b>solomonjoshua.com</b></a>  ·  '
+    '<a href="https://www.linkedin.com/in/joshua-ralph-adrian-solomon-1a0745347/" color="#1E4D8C">LinkedIn</a>  ·  '
+    '<a href="https://github.com/JoshuaRalphz" color="#1E4D8C">GitHub</a>',
     contact_style,
 ))
 story.append(Paragraph(

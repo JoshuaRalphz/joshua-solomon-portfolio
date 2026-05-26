@@ -1,0 +1,56 @@
+# Joshua Solomon
+
+> Freelance CRM & Automation Specialist · Marketing Systems Builder. Based in Olongapo City, Philippines · works US business hours. Open to senior freelance retainers and full-time remote employment.
+
+I build the marketing systems agencies and service businesses actually run on — custom-coded websites on Cloudflare Pages, GoHighLevel CRM builds with A2P 10DLC SMS compliance, dedicated email-sending infrastructure (SPF/DKIM/DMARC, warmup), Google Apps Script back-office automation, and AI-augmented workflows using Claude + OpenAI APIs in n8n and Make.com.
+
+## Contact
+- Email: solomonjoshua101602@gmail.com
+- WhatsApp: +63 961 556 2117
+- LinkedIn: https://www.linkedin.com/in/joshua-ralph-adrian-solomon-1a0745347/
+- GitHub: https://github.com/JoshuaRalphz
+- Website: https://solomonjoshua.com
+
+## Services
+
+### Core Retainer — $1,000/month (6-month minimum)
+Technical foundation. Custom-coded marketing site (or platform of choice: Wix Studio, WordPress, Squarespace) deployed on Cloudflare Pages. GoHighLevel CRM with A2P-compliant SMS configured to the client's actual sales pipeline. Email automation, monthly newsletter, DNS + domain management, automated invoicing and billing-reminder workflows, on-page and technical SEO with Google Search Console. GHL Pro sub-account and Cloudflare hosting are bundled (~$300/mo platform value).
+
+### Growth Retainer — $1,500/month (6-month minimum)
+Everything in Core, plus paid ads setup and management — Google Ads or Meta Ads launched and optimized monthly. Ad creative direction wired into the CRM pipeline so paid leads land in the right place automatically. Recommended ad spend: $1,000/month+ paid directly to platforms.
+
+### Full Marketing Retainer — $2,000/month (3-month minimum)
+Everything in Growth, plus a 30-day content engine: social media calendar (graphics + captions) on schedule, short-form reels editing from raw client footage, expanded newsletter cadence, light graphic design for emails, lead magnets, and banners. The client provides raw video and photos; the team executes the rest. This tier has a shorter minimum commitment because more value is bundled monthly.
+
+### One-Time GHL Build — $1,500 (single payment, no retainer)
+For clients who already have their own GHL Pro account and only want a one-time CRM build with no ongoing relationship. CRM, pipelines, automations, and A2P SMS configured on the client's own account. Hand-off plus 30-day support window. Client owns everything from day one and handles maintenance themselves.
+
+## Core Expertise
+
+- **CRM, SMS & Automation:** GoHighLevel (GHL) full builds, CRM pipelines, lead routing, booking automations, GHL A2P 10DLC SMS compliance (verified brand approvals), Zapier, n8n, Make.com, ClickUp
+- **Email, Billing & Lifecycle:** Mailchimp, HubSpot, GHL Email, dedicated sending subdomains with SPF/DKIM/DMARC properly aligned, multi-step nurture sequences, automated invoicing and billing-reminder workflows, email warmup to 6,500/day capacity
+- **Websites, Hosting & SEO:** Custom-coded sites (HTML/CSS/JS) on Cloudflare Pages; Wix Classic/Studio/Velo, WordPress, Squarespace as alternatives; on-page + technical SEO, Google Search Console
+- **Technical & Integrations:** Cloudflare DNS & Pages, domain management, GHL domain connect, Square + Stripe + GHL invoicing flows, Google Apps Script back-office logic, Gmail-to-task pipelines, DistroKid music distribution
+- **AI & LLM Integration:** Building AI-augmented automation with Claude + OpenAI APIs in n8n & Make for outreach personalization, content drafting, and lead-scoring
+
+## Real Client Work (delivered under Arrow Group Consulting, shown with permission)
+
+- **Alpha Omega Utility Services** (Michigan) — Full marketing stack including A2P 10DLC brand approval on GoHighLevel (the hardest GHL setup, often a blocker for agencies). https://www.aoutilityservices.com
+- **HOME.FM** (Spring Arbor, MI radio station) — Dedicated email-sending infrastructure (subdomain mail.listenhome.fm, SPF/DKIM/DMARC aligned, SSL issued, warmup completed to 6,500 emails/day capacity). https://www.home.fm
+- **Alliance Service Brands** (Jackson, MI) — Custom multi-brand site unifying 6 specialized brands (construction, handyman, windows, real estate, lake property, financing). https://www.allianceservicebrands.com
+- **Endtime Entrepreneurs** (USA) — Built full Cloudflare Pages site from scratch + GHL CRM + DistroKid music distribution + ongoing SEO. https://endtimeentrepreneurs.com
+- **Ada's Closet** (Spring Arbor, MI) — Custom Google Apps Script database for a student-run consignment startup, multi-platform listing flow across Poshmark/eBay/Depop with live notifications. https://www.adasclosetsau.com
+- **TrueCare Chiropractic** (Lansing, MI) — Email marketing, ongoing site maintenance, SEO, planned Cloudflare migration. https://www.truecarechiro.com
+
+## Featured Demo (fictional client, fully working build)
+- **Bishop Roofing & Exteriors** — Custom 6-page site + GoHighLevel CRM + two live workflows + interactive in-browser GHL demo where visitors can submit a form and watch the backend fire in real-time. https://bishoproofing.company
+
+## Communication Style
+Async-first. Email and message preferred over scheduled calls. Reply time typically under 24 hours during US business hours. No PM layer — clients message Joshua directly.
+
+## Currently
+- Embedded part-time contractor with Arrow Group Consulting (Michigan, USA)
+- Previous: Doneverse (Philippines marketing VA agency) — primary technical implementer Sep 2025 – Apr 2026
+- 3+ years building marketing systems professionally
+- Average project turnaround: 14 days from kickoff to launch
+- No setup fee on retainer tiers · first invoice = first month
