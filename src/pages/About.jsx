@@ -81,8 +81,7 @@ export default function About() {
               The full stack, grouped by what it does.
             </h2>
             <p className="mt-4 text-body max-w-2xl">
-              Daily means I touch it every day. Weekly means it's in active rotation.
-              Occasional means I've built production work in it but don't reach for it first.
+              The full stack — everything I work in across CRM, automation, code, hosting, design, and ops.
             </p>
           </Reveal>
 
@@ -91,15 +90,11 @@ export default function About() {
               <Reveal key={cat} delay={i * 0.05}>
                 <div className="bg-white border border-line rounded-2xl p-6 h-full">
                   <h3 className="text-sm font-bold text-navy uppercase tracking-widest mb-4">{cat}</h3>
-                  <ul className="space-y-2.5">
+                  <ul className="space-y-2">
                     {list.map(t => (
-                      <li key={t.name} className="flex items-center justify-between gap-3">
-                        <span className="text-sm font-medium text-ink">{t.name}</span>
-                        <span className={`text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded ${
-                          t.tier === 'Daily' ? 'bg-emerald/10 text-emerald' :
-                          t.tier === 'Weekly' ? 'bg-navy-tint text-navy' :
-                          'bg-slate-100 text-muted'
-                        }`}>{t.tier}</span>
+                      <li key={t.name} className="flex items-center gap-2 text-sm font-medium text-ink">
+                        <span className="w-1 h-1 rounded-full bg-navy/40" />
+                        {t.name}
                       </li>
                     ))}
                   </ul>

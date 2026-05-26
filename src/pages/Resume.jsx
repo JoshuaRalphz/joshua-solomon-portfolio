@@ -148,7 +148,7 @@ export default function Resume() {
           <Reveal>
             <h2 className="text-2xl font-bold text-ink mb-3">Skills &amp; Tools</h2>
             <p className="text-body mb-7 max-w-2xl">
-              Fluent in {tools.length}+ tools. Daily-use is bold; weekly is regular; occasional is "shipped production work in it, but it's not my first reach."
+              Fluent in {tools.length}+ tools across CRM, automation, code, hosting, payments, design, and ops.
             </p>
           </Reveal>
 
@@ -156,13 +156,7 @@ export default function Resume() {
             {tools.map(t => (
               <span
                 key={t.name}
-                className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm border ${
-                  t.tier === 'Daily'
-                    ? 'bg-navy text-white border-navy font-semibold'
-                    : t.tier === 'Weekly'
-                    ? 'bg-white text-ink border-line font-medium'
-                    : 'bg-slate-100 text-muted border-line'
-                }`}
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm bg-white text-ink border border-line font-medium hover:border-navy hover:text-navy transition-colors"
               >
                 {t.name}
               </span>
