@@ -1,7 +1,15 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Check, Star } from 'lucide-react';
+import { ArrowRight, Check, Star, Globe, Database, Mail, Plug } from 'lucide-react';
 import PageTransition, { Reveal } from '../components/PageTransition.jsx';
 import { services, pricingTiers } from '../data/content.js';
+
+// Icon per service id — keeps the visual consistent with the rest of the site
+const SERVICE_ICONS = {
+  website: Globe,
+  crm: Database,
+  automation: Mail,
+  integration: Plug,
+};
 
 export default function Services() {
   return (
@@ -21,32 +29,46 @@ export default function Services() {
         </div>
       </section>
 
-      {/* SERVICE CARDS */}
+      {/* SERVICE CARDS — horizontal stacked layout (matches Works visual rhythm) */}
       <section className="pb-20">
-        <div className="container-x grid md:grid-cols-2 gap-6">
-          {services.map((s, i) => (
-            <Reveal key={s.id} delay={i * 0.05}>
-              <div className="bg-white border border-line rounded-2xl p-8 h-full hover:border-navy hover:shadow-soft transition-all flex flex-col">
-                <div className="text-xs uppercase tracking-widest text-navy font-bold mb-2">Service · 0{i + 1}</div>
-                <h3 className="text-2xl font-bold text-ink mb-2 leading-tight">{s.title}</h3>
-                <p className="text-body mb-6">{s.summary}</p>
+        <div className="container-x space-y-6">
+          {services.map((s, i) => {
+            const Icon = SERVICE_ICONS[s.id] || Globe;
+            return (
+              <Reveal key={s.id} delay={i * 0.05}>
+                <article className="bg-white border border-line rounded-2xl p-7 md:p-9 flex flex-col md:flex-row gap-6 md:gap-10 hover:border-navy hover:shadow-soft transition-all">
+                  {/* Left side: Service number + icon */}
+                  <div className="md:w-1/4 flex md:flex-col items-center md:items-start gap-5 md:gap-4 flex-shrink-0">
+                    <div className="text-6xl md:text-7xl font-extrabold text-navy/15 leading-none">0{i + 1}</div>
+                    <div className="w-14 h-14 rounded-xl bg-navy-tint flex items-center justify-center text-navy">
+                      <Icon size={26} />
+                    </div>
+                  </div>
 
-                <ul className="space-y-2.5 mb-6 flex-1">
-                  {s.bullets.map(b => (
-                    <li key={b} className="flex items-start gap-2.5 text-sm text-body">
-                      <Check size={16} className="text-emerald flex-shrink-0 mt-0.5" />
-                      <span>{b}</span>
-                    </li>
-                  ))}
-                </ul>
+                  {/* Right side: All the content */}
+                  <div className="md:w-3/4 flex-1">
+                    <div className="text-xs uppercase tracking-widest text-navy font-bold mb-2">Service · 0{i + 1}</div>
+                    <h3 className="text-2xl md:text-3xl font-bold text-ink mb-3 leading-tight">{s.title}</h3>
+                    <p className="text-body mb-6 leading-relaxed">{s.summary}</p>
 
-                <div className="border-t border-line pt-5 mt-auto">
-                  <div className="text-xs uppercase tracking-widest text-gold font-bold mb-1">Outcome</div>
-                  <p className="text-sm font-semibold text-ink">{s.outcome}</p>
-                </div>
-              </div>
-            </Reveal>
-          ))}
+                    <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-2.5 mb-6">
+                      {s.bullets.map(b => (
+                        <li key={b} className="flex items-start gap-2.5 text-sm text-body">
+                          <Check size={16} className="text-emerald flex-shrink-0 mt-0.5" />
+                          <span>{b}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="border-t border-line pt-4">
+                      <div className="text-xs uppercase tracking-widest text-gold font-bold mb-1">Outcome</div>
+                      <p className="text-sm font-semibold text-ink">{s.outcome}</p>
+                    </div>
+                  </div>
+                </article>
+              </Reveal>
+            );
+          })}
         </div>
       </section>
 
