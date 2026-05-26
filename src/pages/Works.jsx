@@ -141,7 +141,7 @@ export default function Works() {
                       href={w.liveUrl}
                       target="_blank"
                       rel="noopener"
-                      className="block md:w-2/5 lg:w-1/3 aspect-[16/10] md:aspect-auto md:min-h-[260px] bg-gradient-to-br from-navy-tint to-blue-100 relative overflow-hidden flex-shrink-0"
+                      className="block md:w-1/2 aspect-[16/10] md:aspect-auto md:min-h-[280px] bg-gradient-to-br from-navy-tint to-blue-100 relative overflow-hidden flex-shrink-0"
                     >
                       <div className="absolute inset-0 flex items-center justify-center text-navy text-6xl font-extrabold">
                         {w.initials}
@@ -153,12 +153,12 @@ export default function Works() {
                           loading="lazy"
                           decoding="async"
                           onError={(e) => { e.currentTarget.style.display = 'none'; }}
-                          className="absolute inset-0 w-full h-full object-cover object-top"
+                          className="absolute inset-0 w-full h-full object-cover object-left-top"
                         />
                       )}
                     </a>
                   ) : (
-                    <div className="md:w-2/5 lg:w-1/3 aspect-[16/10] md:aspect-auto md:min-h-[260px] bg-gradient-to-br from-navy-tint to-blue-100 relative overflow-hidden flex-shrink-0">
+                    <div className="md:w-1/2 aspect-[16/10] md:aspect-auto md:min-h-[280px] bg-gradient-to-br from-navy-tint to-blue-100 relative overflow-hidden flex-shrink-0">
                       <div className="absolute inset-0 flex items-center justify-center text-navy text-6xl font-extrabold">
                         {w.initials}
                       </div>
