@@ -1,0 +1,377 @@
+// Centralized content so it's easy to edit without touching JSX.
+
+export const profile = {
+  name: 'Joshua Solomon',
+  role: 'CRM & Automation Specialist',
+  subtitle: 'Marketing Systems Builder',
+  location: 'Olongapo City, PH · Working US hours',
+  available: 'Available for new retainers',
+  email: 'solomonjoshua101602@gmail.com',
+  whatsapp: '+63 961 556 2117',
+  whatsappLink: 'https://wa.me/639615562117',
+  github: 'https://github.com/JoshuaRalphz',
+  linkedin: 'https://linkedin.com/in/REPLACE-LINKEDIN-HANDLE',
+  bishopUrl: 'https://bishoproofing.company',
+};
+
+export const stats = [
+  { value: '3+',  label: 'Years shipping marketing systems' },
+  { value: '14d', label: 'Average project turnaround' },
+  { value: '$1k', label: 'Flat monthly retainer · no agency layers' },
+  { value: '1',   label: 'Direct line · no PM layer · US hours' },
+];
+
+// GHL Inbound Webhook for the portfolio contact form + planner submission.
+// TODO: paste the webhook URL from your "WF-PORTFOLIO" workflow trigger.
+export const PORTFOLIO_GHL_WEBHOOK = null;
+
+export const benefits = [
+  {
+    icon: 'Zap',
+    title: 'Setup once. Live in two weeks.',
+    body: 'I build your full system end-to-end in the first 14 days — site, CRM, automation, integrations. You start collecting leads before your next pay period.',
+  },
+  {
+    icon: 'UserCheck',
+    title: 'One operator, not an agency.',
+    body: 'You message me directly. I respond within hours during US business time. No project managers, no juniors, no email chains routed through three people.',
+  },
+  {
+    icon: 'Wrench',
+    title: 'Tool-stack flexibility.',
+    body: 'I work in your existing stack — GHL, HubSpot, Wix, WordPress, Squarespace, ClickUp. No forced migrations. No vendor lock-in.',
+  },
+  {
+    icon: 'Layers',
+    title: 'Full-stack technical depth.',
+    body: 'Custom code when platforms break down. DNS, domains, payment integrations, email authentication — the unsexy plumbing that most freelancers refuse.',
+  },
+  {
+    icon: 'Shield',
+    title: 'Code is yours, day one.',
+    body: 'Sites built in your GitHub. CRMs in your GHL sub-account. If we part ways, you keep everything. No lock-in.',
+  },
+  {
+    icon: 'TrendingUp',
+    title: 'Built to grow with you.',
+    body: 'Adding a new offer, a new pipeline, a new email sequence next quarter? Included in the retainer. No per-project quotes for ongoing work.',
+  },
+];
+
+// Two pricing tiers — Core (system only) and Full Marketing (system + content engine).
+export const pricingTiers = [
+  {
+    id: 'core',
+    name: 'Core System',
+    tagline: 'The full automation stack.',
+    price: '$1,000',
+    period: '/ month',
+    bullets: [
+      'Custom-coded site on Cloudflare Pages (or your platform of choice)',
+      'GHL CRM + A2P-compliant SMS configured to your real pipeline',
+      'Email automation + monthly newsletter',
+      'DNS, domain, SPF/DKIM/DMARC handled',
+      'On-page + technical SEO + Google Search Console',
+      'GHL Pro sub-account + Cloudflare hosting — bundled (~$300/mo value)',
+      'Direct messaging · US business hours',
+    ],
+  },
+  {
+    id: 'full',
+    name: 'Full Marketing',
+    tagline: 'Core System + the content engine + paid ads.',
+    price: '$2,000',
+    period: '/ month',
+    recommended: true,
+    bullets: [
+      'Everything in Core System, plus:',
+      '30-day content calendar — I plan, my team executes',
+      'Social media posts (graphics + captions) on schedule',
+      'Reels editing — short clips from your raw footage',
+      'Expanded newsletter cadence',
+      'Light graphic design for emails, lead magnets, banners',
+      'Paid ads setup & management — included free (Google or Meta)',
+      'You provide raw video + photos; we handle the rest',
+    ],
+  },
+];
+
+// Optional add-on. Charged on Core tier; FREE on Full Marketing.
+export const addOns = [
+  {
+    icon: 'Megaphone',
+    title: 'Paid ads setup & management',
+    body: 'Google Ads or Meta Ads launch + monthly optimization. Built around the same CRM and lead-routing I configure — so paid leads land in the right pipeline automatically. Recommended min ad spend: $1,000/mo.',
+    pricing: '+$500 / mo on Core · Free on Full Marketing',
+  },
+];
+
+export const services = [
+  {
+    id: 'website',
+    title: 'Custom-coded marketing website',
+    summary: 'Hand-built HTML/CSS/JS site on Cloudflare Pages.',
+    bullets: [
+      'No platform bloat (no Wix, no Squarespace, unless you specifically want it)',
+      'Lighthouse 95+ across speed, accessibility, SEO',
+      'Hosted free on Cloudflare Pages with global CDN',
+      'GitHub auto-deploy — push to publish',
+      'Mobile-responsive, modern animations',
+      'Full ownership — site lives in your GitHub',
+    ],
+    outcome: 'A site that loads in under 1 second and converts.',
+  },
+  {
+    id: 'crm',
+    title: 'GoHighLevel CRM build',
+    summary: 'Full GHL setup configured to your real pipeline.',
+    bullets: [
+      'Pipeline stages mapped to your actual sales process',
+      'Inbound webhook → instant lead capture',
+      'Tags, custom fields, automated routing',
+      'Email + SMS automation sequences',
+      'Calendar booking integration',
+      'Sub-account hosted on my Pro plan (you don\'t pay GHL separately)',
+    ],
+    outcome: 'Every lead lands in your CRM in under 30 seconds. No leads slip through.',
+  },
+  {
+    id: 'automation',
+    title: 'Email & workflow automation',
+    summary: 'The drip sequences, nurtures, and triggers that close.',
+    bullets: [
+      'Verified sending subdomain with SPF/DKIM/DMARC',
+      'Branded HTML email templates',
+      'Multi-step nurture sequences (welcome, lead magnet, re-engagement)',
+      'Trigger-based automations (form submit, status change, deadline)',
+      'A/B test setup for subject lines and CTAs',
+      'Monthly newsletter cadence handled',
+    ],
+    outcome: 'Your follow-up runs without you babysitting it.',
+  },
+  {
+    id: 'integration',
+    title: 'Integration & glue work',
+    summary: 'Connecting tools that don\'t talk natively.',
+    bullets: [
+      'Cloudflare DNS, domain transfers, email authentication',
+      'Square + Stripe payment integration',
+      'Zapier middleware for non-supported connections',
+      'ClickUp workflows for internal ops',
+      'GitHub Actions for deploy automation',
+      'API webhooks for custom integrations',
+    ],
+    outcome: 'Your stack works as one system, not five disconnected ones.',
+  },
+];
+
+export const tools = [
+  // CRM & Automation
+  { name: 'GoHighLevel', tier: 'Daily', category: 'CRM' },
+  { name: 'HubSpot',     tier: 'Daily', category: 'CRM' },
+  { name: 'Mailchimp',   tier: 'Weekly', category: 'CRM' },
+  { name: 'Zapier',      tier: 'Daily', category: 'Automation' },
+
+  // SMS & Compliance
+  { name: 'GHL A2P 10DLC',  tier: 'Daily',  category: 'SMS' },
+  { name: 'SMS Automation', tier: 'Weekly', category: 'SMS' },
+
+  // Web Platforms
+  { name: 'Cloudflare Pages', tier: 'Daily', category: 'Hosting' },
+  { name: 'Cloudflare DNS',   tier: 'Daily', category: 'Hosting' },
+  { name: 'GitHub Pages',     tier: 'Weekly', category: 'Hosting' },
+
+  // Code
+  { name: 'HTML/CSS/JS',         tier: 'Daily',  category: 'Code' },
+  { name: 'React',               tier: 'Weekly', category: 'Code' },
+  { name: 'Tailwind CSS',        tier: 'Daily',  category: 'Code' },
+  { name: 'Vite',                tier: 'Weekly', category: 'Code' },
+  { name: 'Git / GitHub',        tier: 'Daily',  category: 'Code' },
+  { name: 'Google Apps Script',  tier: 'Weekly', category: 'Code' },
+
+  // SEO
+  { name: 'On-page SEO',           tier: 'Daily',  category: 'SEO' },
+  { name: 'Technical SEO',         tier: 'Weekly', category: 'SEO' },
+  { name: 'Google Search Console', tier: 'Weekly', category: 'SEO' },
+
+  // CMS / Site Builders
+  { name: 'Wix Studio',    tier: 'Weekly', category: 'CMS' },
+  { name: 'Wix Velo',      tier: 'Weekly', category: 'CMS' },
+  { name: 'WordPress',     tier: 'Weekly', category: 'CMS' },
+  { name: 'Squarespace',   tier: 'Occasional', category: 'CMS' },
+
+  // Ops & Project Management
+  { name: 'ClickUp',          tier: 'Daily',  category: 'Ops' },
+  { name: 'Google Workspace', tier: 'Daily',  category: 'Ops' },
+  { name: 'Notion',           tier: 'Weekly', category: 'Ops' },
+
+  // Payments
+  { name: 'Square',        tier: 'Weekly', category: 'Payments' },
+  { name: 'Stripe',        tier: 'Weekly', category: 'Payments' },
+  { name: 'PayPal',        tier: 'Occasional', category: 'Payments' },
+
+  // Email & Deliverability
+  { name: 'Mailgun',        tier: 'Weekly', category: 'Email' },
+  { name: 'SPF/DKIM/DMARC', tier: 'Weekly', category: 'Email' },
+
+  // Specialized Integrations
+  { name: 'DistroKid',              tier: 'Occasional', category: 'Distribution' },
+  { name: 'Poshmark / eBay / Depop', tier: 'Occasional', category: 'Distribution' },
+
+  // Design
+  { name: 'Figma', tier: 'Weekly', category: 'Design' },
+  { name: 'Canva', tier: 'Weekly', category: 'Design' },
+];
+
+export const works = [
+  {
+    id: 'bishop',
+    featured: true,
+    title: 'Bishop Roofing & Exteriors — complete marketing system',
+    tag: '★ Featured · Live demo',
+    summary: 'A fictional Texas roofing client, real working build. Custom-coded 6-page site + GoHighLevel CRM + two live workflows + interactive in-browser demo that walks visitors through the GHL backend in real-time.',
+    liveUrl: 'https://bishoproofing.company',
+    videos: [
+      {
+        id: 'QVanl4wbx-g',
+        label: 'Storm Guide Flow (60s)',
+        sub: 'Lead magnet → 3-email nurture → 12-page PDF download',
+      },
+      {
+        id: 'Halpm7j9el0',
+        label: 'Inspection Request Flow (60s)',
+        sub: 'Form submit → contact + opp + email + task in under 30 sec',
+      },
+    ],
+    stack: ['HTML', 'CSS', 'JS', 'GoHighLevel', 'Cloudflare Pages', 'Cloudflare DNS', 'Mailgun', 'GitHub auto-deploy'],
+  },
+  {
+    id: 'alliance',
+    title: 'Alliance Service Brands — custom multi-brand home services site',
+    tag: 'Custom Build · Web',
+    summary: 'Built the full custom website for a Michigan home-services holding company unifying six specialized brands — construction, handyman, windows/doors, real estate, lake property management, and financing — under one clean visual system.',
+    stack: ['Custom site', 'Multi-brand architecture', 'Responsive design'],
+    initials: 'AS',
+    liveUrl: 'https://www.allianceservicebrands.com',
+    location: 'Jackson, MI',
+    thumb: '/work-thumbs/alliance.png',
+  },
+  {
+    id: 'aoutility',
+    title: 'Alpha Omega Utility Services — full marketing stack + A2P SMS',
+    tag: 'CRM · Email · SMS · DNS',
+    summary: 'Built and maintain the full marketing system for this Michigan electrical/utility contractor: website creation and ongoing updates, email marketing, GHL CRM, A2P SMS compliance on GoHighLevel, and end-to-end domain + DNS handling.',
+    stack: ['GoHighLevel', 'A2P SMS', 'Cloudflare DNS', 'Email automation', 'Website'],
+    initials: 'AO',
+    liveUrl: 'https://www.aoutilityservices.com',
+    location: 'Michigan, USA',
+    thumb: '/work-thumbs/aoutility.png',
+  },
+  {
+    id: 'endtime',
+    title: 'Endtime Entrepreneurs — custom Cloudflare site, CRM, distribution & SEO',
+    tag: 'Custom Build · SEO · CRM',
+    summary: 'Built the full website from scratch on Cloudflare Pages for an indie game + music studio. Run their GoHighLevel CRM, DistroKid composition distribution, email marketing, DNS, and ongoing SEO to keep the site ranked and alive.',
+    stack: ['Cloudflare Pages', 'GoHighLevel', 'DistroKid', 'SEO', 'Cloudflare DNS', 'Email'],
+    initials: 'EE',
+    liveUrl: 'https://endtimeentrepreneurs.com',
+    location: 'USA',
+    thumb: '/work-thumbs/endtime.png',
+  },
+  {
+    id: 'adas',
+    title: 'Ada\'s Closet — consignment startup ops, site & Apps Script database',
+    tag: 'Custom Build · Ops · Integration',
+    summary: 'Built the launch site and the entire back-office for a student-run consignment startup. Set up the listing flow across Poshmark / eBay / Depop and a Google Apps Script database the client can view live — with notifications firing on every new sale.',
+    stack: ['Custom site', 'Google Apps Script', 'Poshmark', 'eBay', 'Depop', 'Notifications'],
+    initials: 'AC',
+    liveUrl: 'https://www.adasclosetsau.com',
+    location: 'Spring Arbor, MI',
+    thumb: '/work-thumbs/adas.png',
+  },
+  {
+    id: 'homefm',
+    title: 'HOME.FM — local radio station marketing systems',
+    tag: 'Email · CRM · Web',
+    summary: 'Ongoing email marketing, website updates, and CRM management for a Spring Arbor, Michigan community radio station.',
+    stack: ['GoHighLevel', 'Email automation', 'Website updates', 'CRM'],
+    initials: 'HF',
+    liveUrl: 'https://www.home.fm',
+    location: 'Spring Arbor, MI',
+    thumb: '/work-thumbs/homefm.png',
+  },
+  {
+    id: 'truecare',
+    title: 'TrueCare Chiropractic — email, SEO & Cloudflare migration',
+    tag: 'Email · SEO · DNS',
+    summary: 'Email marketing, ongoing website maintenance, and SEO for a Lansing, Michigan chiropractic and wellness clinic. Migrating the site to Cloudflare once the current registrar lock clears.',
+    stack: ['Email automation', 'SEO', 'Cloudflare migration', 'DNS'],
+    initials: 'TC',
+    liveUrl: 'https://www.truecarechiro.com',
+    location: 'Lansing, MI',
+    thumb: '/work-thumbs/truecare.png',
+  },
+];
+
+export const experience = [
+  {
+    role: 'Technical VA & Web Developer',
+    company: 'Arrow Group Consulting',
+    location: 'Michigan, USA',
+    type: 'Part-time ongoing contract',
+    dates: 'Feb 2026 — Present',
+    bullets: [
+      'Embedded technical implementer for the founder — owning the systems side of new client onboardings end to end.',
+      'Built and shipped custom-coded HTML/CSS/JS websites deployed on Cloudflare Pages, plus Wix Velo extensions where platforms were the better fit.',
+      'Managed Cloudflare DNS, domain go-lives, and GoHighLevel domain connections across multiple client accounts.',
+      'Designed and shipped monthly email newsletter campaigns; set up invoicing and back-office workflows.',
+    ],
+  },
+  {
+    role: 'Virtual Marketing Assistant',
+    company: 'Doneverse',
+    location: 'Philippines',
+    type: 'Marketing VA agency',
+    dates: 'Sep 2025 — Apr 2026',
+    bullets: [
+      'Primary technical implementer across the agency — Wix, WordPress, Squarespace, HubSpot, and Mailchimp client accounts.',
+      'Built advanced GoHighLevel automations: CRM pipelines, lead-routing rules, booking funnels, and sales sequences.',
+      'Designed and rolled out the agency\'s full ClickUp project management system from scratch — including Gmail-to-task automations that eliminated manual triage.',
+      'Delivered Wix Studio builds and integrated Square payment processing into client checkout and intake flows.',
+    ],
+  },
+];
+
+// Mirrors the "Core Expertise" block in the PDF resume
+export const coreExpertise = [
+  {
+    label: 'CRM, SMS & Automation',
+    items: 'GoHighLevel (GHL) full builds, CRM pipelines, lead routing, booking automations, GHL A2P 10DLC SMS compliance, Zapier, ClickUp',
+  },
+  {
+    label: 'Email & Lifecycle',
+    items: 'Mailchimp, HubSpot, GHL Email, newsletter systems, multi-step nurture sequences',
+  },
+  {
+    label: 'Websites, Hosting & SEO',
+    items: 'Custom-coded sites (HTML / CSS / JS) deployed on Cloudflare Pages; Wix Classic / Studio / Velo, WordPress, Squarespace as platform alternatives. Ongoing on-page and technical SEO + Google Search Console.',
+  },
+  {
+    label: 'Technical & Integrations',
+    items: 'Cloudflare DNS & Pages, domain management, GHL domain connect, Square payments, Google Apps Script back-office logic, Gmail-to-task pipelines, DistroKid distribution',
+  },
+];
+
+// Mirrors the "Service Offer" block in the PDF resume
+export const serviceOffer = {
+  title: 'Done-For-You Marketing System',
+  price: '$1,000 flat setup · Core $1,000/mo · Full Marketing $2,000/mo',
+  bullets: [
+    'Custom-coded website on Cloudflare Pages (or your platform of choice)',
+    'GoHighLevel CRM + A2P-compliant SMS configured to your real pipeline',
+    'Email automation, monthly newsletter, lead-routing',
+    'GHL Pro sub-account + Cloudflare hosting bundled into the retainer',
+    'Full Marketing tier adds: 30-day content calendar, social posts, reels editing',
+    'Ongoing maintenance, new builds, new automations — included in both tiers',
+  ],
+};

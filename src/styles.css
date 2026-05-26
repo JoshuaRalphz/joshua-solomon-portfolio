@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== LOGO MARQUEE — guaranteed CSS, doesn't depend on Tailwind processing ===== */
+@keyframes marqueeLeft {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes marqueeRight {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+.marquee-track-left {
+  animation: marqueeLeft 38s linear infinite;
+  will-change: transform;
+}
+.marquee-track-right {
+  animation: marqueeRight 38s linear infinite;
+  will-change: transform;
+}
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+          mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+}
+.marquee-wrap:hover .marquee-track-left,
+.marquee-wrap:hover .marquee-track-right {
+  animation-play-state: paused;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: #334155;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  ::selection { background: #FBBF24; color: #0f172a; }
+}
+
+@layer components {
+  .container-x { @apply max-w-6xl mx-auto px-6; }
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-6 py-3 bg-navy text-white font-semibold rounded-lg shadow-lift hover:bg-navy-dark hover:-translate-y-0.5 transition-all;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 px-6 py-3 bg-white text-ink font-semibold rounded-lg border border-line hover:border-navy hover:text-navy transition-all;
+  }
+  .btn-gold {
+    @apply inline-flex items-center gap-2 px-6 py-3 bg-gold text-ink font-bold rounded-lg shadow-lift hover:brightness-95 hover:-translate-y-0.5 transition-all;
+  }
+  .pill {
+    @apply inline-flex items-center gap-2 px-3 py-1 rounded-full bg-navy-tint text-navy text-xs font-semibold;
+  }
+  .label {
+    @apply text-xs font-bold uppercase tracking-widest text-navy mb-3;
+  }
+}
