@@ -1,1 +1,9 @@
-/*    /index.html   200
+# SPA fallback for React Router routes
+# Cloudflare rejected /* /index.html 200 as an "infinite loop"
+# — so we list each route explicitly.
+/about      /index.html  200
+/services   /index.html  200
+/works      /index.html  200
+/resume     /index.html  200
+/plan       /index.html  200
+/contact    /index.html  200
