@@ -92,7 +92,7 @@ export default function Contact() {
                     <CheckCircle2 size={28} className="text-emerald" />
                   </div>
                   <h3 className="text-xl font-bold text-ink mb-2">Thanks — message received.</h3>
-                  <p className="text-body">I'll reply personally within a few hours during US business time.</p>
+                  <p className="text-body">I'll reply personally within a few hours.</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
