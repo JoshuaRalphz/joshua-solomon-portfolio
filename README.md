@@ -54,7 +54,7 @@ Outputs to `dist/`. Preview with `npm run preview`.
    - **Build output directory:** `dist`
    - **Node version:** 20 (set under environment variables: `NODE_VERSION=20`)
 5. Save & Deploy
-6. (Optional) Custom domain → attach `joshuasolomon.com` or similar
+6. (Optional) Custom domain → attach `solomonjoshua.com` (already targeted in index.html og:url)
 
 The `public/_redirects` file handles client-side React Router routes on Cloudflare Pages.
 
