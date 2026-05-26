@@ -15,7 +15,7 @@ const TOOL_LOGOS = [
   { name: 'n8n',             slug: 'n8n',           color: 'EA4B71' },
   { name: 'Make',            slug: null,            initials: 'MK', color: '#6D00CC' },
   { name: 'Claude',          slug: 'anthropic',     color: 'D97757' },
-  { name: 'OpenAI',          slug: 'openai',        color: '000000' },
+  { name: 'OpenAI',          slug: null,            initials: 'GPT', color: '#10A37F' },
   { name: 'WordPress',       slug: 'wordpress',     color: '21759B' },
   { name: 'Wix',             slug: 'wix',           color: '0C6EFC' },
   { name: 'Squarespace',     slug: null,            initials: 'SQ',  color: '#000000' },
