@@ -35,7 +35,6 @@ const TOOL_LOGOS_2 = [
   { name: 'Square',          slug: 'square',        color: '3E4348' },
   { name: 'PayPal',          slug: 'paypal',        color: '003087' },
   { name: 'Figma',           slug: 'figma',         color: 'F24E1E' },
-  { name: 'Canva',           slug: null,            initials: 'CV',  color: '#00C4CC' },
   { name: 'Apps Script',     slug: 'googleappsscript', color: '4285F4' },
   { name: 'Search Console',  slug: 'googlesearchconsole', color: '458CF5' },
   { name: 'A2P SMS',         slug: null,            initials: 'A2P', color: '#16A34A' },

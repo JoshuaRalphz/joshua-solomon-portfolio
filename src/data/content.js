@@ -19,7 +19,7 @@ export const stats = [
   { value: '3+',  label: 'Years shipping marketing systems' },
   { value: '14d', label: 'Average project turnaround' },
   { value: '$1k', label: 'Flat monthly retainer · no agency layers' },
-  { value: '0',   label: 'Calls required · async-first by default · US hours' },
+  { value: '24h', label: 'Reply time · email-first · US hours' },
 ];
 
 // GHL Inbound Webhook for the portfolio contact form + planner submission.
