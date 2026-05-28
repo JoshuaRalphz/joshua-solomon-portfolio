@@ -19,11 +19,16 @@ export default function About() {
           <Reveal>
             <div className="label">About</div>
             <h1 className="text-4xl md:text-5xl font-extrabold text-ink tracking-tight max-w-3xl leading-tight">
-              I'm one person. That's the feature, not the bug.
+              One operator. Direct line to me.
             </h1>
             <p className="mt-5 text-lg text-body max-w-2xl leading-relaxed">
-              Most agencies sell you a team. I sell you direct access. You message me; I respond.
-              You don't get routed to a project manager who routes to a junior who routes to me.
+              You message me, I respond personally — usually within hours during US business time.
+              The technical work ships from the same person who scoped it. No project manager middle layer.
+            </p>
+            <p className="mt-3 text-base text-muted max-w-2xl leading-relaxed">
+              For <strong className="text-ink">Full Marketing</strong> clients who need creative production at scale,
+              I plan and QC a small content team that handles social posts, reels, graphic design, and blog content.
+              You still only talk to me — they only ship work under my approval.
             </p>
           </Reveal>
         </div>
