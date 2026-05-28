@@ -160,10 +160,11 @@ story.extend(section_header('PROFESSIONAL SUMMARY'))
 story.append(Paragraph(
     'Implementation specialist with 2+ years of agency experience configuring GoHighLevel CRMs, '
     'building custom-coded sites on Cloudflare Pages, and shipping marketing automation systems '
-    'across Mailchimp, Kajabi, HubSpot, and n8n. Recently architected an internal SaaS platform '
-    '(Vite + Firebase + multiple API integrations) replacing ClickUp for a US-based consultancy. '
-    'Strong fit for roles spanning marketing technology implementation, technical client onboarding, '
-    'or full-stack systems work for early-stage and SMB companies.',
+    'across Mailchimp, Kajabi, HubSpot, and n8n. Recently built AGC HUB &mdash; a custom internal '
+    'PWA (React + Vite + Firebase + multiple service APIs) replacing a scattered tool stack '
+    '(Drive, ClickUp, Trello, GHL, Canva) for a US-based consultancy. Strong fit for roles spanning '
+    'marketing technology implementation, technical client onboarding, or full-stack systems work '
+    'for early-stage and SMB companies.',
     body_style,
 ))
 
@@ -193,7 +194,7 @@ skills = [
     ),
     (
         'Languages',
-        'English (fluent, professional), Filipino (native)',
+        'English (professional working proficiency), Filipino (native)',
     ),
 ]
 for label, items in skills:

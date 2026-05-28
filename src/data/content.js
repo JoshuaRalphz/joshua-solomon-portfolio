@@ -496,7 +496,7 @@ export const coreExpertise = [
   },
   {
     label: 'Languages',
-    items: 'English (fluent, professional), Filipino (native)',
+    items: 'English (professional working proficiency), Filipino (native)',
   },
 ];
 
