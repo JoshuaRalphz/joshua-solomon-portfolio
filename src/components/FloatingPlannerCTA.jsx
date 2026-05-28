@@ -12,7 +12,8 @@ import { PLANNER_SS_KEY } from '../pages/Quiz.jsx';
  *     page loads (after a 600ms delay) so visitors see the planner without
  *     having to click anything.
  *   - Mobile (< md): COLLAPSED — just the icon + hint chip so it doesn't
- *     cover content. Tap the icon to open the centered modal.
+ *     cover content. Tapping the icon NAVIGATES directly to /plan (skips
+ *     the inline expanded form to avoid cropping at narrow widths).
  *
  * DISMISSAL:
  *   - X / click outside / Esc → marks the user as "dismissed" in sessionStorage
@@ -113,6 +114,13 @@ export default function FloatingPlannerCTA() {
   };
 
   const handleReopen = () => {
+    // On mobile, skip the inline form and navigate straight to /plan —
+    // simpler UX, avoids modal that crops at narrow widths.
+    if (typeof window !== 'undefined' && !window.matchMedia('(min-width: 768px)').matches) {
+      navigate('/plan');
+      return;
+    }
+    // Desktop: open the inline expanded form
     clearDismissed();
     setIsOpen(true);
   };
