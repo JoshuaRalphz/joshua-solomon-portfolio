@@ -15,6 +15,13 @@ import { PLANNER_SS_KEY } from '../pages/Quiz.jsx';
  *     cover content. Tapping the icon NAVIGATES directly to /plan (skips
  *     the inline expanded form to avoid cropping at narrow widths).
  *
+ * SCROLL-HIDE (desktop only):
+ *   - Mirrors the ScrollHint pattern: hide the widget during active scroll,
+ *     show again ~1500ms after scrolling stops. Keeps content readable while
+ *     visitors are exploring the page; brings the form back when they pause.
+ *   - Mobile is unaffected (icon + chip stays put — phones expect persistent
+ *     bottom-fixed UI).
+ *
  * DISMISSAL:
  *   - X / click outside / Esc → marks the user as "dismissed" in sessionStorage
  *   - Once dismissed, stays closed across page navigation for the session
@@ -26,6 +33,7 @@ import { PLANNER_SS_KEY } from '../pages/Quiz.jsx';
 
 const HIDDEN_ROUTES = ['/plan', '/contact'];
 const SS_DISMISSED_KEY = 'planner-cta-dismissed';
+const SCROLL_IDLE_MS = 1500;
 
 const Q1_OPTIONS = [
   { value: 'agency',  label: 'Marketing agency (2-15 people)', hint: 'I need a subcontractor for client builds.' },
@@ -59,12 +67,34 @@ export default function FloatingPlannerCTA() {
   const navigate = useNavigate();
   const [mounted, setMounted] = useState(false);
   const [isOpen, setIsOpen] = useState(getDefaultOpen);
+  const [isScrolling, setIsScrolling] = useState(false);
   const panelRef = useRef(null);
+  const scrollTimerRef = useRef(null);
 
   // Brief delay before showing anything (so we don't flash on first paint)
   useEffect(() => {
     const timer = setTimeout(() => setMounted(true), 600);
     return () => clearTimeout(timer);
+  }, []);
+
+  // Scroll-hide (DESKTOP ONLY) — mirrors ScrollHint pattern.
+  // While the user is actively scrolling, hide the widget. ~1.5s after
+  // scrolling stops, bring it back. Mobile keeps its persistent icon.
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const isDesktop = window.matchMedia('(min-width: 768px)').matches;
+    if (!isDesktop) return;
+
+    const onScroll = () => {
+      setIsScrolling(true);
+      if (scrollTimerRef.current) clearTimeout(scrollTimerRef.current);
+      scrollTimerRef.current = setTimeout(() => setIsScrolling(false), SCROLL_IDLE_MS);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      if (scrollTimerRef.current) clearTimeout(scrollTimerRef.current);
+    };
   }, []);
 
   // On route change, re-evaluate default (open on desktop unless dismissed).
@@ -126,6 +156,10 @@ export default function FloatingPlannerCTA() {
   };
 
   if (!mounted || shouldHide) return null;
+
+  // Scroll-hide kicks in on desktop only. Mobile state stays put (isScrolling
+  // never flips on mobile because we skip the scroll listener setup there).
+  if (isScrolling) return null;
 
   return (
     <>
