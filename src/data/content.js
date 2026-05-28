@@ -89,7 +89,7 @@ export const pricingTiers = [
     bestFor: 'SaaS founders and startups scaling outbound or building serious automation.',
     price: '$1,500',
     period: '/ month',
-    commitment: '4-month minimum',
+    commitment: '5-month minimum',
     recommended: true,
     badge: 'Most popular · the system I run on myself',
     bullets: [

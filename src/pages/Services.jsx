@@ -247,7 +247,7 @@ export default function Services() {
               <div className="text-xs uppercase tracking-widest font-bold text-gold mb-3">🔒 Why the minimum commitment + what happens after</div>
               <div className="space-y-3 text-sm text-white/80 leading-relaxed">
                 <p>
-                  <strong className="text-white">The system needs time to work.</strong> A CRM with 0 days of email data doesn't convert. A lead-gen pipeline needs ~30 days of warmup before reply rates stabilize. The minimum commitment is what makes my "no setup fee" math sustainable — Core (6 months), Automation Pro (4 months — the pipeline needs warmup time), Full Marketing (3 months — fastest because the team is already producing).
+                  <strong className="text-white">The system needs time to work.</strong> A CRM with 0 days of email data doesn't convert. A lead-gen pipeline needs warmup before reply rates stabilize. The minimum commitment is what makes my "no setup fee" math sustainable — Core (6 months), Automation Pro (5 months — the pipeline needs warmup time + iteration cycles), Full Marketing (3 months — fastest because the team is already producing).
                 </p>
                 <p>
                   <strong className="text-white">After your minimum, you cancel any month.</strong> No exit fees. No surprise charges. Your contacts, your code, your brand assets — all yours, exported on request. You'd set up your own GHL Pro ($297/mo direct to GHL) and your own Cloudflare account (free), and I hand the keys over. The retainer just bundles platform costs so you only see one number while we're working together.
@@ -276,7 +276,7 @@ export default function Services() {
             <div className="max-w-3xl mb-12">
               <div className="text-xs uppercase tracking-widest font-bold text-navy mb-3">Content samples · Full Marketing tier</div>
               <h2 className="text-3xl md:text-4xl font-bold text-ink tracking-tight leading-tight">
-                What the $2k tier actually ships.
+                What the $2,500 tier actually ships.
               </h2>
               <p className="mt-4 text-body leading-relaxed">
                 {contentSamples.disclosure}

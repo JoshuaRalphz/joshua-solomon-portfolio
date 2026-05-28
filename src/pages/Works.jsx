@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, ExternalLink, MapPin, ShieldCheck, FileText, MousePointerClick } from 'lucide-react';
+import { ArrowRight, ExternalLink, MapPin, ShieldCheck, FileText, MousePointerClick, Play } from 'lucide-react';
 import PageTransition, { Reveal } from '../components/PageTransition.jsx';
 import PlannerTeaser from '../components/PlannerTeaser.jsx';
-import { works, profile } from '../data/content.js';
+import LazyYouTube from '../components/LazyYouTube.jsx';
+import { works, profile, leadGenDemo } from '../data/content.js';
 
 // Opens Gmail compose in a new tab — pre-filled with case study request.
 // Falls back to the user's mailto: handler only if Gmail web isn't accessible.
@@ -120,6 +121,78 @@ export default function Works() {
         </section>
       )}
 
+      {/* LEAD-GEN SYSTEM — featured alongside Bishop */}
+      <section className="pb-12">
+        <div className="container-x">
+          <Reveal>
+            <article className="bg-white border-2 border-gold rounded-3xl overflow-hidden shadow-soft">
+              <div className="p-6 md:p-8 flex flex-wrap items-center justify-between gap-3 border-b border-line">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-gold/20 text-amber-700 text-xs font-bold rounded-full uppercase tracking-wider">
+                  ★ Live System · Lead Generation
+                </span>
+                <Link
+                  to="/services"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-navy hover:bg-navy-dark text-white font-bold rounded-lg shadow-lift hover:-translate-y-0.5 transition-all text-sm whitespace-nowrap"
+                >
+                  See pricing →
+                </Link>
+              </div>
+
+              <div className="p-6 md:p-8">
+                <h2 className="text-2xl md:text-3xl font-bold text-ink leading-tight mb-3">
+                  My own lead-gen system — same one I'll build for you.
+                </h2>
+                <p className="text-body leading-relaxed mb-6">
+                  {leadGenDemo.description}
+                </p>
+
+                {leadGenDemo.videoId ? (
+                  <div className="max-w-3xl mx-auto">
+                    <LazyYouTube id={leadGenDemo.videoId} label="Lead-gen system demo" vertical={false} />
+                  </div>
+                ) : (
+                  <Link
+                    to="/plan"
+                    aria-label="See Automation Pro pricing"
+                    className="group relative block w-full max-w-3xl mx-auto aspect-video rounded-2xl overflow-hidden shadow-lift hover:shadow-2xl transition-shadow"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-br from-navy-dark via-navy to-ink" />
+                    <div
+                      className="absolute inset-0 opacity-20"
+                      style={{
+                        backgroundImage:
+                          'radial-gradient(circle at 20% 30%, rgba(251,191,36,0.4) 0%, transparent 30%), radial-gradient(circle at 80% 70%, rgba(16,185,129,0.35) 0%, transparent 35%)',
+                      }}
+                    />
+                    <div className="absolute top-5 left-5 flex items-center gap-2 text-[10px] uppercase tracking-widest font-bold text-gold">
+                      <span className="w-1.5 h-1.5 rounded-full bg-gold animate-slow-pulse" />
+                      Live demo · 90 seconds
+                    </div>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-white shadow-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <Play size={36} className="text-navy ml-2" fill="currentColor" />
+                      </div>
+                    </div>
+                    <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-ink/85 to-transparent">
+                      <div className="text-white font-bold text-lg md:text-xl leading-tight">
+                        The n8n lead-gen pipeline I run on myself
+                      </div>
+                      <div className="text-white/75 text-sm mt-1.5">
+                        Scrape → enrich → personalize with AI → queue drafts in your inbox
+                      </div>
+                    </div>
+                  </Link>
+                )}
+
+                <div className="mt-7 pt-5 border-t border-line text-xs text-muted font-mono">
+                  Stack: n8n · Claude API · Hunter + Snov + Apollo · GoHighLevel · Gmail drafts
+                </div>
+              </div>
+            </article>
+          </Reveal>
+        </div>
+      </section>
+
       {/* OTHER WORK */}
       <section className="pb-24">
         <div className="container-x">
@@ -171,10 +244,10 @@ export default function Works() {
                   {/* Card body — wider, more breathing room */}
                   <div className="p-6 lg:p-8 flex-1 flex flex-col">
                     <div className="flex flex-wrap items-center gap-2 mb-3">
-                      <span className="inline-block text-xs font-semibold px-2 py-1 bg-navy-tint text-navy rounded">{w.tag}</span>
+                      <span className="inline-block text-[11px] font-extrabold px-3 py-1.5 bg-navy text-white rounded-full uppercase tracking-wider shadow-soft">{w.tag}</span>
                       {w.location && (
-                        <span className="inline-flex items-center gap-1 text-xs text-muted">
-                          <MapPin size={11} /> {w.location}
+                        <span className="inline-flex items-center gap-1 text-xs text-muted font-medium">
+                          <MapPin size={12} /> {w.location}
                         </span>
                       )}
                     </div>
