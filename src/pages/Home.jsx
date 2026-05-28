@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Zap, UserCheck, Wrench, Layers, Shield, TrendingUp, CheckCircle2, MessageCircle, Send, Rocket, Repeat } from 'lucide-react';
 import PageTransition, { Reveal } from '../components/PageTransition.jsx';
 import LogoMarquee from '../components/LogoMarquee.jsx';
-import PlannerTeaser from '../components/PlannerTeaser.jsx';
 import { profile, stats, benefits, tools } from '../data/content.js';
 
 const ICONS = { Zap, UserCheck, Wrench, Layers, Shield, TrendingUp };
@@ -247,11 +246,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Sitewide planner teaser */}
-      <PlannerTeaser
-        title="Not sure where to start? Map your project in 90 seconds."
-        subtitle="Five quick questions, no email gate. You'll get a custom recommendation — which systems to build, in what order, and how they fit your stack."
-      />
     </PageTransition>
   );
 }

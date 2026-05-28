@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import PageTransition, { Reveal } from '../components/PageTransition.jsx';
-import PlannerTeaser from '../components/PlannerTeaser.jsx';
 import { tools } from '../data/content.js';
 
 export default function About() {
@@ -111,11 +110,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* Sitewide planner teaser */}
-      <PlannerTeaser
-        title="Want to work together?"
-        subtitle="Five quick questions, no email gate. You'll get back a scoped recommendation tailored to where you're at right now."
-      />
     </PageTransition>
   );
 }

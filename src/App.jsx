@@ -4,6 +4,7 @@ import { AnimatePresence } from 'framer-motion';
 import Nav from './components/Nav.jsx';
 import Footer from './components/Footer.jsx';
 import ScrollHint from './components/ScrollHint.jsx';
+import FloatingPlannerCTA from './components/FloatingPlannerCTA.jsx';
 import Home from './pages/Home.jsx';
 import About from './pages/About.jsx';
 import Services from './pages/Services.jsx';
@@ -35,6 +36,7 @@ export default function App() {
       </AnimatePresence>
       <Footer />
       <ScrollHint />
+      <FloatingPlannerCTA />
     </>
   );
 }

@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, Download, Briefcase, MapPin, Mail, MessageCircle, Sparkles, Package } from 'lucide-react';
 import PageTransition, { Reveal } from '../components/PageTransition.jsx';
-import PlannerTeaser from '../components/PlannerTeaser.jsx';
 import { profile, experience, coreExpertise, serviceOffer, tools } from '../data/content.js';
 
 export default function Resume() {
@@ -168,11 +167,6 @@ export default function Resume() {
         </div>
       </section>
 
-      {/* Sitewide planner teaser */}
-      <PlannerTeaser
-        title="Ready to talk?"
-        subtitle="If you've got a project in mind, the planner gives me the context I need to send back a scoped reply. Otherwise, just hit Contact directly."
-      />
     </PageTransition>
   );
 }

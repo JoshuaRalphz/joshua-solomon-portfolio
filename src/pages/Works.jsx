@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, ExternalLink, MapPin, ShieldCheck, FileText, MousePointerClick, Play } from 'lucide-react';
 import PageTransition, { Reveal } from '../components/PageTransition.jsx';
-import PlannerTeaser from '../components/PlannerTeaser.jsx';
 import LazyYouTube from '../components/LazyYouTube.jsx';
 import { works, profile, leadGenDemo } from '../data/content.js';
 
@@ -288,11 +287,6 @@ export default function Works() {
         </div>
       </section>
 
-      {/* Sitewide planner teaser */}
-      <PlannerTeaser
-        title="See your shape on the wall? Let's spec yours."
-        subtitle="The work above was scoped through the same 5-question planner you can take below. No email gate — just a scoped plan you can act on."
-      />
     </PageTransition>
   );
 }

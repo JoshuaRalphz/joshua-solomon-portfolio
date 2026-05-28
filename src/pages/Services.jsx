@@ -3,7 +3,6 @@ import { ArrowRight, Check, Star, Globe, Database, Workflow, Bot, Image as Image
 import PageTransition, { Reveal } from '../components/PageTransition.jsx';
 import { services, pricingTiers, contentSamples, leadGenDemo } from '../data/content.js';
 import LazyYouTube from '../components/LazyYouTube.jsx';
-import PlannerTeaser from '../components/PlannerTeaser.jsx';
 
 // Icon per service id — keeps the visual consistent with the rest of the site
 const SERVICE_ICONS = {
@@ -364,11 +363,6 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Sitewide planner teaser — pulls visitors into the qualification step */}
-      <PlannerTeaser
-        title="Not sure which tier fits? Try the planner."
-        subtitle="Five quick questions. No email gate. You'll get a scoped plan — what to build, in what order, what it costs, and a week-by-week timeline."
-      />
     </PageTransition>
   );
 }
