@@ -7,21 +7,21 @@ import { PLANNER_SS_KEY } from '../pages/Quiz.jsx';
 /**
  * Floating planner widget — chat-bubble pattern.
  *
- * Collapsed: small navy square icon at bottom-right (~56px).
- * Open: a ~380px floating panel with the live Q1 of the planner — same 4
- * options that appear on /plan. Click any option to save the answer to
- * sessionStorage and navigate straight to /plan at Q2.
+ * COLLAPSED:
+ *   - Small navy square icon at bottom-right (56px)
+ *   - Persistent text chip floats to the left of the icon ("Take the planner →")
+ *     so users immediately know what it is, even on mobile (no hover available)
  *
- * Mobile (< md): bottom-aligned full-width sheet that slides up.
- * Desktop (≥ md): floating card anchored bottom-right.
+ * EXPANDED:
+ *   - Mobile: centered modal that floats in the middle of the screen with backdrop
+ *   - Desktop: floating card anchored bottom-right next to the icon
  *
  * Auto-hides on /plan and /contact.
- * Click outside to close. Esc to close.
+ * Click outside / Esc to close.
  */
 
 const HIDDEN_ROUTES = ['/plan', '/contact'];
 
-// Mirrors Q1 in Quiz.jsx. Keep in sync if the questions change.
 const Q1_OPTIONS = [
   { value: 'agency',  label: 'Marketing agency (2-15 people)', hint: 'I need a subcontractor for client builds.' },
   { value: 'service', label: 'Service business owner',          hint: 'Real estate, coach, med spa, contractor, etc.' },
@@ -36,18 +36,13 @@ export default function FloatingPlannerCTA() {
   const [isOpen, setIsOpen] = useState(false);
   const panelRef = useRef(null);
 
-  // Delay-mount so it doesn't flash on initial paint
   useEffect(() => {
     const timer = setTimeout(() => setMounted(true), 600);
     return () => clearTimeout(timer);
   }, []);
 
-  // Close on route change (e.g. user nav'd to /plan via something else)
-  useEffect(() => {
-    setIsOpen(false);
-  }, [pathname]);
+  useEffect(() => { setIsOpen(false); }, [pathname]);
 
-  // Click outside + Esc to close
   useEffect(() => {
     if (!isOpen) return;
     const handleClick = (e) => {
@@ -55,9 +50,7 @@ export default function FloatingPlannerCTA() {
         setIsOpen(false);
       }
     };
-    const handleKey = (e) => {
-      if (e.key === 'Escape') setIsOpen(false);
-    };
+    const handleKey = (e) => { if (e.key === 'Escape') setIsOpen(false); };
     document.addEventListener('mousedown', handleClick);
     document.addEventListener('keydown', handleKey);
     return () => {
@@ -74,7 +67,7 @@ export default function FloatingPlannerCTA() {
         PLANNER_SS_KEY,
         JSON.stringify({ step: 1, answers: { business: value } })
       );
-    } catch { /* noop — proceed to /plan and they'll re-answer Q1 */ }
+    } catch { /* noop */ }
     setIsOpen(false);
     navigate('/plan');
   };
@@ -83,7 +76,7 @@ export default function FloatingPlannerCTA() {
 
   return (
     <>
-      {/* ────── COLLAPSED BUTTON ────── */}
+      {/* ────── COLLAPSED: icon + persistent text hint chip ────── */}
       <AnimatePresence>
         {!isOpen && (
           <motion.div
@@ -92,9 +85,33 @@ export default function FloatingPlannerCTA() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, scale: 0.85 }}
             transition={{ duration: 0.35, ease: [0.34, 1.56, 0.64, 1] }}
-            className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-40"
+            className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-40 flex items-center gap-2.5"
           >
-            <div className="relative group">
+            {/* Persistent hint chip — always visible so users know what the icon is */}
+            <motion.div
+              animate={{ x: [0, -3, 0] }}
+              transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
+              className="relative flex items-center gap-1.5 bg-white border border-navy/20 text-navy text-xs font-bold px-3 py-2 rounded-lg shadow-soft whitespace-nowrap"
+            >
+              <span className="inline-flex items-center gap-1">
+                Take the planner
+                <span className="text-[10px] uppercase tracking-widest text-gold font-extrabold">90s</span>
+              </span>
+              <ArrowRight size={12} strokeWidth={3} className="text-navy" />
+              {/* Arrow notch pointing to the icon */}
+              <span
+                aria-hidden="true"
+                className="absolute left-full top-1/2 -translate-y-1/2 w-0 h-0 border-l-[6px] border-l-white border-y-[6px] border-y-transparent"
+              />
+              <span
+                aria-hidden="true"
+                className="absolute left-full top-1/2 -translate-y-1/2 w-0 h-0 border-l-[7px] border-l-navy/20 border-y-[7px] border-y-transparent -z-10"
+                style={{ marginLeft: '-1px' }}
+              />
+            </motion.div>
+
+            {/* The icon button */}
+            <div className="relative">
               {/* Pulsing glow rings */}
               <span
                 aria-hidden="true"
@@ -106,22 +123,6 @@ export default function FloatingPlannerCTA() {
                 style={{ animationDelay: '0.8s' }}
               />
 
-              {/* Tooltip on desktop hover */}
-              <div
-                aria-hidden="true"
-                className="hidden md:flex absolute right-full mr-3 top-1/2 -translate-y-1/2 pointer-events-none opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
-              >
-                <div className="flex items-center gap-2 bg-ink text-white text-sm font-bold px-3.5 py-2 rounded-lg shadow-lift whitespace-nowrap">
-                  Find your fit
-                  <span className="text-[10px] uppercase tracking-widest font-bold text-gold">90s</span>
-                  <span
-                    aria-hidden="true"
-                    className="absolute left-full top-1/2 -translate-y-1/2 w-0 h-0 border-l-[6px] border-l-ink border-y-[6px] border-y-transparent"
-                  />
-                </div>
-              </div>
-
-              {/* The button */}
               <button
                 type="button"
                 onClick={() => setIsOpen(true)}
@@ -142,7 +143,7 @@ export default function FloatingPlannerCTA() {
       <AnimatePresence>
         {isOpen && (
           <>
-            {/* Mobile backdrop — fades in, click to close */}
+            {/* Backdrop (mobile-only — desktop card floats freely) */}
             <motion.div
               key="cta-backdrop"
               initial={{ opacity: 0 }}
@@ -151,10 +152,10 @@ export default function FloatingPlannerCTA() {
               transition={{ duration: 0.2 }}
               onClick={() => setIsOpen(false)}
               aria-hidden="true"
-              className="md:hidden fixed inset-0 bg-ink/40 backdrop-blur-sm z-40"
+              className="md:hidden fixed inset-0 bg-ink/50 backdrop-blur-sm z-40"
             />
 
-            {/* The form panel */}
+            {/* The form panel — CENTERED on mobile (modal), bottom-right on desktop */}
             <motion.div
               key="cta-panel"
               ref={panelRef}
@@ -163,10 +164,10 @@ export default function FloatingPlannerCTA() {
               exit={{ opacity: 0, y: 24, scale: 0.96 }}
               transition={{ duration: 0.35, ease: [0.2, 0.8, 0.2, 1] }}
               className="fixed z-50 bg-white rounded-2xl shadow-2xl border border-line overflow-hidden
-                         /* mobile: bottom sheet */
-                         bottom-0 left-0 right-0 rounded-b-none
-                         /* desktop: floating card bottom-right */
-                         md:bottom-8 md:right-8 md:left-auto md:w-[380px] md:rounded-2xl"
+                         /* Mobile: centered modal in the middle of the screen */
+                         left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] max-w-[380px]
+                         /* Desktop: floating card anchored bottom-right */
+                         md:left-auto md:top-auto md:translate-x-0 md:translate-y-0 md:bottom-8 md:right-8 md:w-[380px]"
               role="dialog"
               aria-label="5-question project planner"
             >

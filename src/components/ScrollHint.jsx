@@ -83,7 +83,7 @@ export default function ScrollHint() {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 16, scale: 0.92 }}
           transition={{ duration: 0.4, ease: [0.34, 1.56, 0.64, 1] }}
-          className="fixed bottom-7 left-1/2 -translate-x-1/2 z-30 group"
+          className="hidden md:block fixed bottom-7 left-1/2 -translate-x-1/2 z-30 group"
         >
           {/* Pulsing glow ring — draws the eye */}
           <span
