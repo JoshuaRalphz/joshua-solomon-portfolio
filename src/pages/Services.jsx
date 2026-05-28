@@ -64,13 +64,9 @@ export default function Services() {
                       )}
                     </div>
                     <h3 className="text-2xl md:text-3xl font-bold text-ink mb-3 leading-tight">{s.title}</h3>
-                    <p className="text-body mb-5 leading-relaxed">{s.summary}</p>
-
+                    <p className="text-body mb-4 leading-relaxed">{s.summary}</p>
                     {s.process && (
-                      <div className="mb-6 bg-slate-50 border border-line rounded-xl p-4">
-                        <div className="text-xs uppercase tracking-widest text-navy font-bold mb-1.5">How it works</div>
-                        <p className="text-sm text-body leading-relaxed">{s.process}</p>
-                      </div>
+                      <p className="text-body mb-6 leading-relaxed">{s.process}</p>
                     )}
 
                     <div className="text-xs uppercase tracking-widest text-navy font-bold mb-3">What you get</div>
