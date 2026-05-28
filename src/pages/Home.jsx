@@ -41,7 +41,7 @@ export default function Home() {
           >
             I build the marketing systems{' '}
             <span className="bg-gradient-to-br from-navy to-blue-600 bg-clip-text text-transparent">
-              agencies actually run on.
+              your business actually runs on.
             </span>
           </motion.h1>
 
@@ -51,8 +51,9 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.15 }}
             className="mt-6 text-lg md:text-xl text-body max-w-2xl leading-relaxed"
           >
-            Custom-coded sites on Cloudflare Pages. GoHighLevel CRMs configured to your real pipeline.
-            Email automation, integrations, DNS — the full stack, owned by one technical operator.
+            Your website, your CRM, your follow-up emails, your lead capture —
+            all built and connected by one person who actually understands the technical side.
+            No agency layers, no juggling vendors.
           </motion.p>
 
           <motion.div
@@ -85,8 +86,8 @@ export default function Home() {
               <div className="text-sm font-medium text-ink">{profile.location}</div>
             </div>
             <div>
-              <div className="text-xs font-bold uppercase tracking-widest text-muted mb-1">Current</div>
-              <div className="text-sm font-medium text-ink">Embedded with Arrow Group (Michigan)</div>
+              <div className="text-xs font-bold uppercase tracking-widest text-muted mb-1">Availability</div>
+              <div className="text-sm font-medium text-ink">{profile.available}</div>
             </div>
           </motion.div>
         </div>

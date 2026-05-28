@@ -34,26 +34,26 @@ export default function About() {
         <div className="container-x grid md:grid-cols-3 gap-12">
           <Reveal className="md:col-span-2 space-y-5 text-body leading-relaxed">
             <p>
-              I started building marketing systems for US businesses in 2023 — first as
-              the technical implementer at a Philippines-based marketing-VA agency, then as the embedded
-              systems person for a Michigan consultancy. Both still trust me with their
-              client-facing infrastructure.
+              I've been building marketing systems for US businesses since 2023 — first as the
+              technical builder at a Philippines-based marketing services agency, then as the
+              go-to systems person for a Michigan consulting firm. Both still trust me with
+              their day-to-day client work.
             </p>
             <p>
-              The common thread: every business I work with had the same problem. They had
-              the marketing strategy figured out, but they couldn't ship the technical pieces.
-              CRMs were half-configured. Email automations were broken. Domains and DNS
-              were rented from contractors who'd gone missing.
+              Every business I work with has the same problem. They have the marketing strategy
+              figured out, but they can't get the technical pieces to actually work. Their CRM
+              is half-set-up. Their follow-up emails stopped firing. Their domain and email
+              setup was done by someone who disappeared six months ago.
             </p>
             <p>
-              What I do is unsexy: I show up, audit the broken pieces, fix what's wrong, build
-              what's missing, and then I keep it running. No drama. No "leveraging synergies."
-              No three-week sales process. Just shipping.
+              What I do is unsexy: I show up, look at what's broken, fix it, build what's
+              missing, and keep it running. No drama. No buzzwords. No three-week sales process.
+              Just getting it done.
             </p>
             <p>
-              I work US business hours from Olongapo, Philippines. That means you can hand off
-              a project at 5pm Eastern and have it built by 9am the next day. That's not magic;
-              that's just timezone math working in your favor.
+              I work US business hours from Olongapo, Philippines. That means you can send me
+              a request at 5pm Eastern and have it done by 9am the next day. That's not magic —
+              that's just the time zone working in your favor.
             </p>
           </Reveal>
 
@@ -61,12 +61,12 @@ export default function About() {
             <div className="bg-navy-tint rounded-2xl p-6 sticky top-24">
               <div className="text-xs uppercase tracking-widest font-bold text-navy mb-3">Quick facts</div>
               <dl className="space-y-3 text-sm">
-                <div><dt className="text-muted text-xs">Years in this work</dt><dd className="font-semibold text-ink">3+</dd></div>
+                <div><dt className="text-muted text-xs">Years doing this</dt><dd className="font-semibold text-ink">3+</dd></div>
                 <div><dt className="text-muted text-xs">Based in</dt><dd className="font-semibold text-ink">Olongapo City, PH</dd></div>
                 <div><dt className="text-muted text-xs">Working hours</dt><dd className="font-semibold text-ink">US Eastern · 8am–6pm</dd></div>
-                <div><dt className="text-muted text-xs">Response time</dt><dd className="font-semibold text-ink">Hours, not days</dd></div>
-                <div><dt className="text-muted text-xs">Current clients</dt><dd className="font-semibold text-ink">Arrow Group (Michigan)</dd></div>
-                <div><dt className="text-muted text-xs">Open to</dt><dd className="font-semibold text-ink">New retainers</dd></div>
+                <div><dt className="text-muted text-xs">Reply time</dt><dd className="font-semibold text-ink">Hours, not days</dd></div>
+                <div><dt className="text-muted text-xs">Style</dt><dd className="font-semibold text-ink">Direct messaging, no PMs</dd></div>
+                <div><dt className="text-muted text-xs">Open to</dt><dd className="font-semibold text-ink">New retainer clients</dd></div>
               </dl>
             </div>
           </Reveal>
@@ -79,10 +79,10 @@ export default function About() {
           <Reveal>
             <div className="label">Tools I work in</div>
             <h2 className="text-3xl md:text-4xl font-bold text-ink tracking-tight max-w-3xl">
-              The full stack, grouped by what it does.
+              The tools I use, grouped by what they do.
             </h2>
             <p className="mt-4 text-body max-w-2xl">
-              The full stack — everything I work in across CRM, automation, code, hosting, design, and ops.
+              I work in the tools you already use — CRMs, email platforms, automation, design, payments, hosting. No forced migrations.
             </p>
           </Reveal>
 

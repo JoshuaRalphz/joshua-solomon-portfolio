@@ -287,7 +287,7 @@ export default function Quiz() {
               {isDone ? 'Here\'s what I\'d build for you.' : 'Tell me about your business.'}
             </h1>
             {!isDone && (
-              <p className="mt-3 text-body">Five quick questions, about 90 seconds, no email gate. At the end you'll get a scoped project plan — what to build, in what order, what it costs, and a week-by-week timeline.</p>
+              <p className="mt-3 text-body">Five quick questions, about 90 seconds, no email required. At the end you'll see exactly what I'd build for you, in what order, what it costs, and a week-by-week schedule.</p>
             )}
           </div>
 

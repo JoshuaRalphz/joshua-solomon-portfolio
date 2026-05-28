@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Check, Star, Globe, Database, Mail, Workflow, Bot, Image as ImageIcon, Film, ExternalLink, Sparkles, Play } from 'lucide-react';
+import { ArrowRight, Check, Star, Globe, Database, Workflow, Bot, Image as ImageIcon, Film, ExternalLink, Sparkles, Play } from 'lucide-react';
 import PageTransition, { Reveal } from '../components/PageTransition.jsx';
 import { services, pricingTiers, contentSamples, leadGenDemo } from '../data/content.js';
 import LazyYouTube from '../components/LazyYouTube.jsx';
@@ -9,7 +9,7 @@ import PlannerTeaser from '../components/PlannerTeaser.jsx';
 const SERVICE_ICONS = {
   crm: Database,
   website: Globe,
-  'email-automation': Mail,
+  'content-social': ImageIcon,
   'lead-gen': Bot,
   'workflow-automation': Workflow,
 };
@@ -64,8 +64,16 @@ export default function Services() {
                       )}
                     </div>
                     <h3 className="text-2xl md:text-3xl font-bold text-ink mb-3 leading-tight">{s.title}</h3>
-                    <p className="text-body mb-6 leading-relaxed">{s.summary}</p>
+                    <p className="text-body mb-5 leading-relaxed">{s.summary}</p>
 
+                    {s.process && (
+                      <div className="mb-6 bg-slate-50 border border-line rounded-xl p-4">
+                        <div className="text-xs uppercase tracking-widest text-navy font-bold mb-1.5">How it works</div>
+                        <p className="text-sm text-body leading-relaxed">{s.process}</p>
+                      </div>
+                    )}
+
+                    <div className="text-xs uppercase tracking-widest text-navy font-bold mb-3">What you get</div>
                     <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-2.5 mb-6">
                       {s.bullets.map(b => (
                         <li key={b} className="flex items-start gap-2.5 text-sm text-body">
@@ -93,9 +101,9 @@ export default function Services() {
           <Reveal>
             <div className="text-center mb-12">
               <div className="text-xs uppercase tracking-widest font-bold text-emerald mb-3">✓ Recent technical wins</div>
-              <h2 className="text-3xl md:text-4xl font-bold text-ink tracking-tight">The stuff most agencies fail at.</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-ink tracking-tight">Real wins. Live in production.</h2>
               <p className="mt-4 text-body max-w-2xl mx-auto leading-relaxed">
-                Real shipped work across the retainer book. The kind of capability that's hard to verify until you've actually worked with someone — so here are the receipts.
+                The technical capability is hard to verify until you've seen it in action — so here are the receipts. Real shipped work across the retainer book.
               </p>
             </div>
           </Reveal>
