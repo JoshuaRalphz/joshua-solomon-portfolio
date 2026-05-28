@@ -488,6 +488,10 @@ export const coreExpertise = [
     label: 'AI & LLM Integration',
     items: 'Building AI-augmented automation workflows — Claude + OpenAI API integration in n8n & Make for outreach personalization, content drafting, and lead-scoring. LLM-augmented marketing automation as a core differentiator vs no-AI agency builds.',
   },
+  {
+    label: 'Lead Generation Systems',
+    items: 'Multi-source lead-gen pipelines on self-hosted n8n — scraping job boards (LinkedIn, Wellfound, WWR, Remote OK), multi-provider email enrichment (Hunter + Snov + Apollo fallback chain), Claude-API personalized outreach drafting, queued for human review. The same system I run on my own outbound — 25+ qualified prospects per week.',
+  },
 ];
 
 // Mirrors the "Service Offer" block in the PDF resume
