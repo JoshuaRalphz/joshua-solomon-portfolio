@@ -70,14 +70,20 @@ const QUESTIONS = [
     options: [
       {
         value: 'full',
-        label: 'Full marketing — everything in Core + content + paid ads',
-        hint: 'Core (build + automation + email) PLUS 30-day calendar, reels, social, paid ads — one number.',
-        priceChip: { tier: 'Full Marketing', price: '$2,000/mo' },
+        label: 'Full marketing — content + paid ads + system',
+        hint: 'Tech + team. I plan + QC, my team produces. Social, blog, design, paid ads, all in one number.',
+        priceChip: { tier: 'Full Marketing', price: '$2,500/mo' },
+      },
+      {
+        value: 'automation-pro',
+        label: 'Automation Pro — AI lead-gen + workflow automation',
+        hint: 'Core PLUS n8n / Make / Zapier builds + AI lead-gen pipeline (the same system I run on myself).',
+        priceChip: { tier: 'Automation Pro', price: '$1,500/mo' },
       },
       {
         value: 'core',
-        label: 'Core — build + automation + email',
-        hint: 'Website, CRM, automation, and email/newsletter. I handle social + paid ads myself.',
+        label: 'Core — the foundational build',
+        hint: 'GHL CRM + custom Cloudflare site + email automation. You handle your own content + outbound.',
         priceChip: { tier: 'Core', price: '$1,000/mo' },
       },
     ],
@@ -163,10 +169,12 @@ function buildRecommendation(answers) {
     });
   }
 
-  // ───── TIER SELECTION based on Q5 — Core or Full Marketing ─────
+  // ───── TIER SELECTION based on Q5 — Core / Automation Pro / Full Marketing ─────
   let tier;
   if (answers.creative === 'full') {
-    tier = { id: 'full', name: 'Full Marketing', price: 2000, label: '$2,000/mo' };
+    tier = { id: 'full', name: 'Full Marketing', price: 2500, label: '$2,500/mo' };
+  } else if (answers.creative === 'automation-pro') {
+    tier = { id: 'automation-pro', name: 'Automation Pro', price: 1500, label: '$1,500/mo' };
   } else {
     tier = { id: 'core', name: 'Core', price: 1000, label: '$1,000/mo' };
   }
@@ -403,10 +411,9 @@ export default function Quiz() {
                       <span className="text-base font-bold text-white/55 ml-2">/ month</span>
                     </div>
                     <div className="text-sm text-white/70 leading-relaxed">
-                      {result.tier.id === 'full'
-                        ? 'Full Marketing retainer — covers core system maintenance, new builds, new automations, paid ads management, the 30-day content engine, plus bundled infrastructure (GHL Pro + Cloudflare). 3-month minimum commitment so the system has time to optimize; cancel any month after that, migrate to your own accounts, keep everything.'
-                        : 'Core retainer — covers all maintenance, new builds, new automations, plus bundled infrastructure (GHL Pro sub-account + Cloudflare hosting — ~$300/mo of platform costs you don\'t see). 6-month minimum commitment so the system has time to produce results; cancel any month after that, migrate to your own accounts, keep everything.'
-                      }
+                      {result.tier.id === 'full' && 'Full Marketing retainer — covers core system maintenance, new builds, new automations, paid ads management, the 30-day content engine + my team\'s creative production, plus bundled infrastructure (GHL Pro + Cloudflare). 3-month minimum commitment so the system has time to optimize; cancel any month after that, migrate to your own accounts, keep everything.'}
+                      {result.tier.id === 'automation-pro' && 'Automation Pro retainer — covers everything in Core PLUS n8n/Make/Zapier workflow builds, the AI lead-gen pipeline (same system I run on myself), and custom API integrations. 4-month minimum so the lead-gen pipeline has time to warm up and produce qualified leads; cancel any month after that, take all the n8n workflows + your data with you. Includes Hunter + Snov + Apollo enrichment + bundled GHL Pro + Cloudflare.'}
+                      {result.tier.id === 'core' && 'Core retainer — covers all maintenance, new builds, new automations, plus bundled infrastructure (GHL Pro sub-account + Cloudflare hosting — ~$300/mo of platform costs you don\'t see). 6-month minimum commitment so the system has time to produce results; cancel any month after that, migrate to your own accounts, keep everything.'}
                     </div>
                   </div>
 

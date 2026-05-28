@@ -1,17 +1,17 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Check, Star, Globe, Database, Mail, Plug, Bot, Image as ImageIcon, Film, ExternalLink } from 'lucide-react';
+import { ArrowRight, Check, Star, Globe, Database, Mail, Workflow, Bot, Image as ImageIcon, Film, ExternalLink, Sparkles, Play } from 'lucide-react';
 import PageTransition, { Reveal } from '../components/PageTransition.jsx';
-import { services, pricingTiers, contentSamples } from '../data/content.js';
+import { services, pricingTiers, contentSamples, leadGenDemo } from '../data/content.js';
 import LazyYouTube from '../components/LazyYouTube.jsx';
 import PlannerTeaser from '../components/PlannerTeaser.jsx';
 
 // Icon per service id — keeps the visual consistent with the rest of the site
 const SERVICE_ICONS = {
-  website: Globe,
   crm: Database,
-  automation: Mail,
-  integration: Plug,
-  'ai-automation': Bot,
+  website: Globe,
+  'email-automation': Mail,
+  'lead-gen': Bot,
+  'workflow-automation': Workflow,
 };
 
 export default function Services() {
@@ -23,12 +23,12 @@ export default function Services() {
           <Reveal>
             <div className="label">Services</div>
             <h1 className="text-4xl md:text-5xl font-extrabold text-ink tracking-tight max-w-4xl leading-tight">
-              Five services. Two tiers.
+              Five capabilities.
               <br />
-              <span className="whitespace-nowrap">End-to-end.</span>
+              <span className="whitespace-nowrap">One technical operator.</span>
             </h1>
             <p className="mt-5 text-lg text-body max-w-2xl leading-relaxed">
-              I don't sell hours. I sell outcomes. Each service below has a clear shipped-state — the moment you can stop worrying about it. Pick the tier that fits how hands-off you want to be.
+              Marketing systems that actually run on themselves. No agency layers, no project managers, no theme-based shortcuts. Pick the tier that matches what you actually need.
             </p>
           </Reveal>
         </div>
@@ -39,27 +39,37 @@ export default function Services() {
         <div className="container-x space-y-6">
           {services.map((s, i) => {
             const Icon = SERVICE_ICONS[s.id] || Globe;
+            const cardBorder = s.featured
+              ? 'border-gold/40 bg-gradient-to-br from-gold/5 to-white hover:border-gold hover:shadow-lift'
+              : 'border-line hover:border-navy hover:shadow-soft';
             return (
               <Reveal key={s.id} delay={i * 0.05}>
-                <article className="bg-white border border-line rounded-2xl p-7 md:p-9 flex flex-col md:flex-row gap-6 md:gap-10 hover:border-navy hover:shadow-soft transition-all">
+                <article className={`bg-white border-2 rounded-2xl p-7 md:p-9 flex flex-col md:flex-row gap-6 md:gap-10 transition-all ${cardBorder}`}>
                   {/* Left side: Service number + icon */}
                   <div className="md:w-1/4 flex md:flex-col items-center md:items-start gap-5 md:gap-4 flex-shrink-0">
-                    <div className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-navy/15 leading-none">0{i + 1}</div>
-                    <div className="w-14 h-14 rounded-xl bg-navy-tint flex items-center justify-center text-navy">
+                    <div className={`text-4xl md:text-6xl lg:text-7xl font-extrabold leading-none ${s.featured ? 'text-gold/30' : 'text-navy/15'}`}>0{i + 1}</div>
+                    <div className={`w-14 h-14 rounded-xl flex items-center justify-center ${s.featured ? 'bg-gold/15 text-gold' : 'bg-navy-tint text-navy'}`}>
                       <Icon size={26} />
                     </div>
                   </div>
 
                   {/* Right side: All the content */}
                   <div className="md:w-3/4 flex-1">
-                    <div className="text-xs uppercase tracking-widest text-navy font-bold mb-2">Service · 0{i + 1}</div>
+                    <div className={`flex items-center gap-2 mb-2 text-xs uppercase tracking-widest font-bold ${s.featured ? 'text-gold' : 'text-navy'}`}>
+                      <span>Service · 0{i + 1}</span>
+                      {s.featured && (
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-gold/15 border border-gold/30 text-[10px] tracking-wider">
+                          <Sparkles size={10} /> Featured
+                        </span>
+                      )}
+                    </div>
                     <h3 className="text-2xl md:text-3xl font-bold text-ink mb-3 leading-tight">{s.title}</h3>
                     <p className="text-body mb-6 leading-relaxed">{s.summary}</p>
 
                     <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-2.5 mb-6">
                       {s.bullets.map(b => (
                         <li key={b} className="flex items-start gap-2.5 text-sm text-body">
-                          <Check size={16} className="text-emerald flex-shrink-0 mt-0.5" />
+                          <Check size={16} className={`flex-shrink-0 mt-0.5 ${s.featured ? 'text-gold' : 'text-emerald'}`} />
                           <span>{b}</span>
                         </li>
                       ))}
@@ -150,23 +160,23 @@ export default function Services() {
         </div>
       </section>
 
-      {/* PRICING TIERS — 2-tier */}
+      {/* PRICING TIERS — 3-tier */}
       <section className="py-20 bg-gradient-to-br from-ink to-navy-dark text-white">
         <div className="container-x">
           <Reveal>
             <div className="text-center max-w-2xl mx-auto">
-              <div className="text-xs uppercase tracking-widest font-bold text-gold mb-3">Pricing — two tiers</div>
-              <h2 className="text-3xl md:text-4xl font-bold leading-tight">Pick how hands-off you want to be.</h2>
-              <p className="mt-4 text-white/75 text-lg">No setup fee on either tier — your first invoice is just your first month. Same speed. Same direct line. Just different ongoing scope.</p>
+              <div className="text-xs uppercase tracking-widest font-bold text-gold mb-3">Pricing — flat monthly</div>
+              <h2 className="text-3xl md:text-4xl font-bold leading-tight">No setup fees. No tool charges.</h2>
+              <p className="mt-4 text-white/75 text-lg">Pick the tier that matches what you actually need. All software, all infrastructure, all tools — covered.</p>
             </div>
           </Reveal>
 
-          {/* Tier cards — 2 columns */}
+          {/* Tier cards — 3 columns */}
           <Reveal delay={0.1}>
-            <div className="max-w-4xl mx-auto mt-14 grid gap-5 md:grid-cols-2 items-stretch">
+            <div className="max-w-6xl mx-auto mt-14 grid gap-5 lg:grid-cols-3 items-stretch">
               {pricingTiers.map((t) => {
                 let cardClass = 'bg-white/5 backdrop-blur rounded-2xl border border-white/10 p-7';
-                if (t.recommended) cardClass = 'bg-gradient-to-br from-gold/20 to-gold/5 backdrop-blur rounded-2xl border-2 border-gold/50 p-7 relative shadow-2xl md:-mt-4 md:mb-0';
+                if (t.recommended) cardClass = 'bg-gradient-to-br from-gold/20 to-gold/5 backdrop-blur rounded-2xl border-2 border-gold/50 p-7 relative shadow-2xl lg:-mt-4 lg:mb-0';
                 const accentColor = t.recommended ? 'text-gold' : 'text-white/55';
                 const checkColor = t.recommended ? 'text-gold' : 'text-emerald';
                 return (
@@ -186,7 +196,12 @@ export default function Services() {
                         🔒 {t.commitment}
                       </div>
                     )}
-                    <div className="text-sm text-white/70 mb-5 leading-snug">{t.tagline}</div>
+                    <div className="text-sm text-white/85 mb-2 leading-snug font-semibold">{t.tagline}</div>
+                    {t.bestFor && (
+                      <div className="text-xs text-white/65 mb-5 leading-relaxed">
+                        <span className="font-bold text-white/85">Best for:</span> {t.bestFor}
+                      </div>
+                    )}
 
                     <ul className="space-y-2 text-sm">
                       {t.bullets.map(li => (
@@ -224,7 +239,7 @@ export default function Services() {
               <div className="text-xs uppercase tracking-widest font-bold text-gold mb-3">🔒 Why the minimum commitment + what happens after</div>
               <div className="space-y-3 text-sm text-white/80 leading-relaxed">
                 <p>
-                  <strong className="text-white">The system needs time to work.</strong> A CRM with 0 days of email data doesn't convert. One with 90+ days of data, optimization, and a few automation iterations does. The minimum commitment is what makes my "no setup fee" math sustainable — Core (6 months) and Full Marketing (3 months) each amount to the same $6,000 floor, which covers the build + the time the system needs to actually produce results.
+                  <strong className="text-white">The system needs time to work.</strong> A CRM with 0 days of email data doesn't convert. A lead-gen pipeline needs ~30 days of warmup before reply rates stabilize. The minimum commitment is what makes my "no setup fee" math sustainable — Core (6 months), Automation Pro (4 months — the pipeline needs warmup time), Full Marketing (3 months — fastest because the team is already producing).
                 </p>
                 <p>
                   <strong className="text-white">After your minimum, you cancel any month.</strong> No exit fees. No surprise charges. Your contacts, your code, your brand assets — all yours, exported on request. You'd set up your own GHL Pro ($297/mo direct to GHL) and your own Cloudflare account (free), and I hand the keys over. The retainer just bundles platform costs so you only see one number while we're working together.
@@ -324,6 +339,94 @@ export default function Services() {
                 .map((v) => (
                   <LazyYouTube key={v.id} id={v.id} label={v.label} vertical={true} />
                 ))}
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* LEAD-GEN SYSTEM DEMO — proof for the Automation Pro tier */}
+      <section className="py-20 bg-gradient-to-b from-white via-navy-tint/30 to-white border-t border-line">
+        <div className="container-x">
+          <Reveal>
+            <div className="max-w-3xl mx-auto text-center mb-10">
+              <div className="text-xs uppercase tracking-widest font-bold text-navy mb-3">How my lead-gen system works</div>
+              <h2 className="text-3xl md:text-4xl font-bold text-ink tracking-tight leading-tight">
+                {leadGenDemo.title}
+              </h2>
+              <p className="mt-4 text-body leading-relaxed">
+                {leadGenDemo.description}
+              </p>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <div className="max-w-3xl mx-auto">
+              {leadGenDemo.videoId ? (
+                <LazyYouTube id={leadGenDemo.videoId} label="Lead-gen system demo" vertical={false} />
+              ) : (
+                /* Stand-in thumbnail — branded, looks like a paused player */
+                <Link
+                  to="/plan"
+                  aria-label="See Automation Pro pricing"
+                  className="group relative block w-full aspect-video rounded-2xl overflow-hidden shadow-lift hover:shadow-2xl transition-shadow"
+                >
+                  {/* Background — navy gradient with subtle workflow texture */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-navy-dark via-navy to-ink" />
+                  <div
+                    className="absolute inset-0 opacity-20"
+                    style={{
+                      backgroundImage:
+                        'radial-gradient(circle at 20% 30%, rgba(251,191,36,0.4) 0%, transparent 30%), radial-gradient(circle at 80% 70%, rgba(16,185,129,0.35) 0%, transparent 35%)',
+                    }}
+                  />
+                  {/* Abstract pipeline visual — 3 dots connected by lines */}
+                  <div className="absolute inset-0 flex items-center justify-around px-12 opacity-30">
+                    {[0, 1, 2].map((i) => (
+                      <div key={i} className="flex flex-col items-center gap-2">
+                        <div className="w-3 h-3 rounded-full bg-gold" />
+                        {i < 2 && <div className="absolute h-px w-1/4 bg-white/40" style={{ left: `${22 + i * 28}%`, top: '50%' }} />}
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Top-left label */}
+                  <div className="absolute top-5 left-5 flex items-center gap-2 text-[10px] uppercase tracking-widest font-bold text-gold">
+                    <span className="w-1.5 h-1.5 rounded-full bg-gold animate-slow-pulse" />
+                    Live demo · 90 seconds
+                  </div>
+
+                  {/* Centered play button */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-white shadow-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <Play size={36} className="text-navy ml-2" fill="currentColor" />
+                    </div>
+                  </div>
+
+                  {/* Bottom caption */}
+                  <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-ink/85 to-transparent">
+                    <div className="text-white font-bold text-lg md:text-xl leading-tight">
+                      The n8n lead-gen pipeline I run on myself
+                    </div>
+                    <div className="text-white/75 text-sm mt-1.5">
+                      Scrape → enrich → personalize with AI → queue drafts in your inbox
+                    </div>
+                  </div>
+                </Link>
+              )}
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.2}>
+            <div className="max-w-2xl mx-auto mt-10 text-center">
+              <p className="text-body leading-relaxed mb-5">
+                I'll build this for you in 14 days. AI-personalized outreach, multi-source lead scraping, and CRM integration — all running on your stack.
+              </p>
+              <Link
+                to="/plan"
+                className="inline-flex items-center gap-2 bg-navy hover:bg-navy-dark text-white font-bold px-6 py-3 rounded-lg shadow-soft hover:shadow-lift transition-all"
+              >
+                See Automation Pro pricing <ArrowRight size={16} />
+              </Link>
             </div>
           </Reveal>
         </div>
