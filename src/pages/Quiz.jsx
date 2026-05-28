@@ -72,7 +72,7 @@ const QUESTIONS = [
         value: 'full',
         label: 'Full marketing — content + paid ads + system',
         hint: 'Tech + team. I plan + QC, my team produces. Social, blog, design, paid ads, all in one number.',
-        priceChip: { tier: 'Full Marketing', price: '$2,500/mo' },
+        priceChip: { tier: 'Full Marketing', price: '$2,000/mo' },
       },
       {
         value: 'automation-pro',
@@ -172,7 +172,7 @@ function buildRecommendation(answers) {
   // ───── TIER SELECTION based on Q5 — Core / Automation Pro / Full Marketing ─────
   let tier;
   if (answers.creative === 'full') {
-    tier = { id: 'full', name: 'Full Marketing', price: 2500, label: '$2,500/mo' };
+    tier = { id: 'full', name: 'Full Marketing', price: 2000, label: '$2,000/mo' };
   } else if (answers.creative === 'automation-pro') {
     tier = { id: 'automation-pro', name: 'Automation Pro', price: 1500, label: '$1,500/mo' };
   } else {

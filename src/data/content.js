@@ -108,7 +108,7 @@ export const pricingTiers = [
     name: 'Full Marketing',
     tagline: 'Tech + team. The whole marketing function, off your plate.',
     bestFor: 'Service businesses, agencies, and founders who want marketing handled end-to-end — no separate creative team, no separate ads manager, no juggling vendors.',
-    price: '$2,500',
+    price: '$2,000',
     period: '/ month',
     commitment: '3-month minimum',
     badge: 'Replaces a $5k/mo marketing hire + creative team',
@@ -121,6 +121,7 @@ export const pricingTiers = [
       'Short-form videos edited for Reels, TikTok, and YouTube Shorts',
       'Blog posts written for Google search — 1–2 per month',
       'Paid ads on Facebook and Google — we make the ads, target the right people, send you the report',
+      '4–6 creative deliverables per week (social posts, reels, graphics, ad creative)',
       'Project management included — you don\'t chase deadlines, I do',
       'Shorter commitment (3 months) — fastest path to handing off the whole thing',
     ],
@@ -498,7 +499,7 @@ export const coreExpertise = [
 // Mirrors the "Service Offer" block in the PDF resume
 export const serviceOffer = {
   title: 'Done-For-You Marketing System',
-  price: '$1,000/mo Core · $1,500/mo Automation Pro · $2,500/mo Full Marketing',
+  price: '$1,000/mo Core · $1,500/mo Automation Pro · $2,000/mo Full Marketing',
   bullets: [
     'Core: GHL CRM + custom Cloudflare site + email automation',
     'Automation Pro: Core + AI lead-gen pipeline + n8n/Make/Zapier workflow builds',

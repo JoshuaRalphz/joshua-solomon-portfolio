@@ -200,7 +200,7 @@ export default function Services() {
             <div className="max-w-3xl mb-12">
               <div className="text-xs uppercase tracking-widest font-bold text-navy mb-3">Content samples · Full Marketing tier</div>
               <h2 className="text-3xl md:text-4xl font-bold text-ink tracking-tight leading-tight">
-                What the $2,500 tier actually ships.
+                What the $2,000 tier actually ships.
               </h2>
               <p className="mt-4 text-body leading-relaxed">
                 {contentSamples.disclosure}
