@@ -221,11 +221,15 @@ job1_bullets = [
     'Configured GoHighLevel sub-accounts per client — automations, business profiles, '
     'dedicated sending domains, email service connections — and managed Cloudflare '
     'DNS across the portfolio.',
-    '<b>Architected and shipped a custom-built internal SaaS platform</b> purpose-curated '
-    'for the agency\'s specific workflow — not a clone or off-the-shelf replacement. '
-    'Stack: Vercel + Vite + Firebase + Anthropic Claude API + GHL API + Canva API + '
-    'Google Sheets API. Currently powers all agency operations including Gmail-to-task '
-    'automation, GHL contact sync, Canva asset triage, and Google Sheets reporting.',
+    '<b>Architected and shipped AGC HUB</b> — a custom internal PWA replacing a '
+    'scattered tool stack (Google Drive, Google Sheets, ClickUp, Trello, PowerPoint, '
+    'GHL, Canva) with one tailored platform for the agency. Unifies client resources '
+    'and content calendars (per-client + cross-client view); powers the full content '
+    'production flow: PMs assign or self-create tasks, team submits finished work, '
+    'review pulls assets and previews via GHL + Canva APIs, then PMs schedule launch '
+    'dates inside the platform. Migrated the legacy multi-client content calendar via '
+    'Google Sheets API. Stack: React + Vite + Firebase + GHL API + Canva API + Google '
+    'Sheets API. In daily production across the agency team.',
     'Designed and shipped monthly email marketing campaigns and lifecycle automations; '
     'reported analytics from email and SMS blasts directly to founder and clients.',
     'Acted as the technical advisor to both clients and the founder — translating '
@@ -269,11 +273,14 @@ story.extend(section_header('SELECTED PROJECTS'))
 
 projects = [
     (
-        'Custom Internal Operations Platform (Arrow Group)',
-        'React + Vite + Firebase + Anthropic Claude API + multiple service APIs. '
-        'Custom-built, purpose-curated for the agency\'s exact workflow. Active in '
-        'production. Includes Gmail-to-task automation, GHL contact sync, Canva asset '
-        'triage, and Google Sheets reporting.',
+        'AGC HUB &mdash; Internal Agency PWA (Arrow Group)',
+        'Custom PWA replacing a patchwork of agency tools (Google Drive, Google Sheets, '
+        'ClickUp, Trello, PowerPoint, GHL, Canva) with one tailored platform. Unifies '
+        'client resources, multi-client content calendar (per-client + cross-client), '
+        'and the full content production workflow: task assignment, team submission, '
+        'asset review via Canva + GHL APIs, and PM scheduling. Legacy content calendar '
+        'migrated via Google Sheets API. Stack: React + Vite + Firebase + GHL API + '
+        'Canva API + Google Sheets API. In daily production.',
     ),
     (
         'n8n + Claude Lead Generation Pipeline (personal)',
