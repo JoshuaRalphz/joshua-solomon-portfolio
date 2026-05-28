@@ -16,7 +16,7 @@ export const profile = {
 };
 
 export const stats = [
-  { value: '2',   label: 'Years shipping marketing systems' },
+  { value: '2+',  label: 'Years shipping marketing systems' },
   { value: '14d', label: 'Average project turnaround' },
   { value: '$1k', label: 'Flat monthly retainer · no agency layers' },
   { value: '24h', label: 'Reply time · email-first · US hours' },
