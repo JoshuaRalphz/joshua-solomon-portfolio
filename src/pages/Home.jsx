@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, Zap, UserCheck, Wrench, Layers, Shield, TrendingUp, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, Zap, UserCheck, Wrench, Layers, Shield, TrendingUp, CheckCircle2, MessageCircle, Send, Rocket, Repeat } from 'lucide-react';
 import PageTransition, { Reveal } from '../components/PageTransition.jsx';
 import LogoMarquee from '../components/LogoMarquee.jsx';
 import PlannerTeaser from '../components/PlannerTeaser.jsx';
@@ -135,6 +135,84 @@ export default function Home() {
                     </div>
                     <h3 className="text-lg font-bold text-ink mb-2">{b.title}</h3>
                     <p className="text-sm text-body leading-relaxed">{b.body}</p>
+                  </div>
+                </Reveal>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ============ HOW IT WORKS ============ */}
+      <section className="py-24 bg-white border-t border-line">
+        <div className="container-x">
+          <Reveal>
+            <div className="text-center max-w-2xl mx-auto mb-16">
+              <div className="text-xs uppercase tracking-widest font-bold text-navy mb-3">How it works</div>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-ink tracking-tight leading-tight">
+                Four steps from message to live system.
+              </h2>
+              <p className="mt-4 text-body leading-relaxed">
+                No long sales process. No three-week proposal cycle. Here's exactly what working with me looks like.
+              </p>
+            </div>
+          </Reveal>
+
+          {/* Vertical timeline — icon left, content right, connecting line through icon column */}
+          <div className="max-w-3xl mx-auto relative">
+            {/* Continuous vertical line down the icon column */}
+            <div className="absolute left-7 md:left-9 top-8 bottom-8 w-0.5 bg-gradient-to-b from-navy/40 via-navy/30 to-navy/10" aria-hidden="true" />
+
+            {[
+              {
+                num: '01',
+                icon: MessageCircle,
+                title: 'Tell me what\'s broken',
+                body: 'Take the 5-question planner (90 seconds, no email needed) or just message me directly. Either way, I see your situation in plain English.',
+              },
+              {
+                num: '02',
+                icon: Send,
+                title: 'Get a scoped reply in hours',
+                body: 'I send back exactly what I\'d build — the systems, the order, the price, the timeline. No "let\'s schedule a call" runaround.',
+              },
+              {
+                num: '03',
+                icon: Rocket,
+                title: 'First month, the system goes live',
+                body: 'You pay the first invoice via secure link. I ship the full build in 14 days — website, CRM, follow-up emails, lead capture, the whole thing working end-to-end.',
+              },
+              {
+                num: '04',
+                icon: Repeat,
+                title: 'I keep it running every month',
+                body: 'New automations, bug fixes, optimizations, monthly newsletters — all included in your retainer. No "that\'s a separate project" surprises.',
+              },
+            ].map((step, i) => {
+              const Icon = step.icon;
+              const isLast = i === 3;
+              return (
+                <Reveal key={step.num} delay={i * 0.1}>
+                  <div className={`relative flex gap-5 md:gap-7 ${isLast ? '' : 'pb-10 md:pb-12'}`}>
+                    {/* Icon column — circle with icon, sits on top of the line */}
+                    <div className="relative flex-shrink-0 z-10">
+                      <div className="w-14 h-14 md:w-[72px] md:h-[72px] rounded-full bg-gradient-to-br from-navy to-navy-dark text-white flex items-center justify-center shadow-lift ring-4 ring-white">
+                        <Icon size={24} strokeWidth={2} />
+                      </div>
+                    </div>
+
+                    {/* Content card */}
+                    <div className="flex-1 pt-1 md:pt-2">
+                      <div className="inline-flex items-center gap-2 text-[10px] uppercase tracking-widest font-extrabold text-navy bg-navy-tint px-2.5 py-1 rounded-full mb-2.5">
+                        Step {step.num}
+                      </div>
+                      <h3 className="text-xl md:text-2xl font-bold text-ink mb-2.5 leading-tight">
+                        {step.title}
+                      </h3>
+                      <p className="text-body leading-relaxed">
+                        {step.body}
+                      </p>
+                    </div>
                   </div>
                 </Reveal>
               );
