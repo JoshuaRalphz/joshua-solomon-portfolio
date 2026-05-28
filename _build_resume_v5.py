@@ -195,14 +195,14 @@ for label, items in expertise:
 story.extend(section_header('EXPERIENCE'))
 
 # Job 1 — Arrow Group
-story.append(job_header('Technical VA &amp; Web Developer', 'Feb 2026 – Present'))
+story.append(job_header('Web Developer &amp; Email Automation Designer', 'Feb 2026 – Present'))
 story.append(Paragraph(
     '<font color="#1E4D8C"><b>Arrow Group Consulting</b></font> &mdash; Michigan, USA  ·  '
     '<i>Part-time ongoing contract</i>',
     company_style,
 ))
 job1_bullets = [
-    'Embedded technical implementer for the founder — owning the systems side of new client '
+    'Technical implementer for the founder — owning the systems side of new client '
     'onboardings end to end.',
     'Built and shipped custom-coded HTML/CSS/JS websites deployed on Cloudflare Pages, plus Wix '
     'Velo extensions where platforms were the better fit.',
@@ -212,8 +212,8 @@ job1_bullets = [
     'setup, often a blocker for agencies.',
     'Built dedicated email-sending infrastructure (separate subdomain, SPF/DKIM/DMARC aligned, '
     'SSL issued, warmup completed to 6,500 emails/day capacity) for radio-station client.',
-    'Designed and shipped monthly newsletter campaigns; set up automated invoicing and '
-    'back-office workflows.',
+    'Designed and shipped monthly email marketing campaigns and lifecycle automations; set up '
+    'automated invoicing and back-office workflows.',
 ]
 for b in job1_bullets:
     story.append(Paragraph(f'• {b}', bullet_style))
@@ -221,10 +221,10 @@ for b in job1_bullets:
 story.append(Spacer(1, 6))
 
 # Job 2 — Doneverse
-story.append(job_header('Virtual Marketing Assistant', 'Sep 2025 – Apr 2026'))
+story.append(job_header('Web Developer &amp; Marketing Systems Implementer', 'Sep 2025 – Apr 2026'))
 story.append(Paragraph(
     '<font color="#1E4D8C"><b>Doneverse</b></font> &mdash; Philippines  ·  '
-    '<i>Marketing VA agency</i>',
+    '<i>Marketing services agency</i>',
     company_style,
 ))
 job2_bullets = [

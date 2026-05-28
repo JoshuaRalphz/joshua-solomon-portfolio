@@ -439,23 +439,23 @@ export const works = [
 
 export const experience = [
   {
-    role: 'Technical VA & Web Developer',
+    role: 'Web Developer & Email Automation Designer',
     company: 'Arrow Group Consulting',
     location: 'Michigan, USA',
     type: 'Part-time ongoing contract',
     dates: 'Feb 2026 — Present',
     bullets: [
-      'Embedded technical implementer for the founder — owning the systems side of new client onboardings end to end.',
+      'Technical implementer for the founder — owning the systems side of new client onboardings end to end.',
       'Built and shipped custom-coded HTML/CSS/JS websites deployed on Cloudflare Pages, plus Wix Velo extensions where platforms were the better fit.',
       'Managed Cloudflare DNS, domain go-lives, and GoHighLevel domain connections across multiple client accounts.',
-      'Designed and shipped monthly email newsletter campaigns; set up invoicing and back-office workflows.',
+      'Designed and shipped monthly email marketing campaigns and lifecycle automations; set up invoicing and back-office workflows.',
     ],
   },
   {
-    role: 'Virtual Marketing Assistant',
+    role: 'Web Developer & Marketing Systems Implementer',
     company: 'Doneverse',
     location: 'Philippines',
-    type: 'Marketing VA agency',
+    type: 'Marketing services agency',
     dates: 'Sep 2025 — Apr 2026',
     bullets: [
       'Primary technical implementer across the agency — Wix, WordPress, Squarespace, HubSpot, and Mailchimp client accounts.',
