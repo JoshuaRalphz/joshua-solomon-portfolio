@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Check, Star, Globe, Database, Workflow, Bot, Image as ImageIcon, Film, ExternalLink, Sparkles, Play } from 'lucide-react';
+import { ArrowRight, Check, Star, Globe, Database, Workflow, Bot, Image as ImageIcon, Film, ExternalLink, Sparkles } from 'lucide-react';
 import PageTransition, { Reveal } from '../components/PageTransition.jsx';
-import { services, pricingTiers, contentSamples, leadGenDemo } from '../data/content.js';
+import { services, pricingTiers, contentSamples } from '../data/content.js';
 import LazyYouTube from '../components/LazyYouTube.jsx';
 
 // Icon per service id — keeps the visual consistent with the rest of the site
@@ -270,94 +270,6 @@ export default function Services() {
                 .map((v) => (
                   <LazyYouTube key={v.id} id={v.id} label={v.label} vertical={true} />
                 ))}
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* LEAD-GEN SYSTEM DEMO — proof for the Automation Pro tier */}
-      <section className="py-20 bg-gradient-to-b from-white via-navy-tint/30 to-white border-t border-line">
-        <div className="container-x">
-          <Reveal>
-            <div className="max-w-3xl mx-auto text-center mb-10">
-              <div className="text-xs uppercase tracking-widest font-bold text-navy mb-3">How my lead-gen system works</div>
-              <h2 className="text-3xl md:text-4xl font-bold text-ink tracking-tight leading-tight">
-                {leadGenDemo.title}
-              </h2>
-              <p className="mt-4 text-body leading-relaxed">
-                {leadGenDemo.description}
-              </p>
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.1}>
-            <div className="max-w-3xl mx-auto">
-              {leadGenDemo.videoId ? (
-                <LazyYouTube id={leadGenDemo.videoId} label="Lead-gen system demo" vertical={false} />
-              ) : (
-                /* Stand-in thumbnail — branded, looks like a paused player */
-                <Link
-                  to="/plan"
-                  aria-label="See Automation Pro pricing"
-                  className="group relative block w-full aspect-video rounded-2xl overflow-hidden shadow-lift hover:shadow-2xl transition-shadow"
-                >
-                  {/* Background — navy gradient with subtle workflow texture */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-navy-dark via-navy to-ink" />
-                  <div
-                    className="absolute inset-0 opacity-20"
-                    style={{
-                      backgroundImage:
-                        'radial-gradient(circle at 20% 30%, rgba(251,191,36,0.4) 0%, transparent 30%), radial-gradient(circle at 80% 70%, rgba(16,185,129,0.35) 0%, transparent 35%)',
-                    }}
-                  />
-                  {/* Abstract pipeline visual — 3 dots connected by lines */}
-                  <div className="absolute inset-0 flex items-center justify-around px-12 opacity-30">
-                    {[0, 1, 2].map((i) => (
-                      <div key={i} className="flex flex-col items-center gap-2">
-                        <div className="w-3 h-3 rounded-full bg-gold" />
-                        {i < 2 && <div className="absolute h-px w-1/4 bg-white/40" style={{ left: `${22 + i * 28}%`, top: '50%' }} />}
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Top-left label */}
-                  <div className="absolute top-5 left-5 flex items-center gap-2 text-[10px] uppercase tracking-widest font-bold text-gold">
-                    <span className="w-1.5 h-1.5 rounded-full bg-gold animate-slow-pulse" />
-                    Live demo · 90 seconds
-                  </div>
-
-                  {/* Centered play button */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-white shadow-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <Play size={36} className="text-navy ml-2" fill="currentColor" />
-                    </div>
-                  </div>
-
-                  {/* Bottom caption */}
-                  <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-ink/85 to-transparent">
-                    <div className="text-white font-bold text-lg md:text-xl leading-tight">
-                      The n8n lead-gen pipeline I run on myself
-                    </div>
-                    <div className="text-white/75 text-sm mt-1.5">
-                      Scrape → enrich → personalize with AI → queue drafts in your inbox
-                    </div>
-                  </div>
-                </Link>
-              )}
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.2}>
-            <div className="max-w-2xl mx-auto mt-10 text-center">
-              <p className="text-body leading-relaxed mb-5">
-                I'll build this for you in 14 days. AI-personalized outreach, multi-source lead scraping, and CRM integration — all running on your stack.
-              </p>
-              <Link
-                to="/plan"
-                className="inline-flex items-center gap-2 bg-navy hover:bg-navy-dark text-white font-bold px-6 py-3 rounded-lg shadow-soft hover:shadow-lift transition-all"
-              >
-                See Automation Pro pricing <ArrowRight size={16} />
-              </Link>
             </div>
           </Reveal>
         </div>
