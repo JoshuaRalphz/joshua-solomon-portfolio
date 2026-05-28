@@ -5,7 +5,7 @@
 I build the marketing systems agencies and service businesses actually run on — custom-coded websites on Cloudflare Pages, GoHighLevel CRM builds with A2P 10DLC SMS compliance, dedicated email-sending infrastructure (SPF/DKIM/DMARC, warmup), Google Apps Script back-office automation, and AI-augmented workflows using Claude + OpenAI APIs in n8n and Make.com.
 
 ## Contact
-- Email: solomonjoshua101602@gmail.com
+- Email: hi@solomonjoshua.com
 - WhatsApp: +63 961 556 2117
 - LinkedIn: https://www.linkedin.com/in/joshua-ralph-adrian-solomon-1a0745347/
 - GitHub: https://github.com/JoshuaRalphz

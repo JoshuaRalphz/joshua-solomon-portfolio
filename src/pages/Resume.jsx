@@ -17,10 +17,10 @@ export default function Resume() {
                 <h1 className="text-4xl md:text-5xl font-extrabold text-ink tracking-tight">
                   Joshua Ralph Adrian Solomon
                 </h1>
-                <div className="mt-2 text-lg text-body font-medium">{profile.role} | {profile.subtitle}</div>
+                <div className="mt-2 text-lg text-body font-medium">Implementation Specialist — CRM, Web &amp; Marketing Systems</div>
                 <div className="mt-1.5 inline-flex items-center gap-2 text-sm font-semibold text-navy">
                   <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald" />
-                  Open to Freelance Retainers &amp; Full-Time Remote Roles
+                  Open to Full-Time Remote, Contract, or Fractional Retainer Engagements
                 </div>
               </div>
               <a href="/Joshua_Solomon_Resume_v6.pdf" download className="btn-ghost">
@@ -44,11 +44,12 @@ export default function Resume() {
             <div className="bg-navy-tint border border-navy/15 rounded-2xl p-7 md:p-8">
               <h2 className="text-xs uppercase tracking-widest font-bold text-navy mb-3">Summary</h2>
               <p className="text-body leading-relaxed text-base">
-                Marketing systems and automation specialist who builds the technical backbone agencies
-                and service businesses actually run on. Custom-coded websites on Cloudflare, GoHighLevel CRM
-                builds, Zapier, ClickUp — turning sales pipelines, lead-routing logic, and email workflows
-                into automations that survive a busy week. Currently embedded with a US marketing agency;
-                open to senior freelance retainers and remote employment.
+                Implementation specialist with 2+ years of agency experience configuring GoHighLevel CRMs,
+                building custom-coded sites on Cloudflare Pages, and shipping marketing automation systems
+                across Mailchimp, Kajabi, HubSpot, and n8n. Recently architected an internal SaaS platform
+                (Vite + Firebase + multiple API integrations) replacing ClickUp for a US-based consultancy.
+                Strong fit for roles spanning marketing technology implementation, technical client onboarding,
+                or full-stack systems work for early-stage and SMB companies.
               </p>
             </div>
           </Reveal>

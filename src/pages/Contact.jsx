@@ -147,7 +147,7 @@ export default function Contact() {
                   {submitStatus === 'error' && (
                     <div className="flex items-start gap-2 p-3 bg-red-50 border border-red-200 rounded-lg text-sm text-red-700">
                       <AlertCircle size={16} className="flex-shrink-0 mt-0.5" />
-                      <span>Something broke. Email me directly: <a href="mailto:solomonjoshua101602@gmail.com" className="underline font-semibold">{profile.email}</a></span>
+                      <span>Something broke. Email me directly: <a href={`mailto:${profile.email}`} className="underline font-semibold">{profile.email}</a></span>
                     </div>
                   )}
                 </form>

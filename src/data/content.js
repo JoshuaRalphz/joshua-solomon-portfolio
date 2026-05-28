@@ -6,7 +6,7 @@ export const profile = {
   subtitle: 'Marketing Systems Builder',
   location: 'Olongapo City, PH · Working US hours',
   available: 'Available for new retainers',
-  email: 'solomonjoshua101602@gmail.com',
+  email: 'hi@solomonjoshua.com',
   whatsapp: '+63 961 556 2117',
   whatsappLink: 'https://wa.me/639615562117',
   github: 'https://github.com/JoshuaRalphz',
@@ -16,7 +16,7 @@ export const profile = {
 };
 
 export const stats = [
-  { value: '3+',  label: 'Years shipping marketing systems' },
+  { value: '2',   label: 'Years shipping marketing systems' },
   { value: '14d', label: 'Average project turnaround' },
   { value: '$1k', label: 'Flat monthly retainer · no agency layers' },
   { value: '24h', label: 'Reply time · email-first · US hours' },
@@ -441,29 +441,45 @@ export const works = [
 
 export const experience = [
   {
-    role: 'Web Developer & Email Automation Designer',
+    role: 'Implementation Specialist — CRM, Web & Marketing Systems',
     company: 'Arrow Group Consulting',
     location: 'Michigan, USA',
     type: 'Part-time ongoing contract',
     dates: 'Feb 2026 — Present',
     bullets: [
-      'Technical implementer for the founder — owning the systems side of new client onboardings end to end.',
-      'Built and shipped custom-coded HTML/CSS/JS websites deployed on Cloudflare Pages, plus Wix Velo extensions where platforms were the better fit.',
-      'Managed Cloudflare DNS, domain go-lives, and GoHighLevel domain connections across multiple client accounts.',
-      'Designed and shipped monthly email marketing campaigns and lifecycle automations; set up invoicing and back-office workflows.',
+      'Technical lead for client onboarding — owning the full implementation stack (GoHighLevel configuration, custom-coded sites, domain go-lives, A2P 10DLC compliance) end-to-end across multiple accounts.',
+      'Built and shipped custom-coded HTML/CSS/JS websites deployed on Cloudflare Pages, plus Wix Velo extensions for platforms requiring client self-edit access.',
+      'Configured GoHighLevel sub-accounts per client — automations, business profiles, dedicated sending domains, email service connections — and managed Cloudflare DNS across the portfolio.',
+      'Architected and shipped a custom-built internal SaaS platform purpose-curated for the agency\'s specific workflow — not a clone or off-the-shelf replacement. Stack: Vercel + Vite + Firebase + Anthropic Claude API + GHL API + Canva API + Google Sheets API. Currently powers all agency operations including Gmail-to-task automation, GHL contact sync, Canva asset triage, and Google Sheets reporting.',
+      'Designed and shipped monthly email marketing campaigns and lifecycle automations; reported analytics from email and SMS blasts directly to founder and clients.',
+      'Acted as the technical advisor to both clients and the founder — translating implementation details into plain language during onboarding calls and answering live technical questions.',
+      'Coordinated with the project manager and social media manager to keep onboarding timelines on track; handled invoicing and back-office workflows.',
     ],
   },
   {
-    role: 'Virtual Marketing Assistant',
+    role: 'Marketing Implementation Specialist',
     company: 'Doneverse',
     location: 'Philippines',
     type: 'Marketing services agency',
     dates: 'Sep 2025 — Apr 2026',
     bullets: [
-      'Primary technical implementer across the agency — Wix, WordPress, Squarespace, HubSpot, and Mailchimp client accounts.',
-      'Built advanced GoHighLevel automations: CRM pipelines, lead-routing rules, booking funnels, and sales sequences.',
-      'Designed and rolled out the agency\'s full ClickUp project management system from scratch — including Gmail-to-task automations that eliminated manual triage.',
-      'Delivered Wix Studio builds and integrated Square payment processing into client checkout and intake flows.',
+      'Primary technical implementer across the agency — built and configured client accounts on Wix Studio, Kajabi, Mailchimp, and HubSpot.',
+      'Delivered Wix Studio sites with integrated Square payment processing for client checkout and intake flows.',
+      'Configured Kajabi course platforms and shipped Mailchimp/HubSpot email marketing systems for SMB clients.',
+      'Ran LinkedIn outreach campaigns on behalf of clients — connection note writing, multi-touch follow-up sequences, lead nurturing through to booked discovery calls.',
+      'Owned client onboarding for new platform setups, including domain configuration and email deliverability setup.',
+    ],
+  },
+  {
+    role: 'Freelance CRM & Automation Specialist',
+    company: 'Self-employed',
+    location: 'Olongapo City, Philippines (remote)',
+    type: 'Independent practice',
+    dates: '2024 — Present',
+    bullets: [
+      'Build and operate marketing systems for early-stage founders and SMB owners — GoHighLevel CRM builds, custom Cloudflare Pages sites, email automation pipelines, and n8n-based lead generation systems.',
+      'Operate a self-hosted n8n + Anthropic Claude API lead generation pipeline that pulls jobs from 6 RSS sources, enriches via Hunter/Snov/Apollo, and drafts personalized outreach at scale.',
+      'Run own portfolio at solomonjoshua.com (React + Vite + Cloudflare Pages, GHL webhook integration, custom planner quiz).',
     ],
   },
 ];
@@ -471,28 +487,28 @@ export const experience = [
 // Mirrors the "Core Expertise" block in the PDF resume
 export const coreExpertise = [
   {
-    label: 'CRM, SMS & Automation',
-    items: 'GoHighLevel (GHL) full builds, CRM pipelines, lead routing, booking automations, GHL A2P 10DLC SMS compliance, Zapier, ClickUp',
+    label: 'CRM & Marketing Platforms',
+    items: 'GoHighLevel (GHL), HubSpot, Mailchimp, Kajabi, ActiveCampaign',
   },
   {
-    label: 'Email & Lifecycle',
-    items: 'Mailchimp, HubSpot, GHL Email, newsletter systems, multi-step nurture sequences',
+    label: 'Web Development',
+    items: 'HTML5, CSS3, JavaScript, React, Vite, Tailwind CSS, Wix Studio + Velo, WordPress, Squarespace',
   },
   {
-    label: 'Websites, Hosting & SEO',
-    items: 'Custom-coded sites (HTML / CSS / JS) deployed on Cloudflare Pages; Wix Classic / Studio / Velo, WordPress, Squarespace as platform alternatives. Ongoing on-page and technical SEO + Google Search Console.',
+    label: 'Hosting & DevOps',
+    items: 'Cloudflare Pages, Cloudflare DNS, Vercel, Firebase, GitHub Actions',
   },
   {
-    label: 'Technical & Integrations',
-    items: 'Cloudflare DNS & Pages, domain management, GHL domain connect, Square + Stripe + GHL invoicing flows, automated billing & receipt workflows, Google Apps Script back-office logic, Gmail-to-task pipelines, DistroKid distribution',
+    label: 'Workflow Automation',
+    items: 'n8n, Make.com, Zapier, Anthropic Claude API, Google Sheets API, Canva API, GHL API',
   },
   {
-    label: 'AI & LLM Integration',
-    items: 'Building AI-augmented automation workflows — Claude + OpenAI API integration in n8n & Make for outreach personalization, content drafting, and lead-scoring. LLM-augmented marketing automation as a core differentiator vs no-AI agency builds.',
+    label: 'Compliance & Integrations',
+    items: 'A2P 10DLC SMS registration, Square Payment integration, dedicated sending domain configuration (SPF/DKIM/DMARC)',
   },
   {
-    label: 'Lead Generation Systems',
-    items: 'Multi-source lead-gen pipelines on self-hosted n8n — scraping job boards (LinkedIn, Wellfound, WWR, Remote OK), multi-provider email enrichment (Hunter + Snov + Apollo fallback chain), Claude-API personalized outreach drafting, queued for human review. The same system I run on my own outbound — 25+ qualified prospects per week.',
+    label: 'Languages',
+    items: 'English (fluent, professional), Filipino (native)',
   },
 ];
 

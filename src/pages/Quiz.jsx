@@ -488,7 +488,7 @@ export default function Quiz() {
                 </div>
 
                 <div className="text-sm text-muted text-center">
-                  Not ready to book? Email me directly: <a href="mailto:solomonjoshua101602@gmail.com" className="text-navy font-semibold hover:underline">solomonjoshua101602@gmail.com</a>
+                  Not ready to book? Email me directly: <a href="mailto:hi@solomonjoshua.com" className="text-navy font-semibold hover:underline">hi@solomonjoshua.com</a>
                 </div>
               </motion.div>
             )}

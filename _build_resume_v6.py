@@ -40,10 +40,10 @@ from reportlab.platypus import (
     KeepTogether,
 )
 
-# ── color palette ─────────────────────────────────────────────────────────
-NAVY = HexColor('#1E4D8C')
-BODY = HexColor('#334155')
-MUTED = HexColor('#64748B')
+# ── color palette ─── exact match to solomonjoshua.com brand ──────────────
+NAVY = HexColor('#0F4C81')   # site primary navy
+BODY = HexColor('#334155')   # site body text
+MUTED = HexColor('#64748B')  # site muted text
 
 PRIMARY_OUTPUT = "C:/Users/joshu/Desktop/GROWTH/portfolio_v5/public/Joshua_Solomon_Resume_v6.pdf"
 DESKTOP_COPY = "C:/Users/joshu/Desktop/GROWTH/Joshua_Solomon_Resume_v6.pdf"
@@ -141,13 +141,13 @@ story.append(Paragraph(
 story.append(Paragraph(
     'Olongapo City, Philippines  &middot;  Open to remote (US business hours)  &middot;  '
     '+63 961 556 2117  &middot;  '
-    '<a href="mailto:hi@solomonjoshua.com" color="#1E4D8C">hi@solomonjoshua.com</a>',
+    '<a href="mailto:hi@solomonjoshua.com" color="#0F4C81">hi@solomonjoshua.com</a>',
     contact_style,
 ))
 story.append(Paragraph(
-    '<a href="https://solomonjoshua.com" color="#1E4D8C"><b>solomonjoshua.com</b></a>  &middot;  '
-    '<a href="https://www.linkedin.com/in/joshua-solomon" color="#1E4D8C">LinkedIn</a>  &middot;  '
-    '<a href="https://github.com/JoshuaRalphz" color="#1E4D8C">GitHub</a>',
+    '<a href="https://solomonjoshua.com" color="#0F4C81"><b>solomonjoshua.com</b></a>  &middot;  '
+    '<a href="https://www.linkedin.com/in/joshua-solomon" color="#0F4C81">LinkedIn</a>  &middot;  '
+    '<a href="https://github.com/JoshuaRalphz" color="#0F4C81">GitHub</a>',
     contact_style,
 ))
 story.append(Paragraph(
@@ -208,7 +208,7 @@ story.append(job_header(
     'Feb 2026 &ndash; Present',
 ))
 story.append(Paragraph(
-    '<font color="#1E4D8C"><b>Arrow Group Consulting</b></font> &mdash; Michigan, USA  &middot;  '
+    '<font color="#0F4C81"><b>Arrow Group Consulting</b></font> &mdash; Michigan, USA  &middot;  '
     '<i>Part-time ongoing contract</i>',
     company_style,
 ))
@@ -245,7 +245,7 @@ story.append(job_header(
     'Sep 2025 &ndash; Apr 2026',
 ))
 story.append(Paragraph(
-    '<font color="#1E4D8C"><b>Doneverse</b></font> &mdash; Philippines  &middot;  '
+    '<font color="#0F4C81"><b>Doneverse</b></font> &mdash; Philippines  &middot;  '
     '<i>Marketing services agency</i>',
     company_style,
 ))
@@ -272,7 +272,7 @@ story.append(job_header(
     '2024 &ndash; Present',
 ))
 story.append(Paragraph(
-    '<font color="#1E4D8C"><b>Self-employed</b></font> &mdash; Olongapo City, Philippines (remote)  &middot;  '
+    '<font color="#0F4C81"><b>Self-employed</b></font> &mdash; Olongapo City, Philippines (remote)  &middot;  '
     '<i>Independent practice</i>',
     company_style,
 ))
@@ -284,7 +284,7 @@ job3_bullets = [
     'pulls jobs from 6 RSS sources, enriches via Hunter/Snov/Apollo, and drafts '
     'personalized outreach at scale.',
     'Run own portfolio at '
-    '<a href="https://solomonjoshua.com" color="#1E4D8C"><b>solomonjoshua.com</b></a> '
+    '<a href="https://solomonjoshua.com" color="#0F4C81"><b>solomonjoshua.com</b></a> '
     '(React + Vite + Cloudflare Pages, GHL webhook integration, custom planner quiz).',
 ]
 for b in job3_bullets:
