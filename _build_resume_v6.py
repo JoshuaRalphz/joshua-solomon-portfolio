@@ -205,7 +205,7 @@ story.extend(section_header('PROFESSIONAL EXPERIENCE'))
 # Job 1 — Arrow Group (current)
 story.append(job_header(
     'Implementation Specialist &mdash; CRM, Web &amp; Marketing Systems',
-    'Sep 2025 &ndash; Present',
+    'Feb 2026 &ndash; Present',
 ))
 story.append(Paragraph(
     '<font color="#0F4C81"><b>Arrow Group Consulting</b></font> &mdash; Michigan, USA  &middot;  '
@@ -241,12 +241,12 @@ story.append(Spacer(1, 6))
 
 # Job 2 — Doneverse
 story.append(job_header(
-    'Marketing Implementation Specialist',
-    'Sep 2025 &ndash; Present',
+    'Virtual Marketing Assistant',
+    'Sep 2025 &ndash; Feb 2026',
 ))
 story.append(Paragraph(
     '<font color="#0F4C81"><b>Doneverse</b></font> &mdash; Philippines  &middot;  '
-    '<i>Marketing services agency</i>',
+    '<i>VMA agency that recruits, trains, and matches Virtual Marketing Assistants to US founders</i>',
     company_style,
 ))
 job2_bullets = [

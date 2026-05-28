@@ -445,7 +445,7 @@ export const experience = [
     company: 'Arrow Group Consulting',
     location: 'Michigan, USA',
     type: 'Part-time ongoing contract',
-    dates: 'Sep 2025 — Present',
+    dates: 'Feb 2026 — Present',
     bullets: [
       'Technical lead for client onboarding — owning the full implementation stack (GoHighLevel configuration, custom-coded sites, domain go-lives, A2P 10DLC compliance) end-to-end across multiple accounts.',
       'Built and shipped custom-coded HTML/CSS/JS websites deployed on Cloudflare Pages, plus Wix Velo extensions for platforms requiring client self-edit access.',
@@ -457,11 +457,11 @@ export const experience = [
     ],
   },
   {
-    role: 'Marketing Implementation Specialist',
+    role: 'Virtual Marketing Assistant',
     company: 'Doneverse',
     location: 'Philippines',
-    type: 'Marketing services agency',
-    dates: 'Sep 2025 — Present',
+    type: 'VMA agency — recruits, trains, and matches Virtual Marketing Assistants to US founders',
+    dates: 'Sep 2025 — Feb 2026',
     bullets: [
       'Primary technical implementer across the agency — built and configured client accounts on Wix Studio, Kajabi, Mailchimp, and HubSpot.',
       'Delivered Wix Studio sites with integrated Square payment processing for client checkout and intake flows.',
