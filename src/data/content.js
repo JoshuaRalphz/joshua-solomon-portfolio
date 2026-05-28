@@ -274,7 +274,7 @@ export const boundaries = {
 // Lead-gen demo video shown on Services page below the lead-gen service card.
 // Set videoId to a YouTube video ID once recorded; section auto-shows.
 export const leadGenDemo = {
-  videoId: null, // TODO: paste YouTube video ID once recorded
+  videoId: '6mhNTswiVmk',
   title: 'Watch the pipeline I built for myself.',
   description: "Same system I'll build for you in Automation Pro. No outsourcing, no theory — this runs my own outreach. 25 leads/week, AI-personalized, queued for review.",
 };
