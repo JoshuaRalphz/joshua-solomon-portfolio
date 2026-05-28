@@ -1,4 +1,13 @@
 """
+⚠️  DEPRECATED — DO NOT RUN  ⚠️
+This script previously generated Joshua_Solomon_Resume_v5.pdf, but Josh
+replaced the PDF with a manually authored version (≈96KB) on 2026-05-28.
+Running this script will overwrite the manual PDF with the auto-generated
+older content. Kept here only for reference of the original auto-gen logic.
+If you need to regenerate from scratch, update content first, then save the
+manual version directly into public/ rather than running this script.
+─────────────────────────────────────────────────────────────────────────────
+
 Generates Joshua_Solomon_Resume_v5.pdf — hybrid employment-focused resume.
 
 Visual goal: match v4's elegant typography (letter-spaced section headers,
@@ -10,6 +19,10 @@ Keeps: Summary, Core Expertise (5 categories incl. AI), Experience (2 roles
 with updated bullets including A2P win + email infrastructure win + Apps
 Script database). Adds a single italic freelance footer line at bottom.
 """
+
+import sys
+print("DEPRECATED: this script would overwrite the manually-authored resume PDF. Exiting.")
+sys.exit(0)
 
 from reportlab.lib.pagesizes import LETTER
 from reportlab.lib.units import inch
