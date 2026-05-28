@@ -454,7 +454,7 @@ export const experience = [
     ],
   },
   {
-    role: 'Web Developer & Marketing Systems Implementer',
+    role: 'Virtual Marketing Assistant',
     company: 'Doneverse',
     location: 'Philippines',
     type: 'Marketing services agency',
