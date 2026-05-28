@@ -7,20 +7,24 @@ import { PLANNER_SS_KEY } from '../pages/Quiz.jsx';
 /**
  * Floating planner widget — chat-bubble pattern.
  *
- * COLLAPSED:
- *   - Small navy square icon at bottom-right (56px)
- *   - Persistent text chip floats to the left of the icon ("Take the planner →")
- *     so users immediately know what it is, even on mobile (no hover available)
+ * DEFAULT STATE:
+ *   - Desktop (≥ md): EXPANDED by default — form is visible the moment the
+ *     page loads (after a 600ms delay) so visitors see the planner without
+ *     having to click anything.
+ *   - Mobile (< md): COLLAPSED — just the icon + hint chip so it doesn't
+ *     cover content. Tap the icon to open the centered modal.
  *
- * EXPANDED:
- *   - Mobile: centered modal that floats in the middle of the screen with backdrop
- *   - Desktop: floating card anchored bottom-right next to the icon
+ * DISMISSAL:
+ *   - X / click outside / Esc → marks the user as "dismissed" in sessionStorage
+ *   - Once dismissed, stays closed across page navigation for the session
+ *   - Re-clicking the icon clears the dismissal flag and reopens
+ *   - Fresh tab / new session = back to default (open on desktop)
  *
  * Auto-hides on /plan and /contact.
- * Click outside / Esc to close.
  */
 
 const HIDDEN_ROUTES = ['/plan', '/contact'];
+const SS_DISMISSED_KEY = 'planner-cta-dismissed';
 
 const Q1_OPTIONS = [
   { value: 'agency',  label: 'Marketing agency (2-15 people)', hint: 'I need a subcontractor for client builds.' },
@@ -29,28 +33,59 @@ const Q1_OPTIONS = [
   { value: 'other',   label: 'Something else',                  hint: 'Mention it in your message.' },
 ];
 
+// Helpers for the session-level dismissal flag.
+const wasDismissed = () => {
+  if (typeof window === 'undefined') return false;
+  try { return window.sessionStorage.getItem(SS_DISMISSED_KEY) === 'true'; }
+  catch { return false; }
+};
+const markDismissed = () => {
+  try { window.sessionStorage.setItem(SS_DISMISSED_KEY, 'true'); } catch { /* noop */ }
+};
+const clearDismissed = () => {
+  try { window.sessionStorage.removeItem(SS_DISMISSED_KEY); } catch { /* noop */ }
+};
+
+// Default open state: desktop = open by default unless dismissed; mobile = always start closed.
+const getDefaultOpen = () => {
+  if (typeof window === 'undefined') return false;
+  if (wasDismissed()) return false;
+  return window.matchMedia('(min-width: 768px)').matches;
+};
+
 export default function FloatingPlannerCTA() {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const [mounted, setMounted] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(getDefaultOpen);
   const panelRef = useRef(null);
 
+  // Brief delay before showing anything (so we don't flash on first paint)
   useEffect(() => {
     const timer = setTimeout(() => setMounted(true), 600);
     return () => clearTimeout(timer);
   }, []);
 
-  useEffect(() => { setIsOpen(false); }, [pathname]);
+  // On route change, re-evaluate default (open on desktop unless dismissed).
+  useEffect(() => {
+    setIsOpen(getDefaultOpen());
+  }, [pathname]);
 
+  // Click outside + Esc → dismiss
   useEffect(() => {
     if (!isOpen) return;
     const handleClick = (e) => {
       if (panelRef.current && !panelRef.current.contains(e.target)) {
+        markDismissed();
         setIsOpen(false);
       }
     };
-    const handleKey = (e) => { if (e.key === 'Escape') setIsOpen(false); };
+    const handleKey = (e) => {
+      if (e.key === 'Escape') {
+        markDismissed();
+        setIsOpen(false);
+      }
+    };
     document.addEventListener('mousedown', handleClick);
     document.addEventListener('keydown', handleKey);
     return () => {
@@ -72,11 +107,21 @@ export default function FloatingPlannerCTA() {
     navigate('/plan');
   };
 
+  const handleDismiss = () => {
+    markDismissed();
+    setIsOpen(false);
+  };
+
+  const handleReopen = () => {
+    clearDismissed();
+    setIsOpen(true);
+  };
+
   if (!mounted || shouldHide) return null;
 
   return (
     <>
-      {/* ────── COLLAPSED: icon + persistent text hint chip ────── */}
+      {/* ────── COLLAPSED: icon + hint chip ────── */}
       <AnimatePresence>
         {!isOpen && (
           <motion.div
@@ -87,7 +132,7 @@ export default function FloatingPlannerCTA() {
             transition={{ duration: 0.35, ease: [0.34, 1.56, 0.64, 1] }}
             className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-40 flex items-center gap-2.5"
           >
-            {/* Persistent hint chip — always visible so users know what the icon is */}
+            {/* Persistent hint chip */}
             <motion.div
               animate={{ x: [0, -3, 0] }}
               transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
@@ -98,7 +143,6 @@ export default function FloatingPlannerCTA() {
                 <span className="text-[10px] uppercase tracking-widest text-gold font-extrabold">90s</span>
               </span>
               <ArrowRight size={12} strokeWidth={3} className="text-navy" />
-              {/* Arrow notch pointing to the icon */}
               <span
                 aria-hidden="true"
                 className="absolute left-full top-1/2 -translate-y-1/2 w-0 h-0 border-l-[6px] border-l-white border-y-[6px] border-y-transparent"
@@ -112,7 +156,6 @@ export default function FloatingPlannerCTA() {
 
             {/* The icon button */}
             <div className="relative">
-              {/* Pulsing glow rings */}
               <span
                 aria-hidden="true"
                 className="absolute inset-0 rounded-2xl bg-navy/40 blur-xl animate-slow-pulse -z-10"
@@ -125,7 +168,7 @@ export default function FloatingPlannerCTA() {
 
               <button
                 type="button"
-                onClick={() => setIsOpen(true)}
+                onClick={handleReopen}
                 aria-label="Open the planner — 5 questions, about 90 seconds"
                 aria-expanded={isOpen}
                 className="relative flex items-center justify-center w-14 h-14 bg-gradient-to-br from-navy to-navy-dark text-white rounded-2xl shadow-lift hover:shadow-2xl hover:scale-110 hover:from-navy-dark hover:to-ink transition-all border border-navy-dark/40 focus:outline-none focus:ring-4 focus:ring-gold/30"
@@ -143,19 +186,19 @@ export default function FloatingPlannerCTA() {
       <AnimatePresence>
         {isOpen && (
           <>
-            {/* Backdrop (mobile-only — desktop card floats freely) */}
+            {/* Backdrop on mobile only */}
             <motion.div
               key="cta-backdrop"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              onClick={() => setIsOpen(false)}
+              onClick={handleDismiss}
               aria-hidden="true"
               className="md:hidden fixed inset-0 bg-ink/50 backdrop-blur-sm z-40"
             />
 
-            {/* The form panel — CENTERED on mobile (modal), bottom-right on desktop */}
+            {/* The form panel — CENTERED on mobile, bottom-right on desktop */}
             <motion.div
               key="cta-panel"
               ref={panelRef}
@@ -164,9 +207,7 @@ export default function FloatingPlannerCTA() {
               exit={{ opacity: 0, y: 24, scale: 0.96 }}
               transition={{ duration: 0.35, ease: [0.2, 0.8, 0.2, 1] }}
               className="fixed z-50 bg-white rounded-2xl shadow-2xl border border-line overflow-hidden
-                         /* Mobile: centered modal in the middle of the screen */
                          left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] max-w-[380px]
-                         /* Desktop: floating card anchored bottom-right */
                          md:left-auto md:top-auto md:translate-x-0 md:translate-y-0 md:bottom-8 md:right-8 md:w-[380px]"
               role="dialog"
               aria-label="5-question project planner"
@@ -184,7 +225,7 @@ export default function FloatingPlannerCTA() {
                 </div>
                 <button
                   type="button"
-                  onClick={() => setIsOpen(false)}
+                  onClick={handleDismiss}
                   aria-label="Close planner"
                   className="w-8 h-8 rounded-lg bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors focus:outline-none focus:ring-2 focus:ring-gold/40"
                 >
