@@ -141,7 +141,7 @@ story.append(Paragraph(
 story.append(Paragraph(
     'Olongapo City, Philippines  &middot;  Open to remote (US business hours)  &middot;  '
     '+63 961 556 2117  &middot;  '
-    '<a href="mailto:hi@solomonjoshua.com" color="#0F4C81">hi@solomonjoshua.com</a>',
+    '<a href="mailto:solomonjoshua101602@gmail.com" color="#0F4C81">solomonjoshua101602@gmail.com</a>',
     contact_style,
 ))
 story.append(Paragraph(
@@ -205,7 +205,7 @@ story.extend(section_header('PROFESSIONAL EXPERIENCE'))
 # Job 1 — Arrow Group (current)
 story.append(job_header(
     'Implementation Specialist &mdash; CRM, Web &amp; Marketing Systems',
-    'Feb 2026 &ndash; Present',
+    'Sep 2025 &ndash; Present',
 ))
 story.append(Paragraph(
     '<font color="#0F4C81"><b>Arrow Group Consulting</b></font> &mdash; Michigan, USA  &middot;  '
@@ -242,7 +242,7 @@ story.append(Spacer(1, 6))
 # Job 2 — Doneverse
 story.append(job_header(
     'Marketing Implementation Specialist',
-    'Sep 2025 &ndash; Apr 2026',
+    'Sep 2025 &ndash; Present',
 ))
 story.append(Paragraph(
     '<font color="#0F4C81"><b>Doneverse</b></font> &mdash; Philippines  &middot;  '
@@ -262,32 +262,6 @@ job2_bullets = [
     'and email deliverability setup.',
 ]
 for b in job2_bullets:
-    story.append(Paragraph(f'&bull; {b}', bullet_style))
-
-story.append(Spacer(1, 6))
-
-# Job 3 — Freelance (NEW in v6)
-story.append(job_header(
-    'Freelance CRM &amp; Automation Specialist',
-    '2024 &ndash; Present',
-))
-story.append(Paragraph(
-    '<font color="#0F4C81"><b>Self-employed</b></font> &mdash; Olongapo City, Philippines (remote)  &middot;  '
-    '<i>Independent practice</i>',
-    company_style,
-))
-job3_bullets = [
-    'Build and operate marketing systems for early-stage founders and SMB owners — '
-    'GoHighLevel CRM builds, custom Cloudflare Pages sites, email automation '
-    'pipelines, and n8n-based lead generation systems.',
-    'Operate a self-hosted n8n + Anthropic Claude API lead generation pipeline that '
-    'pulls jobs from 6 RSS sources, enriches via Hunter/Snov/Apollo, and drafts '
-    'personalized outreach at scale.',
-    'Run own portfolio at '
-    '<a href="https://solomonjoshua.com" color="#0F4C81"><b>solomonjoshua.com</b></a> '
-    '(React + Vite + Cloudflare Pages, GHL webhook integration, custom planner quiz).',
-]
-for b in job3_bullets:
     story.append(Paragraph(f'&bull; {b}', bullet_style))
 
 # ───── SELECTED PROJECTS (NEW in v6) ─────
@@ -319,13 +293,37 @@ for title, desc in projects:
         Paragraph(desc, body_style),
     ]))
 
-# ───── EDUCATION / CONTINUOUS LEARNING ─────
-story.extend(section_header('EDUCATION / CONTINUOUS LEARNING'))
+# ───── EDUCATION ─────
+story.extend(section_header('EDUCATION'))
+
+# Degree 1 — Gordon College (BS Computer Science)
+story.append(job_header(
+    'Bachelor of Science in Computer Science',
+    '2021 &ndash; 2025',
+))
 story.append(Paragraph(
-    'Self-taught full-stack development and marketing operations. Continuous learning '
-    'across CRM administration, no-code/low-code tooling, AI-assisted development '
-    '(Claude Code, Cursor), and email deliverability best practices.',
-    body_style,
+    '<font color="#0F4C81"><b>Gordon College</b></font> &mdash; Olongapo City, Philippines',
+    company_style,
+))
+edu1_bullets = [
+    '<i>Thesis:</i> "DevPath: Bridging Students to Learning Opportunities through '
+    'On-Demand Webinars and Certifications."',
+    '<i>Published at IRCITE 2025</i> &mdash; Bulacan State University.',
+]
+for b in edu1_bullets:
+    story.append(Paragraph(f'&bull; {b}', bullet_style))
+
+story.append(Spacer(1, 6))
+
+# Degree 2 — Columban College (Senior High School)
+story.append(job_header(
+    'Senior High School &mdash; TVL ICT Track',
+    '2019 &ndash; 2021',
+))
+story.append(Paragraph(
+    '<font color="#0F4C81"><b>Columban College Inc.</b></font> &mdash; Olongapo City, Philippines  &middot;  '
+    '<i>Graduated With High Honors</i>',
+    company_style,
 ))
 
 # ───── AVAILABILITY ─────
