@@ -216,7 +216,6 @@ export const services = [
       'See live samples in the gallery below this section',
     ],
     outcome: 'Your social media stays alive without you posting it. No hiring 3 freelancers separately.',
-    featured: true,
   },
   {
     id: 'lead-gen',
@@ -232,7 +231,6 @@ export const services = [
       'Live demo before we build yours — see the exact system running on my business',
     ],
     outcome: '25+ personalized prospect drafts in your inbox every week, ready to send.',
-    featured: true,
   },
   {
     id: 'workflow-automation',
@@ -248,7 +246,6 @@ export const services = [
       'Loom walkthrough of every workflow so you can hand off to anyone',
     ],
     outcome: 'The repetitive work happens without you. Hours back per week.',
-    featured: true,
   },
 ];
 
@@ -350,7 +347,6 @@ export const tools = [
 export const works = [
   {
     id: 'bishop',
-    featured: true,
     title: 'Bishop Roofing & Exteriors — complete marketing system',
     tag: '★ Featured · Live demo',
     summary: 'A fictional Texas roofing client, real working build. A 6-page website, a CRM that captures every lead, two automated email flows that follow up the moment someone shows interest, and an interactive demo that walks you through the backend — so you can see exactly how the system works before we even talk.',
