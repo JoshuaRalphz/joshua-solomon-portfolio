@@ -158,7 +158,7 @@ story.append(Paragraph(
 # ───── PROFESSIONAL SUMMARY ─────
 story.extend(section_header('PROFESSIONAL SUMMARY'))
 story.append(Paragraph(
-    'Implementation specialist with 2+ years of agency experience configuring GoHighLevel CRMs, '
+    'Implementation specialist with hands-on agency experience configuring GoHighLevel CRMs, '
     'building custom-coded sites on Cloudflare Pages, and shipping marketing automation systems '
     'across Mailchimp, Kajabi, HubSpot, and n8n. Recently built AGC HUB &mdash; a custom internal '
     'PWA (React + Vite + Firebase + multiple service APIs) replacing a scattered tool stack '

@@ -44,7 +44,7 @@ export default function Resume() {
             <div className="bg-navy-tint border border-navy/15 rounded-2xl p-7 md:p-8">
               <h2 className="text-xs uppercase tracking-widest font-bold text-navy mb-3">Summary</h2>
               <p className="text-body leading-relaxed text-base">
-                Implementation specialist with 2+ years of agency experience configuring GoHighLevel CRMs,
+                Implementation specialist with hands-on agency experience configuring GoHighLevel CRMs,
                 building custom-coded sites on Cloudflare Pages, and shipping marketing automation systems
                 across Mailchimp, Kajabi, HubSpot, and n8n. Recently built <strong>AGC HUB</strong> — a custom
                 internal PWA (React + Vite + Firebase + multiple service APIs) replacing a scattered tool stack

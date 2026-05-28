@@ -16,7 +16,6 @@ export const profile = {
 };
 
 export const stats = [
-  { value: '2+',  label: 'Years shipping marketing systems' },
   { value: '14d', label: 'Average project turnaround' },
   { value: '$1k', label: 'Flat monthly retainer · no agency layers' },
   { value: '24h', label: 'Reply time · email-first · US hours' },
@@ -96,7 +95,7 @@ export const pricingTiers = [
       'Everything in Core, plus:',
       'Automation that handles your repetitive weekly tasks',
       'AI tools that draft emails, score leads, summarize data for you',
-      'Lead-gen system that finds 25+ prospects every week (same one I use)',
+      'Lead-gen system designed to deliver 25+ qualified prospects every week — fully automated, queued for review',
       'Verified email finder that gets the right contact every time',
       'Tools that talk to each other — no more copying data between platforms',
       'A simple dashboard showing how your business is performing',
@@ -221,7 +220,7 @@ export const services = [
   {
     id: 'lead-gen',
     title: 'Lead Generation Systems',
-    summary: 'A system that finds people who might want to buy from you — every single week — and writes the first outreach message for you. You just review and hit send. This is the same system I run on my own business — 25 new prospects/week.',
+    summary: 'A system that finds people who might want to buy from you — every single week — and writes the first outreach message for you. You just review and hit send. Designed to deliver 25+ qualified prospects per week, fully automated.',
     process: 'The system runs in the background while you sleep. It scans job boards and company sites for businesses that match your ideal customer. It finds the right person\'s real email. It writes a personal first line about THEIR business using AI. Then it drops a finished draft into your Gmail. You read it (5 seconds), edit if you want, hit send.',
     bullets: [
       'Scans LinkedIn, Wellfound, and remote job boards for prospects that match you',
@@ -229,9 +228,9 @@ export const services = [
       'AI writes a personal first line about EACH prospect — no generic templates',
       'Every lead lands in your CRM automatically with full context',
       'Email drafts sit in your Gmail — you review in 5 seconds, never auto-send',
-      'Live demo before we build yours — see the exact system running on my business',
+      'Live demo before we build yours — see the architecture walk-through',
     ],
-    outcome: '25+ personalized prospect drafts in your inbox every week, ready to send.',
+    outcome: 'Designed to deliver 25+ personalized prospect drafts in your inbox every week, ready to review.',
   },
   {
     id: 'workflow-automation',
@@ -277,7 +276,7 @@ export const boundaries = {
 export const leadGenDemo = {
   videoId: '6mhNTswiVmk',
   title: 'Watch the pipeline I built for myself.',
-  description: "Same system I'll build for you in Automation Pro. No outsourcing, no theory — this runs my own outreach. 25 leads/week, AI-personalized, queued for review.",
+  description: "Same architecture I'll build for you in Automation Pro. No outsourcing, no theory. Designed to deliver 25+ AI-personalized prospect drafts per week, queued for review.",
 };
 
 export const tools = [

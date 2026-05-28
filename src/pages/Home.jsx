@@ -95,7 +95,7 @@ export default function Home() {
 
       {/* ============ STATS BAND ============ */}
       <section className="bg-ink text-white py-10">
-        <div className="container-x grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="container-x grid grid-cols-1 sm:grid-cols-3 gap-8">
           {stats.map((s, i) => (
             <Reveal key={s.label} delay={i * 0.07}>
               <div className="text-3xl md:text-4xl font-extrabold tracking-tight">
