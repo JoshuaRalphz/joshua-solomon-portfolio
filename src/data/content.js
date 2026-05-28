@@ -347,6 +347,7 @@ export const tools = [
 export const works = [
   {
     id: 'bishop',
+    featured: true,
     title: 'Bishop Roofing & Exteriors — complete marketing system',
     tag: '★ Featured · Live demo',
     summary: 'A fictional Texas roofing client, real working build. A 6-page website, a CRM that captures every lead, two automated email flows that follow up the moment someone shows interest, and an interactive demo that walks you through the backend — so you can see exactly how the system works before we even talk.',
