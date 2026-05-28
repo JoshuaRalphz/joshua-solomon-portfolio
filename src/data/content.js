@@ -6,7 +6,7 @@ export const profile = {
   subtitle: 'Marketing Systems Builder',
   location: 'Olongapo City, PH · Working US hours',
   available: 'Available for new retainers',
-  email: 'josh@lc.solomonjoshua.com',
+  email: 'solomonjoshua101602@gmail.com',
   whatsapp: '+63 961 556 2117',
   whatsappLink: 'https://wa.me/639615562117',
   github: 'https://github.com/JoshuaRalphz',
