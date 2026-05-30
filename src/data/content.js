@@ -65,41 +65,6 @@ export const benefits = [
   },
 ];
 
-// Vite auto-imports every graphic in src/assets/samples/graphics/.
-// Drop a file in that folder → it shows up here at build time. Sorted with
-// natural numeric ordering, so 1.jpg comes before 2.jpg comes before 10.jpg.
-const graphicsModules = import.meta.glob(
-  '../assets/samples/graphics/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}',
-  { eager: true, import: 'default' }
-);
-
-const autoGraphics = Object.entries(graphicsModules)
-  .sort(([a], [b]) => a.localeCompare(b, undefined, { numeric: true }))
-  .map(([path, src]) => {
-    const filename = path.split('/').pop();
-    return { src, alt: `Graphic sample — ${filename}` };
-  });
-
-// Content samples shown on the Services page.
-// Disclosure copy: these are real agency deliverables — Joshua planned and
-// QC'd; the creative production team executed under his approval.
-export const contentSamples = {
-  disclosure:
-    'Selected deliverables shipped under Arrow Group Consulting (Michigan, USA) — campaigns I planned, scoped, and quality-checked end-to-end. Shown with permission.',
-  graphics: autoGraphics,
-  videos: [
-    // Long-form / 16:9 — promotional videos, logo animations, event recaps
-    { id: '54eYZKVqTK4', label: 'Promotional app video', vertical: false },
-    { id: 'NHhRFoTk1rE', label: 'Promotional event video', vertical: false },
-    { id: 'VKBRePCRE6w', label: 'Logo animation · ADAP', vertical: false },
-    { id: 'Ax-o06kIDSI', label: 'Logo animation · Shotoboy', vertical: false },
-    // Short-form / 9:16 — reels for IG, TikTok, YouTube Shorts
-    { id: 'IwHT1dxwr70', label: 'Short-form reel', vertical: true },
-    { id: 'n9sJrxJx0Zk', label: 'Street team taco review · Michigan', vertical: true },
-    { id: 'FI5a3G5bY6s', label: 'Dr. Wine promo reel', vertical: true },
-  ],
-};
-
 // Capabilities — what I deliver. No pricing, no tier framing.
 export const services = [
   {

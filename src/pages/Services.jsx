@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Check, Globe, Database, Workflow, Bot, Image as ImageIcon, Film, ExternalLink, Mail, Box } from 'lucide-react';
+import { ArrowRight, Check, Globe, Database, Workflow, Mail, Box } from 'lucide-react';
 import PageTransition, { Reveal } from '../components/PageTransition.jsx';
-import { services, contentSamples } from '../data/content.js';
-import LazyYouTube from '../components/LazyYouTube.jsx';
+import { services } from '../data/content.js';
 
 // Icon per service id — keeps the visual consistent with the rest of the site
 const SERVICE_ICONS = {
@@ -76,88 +75,6 @@ export default function Services() {
               </Reveal>
             );
           })}
-        </div>
-      </section>
-
-      {/* CONTENT SAMPLES — agency deliverables I scoped + QC'd */}
-      <section className="py-20 bg-white border-t border-line">
-        <div className="container-x">
-          <Reveal>
-            <div className="max-w-3xl mb-12">
-              <div className="text-xs uppercase tracking-widest font-bold text-navy mb-3">Campaign deliverables · Arrow Group</div>
-              <h2 className="text-3xl md:text-4xl font-bold text-ink tracking-tight leading-tight">
-                Marketing work I've planned and shipped.
-              </h2>
-              <p className="mt-4 text-body leading-relaxed">
-                {contentSamples.disclosure}
-              </p>
-            </div>
-          </Reveal>
-
-          {/* Graphics grid */}
-          <Reveal delay={0.05}>
-            <div className="flex items-center gap-2 mb-5">
-              <ImageIcon size={16} className="text-navy" />
-              <div className="text-xs uppercase tracking-widest font-bold text-muted">Graphics</div>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
-              {contentSamples.graphics.map((g, i) => (
-                <a
-                  key={g.src}
-                  href={g.src}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative block aspect-[4/5] bg-slate-100 rounded-xl overflow-hidden border border-line hover:border-navy hover:shadow-soft transition-all"
-                  aria-label={`Open ${g.alt} full size`}
-                >
-                  <img
-                    src={g.src}
-                    alt={g.alt}
-                    loading="lazy"
-                    decoding="async"
-                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
-                  <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/95 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                    <ExternalLink size={14} className="text-navy" />
-                  </div>
-                  <div className="absolute bottom-3 left-3 text-[10px] uppercase tracking-widest font-bold text-white opacity-0 group-hover:opacity-100 transition-opacity">
-                    {String(i + 1).padStart(2, '0')}
-                  </div>
-                </a>
-              ))}
-            </div>
-          </Reveal>
-
-          {/* Long-form video (16:9) */}
-          <Reveal delay={0.1}>
-            <div className="flex items-center gap-2 mb-5 mt-14">
-              <Film size={16} className="text-navy" />
-              <div className="text-xs uppercase tracking-widest font-bold text-muted">Brand films &amp; promo video</div>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-              {contentSamples.videos
-                .filter((v) => !v.vertical)
-                .map((v) => (
-                  <LazyYouTube key={v.id} id={v.id} label={v.label} vertical={false} />
-                ))}
-            </div>
-          </Reveal>
-
-          {/* Short-form reels (9:16) */}
-          <Reveal delay={0.15}>
-            <div className="flex items-center gap-2 mb-5 mt-14">
-              <Film size={16} className="text-navy" />
-              <div className="text-xs uppercase tracking-widest font-bold text-muted">Short-form reels</div>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {contentSamples.videos
-                .filter((v) => v.vertical)
-                .map((v) => (
-                  <LazyYouTube key={v.id} id={v.id} label={v.label} vertical={true} />
-                ))}
-            </div>
-          </Reveal>
         </div>
       </section>
 
