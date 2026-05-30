@@ -1,7 +1,7 @@
+import { Download, Briefcase, MapPin, Mail, MessageCircle, Sparkles, GraduationCap, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Download, Briefcase, MapPin, Mail, MessageCircle, Sparkles, Package } from 'lucide-react';
 import PageTransition, { Reveal } from '../components/PageTransition.jsx';
-import { profile, experience, coreExpertise, serviceOffer, tools } from '../data/content.js';
+import { profile, experience, coreExpertise, tools } from '../data/content.js';
 
 export default function Resume() {
   return (
@@ -19,7 +19,7 @@ export default function Resume() {
                 <div className="mt-2 text-lg text-body font-medium">Implementation Specialist — CRM, Web &amp; Marketing Systems</div>
                 <div className="mt-1.5 inline-flex items-center gap-2 text-sm font-semibold text-navy">
                   <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald" />
-                  Open to Full-Time Remote, Contract, or Fractional Retainer Engagements
+                  Open to full-time remote, contract, or fractional engagements
                 </div>
               </div>
               <a href="/Joshua_Solomon_Resume_v6.pdf" download className="btn-ghost">
@@ -41,7 +41,7 @@ export default function Resume() {
         <div className="container-x">
           <Reveal>
             <div className="bg-navy-tint border border-navy/15 rounded-2xl p-7 md:p-8">
-              <h2 className="text-xs uppercase tracking-widest font-bold text-navy mb-3">Summary</h2>
+              <h2 className="text-xs uppercase tracking-widest font-bold text-navy mb-3">Professional Summary</h2>
               <p className="text-body leading-relaxed text-base">
                 Implementation specialist with hands-on agency experience configuring GoHighLevel CRMs,
                 building custom-coded sites on Cloudflare Pages, and shipping marketing automation systems
@@ -61,7 +61,7 @@ export default function Resume() {
         <div className="container-x">
           <Reveal>
             <h2 className="text-2xl font-bold text-ink mb-6 flex items-center gap-2">
-              <Sparkles size={20} className="text-navy" /> Core Expertise
+              <Sparkles size={20} className="text-navy" /> Technical Skills
             </h2>
           </Reveal>
 
@@ -83,7 +83,7 @@ export default function Resume() {
         <div className="container-x">
           <Reveal>
             <h2 className="text-2xl font-bold text-ink mb-7 flex items-center gap-2">
-              <Briefcase size={20} className="text-navy" /> Experience
+              <Briefcase size={20} className="text-navy" /> Professional Experience
             </h2>
           </Reveal>
 
@@ -118,29 +118,41 @@ export default function Resume() {
         </div>
       </section>
 
-      {/* ============ SERVICE OFFER ============ */}
+      {/* ============ EDUCATION ============ */}
       <section className="py-12 bg-slate-50 border-y border-line">
         <div className="container-x">
           <Reveal>
-            <h2 className="text-2xl font-bold text-ink mb-3 flex items-center gap-2">
-              <Package size={20} className="text-navy" /> Service Offer for Freelance Clients
+            <h2 className="text-2xl font-bold text-ink mb-6 flex items-center gap-2">
+              <GraduationCap size={20} className="text-navy" /> Education
             </h2>
           </Reveal>
 
-          <Reveal delay={0.05}>
-            <div className="bg-white border-2 border-navy rounded-2xl p-7 md:p-9 mt-6 shadow-soft">
-              <div className="flex flex-wrap items-baseline gap-3 mb-4">
-                <h3 className="text-2xl font-bold text-ink">{serviceOffer.title}</h3>
-                <span className="text-base font-bold text-navy">— {serviceOffer.price}</span>
-              </div>
-              <p className="text-body leading-relaxed">
-                {serviceOffer.bullets.join(' · ')}
-              </p>
-              <Link to="/plan" className="btn-primary mt-6">
-                Get my plan (90 sec) <ArrowRight size={16} />
-              </Link>
-            </div>
-          </Reveal>
+          <div className="grid md:grid-cols-2 gap-4">
+            <Reveal delay={0.05}>
+              <article className="bg-white border border-line rounded-2xl p-6 h-full">
+                <div className="flex items-baseline justify-between gap-3 mb-1">
+                  <h3 className="text-lg font-bold text-ink">Bachelor of Science in Computer Science</h3>
+                  <span className="text-xs font-mono text-muted whitespace-nowrap">2021 — 2025</span>
+                </div>
+                <div className="text-sm font-semibold text-navy mb-3">Gordon College · Olongapo City, Philippines</div>
+                <p className="text-sm text-body leading-relaxed">
+                  Thesis: <em>"DevPath: Bridging Students to Learning Opportunities through On-Demand Webinars and Certifications."</em> Published at IRCITE 2025 — Bulacan State University.
+                </p>
+              </article>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <article className="bg-white border border-line rounded-2xl p-6 h-full">
+                <div className="flex items-baseline justify-between gap-3 mb-1">
+                  <h3 className="text-lg font-bold text-ink">Senior High School — TVL ICT Track</h3>
+                  <span className="text-xs font-mono text-muted whitespace-nowrap">2019 — 2021</span>
+                </div>
+                <div className="text-sm font-semibold text-navy mb-3">Columban College Inc. · Olongapo City, Philippines</div>
+                <p className="text-sm text-body leading-relaxed">
+                  Graduated With High Honors.
+                </p>
+              </article>
+            </Reveal>
+          </div>
         </div>
       </section>
 
@@ -148,9 +160,9 @@ export default function Resume() {
       <section className="py-12">
         <div className="container-x">
           <Reveal>
-            <h2 className="text-2xl font-bold text-ink mb-3">Skills &amp; Tools</h2>
+            <h2 className="text-2xl font-bold text-ink mb-3">Tools &amp; Platforms</h2>
             <p className="text-body mb-7 max-w-2xl">
-              Fluent in {tools.length}+ tools across CRM, automation, code, hosting, payments, design, and ops.
+              Working knowledge across {tools.length}+ tools in CRM, automation, code, hosting, payments, design, and ops.
             </p>
           </Reveal>
 
@@ -164,6 +176,28 @@ export default function Resume() {
               </span>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ============ CTA ============ */}
+      <section className="py-16 bg-gradient-to-br from-ink to-navy-dark text-white">
+        <div className="container-x text-center max-w-2xl mx-auto">
+          <Reveal>
+            <h2 className="text-2xl md:text-3xl font-bold leading-tight">
+              Open to opportunities. Let's talk.
+            </h2>
+            <p className="mt-4 text-white/75 leading-relaxed">
+              Full-time remote, contract, or fractional engagements welcome. References available on request.
+            </p>
+            <div className="mt-7 flex flex-wrap gap-3 justify-center">
+              <Link to="/contact" className="btn-gold">
+                Send me a message <ArrowRight size={18} />
+              </Link>
+              <a href="/Joshua_Solomon_Resume_v6.pdf" download className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/15 transition text-white font-semibold rounded-lg">
+                <Download size={16} /> Download .pdf
+              </a>
+            </div>
+          </Reveal>
         </div>
       </section>
 

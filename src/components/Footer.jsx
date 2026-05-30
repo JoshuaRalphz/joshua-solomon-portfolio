@@ -10,20 +10,21 @@ export default function Footer() {
         <div className="md:col-span-2">
           <Wordmark size={32} light />
           <p className="mt-5 text-sm text-white/65 max-w-md leading-relaxed">
-            One human technical operator. I build and maintain the marketing systems
-            that keep agencies and service businesses running. Custom code, GoHighLevel,
-            automation, and integrations — all in one retainer.
+            Implementation Specialist — CRM, Web &amp; Marketing Systems. Hands-on across
+            GoHighLevel, custom-coded sites on Cloudflare Pages, email infrastructure,
+            workflow automation, and internal tooling. Open to full-time remote, contract,
+            and fractional roles.
           </p>
         </div>
 
         <div>
           <h4 className="text-xs uppercase tracking-widest font-bold text-white mb-4">Explore</h4>
           <ul className="space-y-2 text-sm">
-            <li><Link to="/services" className="hover:text-white transition-colors">Services</Link></li>
+            <li><Link to="/services" className="hover:text-white transition-colors">Capabilities</Link></li>
             <li><Link to="/works" className="hover:text-white transition-colors">Work</Link></li>
             <li><Link to="/about" className="hover:text-white transition-colors">About</Link></li>
             <li><Link to="/resume" className="hover:text-white transition-colors">Resume</Link></li>
-            <li><Link to="/plan" className="hover:text-white transition-colors">Project planner</Link></li>
+            <li><Link to="/contact" className="hover:text-white transition-colors">Contact</Link></li>
           </ul>
         </div>
 
@@ -60,7 +61,7 @@ export default function Footer() {
 
       <div className="border-t border-white/10">
         <div className="container-x py-5 text-xs text-white/50 flex flex-col md:flex-row justify-between gap-2">
-          <div>© 2026 Joshua Solomon · CRM & Automation Specialist · Olongapo, PH · Working US hours</div>
+          <div>© 2026 Joshua Solomon · Implementation Specialist · Olongapo, PH · US business hours</div>
           <div>Built from scratch · React · Hosted on Cloudflare Pages</div>
         </div>
       </div>

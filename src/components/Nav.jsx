@@ -49,11 +49,8 @@ export default function Nav() {
               {label}
             </NavLink>
           ))}
-          <Link to="/plan" className="text-sm font-semibold text-navy hover:text-navy-dark">
-            Get my plan →
-          </Link>
           <Link to="/contact" className="btn-primary !py-2.5 !px-5 !text-sm">
-            Hire me
+            Get in touch
           </Link>
         </nav>
 
@@ -81,11 +78,8 @@ export default function Nav() {
                 {label}
               </NavLink>
             ))}
-            <Link to="/plan" className="block py-2 text-base font-semibold text-navy">
-              Get my plan →
-            </Link>
             <Link to="/contact" className="btn-primary text-center justify-center">
-              Hire me
+              Get in touch
             </Link>
           </div>
         </div>

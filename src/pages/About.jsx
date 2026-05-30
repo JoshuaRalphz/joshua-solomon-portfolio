@@ -18,16 +18,13 @@ export default function About() {
           <Reveal>
             <div className="label">About</div>
             <h1 className="text-4xl md:text-5xl font-extrabold text-ink tracking-tight max-w-3xl leading-tight">
-              One operator. Direct line to me.
+              Technical operator. Direct communication. End-to-end accountability.
             </h1>
             <p className="mt-5 text-lg text-body max-w-2xl leading-relaxed">
-              You message me, I respond personally — usually within hours during US business time.
-              The technical work ships from the same person who scoped it. No project manager middle layer.
+              I configure CRMs, build sites, ship integrations, and stand up internal tools. The work ships from the same person who scoped it — no handoffs, no middle layer between strategy and implementation.
             </p>
             <p className="mt-3 text-base text-muted max-w-2xl leading-relaxed">
-              For <strong className="text-ink">Full Marketing</strong> clients who need creative production at scale,
-              I plan and QC a small content team that handles social posts, reels, graphic design, and blog content.
-              You still only talk to me — they only ship work under my approval.
+              I write strong async messages, comfortable speaking directly with founders and senior stakeholders, and prefer shipping work over scheduling meetings to talk about it.
             </p>
           </Reveal>
         </div>
@@ -39,25 +36,27 @@ export default function About() {
           <Reveal className="md:col-span-2 space-y-5 text-body leading-relaxed">
             <p>
               I've been building marketing systems for US businesses since 2023 — first as the
-              technical builder at a Philippines-based marketing services agency, then as the
-              go-to systems person for a Michigan consulting firm. Both still trust me with
-              their day-to-day client work.
+              primary technical implementer at a Philippines-based VMA agency (Doneverse),
+              then as Implementation Specialist at a Michigan consulting firm (Arrow Group).
             </p>
             <p>
-              Every business I work with has the same problem. They have the marketing strategy
-              figured out, but they can't get the technical pieces to actually work. Their CRM
-              is half-set-up. Their follow-up emails stopped firing. Their domain and email
-              setup was done by someone who disappeared six months ago.
+              My background is computer science (BS, Gordon College, 2025) but my day-to-day
+              is implementation — configuring GoHighLevel sub-accounts, hand-coding React + Vite
+              sites on Cloudflare Pages, setting up dedicated email-sending domains with proper
+              SPF/DKIM/DMARC alignment, and wiring n8n/Make/Zapier workflows across founder stacks.
+              I work in whatever the team uses: HubSpot, Mailchimp, Kajabi, Wix Studio, WordPress —
+              the platform is rarely the interesting part.
             </p>
             <p>
-              What I do is unsexy: I show up, look at what's broken, fix it, build what's
-              missing, and keep it running. No drama. No buzzwords. No three-week sales process.
-              Just getting it done.
+              Recently built <strong className="text-ink">AGC HUB</strong> — a custom internal PWA
+              (React + Vite + Firebase + multi-API orchestration across GHL, Canva, and Google Sheets)
+              replacing a scattered tool stack of Drive, ClickUp, Trello, GHL, and Canva. It runs
+              the agency's content production workflow end-to-end and is in daily production.
             </p>
             <p>
-              I work US business hours from Olongapo, Philippines. That means you can send me
-              a request at 5pm Eastern and have it done by 9am the next day. That's not magic —
-              that's just the time zone working in your favor.
+              I work US business hours from Olongapo, Philippines — full overlap with EST/CST/MST/PST
+              every workday. Async-first communication, strong written work, and comfortable speaking
+              directly with founders and senior stakeholders.
             </p>
           </Reveal>
 
@@ -65,12 +64,13 @@ export default function About() {
             <div className="bg-navy-tint rounded-2xl p-6 sticky top-24">
               <div className="text-xs uppercase tracking-widest font-bold text-navy mb-3">Quick facts</div>
               <dl className="space-y-3 text-sm">
-                <div><dt className="text-muted text-xs">Years doing this</dt><dd className="font-semibold text-ink">3+</dd></div>
+                <div><dt className="text-muted text-xs">Experience</dt><dd className="font-semibold text-ink">3+ years</dd></div>
                 <div><dt className="text-muted text-xs">Based in</dt><dd className="font-semibold text-ink">Olongapo City, PH</dd></div>
-                <div><dt className="text-muted text-xs">Working hours</dt><dd className="font-semibold text-ink">US Eastern · 8am–6pm</dd></div>
-                <div><dt className="text-muted text-xs">Reply time</dt><dd className="font-semibold text-ink">Hours, not days</dd></div>
-                <div><dt className="text-muted text-xs">Style</dt><dd className="font-semibold text-ink">Direct messaging, no PMs</dd></div>
-                <div><dt className="text-muted text-xs">Open to</dt><dd className="font-semibold text-ink">New retainer clients</dd></div>
+                <div><dt className="text-muted text-xs">Working hours</dt><dd className="font-semibold text-ink">US business hours</dd></div>
+                <div><dt className="text-muted text-xs">Reply time</dt><dd className="font-semibold text-ink">Within hours</dd></div>
+                <div><dt className="text-muted text-xs">Communication</dt><dd className="font-semibold text-ink">Async-first</dd></div>
+                <div><dt className="text-muted text-xs">Open to</dt><dd className="font-semibold text-ink">Full-time, contract, fractional</dd></div>
+                <div><dt className="text-muted text-xs">Education</dt><dd className="font-semibold text-ink">BS Computer Science (2025)</dd></div>
               </dl>
             </div>
           </Reveal>
@@ -86,7 +86,7 @@ export default function About() {
               The tools I use, grouped by what they do.
             </h2>
             <p className="mt-4 text-body max-w-2xl">
-              I work in the tools you already use — CRMs, email platforms, automation, design, payments, hosting. No forced migrations.
+              Daily-weekly working knowledge across CRMs, email platforms, automation, design, payments, and hosting.
             </p>
           </Reveal>
 

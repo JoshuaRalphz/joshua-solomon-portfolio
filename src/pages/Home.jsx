@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, Zap, UserCheck, Wrench, Layers, Shield, TrendingUp, CheckCircle2, MessageCircle, Send, Rocket, Repeat } from 'lucide-react';
+import { ArrowRight, Zap, UserCheck, Wrench, Layers, Shield, TrendingUp, Download, Briefcase, MapPin, Clock } from 'lucide-react';
 import PageTransition, { Reveal } from '../components/PageTransition.jsx';
 import LogoMarquee from '../components/LogoMarquee.jsx';
 import { profile, stats, benefits, tools } from '../data/content.js';
@@ -50,9 +50,9 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.15 }}
             className="mt-6 text-lg md:text-xl text-body max-w-2xl leading-relaxed"
           >
-            Your website, your CRM, your follow-up emails, your lead capture —
-            all built and connected by one person who actually understands the technical side.
-            No agency layers, no juggling vendors.
+            Implementation specialist with hands-on agency experience configuring GoHighLevel CRMs,
+            building custom-coded sites on Cloudflare Pages, and shipping marketing automation across
+            Mailchimp, Kajabi, HubSpot, and n8n. Open to full-time remote, contract, or fractional roles.
           </motion.p>
 
           <motion.div
@@ -61,12 +61,15 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.25 }}
             className="mt-8 flex flex-wrap gap-3"
           >
-            <Link to="/plan" className="btn-gold">
-              Get my plan (90 sec) <ArrowRight size={18} />
+            <Link to="/contact" className="btn-gold">
+              Get in touch <ArrowRight size={18} />
             </Link>
             <Link to="/works" className="btn-ghost">
               See what I've built
             </Link>
+            <a href="/Joshua_Solomon_Resume_v6.pdf" download className="btn-ghost">
+              <Download size={16} /> Download resume
+            </a>
           </motion.div>
 
           {/* Hero meta strip */}
@@ -77,16 +80,22 @@ export default function Home() {
             className="mt-14 pt-8 border-t border-line grid sm:grid-cols-3 gap-6"
           >
             <div>
-              <div className="text-xs font-bold uppercase tracking-widest text-muted mb-1">Role</div>
-              <div className="text-sm font-medium text-ink">{profile.role}</div>
+              <div className="text-xs font-bold uppercase tracking-widest text-muted mb-1 flex items-center gap-1.5">
+                <Briefcase size={12} className="text-navy" /> Current role
+              </div>
+              <div className="text-sm font-medium text-ink">Implementation Specialist · Arrow Group Consulting (MI, USA)</div>
             </div>
             <div>
-              <div className="text-xs font-bold uppercase tracking-widest text-muted mb-1">Based in</div>
-              <div className="text-sm font-medium text-ink">{profile.location}</div>
+              <div className="text-xs font-bold uppercase tracking-widest text-muted mb-1 flex items-center gap-1.5">
+                <MapPin size={12} className="text-navy" /> Based in
+              </div>
+              <div className="text-sm font-medium text-ink">Olongapo City, Philippines</div>
             </div>
             <div>
-              <div className="text-xs font-bold uppercase tracking-widest text-muted mb-1">Availability</div>
-              <div className="text-sm font-medium text-ink">{profile.available}</div>
+              <div className="text-xs font-bold uppercase tracking-widest text-muted mb-1 flex items-center gap-1.5">
+                <Clock size={12} className="text-navy" /> Working hours
+              </div>
+              <div className="text-sm font-medium text-ink">US business hours · EST/CST/MST/PST overlap</div>
             </div>
           </motion.div>
         </div>
@@ -98,8 +107,8 @@ export default function Home() {
           {stats.map((s, i) => (
             <Reveal key={s.label} delay={i * 0.07}>
               <div className="text-3xl md:text-4xl font-extrabold tracking-tight">
-                {s.value.split(/(\+|\/mo| human)/).map((p, idx) =>
-                  /^\+$|\/mo| human$/.test(p)
+                {s.value.split(/(\+|d| human)/).map((p, idx) =>
+                  /^\+$|^d$| human$/.test(p)
                     ? <span key={idx} className="text-gold">{p}</span>
                     : <span key={idx}>{p}</span>
                 )}
@@ -110,16 +119,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============ BENEFITS ============ */}
+      {/* ============ STRENGTHS ============ */}
       <section className="py-24">
         <div className="container-x">
           <Reveal>
             <div className="label">Why hire me</div>
             <h2 className="text-3xl md:text-4xl font-bold text-ink tracking-tight max-w-3xl">
-              Six reasons agencies pick a solo technical operator over a full-service shop.
+              Six things to know about how I work.
             </h2>
             <p className="mt-4 text-body text-lg max-w-2xl">
-              Not because cheaper — because faster, sharper, and end-to-end accountable.
+              Strong fit for marketing technology implementation, technical client onboarding, or full-stack systems work at early-stage and SMB companies.
             </p>
           </Reveal>
 
@@ -134,84 +143,6 @@ export default function Home() {
                     </div>
                     <h3 className="text-lg font-bold text-ink mb-2">{b.title}</h3>
                     <p className="text-sm text-body leading-relaxed">{b.body}</p>
-                  </div>
-                </Reveal>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* ============ HOW IT WORKS ============ */}
-      <section className="py-24 bg-white border-t border-line">
-        <div className="container-x">
-          <Reveal>
-            <div className="text-center max-w-2xl mx-auto mb-16">
-              <div className="text-xs uppercase tracking-widest font-bold text-navy mb-3">How it works</div>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-ink tracking-tight leading-tight">
-                Four steps from message to live system.
-              </h2>
-              <p className="mt-4 text-body leading-relaxed">
-                No long sales process. No three-week proposal cycle. Here's exactly what working with me looks like.
-              </p>
-            </div>
-          </Reveal>
-
-          {/* Vertical timeline — icon left, content right, connecting line through icon column */}
-          <div className="max-w-3xl mx-auto relative">
-            {/* Continuous vertical line down the icon column */}
-            <div className="absolute left-7 md:left-9 top-8 bottom-8 w-0.5 bg-gradient-to-b from-navy/40 via-navy/30 to-navy/10" aria-hidden="true" />
-
-            {[
-              {
-                num: '01',
-                icon: MessageCircle,
-                title: 'Tell me what\'s broken',
-                body: 'Take the 5-question planner (90 seconds, no email needed) or just message me directly. Either way, I see your situation in plain English.',
-              },
-              {
-                num: '02',
-                icon: Send,
-                title: 'Get a scoped reply in hours',
-                body: 'I send back exactly what I\'d build — the systems, the order, the price, the timeline. No "let\'s schedule a call" runaround.',
-              },
-              {
-                num: '03',
-                icon: Rocket,
-                title: 'First month, the system goes live',
-                body: 'You pay the first invoice via secure link. I ship the full build in 14 days — website, CRM, follow-up emails, lead capture, the whole thing working end-to-end.',
-              },
-              {
-                num: '04',
-                icon: Repeat,
-                title: 'I keep it running every month',
-                body: 'New automations, bug fixes, optimizations, monthly newsletters — all included in your retainer. No "that\'s a separate project" surprises.',
-              },
-            ].map((step, i) => {
-              const Icon = step.icon;
-              const isLast = i === 3;
-              return (
-                <Reveal key={step.num} delay={i * 0.1}>
-                  <div className={`relative flex gap-5 md:gap-7 ${isLast ? '' : 'pb-10 md:pb-12'}`}>
-                    {/* Icon column — circle with icon, sits on top of the line */}
-                    <div className="relative flex-shrink-0 z-10">
-                      <div className="w-14 h-14 md:w-[72px] md:h-[72px] rounded-full bg-gradient-to-br from-navy to-navy-dark text-white flex items-center justify-center shadow-lift ring-4 ring-white">
-                        <Icon size={24} strokeWidth={2} />
-                      </div>
-                    </div>
-
-                    {/* Content card */}
-                    <div className="flex-1 pt-1 md:pt-2">
-                      <div className="inline-flex items-center gap-2 text-[10px] uppercase tracking-widest font-extrabold text-navy bg-navy-tint px-2.5 py-1 rounded-full mb-2.5">
-                        Step {step.num}
-                      </div>
-                      <h3 className="text-xl md:text-2xl font-bold text-ink mb-2.5 leading-tight">
-                        {step.title}
-                      </h3>
-                      <p className="text-body leading-relaxed">
-                        {step.body}
-                      </p>
-                    </div>
                   </div>
                 </Reveal>
               );
@@ -243,6 +174,29 @@ export default function Home() {
           <Link to="/about#tools" className="inline-flex items-center gap-1.5 text-sm font-semibold text-navy hover:text-navy-dark">
             See the full stack <ArrowRight size={14} />
           </Link>
+        </div>
+      </section>
+
+      {/* ============ CLOSER CTA ============ */}
+      <section className="py-20 bg-gradient-to-br from-ink to-navy-dark text-white">
+        <div className="container-x text-center max-w-2xl mx-auto">
+          <Reveal>
+            <div className="text-xs uppercase tracking-widest font-bold text-gold mb-4">Hiring or contracting?</div>
+            <h2 className="text-3xl md:text-4xl font-bold leading-tight">
+              Let's talk about the role.
+            </h2>
+            <p className="mt-4 text-white/75 text-lg leading-relaxed">
+              Open to full-time remote, contract, or fractional engagements. Async-first communication, US-hours overlap, comfortable speaking directly to founders and senior stakeholders.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3 justify-center">
+              <Link to="/contact" className="btn-gold">
+                Send me a message <ArrowRight size={18} />
+              </Link>
+              <Link to="/resume" className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/15 transition text-white font-semibold rounded-lg">
+                See the full resume
+              </Link>
+            </div>
+          </Reveal>
         </div>
       </section>
 

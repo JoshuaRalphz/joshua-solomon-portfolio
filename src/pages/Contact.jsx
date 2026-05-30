@@ -9,7 +9,6 @@ export default function Contact() {
   const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm();
   const [submitStatus, setSubmitStatus] = useState(null); // null | 'success' | 'error'
   const location = useLocation();
-  const fromPlan = location.state?.recommendation;
 
   const onSubmit = async (data) => {
     try {
@@ -23,18 +22,6 @@ export default function Contact() {
         source: 'portfolio_contact_form',
         page: location.pathname || '/contact',
         submitted_at: new Date().toISOString(),
-        from_planner: Boolean(fromPlan),
-        plan_tier_name: fromPlan ? fromPlan.tier.name : '',
-        plan_tier_label: fromPlan ? fromPlan.tier.label : '',
-        plan_setup_fee: fromPlan ? fromPlan.setupFee : '',
-        plan_monthly_total: fromPlan ? fromPlan.monthlyTotal : '',
-        plan_first_invoice: fromPlan ? fromPlan.firstInvoice : '',
-        plan_year1_total: fromPlan ? fromPlan.year1Total : '',
-        plan_live_by: fromPlan ? fromPlan.liveBy : '',
-        plan_recs: fromPlan ? fromPlan.recs.map(r => `${r.tag}: ${r.service}`).join(' | ') : '',
-        plan_addons: fromPlan && fromPlan.addOnSuggestions?.length
-          ? fromPlan.addOnSuggestions.map(a => `${a.name} (${a.price})`).join(' | ')
-          : '',
       };
 
       if (!PORTFOLIO_GHL_WEBHOOK) {
@@ -70,12 +57,10 @@ export default function Contact() {
           <Reveal>
             <div className="label">Contact</div>
             <h1 className="text-4xl md:text-5xl font-extrabold text-ink tracking-tight max-w-3xl leading-tight">
-              Tell me what's broken. I'll reply within hours.
+              Hiring, contracting, or just want to talk? Send a note.
             </h1>
             <p className="mt-5 text-lg text-body max-w-2xl">
-              {fromPlan
-                ? 'Your project plan is attached to this message. I\'ll send back a scoped proposal within a few hours.'
-                : 'Send a short note about what you\'re trying to fix. No long sales process — async-first, one message, one reply, then a scoped proposal back within hours.'}
+              Open to full-time remote, contract, or fractional engagements. Reply within hours during US business time. References available on request.
             </p>
           </Reveal>
         </div>
@@ -96,13 +81,6 @@ export default function Contact() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-                  {fromPlan && (
-                    <div className="bg-navy-tint border border-navy/15 rounded-lg p-4 text-sm text-navy">
-                      <div className="font-bold mb-1">✓ Your project plan will be attached</div>
-                      <div className="text-xs text-navy/75">{fromPlan.tier.name} tier ({fromPlan.tier.label}) · First invoice: {fromPlan.firstInvoice} · Live by: {fromPlan.liveBy}</div>
-                    </div>
-                  )}
-
                   <Field label="Your name" error={errors.name?.message}>
                     <input
                       {...register('name', { required: 'Required' })}
@@ -123,19 +101,19 @@ export default function Contact() {
                     />
                   </Field>
 
-                  <Field label="Company / business">
+                  <Field label="Company">
                     <input
                       {...register('company')}
-                      placeholder="Acme Marketing"
+                      placeholder="Acme Inc."
                       className="w-full px-4 py-3 bg-white border border-line rounded-lg text-ink placeholder-muted focus:outline-none focus:border-navy focus:ring-4 focus:ring-navy/10"
                     />
                   </Field>
 
-                  <Field label="What are you trying to fix?" error={errors.message?.message}>
+                  <Field label="What's the role / opportunity?" error={errors.message?.message}>
                     <textarea
                       {...register('message', { required: 'Required', minLength: { value: 10, message: 'A few more details please' } })}
                       rows={5}
-                      placeholder="Quick context on your current stack and what's broken..."
+                      placeholder="Role title, timeline, stack, team size — whatever's helpful. Or just say hi."
                       className="w-full px-4 py-3 bg-white border border-line rounded-lg text-ink placeholder-muted focus:outline-none focus:border-navy focus:ring-4 focus:ring-navy/10 resize-y"
                     />
                   </Field>

@@ -4,13 +4,11 @@ import { AnimatePresence } from 'framer-motion';
 import Nav from './components/Nav.jsx';
 import Footer from './components/Footer.jsx';
 import ScrollHint from './components/ScrollHint.jsx';
-import FloatingPlannerCTA from './components/FloatingPlannerCTA.jsx';
 import Home from './pages/Home.jsx';
 import About from './pages/About.jsx';
 import Services from './pages/Services.jsx';
 import Works from './pages/Works.jsx';
 import Resume from './pages/Resume.jsx';
-import Quiz from './pages/Quiz.jsx';
 import Contact from './pages/Contact.jsx';
 
 export default function App() {
@@ -29,14 +27,15 @@ export default function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/works" element={<Works />} />
           <Route path="/resume" element={<Resume />} />
-          <Route path="/plan" element={<Quiz />} />
           <Route path="/contact" element={<Contact />} />
+          {/* Legacy /plan route — kept as a redirect target so existing
+              links don't 404. Now lands on /contact. */}
+          <Route path="/plan" element={<Contact />} />
           <Route path="*" element={<Home />} />
         </Routes>
       </AnimatePresence>
       <Footer />
       <ScrollHint />
-      <FloatingPlannerCTA />
     </>
   );
 }

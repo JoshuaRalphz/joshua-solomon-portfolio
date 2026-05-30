@@ -1,16 +1,16 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Check, Star, Globe, Database, Workflow, Bot, Image as ImageIcon, Film, ExternalLink, Sparkles } from 'lucide-react';
+import { ArrowRight, Check, Globe, Database, Workflow, Bot, Image as ImageIcon, Film, ExternalLink, Mail, Box } from 'lucide-react';
 import PageTransition, { Reveal } from '../components/PageTransition.jsx';
-import { services, pricingTiers, contentSamples } from '../data/content.js';
+import { services, contentSamples } from '../data/content.js';
 import LazyYouTube from '../components/LazyYouTube.jsx';
 
 // Icon per service id — keeps the visual consistent with the rest of the site
 const SERVICE_ICONS = {
   crm: Database,
   website: Globe,
-  'content-social': ImageIcon,
-  'lead-gen': Bot,
+  'email-infra': Mail,
   'workflow-automation': Workflow,
+  'internal-tools': Box,
 };
 
 export default function Services() {
@@ -20,59 +20,48 @@ export default function Services() {
       <section className="pt-20 pb-16">
         <div className="container-x">
           <Reveal>
-            <div className="label">Services</div>
+            <div className="label">Capabilities</div>
             <h1 className="text-4xl md:text-5xl font-extrabold text-ink tracking-tight max-w-4xl leading-tight">
               Five capabilities.
               <br />
               <span className="whitespace-nowrap">One technical operator.</span>
             </h1>
             <p className="mt-5 text-lg text-body max-w-2xl leading-relaxed">
-              Marketing systems that actually run on themselves. No agency layers, no project managers, no theme-based shortcuts. Pick the tier that matches what you actually need.
+              Hands-on implementation work I've shipped across agency, contract, and full-stack roles. Marketing technology, custom code, email infrastructure, automation, and internal tooling.
             </p>
           </Reveal>
         </div>
       </section>
 
-      {/* SERVICE CARDS — horizontal stacked layout (matches Works visual rhythm) */}
+      {/* SERVICE CARDS — horizontal stacked layout */}
       <section className="pb-20">
         <div className="container-x space-y-6">
           {services.map((s, i) => {
             const Icon = SERVICE_ICONS[s.id] || Globe;
-            const cardBorder = s.featured
-              ? 'border-gold/40 bg-gradient-to-br from-gold/5 to-white hover:border-gold hover:shadow-lift'
-              : 'border-line hover:border-navy hover:shadow-soft';
             return (
               <Reveal key={s.id} delay={i * 0.05}>
-                <article className={`bg-white border-2 rounded-2xl p-7 md:p-9 flex flex-col md:flex-row gap-6 md:gap-10 transition-all ${cardBorder}`}>
-                  {/* Left side: Service number + icon */}
+                <article className="bg-white border-2 border-line hover:border-navy hover:shadow-soft rounded-2xl p-7 md:p-9 flex flex-col md:flex-row gap-6 md:gap-10 transition-all">
+                  {/* Left side: capability number + icon */}
                   <div className="md:w-1/4 flex md:flex-col items-center md:items-start gap-5 md:gap-4 flex-shrink-0">
-                    <div className={`text-4xl md:text-6xl lg:text-7xl font-extrabold leading-none ${s.featured ? 'text-gold/30' : 'text-navy/15'}`}>0{i + 1}</div>
-                    <div className={`w-14 h-14 rounded-xl flex items-center justify-center ${s.featured ? 'bg-gold/15 text-gold' : 'bg-navy-tint text-navy'}`}>
+                    <div className="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-none text-navy/15">0{i + 1}</div>
+                    <div className="w-14 h-14 rounded-xl flex items-center justify-center bg-navy-tint text-navy">
                       <Icon size={26} />
                     </div>
                   </div>
 
-                  {/* Right side: All the content */}
+                  {/* Right side: content */}
                   <div className="md:w-3/4 flex-1">
-                    <div className={`flex items-center gap-2 mb-2 text-xs uppercase tracking-widest font-bold ${s.featured ? 'text-gold' : 'text-navy'}`}>
-                      <span>Service · 0{i + 1}</span>
-                      {s.featured && (
-                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-gold/15 border border-gold/30 text-[10px] tracking-wider">
-                          <Sparkles size={10} /> Featured
-                        </span>
-                      )}
+                    <div className="flex items-center gap-2 mb-2 text-xs uppercase tracking-widest font-bold text-navy">
+                      <span>Capability · 0{i + 1}</span>
                     </div>
                     <h3 className="text-2xl md:text-3xl font-bold text-ink mb-3 leading-tight">{s.title}</h3>
-                    <p className="text-body mb-4 leading-relaxed">{s.summary}</p>
-                    {s.process && (
-                      <p className="text-body mb-6 leading-relaxed">{s.process}</p>
-                    )}
+                    <p className="text-body mb-5 leading-relaxed">{s.summary}</p>
 
-                    <div className="text-xs uppercase tracking-widest text-navy font-bold mb-3">What you get</div>
+                    <div className="text-xs uppercase tracking-widest text-navy font-bold mb-3">What's included</div>
                     <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-2.5 mb-6">
                       {s.bullets.map(b => (
                         <li key={b} className="flex items-start gap-2.5 text-sm text-body">
-                          <Check size={16} className={`flex-shrink-0 mt-0.5 ${s.featured ? 'text-gold' : 'text-emerald'}`} />
+                          <Check size={16} className="flex-shrink-0 mt-0.5 text-emerald" />
                           <span>{b}</span>
                         </li>
                       ))}
@@ -90,116 +79,14 @@ export default function Services() {
         </div>
       </section>
 
-
-      {/* PRICING TIERS — 3-tier */}
-      <section className="py-20 bg-gradient-to-br from-ink to-navy-dark text-white">
-        <div className="container-x">
-          <Reveal>
-            <div className="text-center max-w-2xl mx-auto">
-              <div className="text-xs uppercase tracking-widest font-bold text-gold mb-3">Pricing — flat monthly</div>
-              <h2 className="text-3xl md:text-4xl font-bold leading-tight">No setup fees. No tool charges.</h2>
-              <p className="mt-4 text-white/75 text-lg">Pick the tier that matches what you actually need. All software, all infrastructure, all tools — covered.</p>
-            </div>
-          </Reveal>
-
-          {/* Tier cards — 3 columns */}
-          <Reveal delay={0.1}>
-            <div className="max-w-6xl mx-auto mt-14 grid gap-5 lg:grid-cols-3 items-stretch">
-              {pricingTiers.map((t) => {
-                let cardClass = 'bg-white/5 backdrop-blur rounded-2xl border border-white/10 p-7';
-                if (t.recommended) cardClass = 'bg-gradient-to-br from-gold/20 to-gold/5 backdrop-blur rounded-2xl border-2 border-gold/50 p-7 relative shadow-2xl lg:-mt-4 lg:mb-0';
-                const accentColor = t.recommended ? 'text-gold' : 'text-white/55';
-                const checkColor = t.recommended ? 'text-gold' : 'text-emerald';
-                return (
-                  <div key={t.id} className={cardClass}>
-                    {t.recommended && (
-                      <div className="absolute -top-3 left-1/2 -translate-x-1/2 inline-flex items-center gap-1.5 bg-gold text-ink text-[10px] font-extrabold uppercase tracking-widest px-3 py-1 rounded-full whitespace-nowrap">
-                        <Star size={11} fill="currentColor" /> Most popular
-                      </div>
-                    )}
-                    <div className={`text-xs uppercase tracking-widest font-bold mb-3 ${accentColor}`}>{t.name}</div>
-                    <div className="flex flex-wrap items-baseline gap-2 mb-2">
-                      <div className="text-4xl font-extrabold text-white">{t.price}</div>
-                      <div className="text-sm text-white/65 font-medium">{t.period}</div>
-                    </div>
-                    {t.commitment && (
-                      <div className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-widest font-bold bg-white/10 text-white/75 px-2 py-0.5 rounded mb-3">
-                        🔒 {t.commitment}
-                      </div>
-                    )}
-                    <div className="text-sm text-white/85 mb-2 leading-snug font-semibold">{t.tagline}</div>
-                    {t.bestFor && (
-                      <div className="text-xs text-white/65 mb-5 leading-relaxed">
-                        <span className="font-bold text-white/85">Best for:</span> {t.bestFor}
-                      </div>
-                    )}
-
-                    <ul className="space-y-2 text-sm">
-                      {t.bullets.map(li => (
-                        <li key={li} className="flex items-start gap-2 text-white/90">
-                          <Check size={13} className={`flex-shrink-0 mt-0.5 ${checkColor}`} />
-                          <span className="leading-snug">{li}</span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    {t.badge && (
-                      <div className="mt-5 pt-4 border-t border-white/10 text-xs text-gold font-bold">
-                        💡 {t.badge}
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
-          </Reveal>
-
-          {/* How billing works — credibility signal */}
-          <Reveal delay={0.22}>
-            <div className="max-w-4xl mx-auto mt-8 bg-white/5 border border-white/10 rounded-2xl p-6 md:p-7">
-              <div className="text-xs uppercase tracking-widest font-bold text-gold mb-3">💳 How billing works</div>
-              <p className="text-sm text-white/80 leading-relaxed">
-                <strong className="text-white">Once we agree on scope, you get a Stripe invoice link via email.</strong> First month charged on the day you sign. Card on file auto-renews monthly. No bank transfers, no PDFs to print, no payment gymnastics. Cancel any month after your minimum — invoicing stops the same day.
-              </p>
-            </div>
-          </Reveal>
-
-          {/* Honest commitment + leaving paragraph */}
-          <Reveal delay={0.25}>
-            <div className="max-w-4xl mx-auto mt-5 bg-white/5 border border-white/10 rounded-2xl p-6 md:p-7">
-              <div className="text-xs uppercase tracking-widest font-bold text-gold mb-3">🔒 Why the minimum commitment + what happens after</div>
-              <div className="space-y-3 text-sm text-white/80 leading-relaxed">
-                <p>
-                  <strong className="text-white">The system needs time to work.</strong> A CRM with 0 days of email data doesn't convert. A lead-gen pipeline needs warmup before reply rates stabilize. The minimum commitment is what makes my "no setup fee" math sustainable — Core (6 months), Automation Pro (5 months — the pipeline needs warmup time + iteration cycles), Full Marketing (3 months — fastest because the team is already producing).
-                </p>
-                <p>
-                  <strong className="text-white">After your minimum, you cancel any month.</strong> No exit fees. No surprise charges. Your contacts, your code, your brand assets — all yours, exported on request. You'd set up your own GHL Pro ($297/mo direct to GHL) and your own Cloudflare account (free), and I hand the keys over. The retainer just bundles platform costs so you only see one number while we're working together.
-                </p>
-              </div>
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.3}>
-            <div className="max-w-3xl mx-auto mt-10 flex flex-wrap gap-3 justify-center">
-              <Link to="/plan" className="btn-gold">
-                Get my plan <ArrowRight size={18} />
-              </Link>
-              <Link to="/contact" className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/15 transition text-white font-semibold rounded-lg">
-                Or just email me
-              </Link>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* CONTENT SAMPLES — visual proof of what the Full Marketing tier produces */}
+      {/* CONTENT SAMPLES — agency deliverables I scoped + QC'd */}
       <section className="py-20 bg-white border-t border-line">
         <div className="container-x">
           <Reveal>
             <div className="max-w-3xl mb-12">
-              <div className="text-xs uppercase tracking-widest font-bold text-navy mb-3">Content samples · Full Marketing tier</div>
+              <div className="text-xs uppercase tracking-widest font-bold text-navy mb-3">Campaign deliverables · Arrow Group</div>
               <h2 className="text-3xl md:text-4xl font-bold text-ink tracking-tight leading-tight">
-                What the $2,000 tier actually ships.
+                Marketing work I've planned and shipped.
               </h2>
               <p className="mt-4 text-body leading-relaxed">
                 {contentSamples.disclosure}
@@ -207,7 +94,7 @@ export default function Services() {
             </div>
           </Reveal>
 
-          {/* Graphics grid — 3-col desktop, 2-col tablet, 1-col mobile */}
+          {/* Graphics grid */}
           <Reveal delay={0.05}>
             <div className="flex items-center gap-2 mb-5">
               <ImageIcon size={16} className="text-navy" />
@@ -240,10 +127,9 @@ export default function Services() {
                 </a>
               ))}
             </div>
-
           </Reveal>
 
-          {/* Long-form video (16:9) — 2x2 grid on desktop, stacks on mobile */}
+          {/* Long-form video (16:9) */}
           <Reveal delay={0.1}>
             <div className="flex items-center gap-2 mb-5 mt-14">
               <Film size={16} className="text-navy" />
@@ -258,7 +144,7 @@ export default function Services() {
             </div>
           </Reveal>
 
-          {/* Short-form reels (9:16) — 3-col on tablet+, stacks on mobile */}
+          {/* Short-form reels (9:16) */}
           <Reveal delay={0.15}>
             <div className="flex items-center gap-2 mb-5 mt-14">
               <Film size={16} className="text-navy" />
@@ -270,6 +156,29 @@ export default function Services() {
                 .map((v) => (
                   <LazyYouTube key={v.id} id={v.id} label={v.label} vertical={true} />
                 ))}
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-20 bg-gradient-to-br from-ink to-navy-dark text-white">
+        <div className="container-x text-center max-w-2xl mx-auto">
+          <Reveal>
+            <div className="text-xs uppercase tracking-widest font-bold text-gold mb-4">Hiring or scoping a role?</div>
+            <h2 className="text-3xl md:text-4xl font-bold leading-tight">
+              Tell me about the role. I'll reply within hours.
+            </h2>
+            <p className="mt-4 text-white/75 text-lg leading-relaxed">
+              Open to full-time remote, contract, or fractional engagements. Happy to do a paid trial week, technical screen, or async take-home.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3 justify-center">
+              <Link to="/contact" className="btn-gold">
+                Send me a message <ArrowRight size={18} />
+              </Link>
+              <Link to="/resume" className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/15 transition text-white font-semibold rounded-lg">
+                See the full resume
+              </Link>
             </div>
           </Reveal>
         </div>
