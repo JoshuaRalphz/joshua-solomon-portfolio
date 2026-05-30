@@ -234,6 +234,23 @@ export const works = [
     previewLine: 'Internal company tool — these are real screenshots from the live app. Full walkthrough available on request; happy to demo it in an interview.',
   },
   {
+    id: 'jobcopilot',
+    title: 'Job Co-Pilot — AI job-application tool (personal project)',
+    tag: 'Personal Project · AI · React · Claude API',
+    summary: 'Built a full AI-powered job-application assistant from scratch. Paste any job posting, get an instant fit score, a tailored cover letter drafted in your voice, answers to screening questions, and an interview-prep packet — in seconds. Runs on your own Anthropic API key so there are no usage limits or subscription fees.',
+    stack: ['React', 'Vite', 'Anthropic Claude API', 'Cloudflare Pages', 'Tailwind CSS'],
+    wins: [
+      'AI fit scoring + tailored draft generation per posting',
+      'Screening question answering in one pass',
+      'Interview-prep packet output',
+      'Zero subscription model — API key pass-through',
+    ],
+    initials: 'JC',
+    liveUrl: 'https://job-copilot-9hv.pages.dev/',
+    location: 'Personal project',
+    thumb: '/work-thumbs/jobcopilot.png',
+  },
+  {
     id: 'bishop',
     title: 'Bishop Roofing & Exteriors — full marketing system (demo build)',
     tag: 'Demo · Web · CRM · Automation',
