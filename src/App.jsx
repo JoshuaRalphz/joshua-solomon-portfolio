@@ -5,32 +5,23 @@ import Nav from './components/Nav.jsx';
 import Footer from './components/Footer.jsx';
 import ScrollHint from './components/ScrollHint.jsx';
 import Home from './pages/Home.jsx';
-import About from './pages/About.jsx';
-import Services from './pages/Services.jsx';
-import Works from './pages/Works.jsx';
-import Resume from './pages/Resume.jsx';
-import Contact from './pages/Contact.jsx';
 
 export default function App() {
   const location = useLocation();
 
-  // Scroll to top on route change
-  useEffect(() => { window.scrollTo(0, 0); }, [location.pathname]);
+  // Scroll to top only on a true fresh load (no hash anchor target).
+  useEffect(() => {
+    if (!location.hash) window.scrollTo(0, 0);
+  }, [location.pathname, location.hash]);
 
   return (
     <>
       <Nav />
       <AnimatePresence mode="wait">
-        <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/works" element={<Works />} />
-          <Route path="/resume" element={<Resume />} />
-          <Route path="/contact" element={<Contact />} />
-          {/* Legacy /plan route — kept as a redirect target so existing
-              links don't 404. Now lands on /contact. */}
-          <Route path="/plan" element={<Contact />} />
+        <Routes location={location} key="single-page">
+          {/* Single-page portfolio — every path renders the one-pager.
+              Old multi-page routes (/about, /services, /works, /resume,
+              /contact, /plan) resolve here so existing links don't 404. */}
           <Route path="*" element={<Home />} />
         </Routes>
       </AnimatePresence>

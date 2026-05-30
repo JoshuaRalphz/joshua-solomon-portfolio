@@ -1,20 +1,18 @@
 import { useState, useEffect } from 'react';
-import { NavLink, Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Download } from 'lucide-react';
 import { Wordmark } from './Logo.jsx';
 
+// One-pager anchor nav — links scroll to sections on the single page.
 const links = [
-  { to: '/', label: 'Home' },
-  { to: '/services', label: 'Services' },
-  { to: '/works', label: 'Work' },
-  { to: '/about', label: 'About' },
-  { to: '/resume', label: 'Resume' },
+  { to: '#about', label: 'About' },
+  { to: '#capabilities', label: 'Capabilities' },
+  { to: '#work', label: 'Work' },
+  { to: '#experience', label: 'Experience' },
 ];
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const location = useLocation();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -23,8 +21,6 @@ export default function Nav() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  useEffect(() => { setOpen(false); }, [location.pathname]);
-
   return (
     <header
       className={`sticky top-0 z-40 transition-all backdrop-blur ${scrolled
@@ -32,31 +28,35 @@ export default function Nav() {
         : 'bg-white/70 border-b border-transparent'}`}
     >
       <div className="container-x flex items-center justify-between py-3">
-        <Link to="/" className="hover:opacity-90 transition-opacity">
+        <a href="#top" className="hover:opacity-90 transition-opacity">
           <Wordmark size={32} />
-        </Link>
+        </a>
 
         <nav className="hidden md:flex items-center gap-8">
           {links.map(({ to, label }) => (
-            <NavLink
+            <a
               key={to}
-              to={to}
-              end={to === '/'}
-              className={({ isActive }) =>
-                `text-sm font-medium transition-colors ${isActive ? 'text-navy' : 'text-body hover:text-ink'}`
-              }
+              href={to}
+              className="text-sm font-medium text-body hover:text-ink transition-colors"
             >
               {label}
-            </NavLink>
+            </a>
           ))}
-          <Link to="/contact" className="btn-primary !py-2.5 !px-5 !text-sm">
+          <a
+            href="/Joshua_Solomon_Resume_v6.pdf"
+            download
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-navy hover:text-navy-dark"
+          >
+            <Download size={15} /> Resume
+          </a>
+          <a href="#contact" className="btn-primary !py-2.5 !px-5 !text-sm">
             Get in touch
-          </Link>
+          </a>
         </nav>
 
         <button
           className="md:hidden p-2 -mr-2 text-ink"
-          onClick={() => setOpen(o => !o)}
+          onClick={() => setOpen((o) => !o)}
           aria-label="Toggle menu"
         >
           {open ? <X size={22} /> : <Menu size={22} />}
@@ -67,20 +67,30 @@ export default function Nav() {
         <div className="md:hidden border-t border-line bg-white">
           <div className="container-x py-4 flex flex-col gap-3">
             {links.map(({ to, label }) => (
-              <NavLink
+              <a
                 key={to}
-                to={to}
-                end={to === '/'}
-                className={({ isActive }) =>
-                  `block py-2 text-base font-medium ${isActive ? 'text-navy' : 'text-body'}`
-                }
+                href={to}
+                onClick={() => setOpen(false)}
+                className="block py-2 text-base font-medium text-body"
               >
                 {label}
-              </NavLink>
+              </a>
             ))}
-            <Link to="/contact" className="btn-primary text-center justify-center">
+            <a
+              href="/Joshua_Solomon_Resume_v6.pdf"
+              download
+              onClick={() => setOpen(false)}
+              className="inline-flex items-center gap-1.5 py-2 text-base font-semibold text-navy"
+            >
+              <Download size={16} /> Download resume
+            </a>
+            <a
+              href="#contact"
+              onClick={() => setOpen(false)}
+              className="btn-primary text-center justify-center"
+            >
               Get in touch
-            </Link>
+            </a>
           </div>
         </div>
       )}

@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { Wordmark } from './Logo.jsx';
 import { Mail, MessageCircle, Linkedin, Facebook } from 'lucide-react';
 import { profile } from '../data/content.js';
@@ -20,11 +19,11 @@ export default function Footer() {
         <div>
           <h4 className="text-xs uppercase tracking-widest font-bold text-white mb-4">Explore</h4>
           <ul className="space-y-2 text-sm">
-            <li><Link to="/services" className="hover:text-white transition-colors">Capabilities</Link></li>
-            <li><Link to="/works" className="hover:text-white transition-colors">Work</Link></li>
-            <li><Link to="/about" className="hover:text-white transition-colors">About</Link></li>
-            <li><Link to="/resume" className="hover:text-white transition-colors">Resume</Link></li>
-            <li><Link to="/contact" className="hover:text-white transition-colors">Contact</Link></li>
+            <li><a href="#about" className="hover:text-white transition-colors">About</a></li>
+            <li><a href="#capabilities" className="hover:text-white transition-colors">Capabilities</a></li>
+            <li><a href="#work" className="hover:text-white transition-colors">Work</a></li>
+            <li><a href="#experience" className="hover:text-white transition-colors">Experience</a></li>
+            <li><a href="#contact" className="hover:text-white transition-colors">Contact</a></li>
           </ul>
         </div>
 
@@ -32,11 +31,7 @@ export default function Footer() {
           <h4 className="text-xs uppercase tracking-widest font-bold text-white mb-4">Contact</h4>
           <ul className="space-y-3 text-sm">
             <li>
-              <a
-                href={`mailto:${profile.email}`}
-                title={profile.email}
-                className="inline-flex items-center gap-2 hover:text-white transition-colors"
-              >
+              <a href={`mailto:${profile.email}`} title={profile.email} className="inline-flex items-center gap-2 hover:text-white transition-colors">
                 <Mail size={14} className="flex-shrink-0" /> Email
               </a>
             </li>
