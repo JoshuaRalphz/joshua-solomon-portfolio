@@ -226,7 +226,12 @@ export const works = [
       'PWA architecture — installable, offline-aware',
       'GitHub Actions CI/CD + auto-deploy',
     ],
-    previewLine: 'Not publicly accessible (internal company tool). Walkthrough available on request — happy to demo live in an interview.',
+    gallery: [
+      { src: '/work-thumbs/agchub-1.png', label: 'Team dashboard — live view of everything in motion' },
+      { src: '/work-thumbs/agchub-2.png', label: 'Schedule board — newsletter + social calendar' },
+      { src: '/work-thumbs/agchub-3.png', label: 'Client reports — website + email analytics' },
+    ],
+    previewLine: 'Internal company tool — these are real screenshots from the live app. Full walkthrough available on request; happy to demo it in an interview.',
   },
   {
     id: 'bishop',

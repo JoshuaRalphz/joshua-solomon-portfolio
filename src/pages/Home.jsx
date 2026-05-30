@@ -245,9 +245,29 @@ export default function Home() {
                       ))}
                     </div>
                   )}
+                  {/* Screenshot gallery — real shots of the live internal app */}
+                  {featured.gallery && (
+                    <div className="grid sm:grid-cols-3 gap-3 mb-6">
+                      {featured.gallery.map((g) => (
+                        <figure key={g.src} className="group">
+                          <div className="aspect-[16/10] rounded-xl overflow-hidden border border-line bg-slate-100">
+                            <img
+                              src={g.src}
+                              alt={g.label}
+                              loading="lazy"
+                              decoding="async"
+                              onError={(e) => { e.currentTarget.closest('figure').style.display = 'none'; }}
+                              className="w-full h-full object-cover object-left-top group-hover:scale-[1.03] transition-transform duration-500"
+                            />
+                          </div>
+                          <figcaption className="mt-2 text-[11px] text-muted leading-snug">{g.label}</figcaption>
+                        </figure>
+                      ))}
+                    </div>
+                  )}
                   {featured.previewLine && (
                     <div className="mb-6 p-4 bg-gold/10 border-l-4 border-gold rounded-r-lg">
-                      <div className="text-[10px] uppercase tracking-widest text-amber-700 font-extrabold mb-1">👇 Why no live URL</div>
+                      <div className="text-[10px] uppercase tracking-widest text-amber-700 font-extrabold mb-1">ℹ️ About this build</div>
                       <p className="text-sm text-ink font-medium leading-relaxed">{featured.previewLine}</p>
                     </div>
                   )}
@@ -470,7 +490,7 @@ function ContactSection() {
         <Reveal>
           <div className="text-center max-w-2xl mx-auto mb-12">
             <div className="text-xs uppercase tracking-widest font-bold text-gold mb-3">Get in touch</div>
-            <h2 className="text-3xl md:text-4xl font-bold leading-tight">
+            <h2 className="text-3xl md:text-4xl font-bold leading-tight" style={{ textWrap: 'balance' }}>
               Hiring, contracting, or just want to talk?
             </h2>
             <p className="mt-4 text-white/75 text-lg leading-relaxed">
