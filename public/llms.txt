@@ -1,8 +1,8 @@
 # Joshua Solomon
 
-> Implementation Specialist — CRM, Web & Marketing Systems. Based in Olongapo City, Philippines · works US business hours. Open to full-time remote, contract, or fractional engagements.
+> Marketing Automation & Lifecycle Specialist — CRM, Email & SMS Systems. Based in Olongapo City, Philippines · works US business hours. Open to full-time remote, contract, or fractional engagements.
 
-Hands-on implementation work across GoHighLevel CRMs, custom-coded React + Vite sites on Cloudflare Pages, dedicated email-sending infrastructure (SPF/DKIM/DMARC, warmup), n8n / Make / Zapier workflow automation, Anthropic Claude + OpenAI API integration, and internal PWA tooling (React + Vite + Firebase).
+Hands-on agency experience building and running lifecycle email and SMS systems on GoHighLevel, Mailchimp, HubSpot, and Kajabi — audience segmentation, automated nurture and retention flows, multi-touch sequences, A/B testing, A2P 10DLC SMS, and deliverability (dedicated sending domains, SPF/DKIM/DMARC). Also ships the custom-coded sites (Cloudflare Pages, React + Vite) and integrations (n8n / Make / Zapier, Claude API) behind them.
 
 ## Contact
 - Email: solomonjoshua101602@gmail.com
@@ -13,19 +13,19 @@ Hands-on implementation work across GoHighLevel CRMs, custom-coded React + Vite 
 
 ## Capabilities
 
-- **CRM Configuration & Lifecycle Automation** — GoHighLevel full builds, HubSpot, Mailchimp, Kajabi. Pipelines, automations, lead routing, A2P 10DLC SMS brand approval (the GHL setup most builders avoid), GHL-Gmail-Zapier glue.
-- **Custom-Coded & Platform Websites** — Hand-coded HTML/CSS/JS on Cloudflare Pages for performance-critical builds. React + Vite + Tailwind for app-style internal tools and portfolios. Wix Studio + Velo, WordPress, Squarespace, GHL sites + funnels where client self-edit matters.
-- **Email Infrastructure & Deliverability** — Dedicated sending subdomains with SPF/DKIM/DMARC aligned, warmup to 6,500+/day verified capacity, transactional + marketing flows across Mailgun, GHL Email, HubSpot, Mailchimp.
-- **Workflow Automation & AI Integration** — n8n self-hosted on DigitalOcean, Make.com + Zapier for connector-heavy SaaS workflows, Anthropic Claude API for personalized outreach + scoring, OpenAI API for content + structured extraction. GHL + Canva + Google Sheets API integrations.
-- **Internal Tools & PWAs** — React + Vite + Firebase PWAs replacing scattered tool stacks. Recently built AGC HUB — a custom internal platform unifying Drive, ClickUp, Trello, GHL, and Canva for a US agency. In daily production.
+- **Email & Lifecycle Marketing** — End-to-end lifecycle programs on GoHighLevel, Mailchimp, HubSpot, and Kajabi. Campaign builds, audience segmentation, automated nurture and retention flows, multi-touch sequences, A/B testing, and open/click/delivery analytics reporting.
+- **CRM Configuration & Automation** — GoHighLevel full builds, HubSpot, Mailchimp, Kajabi. Sub-accounts, pipelines, lead routing, booking automations, A2P 10DLC SMS brand approval (the GHL setup most builders avoid), GHL-Gmail-Zapier glue.
+- **Deliverability & Compliance** — Dedicated sending subdomains with SPF/DKIM/DMARC aligned, warmup to 6,500+/day verified capacity, A2P 10DLC SMS registration, Square payment integration.
+- **Workflow Automation & AI** — n8n self-hosted on DigitalOcean, Make.com + Zapier for connector-heavy SaaS workflows, Anthropic Claude API for personalized outreach + scoring, multi-provider email enrichment. GHL + Canva + Google Sheets API integrations.
+- **Custom Sites & Internal Tools** — Hand-coded HTML/CSS/JS on Cloudflare Pages, React + Vite + Firebase internal tools. Recently built AGC HUB — a custom platform unifying Drive, ClickUp, Trello, GHL, and Canva for a US agency. In daily production.
 
 ## Professional Experience
 
-### Implementation Specialist — Arrow Group Consulting (Michigan, USA) · Feb 2026 – Present
-Technical lead for client onboarding owning the full implementation stack (GoHighLevel configuration, custom-coded sites, domain go-lives, A2P 10DLC compliance) end-to-end across multiple accounts. Built AGC HUB — a custom internal PWA (React + Vite + Firebase + GHL/Canva/Google Sheets APIs) replacing a scattered tool stack. Acted as technical advisor to clients and the founder.
+### Implementation Specialist — CRM, Web & Marketing Systems · Arrow Group Consulting (Michigan, USA) · Feb 2026 – Present
+Build and run monthly email and SMS marketing campaigns and lifecycle automations across multiple client accounts — audience segmentation, nurture and retention flows — and report open/click/delivery analytics to founder and clients. Own deliverability across the portfolio (dedicated sending domains, SPF/DKIM/DMARC, A2P 10DLC registration). Configure GoHighLevel sub-accounts end-to-end. Built AGC HUB — a custom internal platform (React + Vite + Firebase + GHL/Canva/Google Sheets APIs) unifying a scattered tool stack. Technical advisor to clients and the founder.
 
 ### Virtual Marketing Assistant — Doneverse (Philippines VMA agency) · Sep 2025 – Feb 2026
-Primary technical implementer across the agency. Built and configured client accounts on Wix Studio, Kajabi, Mailchimp, and HubSpot. Delivered Wix Studio sites with integrated Square payment processing. Ran LinkedIn outreach campaigns on behalf of clients.
+Built and shipped Mailchimp and HubSpot email marketing systems for SMB clients — automated onboarding sequences, nurture flows, and Kajabi course-platform integrations. Ran multi-touch LinkedIn outreach and follow-up sequences. Owned client onboarding including domain configuration and email deliverability setup. Delivered Wix Studio sites with integrated Square payment processing.
 
 ## Real Client Work (delivered under Arrow Group Consulting, shown with permission)
 

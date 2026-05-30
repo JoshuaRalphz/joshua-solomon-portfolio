@@ -9,10 +9,10 @@ export default function Footer() {
         <div className="md:col-span-2">
           <Wordmark size={32} light />
           <p className="mt-5 text-sm text-white/65 max-w-md leading-relaxed">
-            Implementation Specialist — CRM, Web &amp; Marketing Systems. Hands-on across
-            GoHighLevel, custom-coded sites on Cloudflare Pages, email infrastructure,
-            workflow automation, and internal tooling. Open to full-time remote, contract,
-            and fractional roles.
+            Marketing Automation &amp; Lifecycle Specialist — CRM, Email &amp; SMS Systems.
+            Hands-on across lifecycle email + SMS, GoHighLevel, deliverability, workflow
+            automation, and the custom-coded sites behind them. Open to full-time remote,
+            contract, and fractional roles.
           </p>
         </div>
 
@@ -56,7 +56,7 @@ export default function Footer() {
 
       <div className="border-t border-white/10">
         <div className="container-x py-5 text-xs text-white/50 flex flex-col md:flex-row justify-between gap-2">
-          <div>© 2026 Joshua Solomon · Implementation Specialist · Olongapo, PH · US business hours</div>
+          <div>© 2026 Joshua Solomon · Marketing Automation &amp; Lifecycle Specialist · Olongapo, PH · US business hours</div>
           <div>Built from scratch · React · Hosted on Cloudflare Pages</div>
         </div>
       </div>

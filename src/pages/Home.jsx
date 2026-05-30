@@ -13,13 +13,13 @@ import {
   profile, stats, benefits, services, works, experience, tools, PORTFOLIO_GHL_WEBHOOK,
 } from '../data/content.js';
 
-const BENEFIT_ICONS = { Zap, UserCheck, Wrench, Layers, Shield, TrendingUp };
+const BENEFIT_ICONS = { Zap, UserCheck, Wrench, Layers, Shield, TrendingUp, Mail };
 const SERVICE_ICONS = {
+  'email-lifecycle': Mail,
   crm: Database,
-  website: Globe,
-  'email-infra': Mail,
-  'workflow-automation': Workflow,
-  'internal-tools': Box,
+  deliverability: ShieldCheck,
+  automation: Workflow,
+  'web-tools': Globe,
 };
 
 const education = [
@@ -70,9 +70,9 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.05 }}
             className="text-4xl md:text-6xl font-extrabold tracking-tight text-ink leading-[1.05] max-w-4xl"
           >
-            I build the marketing systems{' '}
+            I build the lifecycle systems{' '}
             <span className="bg-gradient-to-br from-navy to-blue-600 bg-clip-text text-transparent">
-              your business actually runs on.
+              that nurture, convert, and retain.
             </span>
           </motion.h1>
 
@@ -82,9 +82,11 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.15 }}
             className="mt-6 text-lg md:text-xl text-body max-w-2xl leading-relaxed"
           >
-            Implementation specialist with hands-on agency experience configuring GoHighLevel CRMs,
-            building custom-coded sites on Cloudflare Pages, and shipping marketing automation across
-            Mailchimp, Kajabi, HubSpot, and n8n. Open to full-time remote, contract, or fractional roles.
+            Marketing automation specialist with hands-on agency experience building and running
+            lifecycle email and SMS systems on GoHighLevel, Mailchimp, HubSpot, and Kajabi — audience
+            segmentation, automated nurture and retention flows, A2P 10DLC SMS, and deliverability —
+            plus the custom-coded sites and integrations behind them. Open to full-time remote,
+            contract, or fractional roles.
           </motion.p>
 
           <motion.div

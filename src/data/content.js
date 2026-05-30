@@ -7,8 +7,8 @@
 
 export const profile = {
   name: 'Joshua Solomon',
-  role: 'Implementation Specialist — CRM, Web & Marketing Systems',
-  subtitle: 'GoHighLevel · Cloudflare · Email Automation · AI Workflows',
+  role: 'Marketing Automation & Lifecycle Specialist — CRM, Email & SMS Systems',
+  subtitle: 'Lifecycle Email · SMS · GoHighLevel · Deliverability · Automation',
   location: 'Olongapo City, PH · Open to remote (US business hours)',
   available: 'Open to full-time remote, contract & fractional roles',
   email: 'solomonjoshua101602@gmail.com',
@@ -35,23 +35,23 @@ export const PORTFOLIO_GHL_WEBHOOK =
 export const benefits = [
   {
     icon: 'Layers',
-    title: 'End-to-end implementation, not just one slice.',
-    body: 'I configure the CRM, build the site, set up the email infrastructure, wire the integrations, and ship the automations. One person owning the stack means fewer handoffs and faster launches.',
+    title: 'Lifecycle systems, end to end.',
+    body: 'Audience segmentation, automated nurture and retention flows, multi-touch sequences, A/B testing, and the deliverability that gets them to the inbox. I build the whole lifecycle, not just one email.',
   },
   {
-    icon: 'Zap',
-    title: 'Ship in days, not quarters.',
-    body: 'Average kickoff-to-launch is 14 days. I work async with shared checklists and Loom walkthroughs — no week-long status meetings, no padded timelines.',
+    icon: 'Mail',
+    title: 'Email + SMS that actually lands.',
+    body: 'I own deliverability: dedicated sending domains, SPF/DKIM/DMARC alignment, warmup, and A2P 10DLC registration for compliant text campaigns. Then I report open, click, and delivery analytics back to stakeholders.',
   },
   {
     icon: 'Wrench',
     title: 'Comfortable across the stack.',
-    body: 'GoHighLevel, HubSpot, Mailchimp, Kajabi, custom-coded React + Vite, Wix Velo, n8n, Make, Zapier, Claude/OpenAI APIs, A2P 10DLC compliance — I pick up new tools quickly and ship in whatever your team uses.',
+    body: 'GoHighLevel, HubSpot, Mailchimp, Kajabi, ActiveCampaign, n8n, Make, Zapier, Claude API, plus custom React + Vite when a build calls for it. I ship in whatever your team already uses.',
   },
   {
     icon: 'UserCheck',
     title: 'Founder-friendly communication.',
-    body: 'I translate implementation details into plain English on calls and in writing. Comfortable speaking directly to founders, senior stakeholders, and end clients.',
+    body: 'I translate automation and implementation details into plain English on calls and in writing. Comfortable speaking directly to founders, senior stakeholders, and end clients.',
   },
   {
     icon: 'Shield',
@@ -61,92 +61,83 @@ export const benefits = [
   {
     icon: 'TrendingUp',
     title: 'I build the systems I work in.',
-    body: 'Recently built AGC HUB — a custom PWA (React + Vite + Firebase + GHL/Canva/Google Sheets APIs) replacing a scattered tool stack for a US consultancy. In daily production.',
+    body: 'Recently built AGC HUB — a custom internal platform (React + Vite + Firebase + GHL/Canva/Google Sheets APIs) unifying a US consultancy\'s scattered tool stack. In daily production.',
   },
 ];
 
 // Capabilities — what I deliver. No pricing, no tier framing.
+// Ordered to lead with lifecycle/email — matches the resume's positioning.
 export const services = [
   {
-    id: 'crm',
-    title: 'CRM Configuration & Lifecycle Automation',
-    summary: 'GoHighLevel, HubSpot, and Mailchimp builds tied to real sales processes. Pipelines, automations, lead routing, lifecycle email + SMS sequences, calendar booking, and A2P 10DLC compliance.',
+    id: 'email-lifecycle',
+    title: 'Email & Lifecycle Marketing',
+    summary: 'End-to-end lifecycle programs on GoHighLevel, Mailchimp, HubSpot, and Kajabi — audience segmentation, automated nurture and retention flows, multi-touch sequences, A/B testing, and analytics reporting back to stakeholders.',
     bullets: [
-      'GoHighLevel full builds — pipelines, automations, sub-account configuration',
+      'Campaign builds — newsletters, promos, onboarding, win-back',
+      'Audience segmentation + list hygiene',
+      'Automated nurture & retention flows',
+      'Multi-touch sequences with branching logic',
+      'A/B testing on subject lines, copy, and timing',
+      'Open / click / delivery analytics reporting',
+    ],
+    outcome: 'Lifecycle programs that nurture, retain, and re-engage on autopilot.',
+  },
+  {
+    id: 'crm',
+    title: 'CRM Configuration & Automation',
+    summary: 'GoHighLevel, HubSpot, and Mailchimp builds tied to real sales processes. Sub-account setup, pipelines, lead routing, booking automations, and A2P 10DLC-compliant SMS campaigns.',
+    bullets: [
+      'GoHighLevel full builds — pipelines, automations, sub-accounts',
       'A2P 10DLC SMS brand approval (the GHL setup most builders avoid)',
-      'HubSpot + Mailchimp lifecycle email automation',
-      'Lead routing + multi-step nurture sequences',
-      'Calendar booking flows synced to client calendars',
+      'HubSpot + Mailchimp + Kajabi configuration',
+      'Lead routing + booking automations',
+      'Business profiles + email service connections',
       'GHL-Gmail-Zapier glue across founder workflows',
     ],
     outcome: 'Every lead routed, every follow-up automated, every conversation logged.',
   },
   {
-    id: 'website',
-    title: 'Custom-Coded & Platform Websites',
-    summary: 'Hand-coded HTML/CSS/JS sites on Cloudflare Pages for performance-critical builds. Wix Studio, Wix Velo, WordPress, Squarespace, or GoHighLevel sites where client self-edit matters.',
+    id: 'deliverability',
+    title: 'Deliverability & Compliance',
+    summary: 'Dedicated sending domains with SPF/DKIM/DMARC properly aligned, warmup to high-volume capacity, and A2P 10DLC SMS registration so email and text campaigns actually reach the inbox — legally.',
     bullets: [
-      'Custom-coded sites on Cloudflare Pages — sub-second loads, full SEO health',
-      'React + Vite + Tailwind for app-style portfolios and internal tools',
-      'Wix Studio + Velo extensions for client-editable production sites',
-      'WordPress, Squarespace, GHL sites + funnels when self-edit is the priority',
-      'Mobile-first responsive design, technical SEO baked in',
-      'Cloudflare DNS + domain go-lives + GHL domain connect',
+      'Dedicated sending subdomains configured end-to-end',
+      'SPF / DKIM / DMARC alignment + SSL',
+      'Email warmup to 6,500+/day verified capacity',
+      'A2P 10DLC SMS registration + brand approval',
+      'Inbox-placement diagnostics + warmup recovery',
+      'Square payment integration for checkout/intake flows',
     ],
-    outcome: 'Fast, indexable sites that ship in 14 days and run for years.',
+    outcome: 'Email and SMS that land in the inbox, not spam — and stay compliant.',
   },
   {
-    id: 'email-infra',
-    title: 'Email Infrastructure & Deliverability',
-    summary: 'Dedicated sending subdomains with SPF/DKIM/DMARC properly aligned, warmup to high-volume capacity, transactional + marketing flows in Mailgun, GHL Email, Mailchimp, and HubSpot.',
-    bullets: [
-      'Dedicated sending subdomains configured end-to-end (SPF/DKIM/DMARC)',
-      'Email warmup to 6,500+/day verified inbox capacity',
-      'Mailgun, GHL Email, HubSpot, Mailchimp integration',
-      'Transactional flows — invoicing, billing reminders, lifecycle triggers',
-      'Newsletter cadence + drip sequences with measurable open/click rates',
-      'Inbox delivery diagnostics + warmup recovery for damaged domains',
-    ],
-    outcome: 'Emails land in inboxes, not spam — and stay there.',
-  },
-  {
-    id: 'workflow-automation',
-    title: 'Workflow Automation & AI Integration',
-    summary: 'n8n, Make, and Zapier builds. Anthropic Claude + OpenAI APIs wired into outreach personalization, content drafting, and lead scoring. Self-hostable or cloud — whichever the team prefers.',
+    id: 'automation',
+    title: 'Workflow Automation & AI',
+    summary: 'n8n, Make, and Zapier builds connecting your stack. Anthropic Claude API wired into outreach personalization, content drafting, and lead scoring. Self-hostable or cloud — whichever the team prefers.',
     bullets: [
       'n8n self-hosted on DigitalOcean — full control, no per-task billing',
       'Make.com + Zapier for connector-heavy SaaS workflows',
-      'Anthropic Claude API for personalized outreach drafting + scoring',
-      'OpenAI API for content generation + structured data extraction',
+      'Anthropic Claude API for personalized drafting + scoring',
       'GHL API + Canva API + Google Sheets API integrations',
-      'Error handling + Slack alerts + Loom-documented hand-off',
+      'Error handling + Slack alerts + documented hand-off',
+      'Multi-provider email enrichment pipelines',
     ],
-    outcome: 'Repetitive work automated end-to-end — measurable hours back per week.',
+    outcome: 'Repetitive work automated end-to-end — hours back every week.',
   },
   {
-    id: 'internal-tools',
-    title: 'Internal Tools & PWAs',
-    summary: 'React + Vite + Firebase PWAs replacing scattered tool stacks. Recently built AGC HUB — a custom internal platform unifying Drive, ClickUp, Trello, GHL, and Canva for a US agency. In daily production.',
+    id: 'web-tools',
+    title: 'Custom Sites & Internal Tools',
+    summary: 'Hand-coded HTML/CSS/JS sites on Cloudflare Pages, plus React + Vite + Firebase internal tools. Recently built AGC HUB — a custom platform unifying a US agency\'s scattered tool stack. In daily production.',
     bullets: [
-      'React + Vite + Firebase + Tailwind stack',
-      'Multi-API orchestration (GHL, Canva, Google Sheets, Slack)',
-      'Role-based access + Firebase Auth integration',
+      'Custom-coded sites on Cloudflare Pages — sub-second loads',
+      'React + Vite + Tailwind for app-style tools and portfolios',
+      'Wix Studio + Velo extensions for client self-edit access',
+      'WordPress when full editing freedom is the priority',
+      'Firebase + GitHub Actions CI/CD + auto-deploy',
       'PWA architecture — installable, offline-aware, mobile-first',
-      'GitHub Actions CI/CD + Cloudflare Pages or Firebase Hosting deploys',
-      'Used to replace scattered SaaS stacks costing $200+/mo combined',
     ],
-    outcome: 'One platform replacing five — owned by the team forever.',
+    outcome: 'Fast sites and internal tools the team owns forever.',
   },
-];
-
-// Scope boundaries — clarity about role fit (positive framing only).
-export const focus = [
-  'Marketing technology implementation roles',
-  'Technical client onboarding + solutions architecture',
-  'Full-stack systems work for early-stage and SMB companies',
-  'CRM administration + lifecycle automation roles',
-  'Email marketing + deliverability operations',
-  'Internal tooling + back-office automation builds',
 ];
 
 export const tools = [
@@ -327,13 +318,13 @@ export const experience = [
     type: 'Part-time ongoing contract',
     dates: 'Feb 2026 — Present',
     bullets: [
-      'Technical lead for client onboarding — owning the full implementation stack (GoHighLevel configuration, custom-coded sites, domain go-lives, A2P 10DLC compliance) end-to-end across multiple accounts.',
-      'Built and shipped custom-coded HTML/CSS/JS websites deployed on Cloudflare Pages, plus Wix Velo extensions for platforms requiring client self-edit access.',
-      'Configured GoHighLevel sub-accounts per client — automations, business profiles, dedicated sending domains, email service connections — and managed Cloudflare DNS across the portfolio.',
-      'Built AGC HUB — a custom internal PWA unifying the agency\'s scattered tools (Drive, ClickUp, Trello, GHL, Canva) into one platform. Runs the end-to-end content production workflow: task assignment → team submission → review via GHL + Canva APIs → PM scheduling. Stack: React + Vite + Firebase + GHL/Canva/Google Sheets APIs. In daily production.',
-      'Designed and shipped monthly email marketing campaigns and lifecycle automations; reported analytics from email and SMS blasts directly to founder and clients.',
-      'Acted as the technical advisor to both clients and the founder — translating implementation details into plain language during onboarding calls and answering live technical questions.',
-      'Coordinated with the project manager and social media manager to keep onboarding timelines on track; handled invoicing and back-office workflows.',
+      'Build and run monthly email and SMS marketing campaigns and lifecycle automations across multiple client accounts — audience segmentation, automated nurture and retention flows — and report open, click, and delivery analytics directly to the founder and clients.',
+      'Configure GoHighLevel sub-accounts per client end-to-end — automations, pipelines, business profiles, dedicated sending domains, and email service connections — and manage Cloudflare DNS across the portfolio.',
+      'Own email and SMS deliverability across the portfolio: dedicated sending domains, SPF/DKIM/DMARC configuration, and A2P 10DLC registration for compliant text campaigns.',
+      'Technical lead for client onboarding — owning the full implementation stack (GoHighLevel configuration, custom-coded sites, domain go-lives, compliance) end-to-end across multiple accounts.',
+      'Built AGC HUB — a custom internal platform unifying the agency\'s scattered tools (Drive, ClickUp, Trello, GHL, Canva) into one system. Runs the end-to-end content production workflow: task assignment → team submission → review via GHL + Canva APIs → PM scheduling. Stack: React + Vite + Firebase + GHL/Canva/Google Sheets APIs. In daily production.',
+      'Acted as technical advisor to clients and the founder — translating implementation and automation details into plain language during onboarding calls and answering live technical questions.',
+      'Built and shipped custom-coded HTML/CSS/JS websites on Cloudflare Pages, plus Wix Velo extensions for platforms requiring client self-edit access.',
     ],
   },
   {
@@ -343,36 +334,36 @@ export const experience = [
     type: 'VMA agency — recruits, trains, and matches Virtual Marketing Assistants to US founders',
     dates: 'Sep 2025 — Feb 2026',
     bullets: [
+      'Built and shipped Mailchimp and HubSpot email marketing systems for SMB clients — automated onboarding sequences, nurture flows, and Kajabi course-platform integrations.',
+      'Ran multi-touch LinkedIn outreach and follow-up sequences on behalf of clients — connection note writing, nurture cadences, and lead nurturing through to booked discovery calls.',
+      'Owned client onboarding for new platform setups, including domain configuration and email deliverability setup.',
       'Primary technical implementer across the agency — built and configured client accounts on Wix Studio, Kajabi, Mailchimp, and HubSpot.',
       'Delivered Wix Studio sites with integrated Square payment processing for client checkout and intake flows.',
-      'Configured Kajabi course platforms and shipped Mailchimp/HubSpot email marketing systems for SMB clients.',
-      'Ran LinkedIn outreach campaigns on behalf of clients — connection note writing, multi-touch follow-up sequences, lead nurturing through to booked discovery calls.',
-      'Owned client onboarding for new platform setups, including domain configuration and email deliverability setup.',
     ],
   },
 ];
 
-// Mirrors the "Core Expertise" block in the PDF resume
+// Mirrors the "Technical Skills" block in the PDF resume
 export const coreExpertise = [
+  {
+    label: 'Email & Lifecycle Marketing',
+    items: 'Campaign builds, audience segmentation, automated nurture & retention flows, multi-touch sequences, A/B testing, analytics reporting',
+  },
   {
     label: 'CRM & Marketing Platforms',
     items: 'GoHighLevel (GHL), HubSpot, Mailchimp, Kajabi, ActiveCampaign',
   },
   {
-    label: 'Web Development',
-    items: 'HTML5, CSS3, JavaScript, React, Vite, Tailwind CSS, Wix Studio + Velo, WordPress, Squarespace',
+    label: 'Automation & Integrations',
+    items: 'n8n, Make.com, Zapier, GHL API, Google Sheets API, Canva API, Anthropic Claude API',
   },
   {
-    label: 'Hosting & DevOps',
-    items: 'Cloudflare Pages, Cloudflare DNS, Vercel, Firebase, GitHub Actions',
+    label: 'Deliverability & Compliance',
+    items: 'A2P 10DLC SMS registration, dedicated sending domains, SPF/DKIM/DMARC, Square Payment integration',
   },
   {
-    label: 'Workflow Automation',
-    items: 'n8n, Make.com, Zapier, Anthropic Claude API, Google Sheets API, Canva API, GHL API',
-  },
-  {
-    label: 'Compliance & Integrations',
-    items: 'A2P 10DLC SMS registration, Square Payment integration, dedicated sending domain configuration (SPF/DKIM/DMARC)',
+    label: 'Web & Hosting',
+    items: 'HTML5, CSS3, JavaScript, React, Vite, Tailwind CSS, Wix Studio + Velo, WordPress; Cloudflare Pages/DNS, Vercel, Firebase, GitHub Actions',
   },
   {
     label: 'Languages',
