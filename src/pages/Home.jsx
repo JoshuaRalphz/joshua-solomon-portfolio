@@ -10,7 +10,7 @@ import {
 import PageTransition, { Reveal } from '../components/PageTransition.jsx';
 import LogoMarquee from '../components/LogoMarquee.jsx';
 import {
-  profile, stats, benefits, services, works, experience, tools, PORTFOLIO_GHL_WEBHOOK,
+  profile, benefits, services, works, experience, tools, PORTFOLIO_GHL_WEBHOOK,
 } from '../data/content.js';
 
 const BENEFIT_ICONS = { Zap, UserCheck, Wrench, Layers, Shield, TrendingUp, Mail };
@@ -109,14 +109,8 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="mt-14 pt-8 border-t border-line grid sm:grid-cols-3 gap-6"
+            className="mt-14 pt-8 border-t border-line grid sm:grid-cols-2 gap-6"
           >
-            <div>
-              <div className="text-xs font-bold uppercase tracking-widest text-muted mb-1 flex items-center gap-1.5">
-                <Briefcase size={12} className="text-navy" /> Current role
-              </div>
-              <div className="text-sm font-medium text-ink">Implementation Specialist · Arrow Group Consulting (MI, USA)</div>
-            </div>
             <div>
               <div className="text-xs font-bold uppercase tracking-widest text-muted mb-1 flex items-center gap-1.5">
                 <MapPin size={12} className="text-navy" /> Based in
@@ -130,18 +124,6 @@ export default function Home() {
               <div className="text-sm font-medium text-ink">US business hours · EST/CST/MST/PST overlap</div>
             </div>
           </motion.div>
-        </div>
-      </section>
-
-      {/* ============================================================= STATS */}
-      <section className="bg-ink text-white py-10">
-        <div className="container-x grid grid-cols-1 sm:grid-cols-3 gap-8">
-          {stats.map((s, i) => (
-            <Reveal key={s.label} delay={i * 0.07}>
-              <div className="text-3xl md:text-4xl font-extrabold tracking-tight text-gold">{s.value}</div>
-              <div className="mt-1 text-xs uppercase tracking-wider text-white/65 font-semibold">{s.label}</div>
-            </Reveal>
-          ))}
         </div>
       </section>
 
@@ -277,11 +259,39 @@ export default function Home() {
             </Reveal>
           )}
 
-          {/* Rest — compact cards */}
+          {/* Rest — cards with screenshot thumbnails */}
           <div className="mt-6 grid md:grid-cols-2 gap-6">
             {rest.map((w, i) => (
               <Reveal key={w.id} delay={i * 0.05}>
                 <article className="bg-white border border-line rounded-2xl overflow-hidden h-full flex flex-col hover:border-navy hover:shadow-soft transition-all">
+                  {/* Screenshot thumbnail — clickable when there's a live URL.
+                      Initials gradient shows as fallback (and for builds with
+                      no public screenshot, e.g. the demo). */}
+                  {(() => {
+                    const Thumb = (
+                      <div className="relative aspect-[16/9] bg-gradient-to-br from-navy-tint to-blue-100 overflow-hidden">
+                        <div className="absolute inset-0 flex items-center justify-center text-navy text-5xl font-extrabold opacity-60">
+                          {w.initials}
+                        </div>
+                        {w.thumb && (
+                          <img
+                            src={w.thumb}
+                            alt={`${w.title} — screenshot`}
+                            loading="lazy"
+                            decoding="async"
+                            onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                            className="absolute inset-0 w-full h-full object-cover object-left-top"
+                          />
+                        )}
+                      </div>
+                    );
+                    return w.liveUrl ? (
+                      <a href={w.liveUrl} target="_blank" rel="noopener" className="block group/thumb">
+                        {Thumb}
+                      </a>
+                    ) : Thumb;
+                  })()}
+
                   <div className="p-6 flex-1 flex flex-col">
                     <div className="flex flex-wrap items-center gap-2 mb-3">
                       <span className="inline-block text-[10px] font-extrabold px-2.5 py-1 bg-navy text-white rounded-full uppercase tracking-wider">{w.tag}</span>
