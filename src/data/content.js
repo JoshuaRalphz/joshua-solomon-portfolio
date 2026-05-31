@@ -334,11 +334,11 @@ export const works = [
 
 export const experience = [
   {
-    role: 'Implementation Specialist — CRM, Web & Marketing Systems',
+    role: 'CRM & Email Marketing Automation Specialist',
     company: 'Arrow Group Consulting',
     location: 'Michigan, USA',
-    type: 'Part-time ongoing contract',
-    dates: 'Feb 2026 — Present',
+    type: 'Affordable CMO for start-ups, growing, and transitioning companies — marketing strategy, brand implementation, content creation, and web development',
+    dates: 'Feb 2026',
     bullets: [
       'Build and run monthly email and SMS marketing campaigns and lifecycle automations across multiple client accounts — audience segmentation, automated nurture and retention flows — and report open, click, and delivery analytics directly to the founder and clients.',
       'Configure GoHighLevel sub-accounts per client end-to-end — automations, pipelines, business profiles, dedicated sending domains, and email service connections — and manage Cloudflare DNS across the portfolio.',
