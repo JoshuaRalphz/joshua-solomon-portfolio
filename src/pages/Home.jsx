@@ -10,7 +10,8 @@ import {
 import PageTransition, { Reveal } from '../components/PageTransition.jsx';
 import LogoMarquee from '../components/LogoMarquee.jsx';
 import {
-  profile, benefits, services, works, experience, tools, PORTFOLIO_GHL_WEBHOOK,
+  profile, benefits, services, works, experience, tools,
+  WEB3FORMS_ACCESS_KEY, WEB3FORMS_ENDPOINT,
 } from '../data/content.js';
 
 const BENEFIT_ICONS = { Zap, UserCheck, Wrench, Layers, Shield, TrendingUp, Mail };
@@ -452,8 +453,27 @@ function ContactSection() {
 
   const onSubmit = async (data) => {
     try {
-      // Keep keys stable — renaming breaks the GHL WF-PORTFOLIO custom-field mappings.
+      // Honeypot — Web3Forms rejects the submission if `botcheck` is filled.
+      // Real users never see/fill it; only bots auto-completing every field do.
+      if (data.botcheck) {
+        setSubmitStatus('success'); // silent success so bots don't retry
+        reset();
+        return;
+      }
+
+      if (!WEB3FORMS_ACCESS_KEY) {
+        // eslint-disable-next-line no-console
+        console.error('WEB3FORMS_ACCESS_KEY is not set in content.js');
+        setSubmitStatus('error');
+        return;
+      }
+
+      // Web3Forms payload — `access_key` auths the request; everything else
+      // is included verbatim in the email sent to solomonjoshua101602@gmail.com.
       const payload = {
+        access_key: WEB3FORMS_ACCESS_KEY,
+        subject: `Portfolio inquiry — ${data.name || 'no name'}${data.company ? ` (${data.company})` : ''}`,
+        from_name: 'solomonjoshua.com contact form',
         name: data.name || '',
         email: data.email || '',
         company: data.company || '',
@@ -463,21 +483,14 @@ function ContactSection() {
         submitted_at: new Date().toISOString(),
       };
 
-      if (!PORTFOLIO_GHL_WEBHOOK) {
-        // eslint-disable-next-line no-console
-        console.error('PORTFOLIO_GHL_WEBHOOK is not set in content.js');
-        setSubmitStatus('error');
-        return;
-      }
-
-      const res = await fetch(PORTFOLIO_GHL_WEBHOOK, {
+      const res = await fetch(WEB3FORMS_ENDPOINT, {
         method: 'POST',
-        mode: 'cors',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify(payload),
       });
 
-      if (res.ok) { setSubmitStatus('success'); reset(); }
+      const json = await res.json().catch(() => ({}));
+      if (res.ok && json.success) { setSubmitStatus('success'); reset(); }
       else { setSubmitStatus('error'); }
     } catch {
       setSubmitStatus('error');
@@ -513,6 +526,15 @@ function ContactSection() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+                  {/* Honeypot — hidden from humans, bots fill it and get rejected. */}
+                  <input
+                    type="checkbox"
+                    {...register('botcheck')}
+                    tabIndex={-1}
+                    autoComplete="off"
+                    style={{ position: 'absolute', left: '-9999px', width: 0, height: 0, opacity: 0 }}
+                    aria-hidden="true"
+                  />
                   <Field label="Your name" error={errors.name?.message}>
                     <input
                       {...register('name', { required: 'Required' })}

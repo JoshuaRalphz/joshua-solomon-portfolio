@@ -26,10 +26,11 @@ export const stats = [
   { value: '24h', label: 'Reply time · async-first · US business hours' },
 ];
 
-// GHL Inbound Webhook for the portfolio contact form.
-// Trigger lives in WF-PORTFOLIO workflow (sub-account: Joshua Solomon).
-export const PORTFOLIO_GHL_WEBHOOK =
-  'https://services.leadconnectorhq.com/hooks/n3Mhd91c4sG1CNdf5zdN/webhook-trigger/c93afe4a-d360-4235-9be8-55771da5e86f';
+// Web3Forms access key for the portfolio contact form.
+// Forwards form submissions directly to solomonjoshua101602@gmail.com.
+// Generated at web3forms.com — replaces the previous GHL WF-PORTFOLIO webhook.
+export const WEB3FORMS_ACCESS_KEY = 'babb1c1a-29c2-466a-a459-aab61c331600';
+export const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit';
 
 // Strengths shown on the Home page — candidate-facing, employee-positioned.
 export const benefits = [
