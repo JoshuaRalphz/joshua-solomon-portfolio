@@ -20,8 +20,8 @@ export const profile = {
 };
 
 export const stats = [
-  { value: '3+', label: 'Years building marketing systems professionally' },
-  { value: '14d', label: 'Average project turnaround · kickoff to launch' },
+  { value: '1 yr', label: 'Remote work for US clients · agency + contract' },
+  { value: '2x', label: 'Nonprofit email click rate · 4.5% → 9.5% (Apr–May 2026)' },
   { value: '24h', label: 'Reply time · async-first · US business hours' },
 ];
 
@@ -46,7 +46,7 @@ export const benefits = [
   {
     icon: 'Wrench',
     title: 'Comfortable across the stack.',
-    body: 'GoHighLevel, HubSpot, Mailchimp, Kajabi, ActiveCampaign, n8n, Make, Zapier, Claude API, plus custom React + Vite when a build calls for it. I ship in whatever your team already uses.',
+    body: 'GoHighLevel, HubSpot, Mailchimp, Kajabi, ActiveCampaign, n8n, Google Apps Script, Claude API, plus custom React + Vite when a build calls for it. I pick up whatever your team already uses.',
   },
   {
     icon: 'UserCheck',
@@ -73,11 +73,11 @@ export const services = [
     title: 'Email & Lifecycle Marketing',
     summary: 'End-to-end lifecycle programs on GoHighLevel, Mailchimp, HubSpot, and Kajabi — audience segmentation, automated nurture and retention flows, multi-touch sequences, A/B testing, and analytics reporting back to stakeholders.',
     bullets: [
-      'Campaign builds — newsletters, promos, onboarding, win-back',
+      'Campaign builds — newsletters, promos, onboarding sequences',
       'Audience segmentation + list hygiene',
       'Automated nurture & retention flows',
-      'Multi-touch sequences with branching logic',
-      'A/B testing on subject lines, copy, and timing',
+      'Multi-touch drip sequences',
+      'A/B split tests on subject lines and content',
       'Open / click / delivery analytics reporting',
     ],
     outcome: 'Lifecycle programs that nurture, retain, and re-engage on autopilot.',
@@ -85,16 +85,16 @@ export const services = [
   {
     id: 'crm',
     title: 'CRM Configuration & Automation',
-    summary: 'GoHighLevel, HubSpot, and Mailchimp builds tied to real sales processes. Sub-account setup, pipelines, lead routing, booking automations, and A2P 10DLC-compliant SMS campaigns.',
+    summary: 'GoHighLevel, HubSpot, and Mailchimp builds tied to real sales processes. Sub-account setup, pipelines, workflows triggered by tags and custom fields, and A2P 10DLC-compliant SMS campaigns.',
     bullets: [
       'GoHighLevel full builds — pipelines, automations, sub-accounts',
       'A2P 10DLC SMS brand approval (the GHL setup most builders avoid)',
       'HubSpot + Mailchimp + Kajabi configuration',
-      'Lead routing + booking automations',
+      'GHL tags + custom fields that trigger workflows',
       'Business profiles + email service connections',
-      'GHL-Gmail-Zapier glue across founder workflows',
+      'Pages built in the GHL website + funnel builder',
     ],
-    outcome: 'Every lead routed, every follow-up automated, every conversation logged.',
+    outcome: 'Every lead tagged, every follow-up automated, every conversation logged.',
   },
   {
     id: 'deliverability',
@@ -105,7 +105,7 @@ export const services = [
       'SPF / DKIM / DMARC alignment + SSL',
       'Email warmup to 6,500+/day verified capacity',
       'A2P 10DLC SMS registration + brand approval',
-      'Inbox-placement diagnostics + warmup recovery',
+      'Pre-send QA — test sends, link + unsubscribe checks, phone preview',
       'Square payment integration for checkout/intake flows',
     ],
     outcome: 'Email and SMS that land in the inbox, not spam — and stay compliant.',
@@ -113,14 +113,14 @@ export const services = [
   {
     id: 'automation',
     title: 'Workflow Automation & AI',
-    summary: 'n8n, Make, and Zapier builds connecting your stack. Anthropic Claude API wired into outreach personalization, content drafting, and lead scoring. Self-hostable or cloud — whichever the team prefers.',
+    summary: 'n8n workflows, Google Apps Script, and webhook/API integrations connecting your stack. Anthropic Claude API wired into outreach personalization and content drafting.',
     bullets: [
-      'n8n self-hosted on DigitalOcean — full control, no per-task billing',
-      'Make.com + Zapier for connector-heavy SaaS workflows',
-      'Anthropic Claude API for personalized drafting + scoring',
+      'n8n — designed a 47-node lead-generation workflow (personal project)',
+      'Google Apps Script automations (e.g. instant sale notifications)',
+      'Anthropic Claude API for personalized drafting + extraction',
       'GHL API + Canva API + Google Sheets API integrations',
-      'Error handling + Slack alerts + documented hand-off',
-      'Multi-provider email enrichment pipelines',
+      'Error handling + fallbacks + human review before anything sends',
+      'Multi-provider email enrichment (Hunter → Snov → Apollo)',
     ],
     outcome: 'Repetitive work automated end-to-end — hours back every week.',
   },
@@ -143,15 +143,14 @@ export const services = [
 export const tools = [
   // CRM & Marketing Platforms
   { name: 'GoHighLevel', tier: 'Daily', category: 'CRM' },
-  { name: 'HubSpot',     tier: 'Daily', category: 'CRM' },
-  { name: 'Mailchimp',   tier: 'Weekly', category: 'CRM' },
-  { name: 'Kajabi',      tier: 'Weekly', category: 'CRM' },
+  // HubSpot, Mailchimp, Kajabi: used at Doneverse (Sep 2025 – Feb 2026), not daily now
+  { name: 'HubSpot',     tier: 'Occasional', category: 'CRM' },
+  { name: 'Mailchimp',   tier: 'Occasional', category: 'CRM' },
+  { name: 'Kajabi',      tier: 'Occasional', category: 'CRM' },
   { name: 'ActiveCampaign', tier: 'Occasional', category: 'CRM' },
 
-  // Automation
-  { name: 'Zapier',      tier: 'Daily',  category: 'Automation' },
-  { name: 'n8n',         tier: 'Weekly', category: 'Automation' },
-  { name: 'Make.com',    tier: 'Weekly', category: 'Automation' },
+  // Automation — n8n: one personal 47-node workflow (designed, not deployed)
+  { name: 'n8n',         tier: 'Occasional', category: 'Automation' },
 
   // AI & LLM
   { name: 'Claude API',  tier: 'Weekly', category: 'AI' },
@@ -200,7 +199,6 @@ export const tools = [
   { name: 'PayPal',        tier: 'Occasional', category: 'Payments' },
 
   // Email & Deliverability
-  { name: 'Mailgun',        tier: 'Weekly', category: 'Email' },
   { name: 'SPF/DKIM/DMARC', tier: 'Weekly', category: 'Email' },
 
   // Design
@@ -254,7 +252,7 @@ export const works = [
     title: 'Bishop Roofing & Exteriors — full marketing system (demo build)',
     tag: 'Demo · Web · CRM · Automation',
     summary: 'Fictional Texas roofing client, real working build. 6-page custom-coded site, GoHighLevel CRM with two workflows, A2P-compliant SMS and a dedicated email sending domain. Built end-to-end as a portfolio demonstration of the full stack I work in — walkthrough on request.',
-    stack: ['HTML', 'CSS', 'JS', 'GoHighLevel', 'Cloudflare Pages', 'Cloudflare DNS', 'Mailgun', 'GitHub auto-deploy'],
+    stack: ['HTML', 'CSS', 'JS', 'GoHighLevel', 'Cloudflare Pages', 'Cloudflare DNS', 'Dedicated sending domain', 'GitHub auto-deploy'],
     wins: ['6-page custom-coded site', 'Two GHL workflows (WF1 + WF3)', 'A2P-compliant SMS', '12-page lead-magnet PDF'],
     initials: 'BR',
     location: 'Demo build · Texas',
@@ -332,11 +330,11 @@ export const works = [
 
 export const experience = [
   {
-    role: 'CRM & Email Marketing Automation Specialist',
+    role: 'Implementation Specialist — CRM, Web & Marketing Systems',
     company: 'Arrow Group Consulting',
     location: 'Michigan, USA',
     type: 'Affordable CMO for start-ups, growing, and transitioning companies — marketing strategy, brand implementation, content creation, and web development',
-    dates: 'Feb 2026',
+    dates: 'Feb 2026 — Present',
     bullets: [
       'Build and run monthly email and SMS marketing campaigns and lifecycle automations across multiple client accounts — audience segmentation, automated nurture and retention flows — and report open, click, and delivery analytics directly to the founder and clients.',
       'Configure GoHighLevel sub-accounts per client end-to-end — automations, pipelines, business profiles, dedicated sending domains, and email service connections — and manage Cloudflare DNS across the portfolio.',
@@ -367,15 +365,15 @@ export const experience = [
 export const coreExpertise = [
   {
     label: 'Email & Lifecycle Marketing',
-    items: 'Campaign builds, audience segmentation, automated nurture & retention flows, multi-touch sequences, A/B testing, analytics reporting',
+    items: 'Campaign builds, audience segmentation, automated nurture & retention flows, multi-touch sequences, A/B testing, pre-send QA, analytics reporting',
   },
   {
     label: 'CRM & Marketing Platforms',
-    items: 'GoHighLevel (GHL), HubSpot, Mailchimp, Kajabi, ActiveCampaign',
+    items: 'GoHighLevel (GHL — workflows, tags & custom fields, website/funnel builder), HubSpot, Mailchimp, Kajabi, ActiveCampaign',
   },
   {
     label: 'Automation & Integrations',
-    items: 'n8n, Make.com, Zapier, GHL API, Google Sheets API, Canva API, Anthropic Claude API',
+    items: 'n8n, Google Apps Script, webhooks, GHL API, Google Sheets API, Canva API, Anthropic Claude API',
   },
   {
     label: 'Deliverability & Compliance',

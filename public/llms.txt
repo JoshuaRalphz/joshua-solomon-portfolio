@@ -2,7 +2,7 @@
 
 > Marketing Automation & Lifecycle Specialist — CRM, Email & SMS Systems. Based in Olongapo City, Philippines · works US business hours. Open to full-time remote, contract, or fractional engagements.
 
-Hands-on agency experience building and running lifecycle email and SMS systems on GoHighLevel, Mailchimp, HubSpot, and Kajabi — audience segmentation, automated nurture and retention flows, multi-touch sequences, A/B testing, A2P 10DLC SMS, and deliverability (dedicated sending domains, SPF/DKIM/DMARC). Also ships the custom-coded sites (Cloudflare Pages, React + Vite) and integrations (n8n / Make / Zapier, Claude API) behind them.
+Hands-on agency experience building and running lifecycle email and SMS systems on GoHighLevel, Mailchimp, HubSpot, and Kajabi — audience segmentation, automated nurture and retention flows, multi-touch sequences, A/B testing, A2P 10DLC SMS, and deliverability (dedicated sending domains, SPF/DKIM/DMARC). Also ships the custom-coded sites (Cloudflare Pages, React + Vite) and integrations (n8n, Google Apps Script, webhooks, Claude API) behind them.
 
 ## Contact
 - Email: solomonjoshua101602@gmail.com
@@ -13,10 +13,10 @@ Hands-on agency experience building and running lifecycle email and SMS systems 
 
 ## Capabilities
 
-- **Email & Lifecycle Marketing** — End-to-end lifecycle programs on GoHighLevel, Mailchimp, HubSpot, and Kajabi. Campaign builds, audience segmentation, automated nurture and retention flows, multi-touch sequences, A/B testing, and open/click/delivery analytics reporting.
-- **CRM Configuration & Automation** — GoHighLevel full builds, HubSpot, Mailchimp, Kajabi. Sub-accounts, pipelines, lead routing, booking automations, A2P 10DLC SMS brand approval (the GHL setup most builders avoid), GHL-Gmail-Zapier glue.
-- **Deliverability & Compliance** — Dedicated sending subdomains with SPF/DKIM/DMARC aligned, warmup to 6,500+/day verified capacity, A2P 10DLC SMS registration, Square payment integration.
-- **Workflow Automation & AI** — n8n self-hosted on DigitalOcean, Make.com + Zapier for connector-heavy SaaS workflows, Anthropic Claude API for personalized outreach + scoring, multi-provider email enrichment. GHL + Canva + Google Sheets API integrations.
+- **Email & Lifecycle Marketing** — End-to-end lifecycle programs on GoHighLevel, Mailchimp, HubSpot, and Kajabi. Campaign builds, audience segmentation, automated nurture and retention flows, multi-touch sequences, A/B split tests on subject lines and content, and open/click/delivery analytics reporting.
+- **CRM Configuration & Automation** — GoHighLevel full builds, HubSpot, Mailchimp, Kajabi, ActiveCampaign. Sub-accounts, pipelines, workflows triggered by tags and custom fields, pages in the GHL website/funnel builder, A2P 10DLC SMS brand approval (the GHL setup most builders avoid).
+- **Deliverability & Compliance** — Dedicated sending subdomains with SPF/DKIM/DMARC aligned, warmup to 6,500+/day verified capacity, A2P 10DLC SMS registration, pre-send QA (test sends, link + unsubscribe checks, phone preview), Square payment integration.
+- **Workflow Automation & AI** — n8n (designed a 47-node lead-generation workflow as a personal project), Google Apps Script automations, Anthropic Claude API for personalized outreach drafting, multi-provider email enrichment. GHL + Canva + Google Sheets API integrations.
 - **Custom Sites & Internal Tools** — Hand-coded HTML/CSS/JS on Cloudflare Pages, React + Vite + Firebase internal tools. Recently built AGC HUB — a custom platform unifying Drive, ClickUp, Trello, GHL, and Canva for a US agency. In daily production.
 
 ## Professional Experience
