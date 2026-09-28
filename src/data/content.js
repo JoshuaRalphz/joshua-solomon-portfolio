@@ -17,7 +17,6 @@ export const profile = {
   github: 'https://github.com/JoshuaRalphz',
   linkedin: 'https://www.linkedin.com/in/joshua-ralph-adrian-solomon-1a0745347/',
   facebook: 'https://www.facebook.com/lionheart016',
-  bishopUrl: 'https://bishoproofing.company',
 };
 
 export const stats = [
@@ -247,8 +246,7 @@ export const works = [
       'Zero subscription model — API key pass-through',
     ],
     initials: 'JC',
-    liveUrl: 'https://job-copilot-9hv.pages.dev/',
-    location: 'Personal project',
+    location: 'Local build — demo on request',
     thumb: '/work-thumbs/jobcopilot.png',
   },
   {
@@ -259,7 +257,6 @@ export const works = [
     stack: ['HTML', 'CSS', 'JS', 'GoHighLevel', 'Cloudflare Pages', 'Cloudflare DNS', 'Mailgun', 'GitHub auto-deploy'],
     wins: ['Interactive in-browser GHL backend demo', '6-page custom-coded site', 'Two live workflows (WF1 + WF3)', '12-page lead-magnet PDF'],
     initials: 'BR',
-    liveUrl: 'https://bishoproofing.company',
     location: 'Demo build · Texas',
     thumb: '/work-thumbs/bishop.png',
   },

@@ -7,3 +7,6 @@
 /resume     /index.html  200
 /plan       /index.html  200
 /contact    /index.html  200
+
+# Old resume links -> current resume
+/Joshua_Solomon_Resume_v6.pdf  /Joshua_Solomon_Resume_v7.pdf  301

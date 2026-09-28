@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import {
   ArrowRight, Download, Zap, UserCheck, Wrench, Layers, Shield, TrendingUp,
   Database, Globe, Mail, Workflow, Box, Check, ExternalLink, MapPin,
-  Briefcase, Clock, GraduationCap, ShieldCheck, MousePointerClick, Sparkles,
+  Briefcase, Clock, GraduationCap, ShieldCheck, Sparkles,
   MessageCircle, Linkedin, Facebook, CheckCircle2, AlertCircle, FileText,
 } from 'lucide-react';
 import PageTransition, { Reveal } from '../components/PageTransition.jsx';
@@ -100,7 +100,7 @@ export default function Home() {
               Get in touch <ArrowRight size={18} />
             </a>
             <a href="#work" className="btn-ghost">See what I've built</a>
-            <a href="/Joshua_Solomon_Resume_v6.pdf" download className="btn-ghost">
+            <a href="/Joshua_Solomon_Resume_v7.pdf" download className="btn-ghost">
               <Download size={16} /> Download resume
             </a>
           </motion.div>
@@ -324,17 +324,6 @@ export default function Home() {
                     </div>
                     <h3 className="text-lg font-bold text-ink mb-2 leading-snug">{w.title}</h3>
                     <p className="text-sm text-body leading-relaxed flex-1">{w.summary}</p>
-
-                    {w.id === 'bishop' && (
-                      <div className="mt-4 p-3 bg-gold/10 border-l-4 border-gold rounded-r-lg">
-                        <div className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-widest font-bold text-amber-700 mb-1">
-                          <MousePointerClick size={12} /> Interactive demo
-                        </div>
-                        <p className="text-xs text-ink leading-relaxed">
-                          Submit a form on the live demo → watch the GHL workflow fire in real-time in the embedded backend view.
-                        </p>
-                      </div>
-                    )}
 
                     <div className="mt-4 pt-3 border-t border-line text-[11px] text-muted font-mono leading-relaxed">
                       {w.stack.join(' · ')}
@@ -587,7 +576,7 @@ function ContactSection() {
             <ContactCard icon={Linkedin} label="LinkedIn" value="Joshua Solomon" href={profile.linkedin} />
             <ContactCard icon={Facebook} label="Facebook · Messenger" value="Joshua Solomon" href={profile.facebook} />
 
-            <a href="/Joshua_Solomon_Resume_v6.pdf" download className="flex items-center gap-4 p-4 bg-gold/15 border border-gold/40 rounded-xl hover:bg-gold/25 transition-all">
+            <a href="/Joshua_Solomon_Resume_v7.pdf" download className="flex items-center gap-4 p-4 bg-gold/15 border border-gold/40 rounded-xl hover:bg-gold/25 transition-all">
               <div className="w-10 h-10 rounded-lg bg-gold flex items-center justify-center text-ink flex-shrink-0">
                 <FileText size={18} />
               </div>

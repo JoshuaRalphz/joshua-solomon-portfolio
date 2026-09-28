@@ -43,7 +43,7 @@ export default function Nav() {
             </a>
           ))}
           <a
-            href="/Joshua_Solomon_Resume_v6.pdf"
+            href="/Joshua_Solomon_Resume_v7.pdf"
             download
             className="inline-flex items-center gap-1.5 text-sm font-semibold text-navy hover:text-navy-dark"
           >
@@ -77,7 +77,7 @@ export default function Nav() {
               </a>
             ))}
             <a
-              href="/Joshua_Solomon_Resume_v6.pdf"
+              href="/Joshua_Solomon_Resume_v7.pdf"
               download
               onClick={() => setOpen(false)}
               className="inline-flex items-center gap-1.5 py-2 text-base font-semibold text-navy"

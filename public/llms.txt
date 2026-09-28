@@ -30,7 +30,7 @@ Built and shipped Mailchimp and HubSpot email marketing systems for SMB clients 
 ## Real Client Work (delivered under Arrow Group Consulting, shown with permission)
 
 - **AGC HUB** (internal agency PWA) — Custom React + Vite + Firebase PWA unifying Drive, ClickUp, Trello, GHL, and Canva into one platform for content production workflow. Multi-API orchestration. In daily production. Not publicly accessible — internal company tool, walkthrough available on request.
-- **Bishop Roofing & Exteriors** (demo build) — Fictional Texas roofing client, real working build. 6-page custom-coded site + GHL CRM + A2P-compliant SMS + dedicated email sending domain + interactive in-browser GHL backend demo. https://bishoproofing.company
+- **Bishop Roofing & Exteriors** (demo build) — Fictional Texas roofing client, real working build. 6-page custom-coded site + GHL CRM + A2P-compliant SMS + dedicated email sending domain + interactive in-browser GHL backend demo.
 - **Alpha Omega Utility Services** (Michigan) — Full marketing stack including A2P 10DLC brand approval on GoHighLevel. https://www.aoutilityservices.com
 - **HOME.FM** (Spring Arbor, MI radio station) — Dedicated email-sending infrastructure (subdomain mail.listenhome.fm, SPF/DKIM/DMARC aligned, SSL issued, warmup to 6,500 emails/day capacity). https://www.home.fm
 - **Alliance Service Brands** (Jackson, MI) — Custom multi-brand site unifying 6 specialized brands. https://www.allianceservicebrands.com
