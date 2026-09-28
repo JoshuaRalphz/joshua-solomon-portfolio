@@ -61,7 +61,7 @@ export const benefits = [
   {
     icon: 'TrendingUp',
     title: 'I build the systems I work in.',
-    body: 'Recently built AGC HUB — a custom internal platform (React + Vite + Firebase + GHL/Canva/Google Sheets APIs) unifying a US consultancy\'s scattered tool stack. In daily production.',
+    body: 'Recently built AGC HUB — a custom internal platform (React + Firebase PWA with Vercel serverless routes and the GoHighLevel API) that brings a US consultancy\'s 5 scattered tools into one app. In daily production.',
   },
 ];
 
@@ -103,7 +103,7 @@ export const services = [
     bullets: [
       'Dedicated sending subdomains configured end-to-end',
       'SPF / DKIM / DMARC alignment + SSL',
-      'Email warmup to 6,500+/day verified capacity',
+      'Email warmup to 6,500/day sending capacity',
       'A2P 10DLC SMS registration + brand approval',
       'Pre-send QA — test sends, link + unsubscribe checks, phone preview',
       'Square payment integration for checkout/intake flows',
@@ -113,23 +113,23 @@ export const services = [
   {
     id: 'automation',
     title: 'Workflow Automation & AI',
-    summary: 'n8n workflows, Google Apps Script, and webhook/API integrations connecting your stack. Anthropic Claude API wired into outreach personalization and content drafting.',
+    summary: 'Google Apps Script and webhook/API integrations connecting your stack, plus an n8n lead-generation workflow I designed. Anthropic Claude API wired into outreach personalization and content drafting.',
     bullets: [
       'n8n — designed a 47-node lead-generation workflow (personal project)',
       'Google Apps Script automations (e.g. instant sale notifications)',
       'Anthropic Claude API for personalized drafting + extraction',
-      'GHL API + Canva API + Google Sheets API integrations',
+      'GoHighLevel API + Google Sheets API integrations',
       'Error handling + fallbacks + human review before anything sends',
       'Multi-provider email enrichment (Hunter → Snov → Apollo)',
     ],
-    outcome: 'Repetitive work automated end-to-end — hours back every week.',
+    outcome: 'Repetitive work automated, with human review before anything sends.',
   },
   {
     id: 'web-tools',
     title: 'Custom Sites & Internal Tools',
     summary: 'Hand-coded HTML/CSS/JS sites on Cloudflare Pages, plus React + Vite + Firebase internal tools. Recently built AGC HUB — a custom platform unifying a US agency\'s scattered tool stack. In daily production.',
     bullets: [
-      'Custom-coded sites on Cloudflare Pages — sub-second loads',
+      'Custom-coded sites on Cloudflare Pages',
       'React + Vite + Tailwind for app-style tools and portfolios',
       'Wix Studio + Velo extensions for client self-edit access',
       'WordPress when full editing freedom is the priority',
@@ -149,16 +149,15 @@ export const tools = [
   { name: 'Kajabi',      tier: 'Occasional', category: 'CRM' },
   { name: 'ActiveCampaign', tier: 'Occasional', category: 'CRM' },
 
-  // Automation — n8n: one personal 47-node workflow (designed, not deployed)
+  // Automation — n8n: one personal 47-node workflow (designed; deployment not confirmed)
   { name: 'n8n',         tier: 'Occasional', category: 'Automation' },
 
   // AI & LLM
   { name: 'Claude API',  tier: 'Weekly', category: 'AI' },
   { name: 'OpenAI API',  tier: 'Weekly', category: 'AI' },
-  { name: 'GHL Conversation AI', tier: 'Occasional', category: 'AI' },
 
   // SMS & Compliance
-  { name: 'GHL A2P 10DLC',  tier: 'Daily',  category: 'SMS' },
+  { name: 'GHL A2P 10DLC',  tier: 'Occasional', category: 'SMS' },
   { name: 'SMS Automation', tier: 'Weekly', category: 'SMS' },
 
   // Hosting & DevOps
@@ -167,7 +166,6 @@ export const tools = [
   { name: 'Vercel',           tier: 'Weekly', category: 'Hosting' },
   { name: 'Firebase',         tier: 'Weekly', category: 'Hosting' },
   { name: 'GitHub Actions',   tier: 'Weekly', category: 'Hosting' },
-  { name: 'GitHub Pages',     tier: 'Occasional', category: 'Hosting' },
 
   // Code
   { name: 'HTML/CSS/JS',         tier: 'Daily',  category: 'Code' },
@@ -178,15 +176,13 @@ export const tools = [
   { name: 'Google Apps Script',  tier: 'Weekly', category: 'Code' },
 
   // SEO
-  { name: 'On-page SEO',           tier: 'Daily',  category: 'SEO' },
+  { name: 'On-page SEO',           tier: 'Weekly', category: 'SEO' },
   { name: 'Technical SEO',         tier: 'Weekly', category: 'SEO' },
-  { name: 'Google Search Console', tier: 'Weekly', category: 'SEO' },
 
-  // CMS / Site Builders
-  { name: 'Wix Studio',    tier: 'Weekly', category: 'CMS' },
-  { name: 'Wix Velo',      tier: 'Weekly', category: 'CMS' },
+  // CMS / Site Builders — Wix work was mainly at Doneverse (Sep 2025 – Feb 2026)
+  { name: 'Wix Studio',    tier: 'Occasional', category: 'CMS' },
+  { name: 'Wix Velo',      tier: 'Occasional', category: 'CMS' },
   { name: 'WordPress',     tier: 'Weekly', category: 'CMS' },
-  { name: 'Squarespace',   tier: 'Occasional', category: 'CMS' },
 
   // Ops & Project Management
   { name: 'ClickUp',          tier: 'Daily',  category: 'Ops' },
@@ -194,9 +190,8 @@ export const tools = [
   { name: 'Notion',           tier: 'Weekly', category: 'Ops' },
 
   // Payments
-  { name: 'Square',        tier: 'Weekly', category: 'Payments' },
+  { name: 'Square',        tier: 'Occasional', category: 'Payments' },
   { name: 'Stripe',        tier: 'Weekly', category: 'Payments' },
-  { name: 'PayPal',        tier: 'Occasional', category: 'Payments' },
 
   // Email & Deliverability
   { name: 'SPF/DKIM/DMARC', tier: 'Weekly', category: 'Email' },
@@ -216,13 +211,13 @@ export const works = [
     featured: true,
     title: 'AGC HUB — internal agency PWA (Arrow Group Consulting)',
     tag: '★ Featured · Internal Tool',
-    summary: 'Custom React + Vite + Firebase PWA unifying the agency\'s scattered tools (Drive, ClickUp, Trello, GHL, Canva) into one platform. Runs the end-to-end content production workflow: task assignment → team submission → review via GHL + Canva APIs → PM scheduling. In daily production. Replaces ~$200/mo of overlapping SaaS subscriptions.',
-    stack: ['React', 'Vite', 'Tailwind', 'Firebase Auth', 'Firestore', 'GHL API', 'Canva API', 'Google Sheets API', 'Cloudflare Pages'],
+    summary: 'Custom React + Firebase PWA with Vercel serverless routes and the GoHighLevel API. Brings the content team\'s work from 5 tools (Drive, ClickUp, Trello, GHL, Canva) into one app that runs its daily workflow across about 7 client sub-accounts: task assignment → team submission → review → PM scheduling. In daily production.',
+    stack: ['React', 'Vite', 'Tailwind', 'Firebase Auth', 'Firestore', 'Vercel serverless', 'GoHighLevel API', 'Claude API'],
     wins: [
-      'Replaced 5+ tools with one internal platform',
-      'Multi-API orchestration (GHL + Canva + Sheets)',
+      'Brought 5 tools into one internal app',
+      'GHL campaign stats + bounce / spam / unsubscribe counts via webhook',
+      'Claude features via serverless routes — subject lines, revision suggestions, help chat',
       'PWA architecture — installable, offline-aware',
-      'GitHub Actions CI/CD + auto-deploy',
     ],
     gallery: [
       { src: '/work-thumbs/agchub-1.png', label: 'Team dashboard — live view of everything in motion' },
@@ -309,7 +304,7 @@ export const works = [
     tag: 'Email · CRM · Web',
     summary: 'Built a dedicated email-sending setup for this Michigan radio station — subdomain mail.listenhome.fm, SPF/DKIM/DMARC aligned, SSL issued, warmup completed to 6,500 emails/day capacity. Plus ongoing CRM management and website updates.',
     stack: ['Dedicated sending domain', 'SPF/DKIM/DMARC', '6,500/day capacity', 'GoHighLevel', 'CRM', 'Website'],
-    wins: ['Dedicated sending subdomain configured', '6,500 emails/day verified capacity', 'Inbox delivery proven'],
+    wins: ['Dedicated sending subdomain configured', 'Warmed to 6,500 emails/day', 'SPF/DKIM/DMARC aligned'],
     initials: 'HF',
     liveUrl: 'https://www.home.fm',
     location: 'Spring Arbor, MI',
@@ -340,9 +335,9 @@ export const experience = [
       'Configure GoHighLevel sub-accounts per client end-to-end — automations, pipelines, business profiles, dedicated sending domains, and email service connections — and manage Cloudflare DNS across the portfolio.',
       'Own email and SMS deliverability across the portfolio: dedicated sending domains, SPF/DKIM/DMARC configuration, and A2P 10DLC registration for compliant text campaigns.',
       'Technical lead for client onboarding — owning the full implementation stack (GoHighLevel configuration, custom-coded sites, domain go-lives, compliance) end-to-end across multiple accounts.',
-      'Built AGC HUB — a custom internal platform unifying the agency\'s scattered tools (Drive, ClickUp, Trello, GHL, Canva) into one system. Runs the end-to-end content production workflow: task assignment → team submission → review via GHL + Canva APIs → PM scheduling. Stack: React + Vite + Firebase + GHL/Canva/Google Sheets APIs. In daily production.',
+      'Built AGC HUB — a custom internal platform that brings the content team\'s work from 5 tools (Drive, ClickUp, Trello, GHL, Canva) into one app. Runs the daily content production workflow: task assignment → team submission → review → PM scheduling. Stack: React + Firebase PWA, Vercel serverless routes, GoHighLevel API. In daily production.',
       'Acted as technical advisor to clients and the founder — translating implementation and automation details into plain language during onboarding calls and answering live technical questions.',
-      'Built and shipped custom-coded HTML/CSS/JS websites on Cloudflare Pages, plus Wix Velo extensions for platforms requiring client self-edit access.',
+      'Built and shipped custom-coded HTML/CSS/JS websites on Cloudflare Pages.',
     ],
   },
   {
@@ -352,8 +347,7 @@ export const experience = [
     type: 'VMA agency — recruits, trains, and matches Virtual Marketing Assistants to US founders',
     dates: 'Sep 2025 — Feb 2026',
     bullets: [
-      'Built and shipped Mailchimp and HubSpot email marketing systems for SMB clients — automated onboarding sequences, nurture flows, and Kajabi course-platform integrations.',
-      'Ran multi-touch LinkedIn outreach and follow-up sequences on behalf of clients — connection note writing, nurture cadences, and lead nurturing through to booked discovery calls.',
+      'Built and shipped Mailchimp and HubSpot email marketing systems for founder clients — automated onboarding sequences and nurture flows.',
       'Owned client onboarding for new platform setups, including domain configuration and email deliverability setup.',
       'Primary technical implementer across the agency — built and configured client accounts on Wix Studio, Kajabi, Mailchimp, and HubSpot.',
       'Delivered Wix Studio sites with integrated Square payment processing for client checkout and intake flows.',
@@ -373,7 +367,7 @@ export const coreExpertise = [
   },
   {
     label: 'Automation & Integrations',
-    items: 'n8n, Google Apps Script, webhooks, GHL API, Google Sheets API, Canva API, Anthropic Claude API',
+    items: 'n8n, Google Apps Script, webhooks, GHL API, Google Sheets API, Anthropic Claude API',
   },
   {
     label: 'Deliverability & Compliance',

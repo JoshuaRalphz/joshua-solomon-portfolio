@@ -64,7 +64,7 @@ Search and replace:
 
 1. ~~`REPLACE-FORMSPREE-ID`~~ → done. Contact form now POSTs JSON to the GHL `WF-PORTFOLIO` inbound webhook (`PORTFOLIO_GHL_WEBHOOK` in `src/data/content.js`).
 2. **`REPLACE-LINKEDIN-HANDLE`** in `src/components/Footer.jsx` and `src/data/content.js` → real LinkedIn URL
-3. **`Joshua_Solomon_Resume_v4.docx`** — drop the actual file in `public/` for the resume download to work
+3. ~~Resume file~~ → done. `public/Joshua_Solomon_Resume_v7.pdf` is the resume download; old v4–v6 links 301 to it via `public/_redirects`.
 
 ## Content edits
 
@@ -77,7 +77,7 @@ portfolio_v5/
 ├── public/
 │   ├── favicon.svg
 │   ├── _redirects                  Cloudflare Pages SPA routing
-│   └── Joshua_Solomon_Resume_v4.docx  (you add this)
+│   └── Joshua_Solomon_Resume_v7.pdf   current resume download
 ├── src/
 │   ├── components/
 │   │   ├── Logo.jsx                Logo + Wordmark

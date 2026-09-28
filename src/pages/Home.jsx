@@ -211,10 +211,10 @@ export default function Home() {
           <Reveal>
             <div className="label">Selected Work</div>
             <h2 className="text-3xl md:text-4xl font-bold text-ink tracking-tight max-w-3xl leading-tight">
-              Real builds. Shown with permission.
+              Real builds. Clearly labelled.
             </h2>
             <p className="mt-4 text-body text-lg max-w-2xl">
-              Each project below was shipped end-to-end by me. Want backend proof — A2P approvals, GHL workflows, DNS panels, codebases? Just ask.
+              Every project below is my own hands-on work. Client work is shown with permission; the internal tool, demo, and personal projects are labelled. Want backend proof — A2P approvals, GHL workflows, DNS panels, codebases? Just ask.
             </p>
           </Reveal>
 
@@ -347,7 +347,7 @@ export default function Home() {
           <Reveal delay={0.1}>
             <div className="mt-6 inline-flex items-center gap-1.5 text-xs text-muted">
               <ShieldCheck size={13} className="text-emerald" />
-              Shown with permission · client work delivered under Arrow Group Consulting (Michigan, USA) · references on request
+              Client work delivered under Arrow Group Consulting (Michigan, USA), shown with permission · demo and personal projects labelled · references on request
             </div>
           </Reveal>
         </div>
@@ -496,7 +496,7 @@ function ContactSection() {
               Hiring, contracting, or just want to talk?
             </h2>
             <p className="mt-4 text-white/75 text-lg leading-relaxed">
-              Open to full-time remote, contract, or fractional engagements. I reply within hours during US business time. References available on request.
+              Open to full-time remote, contract, or fractional engagements. I reply within 24 hours (US business hours). References available on request.
             </p>
           </div>
         </Reveal>
@@ -511,7 +511,7 @@ function ContactSection() {
                     <CheckCircle2 size={28} className="text-emerald" />
                   </div>
                   <h3 className="text-xl font-bold text-ink mb-2">Thanks — message received.</h3>
-                  <p className="text-body">I'll reply personally within a few hours.</p>
+                  <p className="text-body">I'll reply personally within 24 hours (US business hours).</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
@@ -571,7 +571,7 @@ function ContactSection() {
           {/* Direct contact */}
           <Reveal delay={0.1} className="lg:col-span-2 space-y-3">
             <div className="text-xs uppercase tracking-widest font-bold text-white/55 mb-4">Or reach me directly</div>
-            <ContactCard icon={Mail} label="Email · replies in hours" value={profile.email} href={`mailto:${profile.email}`} />
+            <ContactCard icon={Mail} label="Email · replies within 24h" value={profile.email} href={`mailto:${profile.email}`} />
             <ContactCard icon={MessageCircle} label="WhatsApp · fastest channel" value={profile.whatsapp} href={profile.whatsappLink} />
             <ContactCard icon={Linkedin} label="LinkedIn" value="Joshua Solomon" href={profile.linkedin} />
             <ContactCard icon={Facebook} label="Facebook · Messenger" value="Joshua Solomon" href={profile.facebook} />
@@ -589,7 +589,7 @@ function ContactSection() {
 
             <div className="pt-5 mt-5 border-t border-white/10 text-xs text-white/55 leading-relaxed">
               <div className="font-bold text-white mb-1.5">Working hours</div>
-              US business hours, Mon–Fri. I respond within hours, not days. Weekends I check WhatsApp.
+              US business hours, Mon–Fri. I reply within 24 hours.
             </div>
           </Reveal>
         </div>
