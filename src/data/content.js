@@ -116,7 +116,7 @@ export const services = [
     summary: 'Google Apps Script and webhook/API integrations connecting your stack, plus an n8n lead-generation workflow I designed. Anthropic Claude API wired into outreach personalization and content drafting.',
     bullets: [
       'n8n — designed a 47-node lead-generation workflow (personal project)',
-      'Google Apps Script automations (e.g. instant sale notifications)',
+      'Google Apps Script automations',
       'Anthropic Claude API for personalized drafting + extraction',
       'GoHighLevel API + Google Sheets API integrations',
       'Error handling + fallbacks + human review before anything sends',
