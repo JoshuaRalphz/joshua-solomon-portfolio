@@ -63,5 +63,5 @@ Async-first. Strong written communication for distributed teams. Comfortable spe
 
 - Available for full-time work; can start within 1-2 weeks of an offer
 - Hours: US Eastern preferred; PH, AU or European hours also work
-- Work setup: laptop, two internet providers (one as backup), home generator
+- Work setup: laptop, two internet providers (one as backup), UPS for the internet router
 - References available on request

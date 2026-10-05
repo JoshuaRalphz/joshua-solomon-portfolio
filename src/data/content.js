@@ -56,7 +56,7 @@ export const benefits = [
   {
     icon: 'Shield',
     title: 'Async-first, flexible hours.',
-    body: 'Olongapo, Philippines — US Eastern hours preferred; PH, AU or European hours also work. Work setup: laptop, two internet providers (one as backup), and a home generator. Strong written communication for distributed teams.',
+    body: 'Olongapo, Philippines — US Eastern hours preferred; PH, AU or European hours also work. Work setup: laptop, two internet providers (one as backup), and a UPS for the internet router. Strong written communication for distributed teams.',
   },
   {
     icon: 'TrendingUp',
