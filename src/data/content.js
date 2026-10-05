@@ -207,6 +207,28 @@ export const tools = [
 
 export const works = [
   {
+    id: 'arrowplatform',
+    featured: true,
+    title: 'Arrow Platform — in-house email & SMS marketing platform (Arrow Group Consulting)',
+    tag: '★ Featured · In-house Platform',
+    role: 'Built for Arrow Group Consulting · 2026',
+    summary: 'Wrote the business case (projected ~89% lower monthly platform cost, no external build spend), then built the agency\'s in-house email and SMS platform with AI-assisted development (Claude Code). It has an agency view plus per-client dashboards, campaigns and reporting. 6 accounts went live about 5 weeks after the first commit (Aug–Sep 2026), and it is now replacing GoHighLevel at the agency.',
+    stack: ['TypeScript', 'Cloudflare Workers', 'D1', 'Queues', 'React', 'Resend (email)', 'Twilio (SMS)'],
+    wins: [
+      '6 accounts live about 5 weeks after the first commit',
+      '3,200+ automated tests',
+      'One-click unsubscribe + automatic opt-out on bounces and complaints',
+      'SMS blocked until A2P 10DLC approval · test mode by default',
+    ],
+    // w/h = the screenshot's pixel size. When every shot has them, the gallery
+    // shows the shots uncropped at one shared height (see Home.jsx).
+    gallery: [
+      { src: '/work-thumbs/arrowplatform-1.png', w: 1600, h: 925, label: 'Client dashboard — the month at a glance, with a monthly report' },
+      { src: '/work-thumbs/arrowplatform-2.png', w: 1600, h: 680, label: 'Campaigns — delivery, opens, clicks and unsubscribes for every send' },
+    ],
+    previewLine: 'Private company platform, so there is no public link. Screenshots are shown with the agency owner\'s approval.',
+  },
+  {
     id: 'agchub',
     featured: true,
     title: 'AGC HUB — internal agency PWA (Arrow Group Consulting)',
@@ -225,33 +247,6 @@ export const works = [
       { src: '/work-thumbs/agchub-3.png', label: 'Client reports — website + email analytics' },
     ],
     previewLine: 'Internal company tool — these are real screenshots from the live app. Full walkthrough available on request; happy to demo it in an interview.',
-  },
-  {
-    id: 'jobcopilot',
-    title: 'Job Co-Pilot — AI job-application tool (personal project)',
-    tag: 'Personal Project · AI · React · Claude API',
-    summary: 'Built a full AI-powered job-application assistant from scratch. Paste any job posting, get an instant fit score, a tailored cover letter drafted in your voice, answers to screening questions, and an interview-prep packet — in seconds. Runs on your own Anthropic API key so there are no usage limits or subscription fees.',
-    stack: ['React', 'Vite', 'Anthropic Claude API', 'Cloudflare Pages', 'Tailwind CSS'],
-    wins: [
-      'AI fit scoring + tailored draft generation per posting',
-      'Screening question answering in one pass',
-      'Interview-prep packet output',
-      'Zero subscription model — API key pass-through',
-    ],
-    initials: 'JC',
-    location: 'Local build — demo on request',
-    thumb: '/work-thumbs/jobcopilot.png',
-  },
-  {
-    id: 'bishop',
-    title: 'Bishop Roofing & Exteriors — full marketing system (demo build)',
-    tag: 'Demo · Web · CRM · Automation',
-    summary: 'Fictional Texas roofing client, real working build. 6-page custom-coded site, GoHighLevel CRM with two workflows, A2P-compliant SMS and a dedicated email sending domain. Built end-to-end as a portfolio demonstration of the full stack I work in — walkthrough on request.',
-    stack: ['HTML', 'CSS', 'JS', 'GoHighLevel', 'Cloudflare Pages', 'Cloudflare DNS', 'Dedicated sending domain', 'GitHub auto-deploy'],
-    wins: ['6-page custom-coded site', 'Two GHL workflows (WF1 + WF3)', 'A2P-compliant SMS', '12-page lead-magnet PDF'],
-    initials: 'BR',
-    location: 'Demo build · Texas',
-    thumb: '/work-thumbs/bishop.png',
   },
   {
     id: 'alliance',

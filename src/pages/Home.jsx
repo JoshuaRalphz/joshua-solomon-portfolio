@@ -38,8 +38,44 @@ const education = [
   },
 ];
 
+// Screenshot gallery inside a featured work card.
+// Shots that carry their pixel size (w/h) are shown uncropped in one row at a
+// shared height: each column's width follows its shot's aspect ratio, so shots
+// of different shapes line up. Shots without a size keep the cropped 3-up grid.
+function Gallery({ shots }) {
+  const isJustified = shots.every((g) => g.w && g.h);
+  const columns = isJustified
+    ? shots.map((g) => `${(g.w / g.h).toFixed(3)}fr`).join(' ')
+    : undefined;
+
+  return (
+    <div
+      className={`grid gap-3 mb-6 ${isJustified ? 'md:[grid-template-columns:var(--gallery-cols)]' : 'sm:grid-cols-3'}`}
+      style={isJustified ? { '--gallery-cols': columns } : undefined}
+    >
+      {shots.map((g) => (
+        <figure key={g.src} className="group">
+          <div className={`rounded-xl overflow-hidden border border-line bg-slate-100 ${isJustified ? '' : 'aspect-[16/10]'}`}>
+            <img
+              src={g.src}
+              alt={g.label}
+              width={g.w}
+              height={g.h}
+              loading="lazy"
+              decoding="async"
+              onError={(e) => { e.currentTarget.closest('figure').style.display = 'none'; }}
+              className={`w-full group-hover:scale-[1.03] transition-transform duration-500 ${isJustified ? 'h-auto' : 'h-full object-cover object-left-top'}`}
+            />
+          </div>
+          <figcaption className="mt-2 text-[11px] text-muted leading-snug">{g.label}</figcaption>
+        </figure>
+      ))}
+    </div>
+  );
+}
+
 export default function Home() {
-  const featured = works.find((w) => w.featured);
+  const featuredWorks = works.filter((w) => w.featured);
   const rest = works.filter((w) => !w.featured);
 
   return (
@@ -214,18 +250,25 @@ export default function Home() {
               Real builds. Clearly labelled.
             </h2>
             <p className="mt-4 text-body text-lg max-w-2xl">
-              Every project below is my own hands-on work. Client work is shown with permission; the internal tool, demo, and personal projects are labelled. Want backend proof — A2P approvals, GHL workflows, DNS panels, codebases? Just ask.
+              Every project below is my own hands-on work. Client work is shown with permission; the internal builds are labelled. Want backend proof — A2P approvals, GHL workflows, DNS panels, codebases? Just ask.
             </p>
           </Reveal>
 
-          {/* Featured — AGC HUB */}
-          {featured && (
-            <Reveal delay={0.05}>
-              <article className="mt-10 bg-white border-2 border-navy rounded-3xl overflow-hidden shadow-soft">
+          {/* Featured — the internal builds, each with a screenshot gallery */}
+          {featuredWorks.map((featured, i) => (
+            <Reveal key={featured.id} delay={0.05 + i * 0.05}>
+              <article className={`${i === 0 ? 'mt-10' : 'mt-6'} bg-white border-2 border-navy rounded-3xl overflow-hidden shadow-soft`}>
                 <div className="p-6 md:p-8 flex flex-wrap items-center justify-between gap-3 border-b border-line">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-gold/20 text-amber-700 text-xs font-bold rounded-full uppercase tracking-wider">
-                    <Sparkles size={12} /> {featured.tag}
-                  </span>
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-gold/20 text-amber-700 text-xs font-bold rounded-full uppercase tracking-wider">
+                      <Sparkles size={12} /> {featured.tag}
+                    </span>
+                    {featured.role && (
+                      <span className="inline-flex items-center gap-1 text-xs text-muted font-medium">
+                        <Briefcase size={11} /> {featured.role}
+                      </span>
+                    )}
+                  </div>
                   <a
                     href="#contact"
                     className="inline-flex items-center gap-2 px-5 py-2.5 bg-navy hover:bg-navy-dark text-white font-bold rounded-lg shadow-lift hover:-translate-y-0.5 transition-all text-sm whitespace-nowrap"
@@ -246,26 +289,8 @@ export default function Home() {
                       ))}
                     </div>
                   )}
-                  {/* Screenshot gallery — real shots of the live internal app */}
-                  {featured.gallery && (
-                    <div className="grid sm:grid-cols-3 gap-3 mb-6">
-                      {featured.gallery.map((g) => (
-                        <figure key={g.src} className="group">
-                          <div className="aspect-[16/10] rounded-xl overflow-hidden border border-line bg-slate-100">
-                            <img
-                              src={g.src}
-                              alt={g.label}
-                              loading="lazy"
-                              decoding="async"
-                              onError={(e) => { e.currentTarget.closest('figure').style.display = 'none'; }}
-                              className="w-full h-full object-cover object-left-top group-hover:scale-[1.03] transition-transform duration-500"
-                            />
-                          </div>
-                          <figcaption className="mt-2 text-[11px] text-muted leading-snug">{g.label}</figcaption>
-                        </figure>
-                      ))}
-                    </div>
-                  )}
+                  {/* Screenshot gallery — real shots of the internal app */}
+                  {featured.gallery && <Gallery shots={featured.gallery} />}
                   {featured.previewLine && (
                     <div className="mb-6 p-4 bg-gold/10 border-l-4 border-gold rounded-r-lg">
                       <div className="text-[10px] uppercase tracking-widest text-amber-700 font-extrabold mb-1">ℹ️ About this build</div>
@@ -278,7 +303,7 @@ export default function Home() {
                 </div>
               </article>
             </Reveal>
-          )}
+          ))}
 
           {/* Rest — cards with screenshot thumbnails */}
           <div className="mt-6 grid md:grid-cols-2 gap-6">
@@ -286,8 +311,8 @@ export default function Home() {
               <Reveal key={w.id} delay={i * 0.05}>
                 <article className="bg-white border border-line rounded-2xl overflow-hidden h-full flex flex-col hover:border-navy hover:shadow-soft transition-all">
                   {/* Screenshot thumbnail — clickable when there's a live URL.
-                      Initials gradient shows as fallback (and for builds with
-                      no public screenshot, e.g. the demo). */}
+                      Initials gradient shows as fallback if the image fails
+                      to load. */}
                   {(() => {
                     const Thumb = (
                       <div className="relative aspect-[16/9] bg-gradient-to-br from-navy-tint to-blue-100 overflow-hidden">
@@ -347,7 +372,7 @@ export default function Home() {
           <Reveal delay={0.1}>
             <div className="mt-6 inline-flex items-center gap-1.5 text-xs text-muted">
               <ShieldCheck size={13} className="text-emerald" />
-              Client work delivered under Arrow Group Consulting (Michigan, USA), shown with permission · demo and personal projects labelled · references on request
+              Client work delivered under Arrow Group Consulting (Michigan, USA), shown with permission · references on request
             </div>
           </Reveal>
         </div>

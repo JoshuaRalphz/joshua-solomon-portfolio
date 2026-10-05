@@ -20,7 +20,7 @@ Multi-page React portfolio for **Joshua Solomon**, freelance CRM & Automation Sp
 |---|---|
 | `/` | Hero, stats, benefits, tech stack preview, quiz CTA |
 | `/services` | Four service offerings + flat retainer pricing |
-| `/works` | Featured Bishop case study + other builds |
+| `/works` | Featured builds + other client work |
 | `/about` | Story + full tools grid by category |
 | `/resume` | Inline resume — no download needed (but downloadable) |
 | `/quiz` | 4-question lead-qualification quiz → tailored recommendation |
@@ -88,7 +88,7 @@ portfolio_v5/
 │   │   ├── Home.jsx
 │   │   ├── About.jsx
 │   │   ├── Services.jsx
-│   │   ├── Works.jsx               Bishop featured w/ video embeds
+│   │   ├── Works.jsx               Featured builds + other work
 │   │   ├── Resume.jsx
 │   │   ├── Quiz.jsx                4-step questionnaire flow
 │   │   └── Contact.jsx

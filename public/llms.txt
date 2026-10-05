@@ -32,8 +32,9 @@ Social media for ADAP Real Estate, Subic: created listing graphics and posted pr
 
 ## Selected Work
 
-### Internal tool (Arrow Group Consulting)
+### Internal builds (Arrow Group Consulting)
 
+- **Arrow Platform** (in-house email & SMS marketing platform, built 2026) — Wrote the business case (projected ~89% lower monthly platform cost, no external build spend), then built it with AI-assisted development (Claude Code): TypeScript on Cloudflare Workers + D1 + Queues, React, Resend (email), Twilio (SMS). Agency view plus per-client dashboards, campaigns and reporting. 6 accounts went live about 5 weeks after the first commit (Aug–Sep 2026); 3,200+ automated tests. Safety built in: one-click unsubscribe, automatic opt-out on bounces and complaints, SMS blocked until A2P 10DLC approval, test mode by default. Now replacing GoHighLevel at the agency. Not publicly accessible — private company platform, no public link.
 - **AGC HUB** (internal agency PWA) — Custom React + Firebase PWA with Vercel serverless routes and the GoHighLevel API. Brings the content team's work from 5 tools (Drive, ClickUp, Trello, GHL, Canva) into one app that runs its daily workflow. In daily production. Not publicly accessible — internal company tool, walkthrough available on request.
 
 ### Client work (delivered under Arrow Group Consulting, shown with permission)
@@ -44,11 +45,6 @@ Social media for ADAP Real Estate, Subic: created listing graphics and posted pr
 - **Endtime Entrepreneurs** (USA) — Built full Cloudflare Pages site from scratch + GHL CRM + DistroKid music distribution + ongoing SEO. https://endtimeentrepreneurs.com
 - **Ada's Closet** (Spring Arbor, MI) — Custom Google Apps Script back-office for a student-run consignment startup, multi-platform listing flow across Poshmark/eBay/Depop. https://www.adasclosetsau.com
 - **TrueCare Chiropractic** (Lansing, MI) — Email marketing, ongoing site maintenance, SEO, planned Cloudflare migration. https://www.truecarechiro.com
-
-### Demo & personal projects
-
-- **Bishop Roofing & Exteriors** (demo build) — Fictional Texas roofing client, real working build. 6-page custom-coded site + GHL CRM + A2P-compliant SMS + dedicated email sending domain (walkthrough on request).
-- **Job Co-Pilot** (personal project) — React + Vite app using the Anthropic Claude API: paste a job posting, get a fit score, tailored cover-letter draft, screening-question answers, and an interview-prep packet. Local build, demo on request.
 
 ## Education
 
