@@ -61,7 +61,7 @@ export const benefits = [
   {
     icon: 'TrendingUp',
     title: 'I build the systems I work in.',
-    body: 'Recently built AGC HUB — a custom internal platform (React + Firebase PWA with Vercel serverless routes and the GoHighLevel API) that brings a US consultancy\'s 5 scattered tools into one app. In daily production. Also built the agency\'s in-house email/SMS platform (Cloudflare Workers + D1), which is now replacing GoHighLevel.',
+    body: 'Recently built an internal content-operations hub (React + Firebase PWA with Vercel serverless routes and the GoHighLevel API) that brings a US consultancy\'s 5 scattered tools into one app. In daily production. Also built the agency\'s in-house email/SMS platform (Cloudflare Workers + D1), which is now replacing GoHighLevel.',
   },
 ];
 
@@ -126,7 +126,7 @@ export const services = [
   {
     id: 'web-tools',
     title: 'Custom Sites & Internal Tools',
-    summary: 'Hand-coded HTML/CSS/JS sites on Cloudflare Pages, plus React + Vite + Firebase internal tools. Recently built AGC HUB — a custom platform unifying a US agency\'s scattered tool stack. In daily production.',
+    summary: 'Hand-coded HTML/CSS/JS sites on Cloudflare Pages, plus React + Vite + Firebase internal tools. Recently built an internal content-operations hub unifying a US agency\'s scattered tool stack. In daily production.',
     bullets: [
       'Custom-coded sites on Cloudflare Pages',
       'React + Vite + Tailwind for app-style tools and portfolios',
@@ -229,26 +229,6 @@ export const works = [
     previewLine: 'Private company platform, so there is no public link. Screenshots are shown with the agency owner\'s approval.',
   },
   {
-    id: 'agchub',
-    featured: true,
-    title: 'AGC HUB — internal agency PWA (Arrow Group Consulting)',
-    tag: '★ Featured · Internal Tool',
-    summary: 'Custom React + Firebase PWA with Vercel serverless routes and the GoHighLevel API. Brings the content team\'s work from 5 tools (Drive, ClickUp, Trello, GHL, Canva) into one app that runs its daily workflow: task assignment → team submission → review → PM scheduling. In daily production.',
-    stack: ['React', 'Vite', 'Tailwind', 'Firebase Auth', 'Firestore', 'Vercel serverless', 'GoHighLevel API', 'Claude API'],
-    wins: [
-      'Brought 5 tools into one internal app',
-      'GHL campaign stats + bounce / spam / unsubscribe counts via webhook',
-      'Claude features via serverless routes — subject lines, revision suggestions, help chat',
-      'PWA architecture — installable, offline-aware',
-    ],
-    gallery: [
-      { src: '/work-thumbs/agchub-1.png', label: 'Team dashboard — live view of everything in motion' },
-      { src: '/work-thumbs/agchub-2.png', label: 'Schedule board — newsletter + social calendar' },
-      { src: '/work-thumbs/agchub-3.png', label: 'Client reports — website + email analytics' },
-    ],
-    previewLine: 'Internal company tool — these are real screenshots from the live app. Full walkthrough available on request; happy to demo it in an interview.',
-  },
-  {
     id: 'alliance',
     title: 'Alliance Service Brands — multi-brand home services site',
     tag: 'Custom Build · Web',
@@ -331,7 +311,7 @@ export const experience = [
       'Own email and SMS deliverability across the portfolio: dedicated sending domains, SPF/DKIM/DMARC configuration, and A2P 10DLC registration for compliant text campaigns.',
       'Technical lead for client onboarding — owning the full implementation stack (GoHighLevel configuration, custom-coded sites, domain go-lives, compliance) end-to-end across multiple accounts.',
       'Moved the agency onto GoHighLevel in Feb 2026 because 2 clients needed SMS. Then wrote the business case (projected ~89% lower monthly platform cost) and built the agency\'s in-house email/SMS platform (Cloudflare Workers + D1, React, Resend, Twilio) with AI-assisted development (Claude Code); 6 accounts went live about 5 weeks after the first commit (Aug–Sep 2026). It is now replacing GoHighLevel.',
-      'Built AGC HUB — a custom internal platform that brings the content team\'s work from 5 tools (Drive, ClickUp, Trello, GHL, Canva) into one app. Runs the daily content production workflow: task assignment → team submission → review → PM scheduling. Stack: React + Firebase PWA, Vercel serverless routes, GoHighLevel API. In daily production.',
+      'Built an internal content-operations hub that brings the content team\'s work from 5 tools (Drive, ClickUp, Trello, GHL, Canva) into one app. Runs the daily content production workflow: task assignment → team submission → review → PM scheduling. Stack: React + Firebase PWA, Vercel serverless routes, GoHighLevel API. In daily production.',
       'Acted as technical advisor to clients and the founder — translating implementation and automation details into plain language during onboarding calls and answering live technical questions.',
       'Built and shipped custom-coded HTML/CSS/JS websites on Cloudflare Pages, and integrated Square payments through the Square API on a Cloudflare-hosted client site.',
     ],
