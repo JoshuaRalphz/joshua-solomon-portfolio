@@ -360,7 +360,7 @@ export const experience = [
 // Earlier, pre-career experience — shown as one small note under the
 // experience cards (not a full role card: it is a working-student job).
 export const earlierExperience = {
-  label: 'Earlier · working student (during college, from 2024)',
+  label: 'Earlier · working student (2024 to 2025, during college)',
   body: 'Social media for ADAP Real Estate, Subic — created listing graphics and posted property listings.',
 };
 
