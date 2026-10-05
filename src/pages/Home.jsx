@@ -10,7 +10,7 @@ import {
 import PageTransition, { Reveal } from '../components/PageTransition.jsx';
 import LogoMarquee from '../components/LogoMarquee.jsx';
 import {
-  profile, benefits, services, works, experience, tools,
+  profile, benefits, services, works, experience, earlierExperience, tools,
   WEB3FORMS_ACCESS_KEY, WEB3FORMS_ENDPOINT,
 } from '../data/content.js';
 
@@ -122,7 +122,7 @@ export default function Home() {
               <div className="text-xs font-bold uppercase tracking-widest text-muted mb-1 flex items-center gap-1.5">
                 <Clock size={12} className="text-navy" /> Working hours
               </div>
-              <div className="text-sm font-medium text-ink">US business hours · EST/CST/MST/PST overlap</div>
+              <div className="text-sm font-medium text-ink">US Eastern preferred · PH, AU or European hours also work</div>
             </div>
           </motion.div>
         </div>
@@ -169,7 +169,7 @@ export default function Home() {
               Five capabilities. One technical operator.
             </h2>
             <p className="mt-4 text-body text-lg max-w-2xl">
-              Hands-on implementation work I've shipped across agency, contract, and full-stack roles.
+              Hands-on implementation work I've shipped across an agency placement and contract work.
             </p>
           </Reveal>
 
@@ -390,6 +390,14 @@ export default function Home() {
             ))}
           </div>
 
+          {/* Earlier experience — one quiet note, deliberately not a full role card */}
+          <Reveal delay={0.1}>
+            <p className="mt-6 border border-dashed border-line rounded-2xl px-7 py-4 text-sm text-body leading-relaxed">
+              <span className="font-semibold text-ink">{earlierExperience.label}.</span>{' '}
+              {earlierExperience.body}
+            </p>
+          </Reveal>
+
           {/* Education */}
           <Reveal delay={0.1}>
             <h3 className="mt-14 mb-6 text-xl font-bold text-ink flex items-center gap-2">
@@ -420,7 +428,7 @@ export default function Home() {
             <div className="text-center mb-10">
               <div className="text-xs uppercase tracking-widest text-muted font-bold mb-3">My working tech stack</div>
               <h2 className="text-2xl md:text-3xl font-bold text-ink">
-                {tools.length}+ tools across CRM, automation, code & infrastructure.
+                {tools.length}+ tools and skills across CRM, automation, code & infrastructure.
               </h2>
               <p className="mt-3 text-sm text-muted">Hover the strip to pause.</p>
             </div>
@@ -496,12 +504,12 @@ function ContactSection() {
               Hiring, contracting, or just want to talk?
             </h2>
             <p className="mt-4 text-white/75 text-lg leading-relaxed">
-              Open to full-time remote, contract, or fractional engagements. I reply within 24 hours (US business hours). References available on request.
+              Available for full-time work; can start within 1-2 weeks of an offer. I reply within 24 hours. References available on request.
             </p>
           </div>
         </Reveal>
 
-        <div className="grid lg:grid-cols-5 gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 max-w-5xl mx-auto">
           {/* Form */}
           <Reveal className="lg:col-span-3">
             <div className="bg-white rounded-2xl p-7 md:p-9 text-ink">
@@ -511,7 +519,7 @@ function ContactSection() {
                     <CheckCircle2 size={28} className="text-emerald" />
                   </div>
                   <h3 className="text-xl font-bold text-ink mb-2">Thanks — message received.</h3>
-                  <p className="text-body">I'll reply personally within 24 hours (US business hours).</p>
+                  <p className="text-body">I'll reply personally within 24 hours.</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
@@ -589,7 +597,7 @@ function ContactSection() {
 
             <div className="pt-5 mt-5 border-t border-white/10 text-xs text-white/55 leading-relaxed">
               <div className="font-bold text-white mb-1.5">Working hours</div>
-              US business hours, Mon–Fri. I reply within 24 hours.
+              US Eastern preferred; PH, AU or European hours also work. I reply within 24 hours.
             </div>
           </Reveal>
         </div>

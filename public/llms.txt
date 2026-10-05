@@ -1,6 +1,6 @@
 # Joshua Solomon
 
-> Marketing Automation & Lifecycle Specialist — CRM, Email & SMS Systems. Based in Olongapo City, Philippines · works US business hours. Open to full-time remote, contract, or fractional engagements.
+> Marketing Automation & Lifecycle Specialist — CRM, Email & SMS Systems. Based in Olongapo City, Philippines · US Eastern hours preferred; PH, AU or European hours also work. Available for full-time work; can start within 1-2 weeks of an offer.
 
 Hands-on agency experience building and running lifecycle email and SMS systems on GoHighLevel, Mailchimp, HubSpot, and Kajabi — audience segmentation, automated nurture and retention flows, multi-touch sequences, A/B testing, A2P 10DLC SMS, and deliverability (dedicated sending domains, SPF/DKIM/DMARC). Also ships the custom-coded sites (Cloudflare Pages, React + Vite) and integrations (Google Apps Script, webhooks, Claude API; designed an n8n lead-gen workflow) behind them.
 
@@ -15,23 +15,26 @@ Hands-on agency experience building and running lifecycle email and SMS systems 
 
 - **Email & Lifecycle Marketing** — End-to-end lifecycle programs on GoHighLevel, Mailchimp, HubSpot, and Kajabi. Campaign builds, audience segmentation, automated nurture and retention flows, multi-touch sequences, A/B split tests on subject lines and content, and open/click/delivery analytics reporting.
 - **CRM Configuration & Automation** — GoHighLevel full builds, HubSpot, Mailchimp, Kajabi, ActiveCampaign. Sub-accounts, pipelines, workflows triggered by tags and custom fields, pages in the GHL website/funnel builder, A2P 10DLC SMS brand approval (the GHL setup most builders avoid).
-- **Deliverability & Compliance** — Dedicated sending subdomains with SPF/DKIM/DMARC aligned, warmup to 6,500/day sending capacity, A2P 10DLC SMS registration, pre-send QA (test sends, link + unsubscribe checks, phone preview), Square payment integration.
+- **Deliverability & Compliance** — Dedicated sending subdomains with SPF/DKIM/DMARC aligned, warmup to 6,500/day sending capacity, A2P 10DLC SMS registration, pre-send QA (test sends, link + unsubscribe checks, phone preview).
 - **Workflow Automation & AI** — n8n (designed a 47-node lead-generation workflow as a personal project), Google Apps Script automations, Anthropic Claude API for personalized outreach drafting, multi-provider email enrichment. GoHighLevel API + Google Sheets API integrations.
-- **Custom Sites & Internal Tools** — Hand-coded HTML/CSS/JS on Cloudflare Pages, React + Vite + Firebase internal tools. Recently built AGC HUB — a custom platform that brings a US agency's work from 5 tools (Drive, ClickUp, Trello, GHL, Canva) into one app. In daily production.
+- **Custom Sites & Internal Tools** — Hand-coded HTML/CSS/JS on Cloudflare Pages, React + Vite + Firebase internal tools. Recently built AGC HUB — a custom platform that brings a US agency's work from 5 tools (Drive, ClickUp, Trello, GHL, Canva) into one app. In daily production. Also built the agency's in-house email/SMS platform (Cloudflare Workers + D1, React, Resend, Twilio), which is now replacing GoHighLevel, and integrated Square payments through the Square API on a Cloudflare-hosted client site.
 
 ## Professional Experience
 
-### Implementation Specialist — CRM, Web & Marketing Systems · Arrow Group Consulting (Michigan, USA) · Feb 2026 – Present
-Build and run monthly email and SMS marketing campaigns and lifecycle automations across multiple client accounts — audience segmentation, nurture and retention flows — and report open/click/delivery analytics to founder and clients. Own deliverability across the portfolio (dedicated sending domains, SPF/DKIM/DMARC, A2P 10DLC registration). Configure GoHighLevel sub-accounts end-to-end. Built AGC HUB — a custom internal platform (React + Firebase PWA, Vercel serverless routes, GoHighLevel API) that brings 5 scattered tools into one app. Technical advisor to clients and the founder.
+### Implementation Specialist — CRM, Web & Marketing Systems · Arrow Group Consulting (Michigan, USA) · Part-time contract · Feb 2026 – Present
+US outsourced-CMO agency; hired directly after the Doneverse placement. Handle 8 clients at once: build and run monthly email campaigns (plus SMS where needed) and lifecycle automations — audience segmentation, nurture and retention flows — and report open/click/delivery analytics to founder and clients. Own deliverability across the portfolio (dedicated sending domains, SPF/DKIM/DMARC, A2P 10DLC registration). Configure GoHighLevel sub-accounts end-to-end. Moved the agency onto GoHighLevel in Feb 2026 because 2 clients needed SMS. Then wrote the business case (projected ~89% lower monthly platform cost) and built the agency's in-house email/SMS platform (Cloudflare Workers + D1, React, Resend, Twilio) with AI-assisted development (Claude Code); 6 accounts went live about 5 weeks after the first commit (Aug–Sep 2026). It is now replacing GoHighLevel. Built AGC HUB — a custom internal platform (React + Firebase PWA, Vercel serverless routes, GoHighLevel API) that brings 5 scattered tools into one app. Integrated Square payments through the Square API on a Cloudflare-hosted client site. Technical advisor to clients and the founder.
 
-### Virtual Marketing Assistant — Doneverse (Philippines VMA agency) · Sep 2025 – Feb 2026
-Built and shipped Mailchimp and HubSpot email marketing systems for founder clients — automated onboarding sequences and nurture flows. Built and configured client accounts on HubSpot, Mailchimp, Kajabi, and Wix Studio. Owned client onboarding including domain configuration and email deliverability setup. Delivered Wix Studio sites with integrated Square payment processing.
+### Virtual Marketing Assistant (VMA) — Doneverse (Philippines VMA agency) · Sep 2025 – Feb 2026
+Technical implementer for 2 US founders: Arrow Group Consulting's founder, then keynote speaker Jonathan Fanning (Kajabi). Built and shipped Mailchimp and HubSpot email marketing systems for founder clients — automated onboarding sequences and nurture flows. Built and configured client accounts on HubSpot, Mailchimp, Kajabi, and Wix Studio. Owned client onboarding including domain configuration and email deliverability setup. Delivered Wix Studio sites for founder clients. At Arrow Group Consulting (then on Mailchimp), learned HubSpot on the job, then recommended HubSpot and ActiveCampaign — the agency adopted both.
+
+### Earlier — working student (during college, from 2024)
+Social media for ADAP Real Estate, Subic: created listing graphics and posted property listings.
 
 ## Selected Work
 
 ### Internal tool (Arrow Group Consulting)
 
-- **AGC HUB** (internal agency PWA) — Custom React + Firebase PWA with Vercel serverless routes and the GoHighLevel API. Brings the content team's work from 5 tools (Drive, ClickUp, Trello, GHL, Canva) into one app that runs its daily workflow across about 7 client sub-accounts. In daily production. Not publicly accessible — internal company tool, walkthrough available on request.
+- **AGC HUB** (internal agency PWA) — Custom React + Firebase PWA with Vercel serverless routes and the GoHighLevel API. Brings the content team's work from 5 tools (Drive, ClickUp, Trello, GHL, Canva) into one app that runs its daily workflow. In daily production. Not publicly accessible — internal company tool, walkthrough available on request.
 
 ### Client work (delivered under Arrow Group Consulting, shown with permission)
 
@@ -54,10 +57,11 @@ Built and shipped Mailchimp and HubSpot email marketing systems for founder clie
 
 ## Communication Style
 
-Async-first. Strong written communication for distributed teams. Comfortable speaking directly with founders and senior stakeholders. Reply time typically under 24 hours during US business hours.
+Async-first. Strong written communication for distributed teams. Comfortable speaking directly with founders and senior stakeholders. Reply time typically under 24 hours.
 
 ## Availability
 
-- Open to full-time remote, contract, or fractional engagements
-- US business hours preferred (currently overlaps EST/CST/MST/PST every workday)
+- Available for full-time work; can start within 1-2 weeks of an offer
+- Hours: US Eastern preferred; PH, AU or European hours also work
+- Work setup: laptop, two internet providers (one as backup), home generator
 - References available on request

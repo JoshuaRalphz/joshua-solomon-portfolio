@@ -56,7 +56,7 @@ export default function Footer() {
 
       <div className="border-t border-white/10">
         <div className="container-x py-5 text-xs text-white/50 flex flex-col md:flex-row justify-between gap-2">
-          <div>© 2026 Joshua Solomon · Marketing Automation &amp; Lifecycle Specialist · Olongapo, PH · US business hours</div>
+          <div>© 2026 Joshua Solomon · Marketing Automation &amp; Lifecycle Specialist · Olongapo, PH</div>
           <div>Built from scratch · React · Hosted on Cloudflare Pages</div>
         </div>
       </div>

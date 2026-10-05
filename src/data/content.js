@@ -9,8 +9,8 @@ export const profile = {
   name: 'Joshua Solomon',
   role: 'Marketing Automation & Lifecycle Specialist — CRM, Email & SMS Systems',
   subtitle: 'Lifecycle Email · SMS · GoHighLevel · Deliverability · Automation',
-  location: 'Olongapo City, PH · Open to remote (US business hours)',
-  available: 'Open to full-time remote, contract & fractional roles',
+  location: 'Olongapo City, PH · Remote (US Eastern preferred; PH, AU or European hours also work)',
+  available: 'Available for full-time work · can start within 1-2 weeks of an offer',
   email: 'solomonjoshua101602@gmail.com',
   whatsapp: '+63 961 556 2117',
   whatsappLink: 'https://wa.me/639615562117',
@@ -22,7 +22,7 @@ export const profile = {
 export const stats = [
   { value: '1 yr', label: 'Remote work for US clients · agency + contract' },
   { value: '2x', label: 'Nonprofit email click rate · 4.5% → 9.5% (Apr–May 2026)' },
-  { value: '24h', label: 'Reply time · async-first · US business hours' },
+  { value: '24h', label: 'Reply time · async-first' },
 ];
 
 // Web3Forms access key for the portfolio contact form.
@@ -55,13 +55,13 @@ export const benefits = [
   },
   {
     icon: 'Shield',
-    title: 'Async-first, US-hours overlap.',
-    body: 'Olongapo, Philippines — I work US business hours and overlap EST/CST/MST/PST every workday. Strong written communication for distributed teams.',
+    title: 'Async-first, flexible hours.',
+    body: 'Olongapo, Philippines — US Eastern hours preferred; PH, AU or European hours also work. Work setup: laptop, two internet providers (one as backup), and a home generator. Strong written communication for distributed teams.',
   },
   {
     icon: 'TrendingUp',
     title: 'I build the systems I work in.',
-    body: 'Recently built AGC HUB — a custom internal platform (React + Firebase PWA with Vercel serverless routes and the GoHighLevel API) that brings a US consultancy\'s 5 scattered tools into one app. In daily production.',
+    body: 'Recently built AGC HUB — a custom internal platform (React + Firebase PWA with Vercel serverless routes and the GoHighLevel API) that brings a US consultancy\'s 5 scattered tools into one app. In daily production. Also built the agency\'s in-house email/SMS platform (Cloudflare Workers + D1), which is now replacing GoHighLevel.',
   },
 ];
 
@@ -106,7 +106,6 @@ export const services = [
       'Email warmup to 6,500/day sending capacity',
       'A2P 10DLC SMS registration + brand approval',
       'Pre-send QA — test sends, link + unsubscribe checks, phone preview',
-      'Square payment integration for checkout/intake flows',
     ],
     outcome: 'Email and SMS that land in the inbox, not spam — and stay compliant.',
   },
@@ -135,6 +134,7 @@ export const services = [
       'WordPress when full editing freedom is the priority',
       'Firebase + GitHub Actions CI/CD + auto-deploy',
       'PWA architecture — installable, offline-aware, mobile-first',
+      'Square API payments on a Cloudflare-hosted client site',
     ],
     outcome: 'Fast sites and internal tools the team owns forever.',
   },
@@ -182,7 +182,7 @@ export const tools = [
   // CMS / Site Builders — Wix work was mainly at Doneverse (Sep 2025 – Feb 2026)
   { name: 'Wix Studio',    tier: 'Occasional', category: 'CMS' },
   { name: 'Wix Velo',      tier: 'Occasional', category: 'CMS' },
-  { name: 'WordPress',     tier: 'Weekly', category: 'CMS' },
+  { name: 'WordPress',     tier: 'Occasional', category: 'CMS' },
 
   // Ops & Project Management
   { name: 'ClickUp',          tier: 'Daily',  category: 'Ops' },
@@ -191,7 +191,7 @@ export const tools = [
 
   // Payments
   { name: 'Square',        tier: 'Occasional', category: 'Payments' },
-  { name: 'Stripe',        tier: 'Weekly', category: 'Payments' },
+  { name: 'Stripe',        tier: 'Occasional', category: 'Payments' },
 
   // Email & Deliverability
   { name: 'SPF/DKIM/DMARC', tier: 'Weekly', category: 'Email' },
@@ -211,7 +211,7 @@ export const works = [
     featured: true,
     title: 'AGC HUB — internal agency PWA (Arrow Group Consulting)',
     tag: '★ Featured · Internal Tool',
-    summary: 'Custom React + Firebase PWA with Vercel serverless routes and the GoHighLevel API. Brings the content team\'s work from 5 tools (Drive, ClickUp, Trello, GHL, Canva) into one app that runs its daily workflow across about 7 client sub-accounts: task assignment → team submission → review → PM scheduling. In daily production.',
+    summary: 'Custom React + Firebase PWA with Vercel serverless routes and the GoHighLevel API. Brings the content team\'s work from 5 tools (Drive, ClickUp, Trello, GHL, Canva) into one app that runs its daily workflow: task assignment → team submission → review → PM scheduling. In daily production.',
     stack: ['React', 'Vite', 'Tailwind', 'Firebase Auth', 'Firestore', 'Vercel serverless', 'GoHighLevel API', 'Claude API'],
     wins: [
       'Brought 5 tools into one internal app',
@@ -328,20 +328,21 @@ export const experience = [
     role: 'Implementation Specialist — CRM, Web & Marketing Systems',
     company: 'Arrow Group Consulting',
     location: 'Michigan, USA',
-    type: 'Affordable CMO for start-ups, growing, and transitioning companies — marketing strategy, brand implementation, content creation, and web development',
+    type: 'US outsourced-CMO agency · Part-time contract',
     dates: 'Feb 2026 — Present',
     bullets: [
-      'Build and run monthly email and SMS marketing campaigns and lifecycle automations across multiple client accounts — audience segmentation, automated nurture and retention flows — and report open, click, and delivery analytics directly to the founder and clients.',
+      'Hired directly after the Doneverse placement. Handle 8 clients at once: build and run monthly email campaigns (plus SMS where needed) and lifecycle automations — audience segmentation, automated nurture and retention flows — and report open, click, and delivery analytics directly to the founder and clients.',
       'Configure GoHighLevel sub-accounts per client end-to-end — automations, pipelines, business profiles, dedicated sending domains, and email service connections — and manage Cloudflare DNS across the portfolio.',
       'Own email and SMS deliverability across the portfolio: dedicated sending domains, SPF/DKIM/DMARC configuration, and A2P 10DLC registration for compliant text campaigns.',
       'Technical lead for client onboarding — owning the full implementation stack (GoHighLevel configuration, custom-coded sites, domain go-lives, compliance) end-to-end across multiple accounts.',
+      'Moved the agency onto GoHighLevel in Feb 2026 because 2 clients needed SMS. Then wrote the business case (projected ~89% lower monthly platform cost) and built the agency\'s in-house email/SMS platform (Cloudflare Workers + D1, React, Resend, Twilio) with AI-assisted development (Claude Code); 6 accounts went live about 5 weeks after the first commit (Aug–Sep 2026). It is now replacing GoHighLevel.',
       'Built AGC HUB — a custom internal platform that brings the content team\'s work from 5 tools (Drive, ClickUp, Trello, GHL, Canva) into one app. Runs the daily content production workflow: task assignment → team submission → review → PM scheduling. Stack: React + Firebase PWA, Vercel serverless routes, GoHighLevel API. In daily production.',
       'Acted as technical advisor to clients and the founder — translating implementation and automation details into plain language during onboarding calls and answering live technical questions.',
-      'Built and shipped custom-coded HTML/CSS/JS websites on Cloudflare Pages.',
+      'Built and shipped custom-coded HTML/CSS/JS websites on Cloudflare Pages, and integrated Square payments through the Square API on a Cloudflare-hosted client site.',
     ],
   },
   {
-    role: 'Virtual Marketing Assistant',
+    role: 'Virtual Marketing Assistant (VMA)',
     company: 'Doneverse',
     location: 'Philippines',
     type: 'VMA agency — recruits, trains, and matches Virtual Marketing Assistants to US founders',
@@ -349,11 +350,19 @@ export const experience = [
     bullets: [
       'Built and shipped Mailchimp and HubSpot email marketing systems for founder clients — automated onboarding sequences and nurture flows.',
       'Owned client onboarding for new platform setups, including domain configuration and email deliverability setup.',
-      'Primary technical implementer across the agency — built and configured client accounts on Wix Studio, Kajabi, Mailchimp, and HubSpot.',
-      'Delivered Wix Studio sites with integrated Square payment processing for client checkout and intake flows.',
+      'Technical implementer for 2 US founders — Arrow Group Consulting\'s founder, then keynote speaker Jonathan Fanning (Kajabi) — building and configuring accounts on Wix Studio, Kajabi, Mailchimp, and HubSpot.',
+      'Delivered Wix Studio sites for founder clients.',
+      'At Arrow Group Consulting (then on Mailchimp), learned HubSpot on the job, then recommended HubSpot and ActiveCampaign — the agency adopted both.',
     ],
   },
 ];
+
+// Earlier, pre-career experience — shown as one small note under the
+// experience cards (not a full role card: it is a working-student job).
+export const earlierExperience = {
+  label: 'Earlier · working student (during college, from 2024)',
+  body: 'Social media for ADAP Real Estate, Subic — created listing graphics and posted property listings.',
+};
 
 // Mirrors the "Technical Skills" block in the PDF resume
 export const coreExpertise = [
@@ -367,11 +376,11 @@ export const coreExpertise = [
   },
   {
     label: 'Automation & Integrations',
-    items: 'n8n, Google Apps Script, webhooks, GHL API, Google Sheets API, Anthropic Claude API',
+    items: 'n8n, Google Apps Script, webhooks, GHL API, Google Sheets API, Square API, Anthropic Claude API',
   },
   {
     label: 'Deliverability & Compliance',
-    items: 'A2P 10DLC SMS registration, dedicated sending domains, SPF/DKIM/DMARC, Square Payment integration',
+    items: 'A2P 10DLC SMS registration, dedicated sending domains, SPF/DKIM/DMARC',
   },
   {
     label: 'Web & Hosting',
