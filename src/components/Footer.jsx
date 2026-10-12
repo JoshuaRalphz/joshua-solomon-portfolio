@@ -1,64 +1,31 @@
-import { Wordmark } from './Logo.jsx';
-import { Mail, MessageCircle, Linkedin, Facebook } from 'lucide-react';
-import { profile } from '../data/content.js';
+import { profile, sections } from '../data/content.js';
 
+// Every section except the overview the visitor is already past.
+const footerLinks = sections.filter((section) => section.id !== 'top');
+
+/** Slim footer inside the main column, so the rail stays beside it. */
 export default function Footer() {
   return (
-    <footer className="bg-ink text-white/75">
-      <div className="container-x py-14 grid md:grid-cols-4 gap-10">
-        <div className="md:col-span-2">
-          <Wordmark size={32} light />
-          <p className="mt-5 text-sm text-white/65 max-w-md leading-relaxed">
-            Marketing Automation &amp; Lifecycle Specialist — CRM, Email &amp; SMS Systems.
-            Hands-on across lifecycle email + SMS, GoHighLevel, deliverability, workflow
-            automation, and the custom-coded sites behind them. Open to full-time remote,
-            contract, and fractional roles.
-          </p>
+    <footer className="mt-[var(--section)] border-t border-line pb-4 pt-6 text-sm font-medium text-muted">
+      <div className="flex flex-col gap-x-8 gap-y-3 xl:flex-row xl:items-start xl:justify-between">
+        <div className="min-w-0 space-y-1">
+          <p>© 2026 {profile.name} · {profile.shortRole} · Olongapo, PH</p>
+          <p>Built from scratch · React · Hosted on Cloudflare Pages</p>
         </div>
-
-        <div>
-          <h4 className="text-xs uppercase tracking-widest font-bold text-white mb-4">Explore</h4>
-          <ul className="space-y-2 text-sm">
-            <li><a href="#about" className="hover:text-white transition-colors">About</a></li>
-            <li><a href="#capabilities" className="hover:text-white transition-colors">Capabilities</a></li>
-            <li><a href="#work" className="hover:text-white transition-colors">Work</a></li>
-            <li><a href="#experience" className="hover:text-white transition-colors">Experience</a></li>
-            <li><a href="#contact" className="hover:text-white transition-colors">Contact</a></li>
+        <nav aria-label="Footer">
+          <ul className="-mx-2 flex flex-wrap">
+            {footerLinks.map((section) => (
+              <li key={section.id}>
+                <a
+                  href={`#${section.id}`}
+                  className="inline-flex min-h-[2.75rem] items-center rounded-inner px-2 text-body hover:text-ink hover:underline"
+                >
+                  {section.label}
+                </a>
+              </li>
+            ))}
           </ul>
-        </div>
-
-        <div>
-          <h4 className="text-xs uppercase tracking-widest font-bold text-white mb-4">Contact</h4>
-          <ul className="space-y-3 text-sm">
-            <li>
-              <a href={`mailto:${profile.email}`} title={profile.email} className="inline-flex items-center gap-2 hover:text-white transition-colors">
-                <Mail size={14} className="flex-shrink-0" /> Email
-              </a>
-            </li>
-            <li>
-              <a href={profile.whatsappLink} target="_blank" rel="noopener" className="inline-flex items-center gap-2 hover:text-white transition-colors">
-                <MessageCircle size={14} className="flex-shrink-0" /> {profile.whatsapp}
-              </a>
-            </li>
-            <li>
-              <a href={profile.linkedin} target="_blank" rel="noopener" className="inline-flex items-center gap-2 hover:text-white transition-colors">
-                <Linkedin size={14} className="flex-shrink-0" /> LinkedIn
-              </a>
-            </li>
-            <li>
-              <a href={profile.facebook} target="_blank" rel="noopener" className="inline-flex items-center gap-2 hover:text-white transition-colors">
-                <Facebook size={14} className="flex-shrink-0" /> Facebook · Messenger
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div className="border-t border-white/10">
-        <div className="container-x py-5 text-xs text-white/50 flex flex-col md:flex-row justify-between gap-2">
-          <div>© 2026 Joshua Solomon · Marketing Automation &amp; Lifecycle Specialist · Olongapo, PH</div>
-          <div>Built from scratch · React · Hosted on Cloudflare Pages</div>
-        </div>
+        </nav>
       </div>
     </footer>
   );

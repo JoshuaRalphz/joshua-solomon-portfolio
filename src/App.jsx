@@ -1,10 +1,9 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
-import { AnimatePresence } from 'framer-motion';
-import Nav from './components/Nav.jsx';
-import Footer from './components/Footer.jsx';
-import ScrollHint from './components/ScrollHint.jsx';
+import { MotionConfig } from 'framer-motion';
+import TopBar from './components/TopBar.jsx';
 import Home from './pages/Home.jsx';
+import { ActiveSectionProvider } from './hooks/useActiveSection.jsx';
 
 export default function App() {
   const location = useLocation();
@@ -15,18 +14,22 @@ export default function App() {
   }, [location.pathname, location.hash]);
 
   return (
-    <>
-      <Nav />
-      <AnimatePresence mode="wait">
-        <Routes location={location} key="single-page">
-          {/* Single-page portfolio — every path renders the one-pager.
-              Old multi-page routes (/about, /services, /works, /resume,
-              /contact, /plan) resolve here so existing links don't 404. */}
+    <MotionConfig reducedMotion="user">
+      <ActiveSectionProvider>
+        <a
+          href="#main"
+          className="btn btn-primary sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-50 focus:px-5"
+        >
+          Skip to content
+        </a>
+        <TopBar />
+        <Routes>
+          {/* Single-page portfolio: every path renders the one-pager, so old
+              multi-page links (/about, /services, /works, /resume, /contact,
+              /plan) still resolve. */}
           <Route path="*" element={<Home />} />
         </Routes>
-      </AnimatePresence>
-      <Footer />
-      <ScrollHint />
-    </>
+      </ActiveSectionProvider>
+    </MotionConfig>
   );
 }

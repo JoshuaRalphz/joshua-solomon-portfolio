@@ -17,12 +17,89 @@ export const profile = {
   github: 'https://github.com/JoshuaRalphz',
   linkedin: 'https://www.linkedin.com/in/joshua-ralph-adrian-solomon-1a0745347/',
   facebook: 'https://www.facebook.com/lionheart016',
+  handle: '@JoshuaRalphz',
+  shortRole: 'Marketing Automation & Lifecycle Specialist',
+  shortLocation: 'Olongapo City, PH · Remote',
+  status: 'Available for full-time work',
+  resumeUrl: '/Joshua_Solomon_Resume_v7.pdf',
+  // No photo yet: the avatar renders a monogram until this is set to an image path.
+  photo: null,
+  bio: 'Marketing automation specialist with hands-on agency experience building and running lifecycle email and SMS systems on GoHighLevel, Mailchimp, HubSpot, and Kajabi: audience segmentation, automated nurture and retention flows, A2P 10DLC SMS, and deliverability, plus the custom-coded sites and integrations behind them. Open to full-time remote, contract, or fractional roles.',
+  loom: {
+    shareUrl: 'https://www.loom.com/share/4b6619181760484796d88a5fc52827f1',
+    embedUrl: 'https://www.loom.com/embed/4b6619181760484796d88a5fc52827f1',
+  },
+};
+
+// The wired section menu (rail, top bar, footer) and the scroll spy read this.
+export const sections = [
+  { id: 'top', num: '00', label: 'Overview' },
+  { id: 'work', num: '01', label: 'Projects' },
+  { id: 'results', num: '02', label: 'Results' },
+  { id: 'capabilities', num: '03', label: 'Services' },
+  { id: 'about', num: '04', label: 'About' },
+  { id: 'contact', num: '05', label: 'Contact' },
+];
+
+export const hero = {
+  headline: 'I build email and SMS systems that get delivered.',
+  promise: 'I set up GoHighLevel and run lifecycle email and SMS for agencies and founders: segmentation, nurture flows, and the sending-domain and A2P 10DLC work that gets messages delivered.',
 };
 
 export const stats = [
-  { value: '1 yr', label: 'Remote work for US clients · agency + contract' },
-  { value: '2x', label: 'Nonprofit email click rate · 4.5% → 9.5% (Apr–May 2026)' },
-  { value: '24h', label: 'Reply time · async-first' },
+  { value: '8', label: 'Clients handled at once at a US agency' },
+  { value: '~1 yr', label: 'Remote work for US clients, since Sep 2025' },
+  { value: '24h', label: 'Reply time · US Eastern hours preferred' },
+];
+
+// The hero "how a campaign moves" tile. It describes a process, it is not live data.
+export const flow = [
+  { label: 'Segment', caption: 'Split the audience by tags and fields' },
+  { label: 'Build', caption: 'Emails, texts and the nurture flow' },
+  { label: 'Deliver', caption: 'SPF, DKIM, DMARC and A2P in place' },
+  { label: 'Report', caption: 'Opens, clicks and delivery, back to you' },
+];
+
+// Numbers only, each with where it came from. The projected ~89% cost figure is
+// deliberately NOT a result: it stays inside the Arrow Platform summary, worded "projected".
+export const results = [
+  { lead: true, value: '2x', title: 'Nonprofit email click rate', note: '4.5% to 9.5% (Apr–May 2026)', before: 4.5, after: 9.5 },
+  { value: '6,500', unit: '/day', title: 'Sending capacity after warmup', note: 'Dedicated sending subdomain, SPF/DKIM/DMARC aligned · HOME.FM', workId: 'homefm' },
+  { value: 'A2P 10DLC', title: 'SMS brand approval', note: 'Approved, with a verified business number · Alpha Omega Utility Services', workId: 'aoutility' },
+  { value: '6', unit: 'accounts', title: 'Live about 5 weeks after the first commit', note: 'Aug–Sep 2026 · Arrow Platform', workId: 'arrowplatform' },
+  { value: '3,200+', title: 'Automated tests', note: 'Arrow Platform', workId: 'arrowplatform' },
+];
+
+// The five Explore cards. The 01 title is computed from works in ExploreCards.jsx.
+export const explore = [
+  { num: '01', id: 'work', label: 'PROJECTS', title: null, line: 'An in-house email and SMS platform I built, and client work shown with permission.' },
+  { num: '02', id: 'results', label: 'RESULTS', title: '2x', line: 'Nonprofit email click rate, 4.5% to 9.5% (Apr–May 2026). More numbers inside.' },
+  { num: '03', id: 'capabilities', label: 'SERVICES', title: 'Five things I can own', line: 'Lifecycle email, CRM, deliverability, automation, custom sites.' },
+  { num: '04', id: 'about', label: 'ABOUT', title: 'About and experience', line: 'Arrow Group Consulting, Feb 2026 to present. Doneverse before that.' },
+  { num: '05', id: 'contact', label: 'CONTACT', title: 'Hiring, contracting, or just want to talk?', line: 'I reply within 24 hours.' },
+];
+
+// Where and how I work (About section).
+export const setup = [
+  'Olongapo City, Philippines',
+  'US Eastern hours preferred; PH, AU or European hours also work',
+  'Laptop, two internet providers (one as backup), and a UPS for the internet router',
+  'English (professional working proficiency), Filipino (native)',
+];
+
+export const education = [
+  {
+    degree: 'BS Computer Science',
+    school: 'Gordon College · Olongapo City, Philippines',
+    dates: '2021 — 2025',
+    note: 'Thesis published at IRCITE 2025 (Bulacan State University).',
+  },
+  {
+    degree: 'Senior High School — TVL ICT Track',
+    school: 'Columban College Inc. · Olongapo City, Philippines',
+    dates: '2019 — 2021',
+    note: 'Graduated With High Honors.',
+  },
 ];
 
 // Web3Forms access key for the portfolio contact form.
@@ -205,12 +282,43 @@ export const tools = [
   { name: 'Poshmark / eBay / Depop', tier: 'Occasional', category: 'Distribution' },
 ];
 
+// The hero tool strip: name + Simple Icons slug (null = no real mark, name only).
+// Every name here is also in `tools` above.
+export const toolStrip = [
+  { name: 'GoHighLevel', slug: null },
+  { name: 'Cloudflare Pages', slug: 'cloudflare' },
+  { name: 'HubSpot', slug: 'hubspot' },
+  { name: 'Mailchimp', slug: 'mailchimp' },
+  { name: 'Kajabi', slug: null },
+  { name: 'ActiveCampaign', slug: null },
+  { name: 'n8n', slug: 'n8n' },
+  { name: 'Claude API', slug: 'anthropic' },
+  { name: 'OpenAI API', slug: null },
+  { name: 'Google Apps Script', slug: 'googleappsscript' },
+  { name: 'React', slug: 'react' },
+  { name: 'Vite', slug: 'vite' },
+  { name: 'Tailwind CSS', slug: 'tailwindcss' },
+  { name: 'Firebase', slug: 'firebase' },
+  { name: 'Vercel', slug: 'vercel' },
+  { name: 'GitHub Actions', slug: 'githubactions' },
+  { name: 'Git / GitHub', slug: 'github' },
+  { name: 'ClickUp', slug: 'clickup' },
+  { name: 'Google Workspace', slug: 'google' },
+  { name: 'Notion', slug: 'notion' },
+  { name: 'Figma', slug: 'figma' },
+  { name: 'Canva', slug: null },
+  { name: 'Square', slug: 'square' },
+  { name: 'Stripe', slug: 'stripe' },
+  { name: 'Wix Studio', slug: 'wix' },
+  { name: 'WordPress', slug: 'wordpress' },
+];
+
 export const works = [
   {
     id: 'arrowplatform',
     featured: true,
     title: 'Arrow Platform — in-house email & SMS marketing platform (Arrow Group Consulting)',
-    tag: '★ Featured · In-house Platform',
+    tag: 'Featured · In-house platform',
     role: 'Built for Arrow Group Consulting · 2026',
     summary: 'Wrote the business case (projected ~89% lower monthly platform cost, no external build spend), then built the agency\'s in-house email and SMS platform with AI-assisted development (Claude Code). It has an agency view plus per-client dashboards, campaigns and reporting. 6 accounts went live about 5 weeks after the first commit (Aug–Sep 2026), and it is now replacing GoHighLevel at the agency.',
     stack: ['TypeScript', 'Cloudflare Workers', 'D1', 'Queues', 'React', 'Resend (email)', 'Twilio (SMS)'],
@@ -220,8 +328,7 @@ export const works = [
       'One-click unsubscribe + automatic opt-out on bounces and complaints',
       'SMS blocked until A2P 10DLC approval · test mode by default',
     ],
-    // w/h = the screenshot's pixel size. When every shot has them, the gallery
-    // shows the shots uncropped at one shared height (see Home.jsx).
+    // w/h = the screenshot's pixel size, so the browser reserves the space.
     gallery: [
       { src: '/work-thumbs/arrowplatform-1.png', w: 1600, h: 925, label: 'Client dashboard — the month at a glance, with a monthly report' },
       { src: '/work-thumbs/arrowplatform-2.png', w: 1600, h: 680, label: 'Campaigns — delivery, opens, clicks and unsubscribes for every send' },
@@ -243,7 +350,7 @@ export const works = [
     id: 'aoutility',
     title: 'Alpha Omega Utility Services — A2P SMS + full marketing system',
     tag: 'CRM · SMS · Email · Web',
-    summary: 'Got this Michigan utility contractor approved for A2P 10DLC SMS (a federal compliance process most agencies avoid — it\'s often a blocker for GHL builds). Plus the full marketing system around it: website, lifecycle email, CRM, and complete domain + sending setup.',
+    summary: 'Got this Michigan utility contractor approved for A2P 10DLC SMS, the registration step that often blocks GoHighLevel builds. Plus the full marketing system around it: website, lifecycle email, CRM, and complete domain + sending setup.',
     stack: ['GoHighLevel', 'A2P 10DLC SMS', 'Domain setup', 'Email automation', 'Website'],
     wins: ['A2P 10DLC brand approval', 'Verified business number', 'Full domain migration'],
     initials: 'AO',

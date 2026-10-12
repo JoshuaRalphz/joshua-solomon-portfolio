@@ -1,48 +1,41 @@
 /** @type {import('tailwindcss').Config} */
+// "Sage paper, pine ink, one lime signal." Light theme only.
+// Contrast notes live beside each token in src/styles.css.
 export default {
   content: ['./index.html', './src/**/*.{js,jsx}'],
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
-        mono: ['JetBrains Mono', 'monospace'],
+        sans: ['"Bricolage Grotesque"', 'system-ui', '-apple-system', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
       colors: {
-        navy: {
-          50: '#f0f6fc',
-          100: '#dbeafe',
-          200: '#bfdbfe',
-          DEFAULT: '#0F4C81',
-          600: '#0d4374',
-          700: '#0a3357',
-          dark: '#0a3357',
-          tint: '#e8f0f9',
-        },
-        ink: '#0f172a',
-        body: '#334155',
-        muted: '#64748b',
-        line: '#e2e8f0',
-        gold: '#FBBF24',
-        emerald: '#10b981',
+        // Surfaces
+        mist: '#EEF2EC',
+        card: '#FBFCF9',
+        sunk: '#E2EAE0',
+        ink: '#0D2B23',
+        'ink-2': '#17392F',
+        // Text
+        body: '#2F4A41',
+        muted: '#4D685E',
+        action: '#0A6649',
+        'mist-dim': '#A9C4B7',
+        danger: '#A8261D',
+        // The one accent: fill only on light surfaces
+        lime: { DEFAULT: '#C9F26C', deep: '#B2E147' },
+        // Lines
+        line: '#CDD9CE',
+        'line-strong': '#74907F',
       },
       boxShadow: {
-        soft: '0 4px 24px rgba(15, 23, 42, .06)',
-        lift: '0 12px 40px rgba(15, 76, 129, .12)',
-        ring: '0 0 0 4px rgba(15, 76, 129, .08)',
+        tile: '0 1px 0 rgba(13,43,35,.05), 0 10px 28px -14px rgba(13,43,35,.22)',
+        lift: '0 2px 0 rgba(13,43,35,.06), 0 22px 44px -18px rgba(13,43,35,.32)',
+        well: 'inset 0 1px 2px rgba(13,43,35,.08)',
       },
-      animation: {
-        'fade-up': 'fadeUp .7s ease-out forwards',
-        'fade-in': 'fadeIn .5s ease-out forwards',
-        'slow-pulse': 'slowPulse 3s ease-in-out infinite',
-        'marquee': 'marquee 38s linear infinite',
-        'marquee-rev': 'marqueeRev 38s linear infinite',
-      },
-      keyframes: {
-        fadeUp: { '0%': { opacity: 0, transform: 'translateY(24px)' }, '100%': { opacity: 1, transform: 'translateY(0)' } },
-        fadeIn: { '0%': { opacity: 0 }, '100%': { opacity: 1 } },
-        slowPulse: { '0%, 100%': { opacity: .6 }, '50%': { opacity: 1 } },
-        marquee: { '0%': { transform: 'translateX(0)' }, '100%': { transform: 'translateX(-50%)' } },
-        marqueeRev: { '0%': { transform: 'translateX(-50%)' }, '100%': { transform: 'translateX(0)' } },
+      borderRadius: {
+        tile: 'clamp(1.125rem, .9rem + .8vw, 1.75rem)',
+        inner: '.75rem',
       },
     },
   },
