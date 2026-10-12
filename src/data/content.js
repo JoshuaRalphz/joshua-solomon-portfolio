@@ -7,9 +7,6 @@
 
 export const profile = {
   name: 'Joshua Solomon',
-  role: 'Marketing Automation & Lifecycle Specialist — CRM, Email & SMS Systems',
-  subtitle: 'Lifecycle Email · SMS · GoHighLevel · Deliverability · Automation',
-  location: 'Olongapo City, PH · Remote (US Eastern preferred; PH, AU or European hours also work)',
   available: 'Available for full-time work · can start within 1-2 weeks of an offer',
   email: 'solomonjoshua101602@gmail.com',
   whatsapp: '+63 961 556 2117',
@@ -31,6 +28,9 @@ export const profile = {
   },
 };
 
+// Monogram for the avatar and the video poster.
+export const initials = profile.name.split(' ').map((word) => word[0]).join('');
+
 // The wired section menu (rail, top bar, footer) and the scroll spy read this.
 export const sections = [
   { id: 'top', num: '00', label: 'Overview' },
@@ -43,7 +43,7 @@ export const sections = [
 
 export const hero = {
   headline: 'I build email and SMS systems that get delivered.',
-  promise: 'I set up GoHighLevel and run lifecycle email and SMS for agencies and founders: segmentation, nurture flows, and the sending-domain and A2P 10DLC work that gets messages delivered.',
+  promise: 'I set up GoHighLevel and run lifecycle email and SMS for a US agency and its clients: segmentation, nurture flows, and the sending-domain and A2P 10DLC work that gets messages delivered.',
 };
 
 export const stats = [
@@ -62,8 +62,10 @@ export const flow = [
 
 // Numbers only, each with where it came from. The projected ~89% cost figure is
 // deliberately NOT a result: it stays inside the Arrow Platform summary, worded "projected".
+// The lead result compares two months' average click rates (3 campaigns in April,
+// 11 in May). It is not a before/after test, so the bars are labelled by month.
 export const results = [
-  { lead: true, value: '2x', title: 'Nonprofit email click rate', note: '4.5% to 9.5% (Apr–May 2026)', before: 4.5, after: 9.5 },
+  { lead: true, value: '2x', title: 'Nonprofit average email click rate', note: '4.5% to 9.5% (Apr–May 2026)', before: 4.5, after: 9.5, beforeLabel: 'April 2026', afterLabel: 'May 2026' },
   { value: '6,500', unit: '/day', title: 'Sending capacity after warmup', note: 'Dedicated sending subdomain, SPF/DKIM/DMARC aligned · HOME.FM', workId: 'homefm' },
   { value: 'A2P 10DLC', title: 'SMS brand approval', note: 'Approved, with a verified business number · Alpha Omega Utility Services', workId: 'aoutility' },
   { value: '6', unit: 'accounts', title: 'Live about 5 weeks after the first commit', note: 'Aug–Sep 2026 · Arrow Platform', workId: 'arrowplatform' },
@@ -73,7 +75,7 @@ export const results = [
 // The five Explore cards. The 01 title is computed from works in ExploreCards.jsx.
 export const explore = [
   { num: '01', id: 'work', label: 'PROJECTS', title: null, line: 'An in-house email and SMS platform I built, and client work shown with permission.' },
-  { num: '02', id: 'results', label: 'RESULTS', title: '2x', line: 'Nonprofit email click rate, 4.5% to 9.5% (Apr–May 2026). More numbers inside.' },
+  { num: '02', id: 'results', label: 'RESULTS', title: '2x', line: 'Nonprofit average email click rate, 4.5% to 9.5% (Apr–May 2026). More numbers inside.' },
   { num: '03', id: 'capabilities', label: 'SERVICES', title: 'Five things I can own', line: 'Lifecycle email, CRM, deliverability, automation, custom sites.' },
   { num: '04', id: 'about', label: 'ABOUT', title: 'About and experience', line: 'Arrow Group Consulting, Feb 2026 to present. Doneverse before that.' },
   { num: '05', id: 'contact', label: 'CONTACT', title: 'Hiring, contracting, or just want to talk?', line: 'I reply within 24 hours.' },
@@ -111,32 +113,26 @@ export const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit';
 // Strengths shown on the Home page — candidate-facing, employee-positioned.
 export const benefits = [
   {
-    icon: 'Layers',
     title: 'Lifecycle systems, end to end.',
     body: 'Audience segmentation, automated nurture and retention flows, multi-touch sequences, A/B testing, and the deliverability that gets them to the inbox. I build the whole lifecycle, not just one email.',
   },
   {
-    icon: 'Mail',
     title: 'Email + SMS that actually lands.',
     body: 'I own deliverability: dedicated sending domains, SPF/DKIM/DMARC alignment, warmup, and A2P 10DLC registration for compliant text campaigns. Then I report open, click, and delivery analytics back to stakeholders.',
   },
   {
-    icon: 'Wrench',
     title: 'Comfortable across the stack.',
     body: 'GoHighLevel, HubSpot, Mailchimp, Kajabi, ActiveCampaign, n8n, Google Apps Script, Claude API, plus custom React + Vite when a build calls for it. I pick up whatever your team already uses.',
   },
   {
-    icon: 'UserCheck',
     title: 'Founder-friendly communication.',
     body: 'I translate automation and implementation details into plain English on calls and in writing. Comfortable speaking directly to founders, senior stakeholders, and end clients.',
   },
   {
-    icon: 'Shield',
     title: 'Async-first, flexible hours.',
     body: 'Olongapo, Philippines — US Eastern hours preferred; PH, AU or European hours also work. Work setup: laptop, two internet providers (one as backup), and a UPS for the internet router. Strong written communication for distributed teams.',
   },
   {
-    icon: 'TrendingUp',
     title: 'I build the systems I work in.',
     body: 'Recently built an internal content-operations hub (React + Firebase PWA with Vercel serverless routes and the GoHighLevel API) that brings a US consultancy\'s 5 scattered tools into one app. In daily production. Also built the agency\'s in-house email/SMS platform (Cloudflare Workers + D1), which is now replacing GoHighLevel.',
   },
@@ -157,7 +153,7 @@ export const services = [
       'A/B split tests on subject lines and content',
       'Open / click / delivery analytics reporting',
     ],
-    outcome: 'Lifecycle programs that nurture, retain, and re-engage on autopilot.',
+    outcome: 'Lifecycle programs that nurture, retain, and re-engage automatically.',
   },
   {
     id: 'crm',
@@ -217,6 +213,9 @@ export const services = [
   },
 ];
 
+// The site lists these grouped by `category`. `tier` (how often each is used) is
+// kept here for reference only and is NOT shown: no CV states a usage frequency,
+// so show it again only once Joshua confirms each tier.
 export const tools = [
   // CRM & Marketing Platforms
   { name: 'GoHighLevel', tier: 'Daily', category: 'CRM' },
@@ -445,31 +444,3 @@ export const earlierExperience = {
   label: 'Earlier · working student (2024 to 2025, during college)',
   body: 'Social media for ADAP Real Estate, Subic — created listing graphics and posted property listings.',
 };
-
-// Mirrors the "Technical Skills" block in the PDF resume
-export const coreExpertise = [
-  {
-    label: 'Email & Lifecycle Marketing',
-    items: 'Campaign builds, audience segmentation, automated nurture & retention flows, multi-touch sequences, A/B testing, pre-send QA, analytics reporting',
-  },
-  {
-    label: 'CRM & Marketing Platforms',
-    items: 'GoHighLevel (GHL — workflows, tags & custom fields, website/funnel builder), HubSpot, Mailchimp, Kajabi, ActiveCampaign',
-  },
-  {
-    label: 'Automation & Integrations',
-    items: 'n8n, Google Apps Script, webhooks, GHL API, Google Sheets API, Square API, Anthropic Claude API',
-  },
-  {
-    label: 'Deliverability & Compliance',
-    items: 'A2P 10DLC SMS registration, dedicated sending domains, SPF/DKIM/DMARC',
-  },
-  {
-    label: 'Web & Hosting',
-    items: 'HTML5, CSS3, JavaScript, React, Vite, Tailwind CSS, Wix Studio + Velo, WordPress; Cloudflare Pages/DNS, Vercel, Firebase, GitHub Actions',
-  },
-  {
-    label: 'Languages',
-    items: 'English (professional working proficiency), Filipino (native)',
-  },
-];

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AlertCircle, CheckCircle2 } from 'lucide-react';
 import { profile, WEB3FORMS_ACCESS_KEY, WEB3FORMS_ENDPOINT } from '../../data/content.js';
@@ -19,11 +19,15 @@ function Field({ id, label, error, children }) {
   );
 }
 
-/** id + error wiring shared by every control. */
-function controlProps(id, error) {
+/**
+ * id + error wiring shared by every control. `aria-required` (not `required`)
+ * tells assistive tech up front and keeps the custom error messages.
+ */
+function controlProps(id, error, isRequired = false) {
   return {
     id,
     className: 'field',
+    'aria-required': isRequired ? 'true' : undefined,
     'aria-invalid': error ? 'true' : undefined,
     'aria-describedby': error ? `${id}-error` : undefined,
   };
@@ -33,21 +37,23 @@ function controlProps(id, error) {
 export default function ContactForm() {
   const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm();
   const [submitStatus, setSubmitStatus] = useState(null); // null | 'success' | 'error'
+  const successHeadingRef = useRef(null);
+
+  // The form (and the focused button) is replaced on success: move focus to the
+  // confirmation so keyboard and screen-reader users land on it.
+  useEffect(() => {
+    if (submitStatus === 'success') successHeadingRef.current?.focus();
+  }, [submitStatus]);
 
   const onSubmit = async (data) => {
+    // Clear the last result so a second failure is announced again.
+    setSubmitStatus(null);
     try {
       // Honeypot — Web3Forms rejects the submission if `botcheck` is filled.
       // Real users never see/fill it; only bots auto-completing every field do.
       if (data.botcheck) {
         setSubmitStatus('success'); // silent success so bots don't retry
         reset();
-        return;
-      }
-
-      if (!WEB3FORMS_ACCESS_KEY) {
-        // eslint-disable-next-line no-console
-        console.error('WEB3FORMS_ACCESS_KEY is not set in content.js');
-        setSubmitStatus('error');
         return;
       }
 
@@ -85,7 +91,7 @@ export default function ContactForm() {
       <div className="tile grid place-items-center py-12 text-center" role="status">
         <div>
           <CheckCircle2 size={44} aria-hidden="true" className="mx-auto text-action" />
-          <h3 className="t-h3 mt-4">Thanks, message received.</h3>
+          <h3 ref={successHeadingRef} tabIndex={-1} className="t-h3 mt-4 rounded-inner">Thanks, message received.</h3>
           <p className="mt-2 text-body">I'll reply personally within 24 hours.</p>
         </div>
       </div>
@@ -95,19 +101,10 @@ export default function ContactForm() {
   return (
     <div className="tile">
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-        {/* Honeypot — hidden from humans, bots fill it and get rejected. */}
-        <input
-          type="checkbox"
-          {...register('botcheck')}
-          tabIndex={-1}
-          autoComplete="off"
-          style={{ position: 'absolute', left: '-9999px', width: 0, height: 0, opacity: 0 }}
-          aria-hidden="true"
-        />
         <Field id="contact-name" label="Your name" error={errors.name?.message}>
           <input
             {...register('name', { required: 'Required' })}
-            {...controlProps('contact-name', errors.name)}
+            {...controlProps('contact-name', errors.name, true)}
             placeholder="Jane Cooper"
             autoComplete="name"
           />
@@ -115,13 +112,13 @@ export default function ContactForm() {
         <Field id="contact-email" label="Email" error={errors.email?.message}>
           <input
             {...register('email', { required: 'Required', pattern: { value: /^\S+@\S+\.\S+$/, message: 'Invalid email' } })}
-            {...controlProps('contact-email', errors.email)}
+            {...controlProps('contact-email', errors.email, true)}
             type="email"
             placeholder="jane@company.com"
             autoComplete="email"
           />
         </Field>
-        <Field id="contact-company" label="Company">
+        <Field id="contact-company" label="Company (optional)">
           <input
             {...register('company')}
             {...controlProps('contact-company')}
@@ -132,7 +129,7 @@ export default function ContactForm() {
         <Field id="contact-message" label="What's the role / opportunity?" error={errors.message?.message}>
           <textarea
             {...register('message', { required: 'Required', minLength: { value: 10, message: 'A few more details please' } })}
-            {...controlProps('contact-message', errors.message)}
+            {...controlProps('contact-message', errors.message, true)}
             rows={5}
             placeholder="Role title, timeline, stack, team size. Whatever's helpful. Or just say hi."
             style={{ resize: 'vertical' }}
@@ -150,6 +147,16 @@ export default function ContactForm() {
             </span>
           </div>
         )}
+        {/* Honeypot — hidden from humans, bots fill it and get rejected. Last in
+            the form so it does not push the first field down (space-y). */}
+        <input
+          type="checkbox"
+          {...register('botcheck')}
+          tabIndex={-1}
+          autoComplete="off"
+          style={{ position: 'absolute', left: '-9999px', width: 0, height: 0, opacity: 0 }}
+          aria-hidden="true"
+        />
       </form>
     </div>
   );

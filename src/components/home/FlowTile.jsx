@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { useInView, useReducedMotion } from 'framer-motion';
-import { Reveal } from '../PageTransition.jsx';
+import { Reveal } from '../Reveal.jsx';
 import { flow } from '../../data/content.js';
 
 /**

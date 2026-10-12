@@ -1,8 +1,8 @@
+import { useRef } from 'react';
 import { ArrowRight, Download, Facebook, Github, Linkedin, Mail, MapPin, MessageCircle } from 'lucide-react';
 import WireNav from './WireNav.jsx';
-import { profile } from '../../data/content.js';
-
-const initials = profile.name.split(' ').map((word) => word[0]).join('');
+import { initials, profile } from '../../data/content.js';
+import { useRailFit } from '../../hooks/useRailFit.js';
 
 const SOCIAL_LINKS = [
   { label: 'Email Joshua', href: `mailto:${profile.email}`, Icon: Mail },
@@ -39,51 +39,51 @@ function Avatar() {
 
 /**
  * Profile card below 1024px; a sticky rail with the wired section menu from 1024px.
+ * The rail-* classes are the hooks for the three rail densities in styles.css,
+ * which useRailFit picks by measuring what fits the viewport height.
  */
 export default function ProfileRail() {
+  const railRef = useRef(null);
+  useRailFit(railRef);
+
   return (
     <aside
+      ref={railRef}
       aria-label="Profile"
-      className="tile md:grid md:grid-cols-[minmax(0,1fr)_auto] md:items-center md:gap-6 lg:sticky lg:top-6 lg:block lg:max-h-[calc(100dvh-3rem)] lg:self-start lg:overflow-y-auto lg:p-5 lg:shadow-lift"
+      className="tile rail md:grid md:grid-cols-[minmax(0,1fr)_auto] md:items-center md:gap-6 lg:block lg:p-5 lg:shadow-lift"
     >
-      <div className="flex min-w-0 items-center gap-4 lg:block">
+      <div className="rail-head flex min-w-0 items-center gap-4 lg:block">
         <Avatar />
-        <div className="min-w-0 lg:mt-4">
+        <div className="rail-id min-w-0 lg:mt-4">
           <p className="text-xl font-bold leading-tight text-ink">{profile.name}</p>
+          {/* The handle is plain text: the GitHub icon link is in this same card. */}
           <p className="mt-1 text-sm font-medium leading-snug text-body">
-            <a
-              href={profile.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="relative font-mono text-xs text-action hover:underline"
-            >
-              {profile.handle}
-              <span className="sr-only"> on GitHub (opens in a new tab)</span>
-            </a>
+            <span className="font-mono text-xs text-ink">{profile.handle}</span>
             <span aria-hidden="true"> · </span>
             {profile.shortRole}
           </p>
-          <p className="mt-1.5 flex items-center gap-1.5 text-sm font-medium text-muted lg:[@media(max-height:700px)]:hidden">
+          <p className="rail-location mt-1.5 flex items-center gap-1.5 text-sm font-medium text-muted">
             <MapPin size={14} aria-hidden="true" className="flex-none" />
             {profile.shortLocation}
           </p>
         </div>
       </div>
 
-      <div className="mt-4 min-w-0 md:mt-0 lg:mt-5">
-        <div className="grid grid-cols-2 gap-2 max-[359px]:grid-cols-1 lg:grid-cols-1">
+      <div className="rail-body mt-4 min-w-0 md:mt-0 lg:mt-5">
+        <div className="rail-cta grid grid-cols-2 gap-2 max-[359px]:grid-cols-1 lg:grid-cols-1">
           <a href="#contact" className="btn btn-primary px-3">
             Get in touch <ArrowRight size={18} aria-hidden="true" className="flex-none" />
           </a>
-          <a href={profile.resumeUrl} download className="btn btn-secondary px-3">
+          <a href={profile.resumeUrl} download className="btn btn-secondary rail-resume px-3">
             <Download size={18} aria-hidden="true" className="flex-none max-[420px]:hidden" />
-            Download resume
+            <span className="rail-resume-text">Download resume</span>
           </a>
         </div>
 
-        <WireNav className="mt-5 hidden lg:block" />
+        <WireNav className="rail-nav mt-5 hidden lg:block" />
 
-        <ul className="mt-3 flex justify-between gap-1 md:justify-end lg:mt-4 lg:justify-between">
+        {/* Five 44px targets are 220px; the narrowest rail has 222px, so no gap from 1024px. */}
+        <ul className="rail-social mt-3 flex justify-between gap-1 md:justify-end lg:mt-4 lg:justify-between lg:gap-0">
           {SOCIAL_LINKS.map(({ label, href, Icon }) => {
             const isExternal = href.startsWith('http');
             return (

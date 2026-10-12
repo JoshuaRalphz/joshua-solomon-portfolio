@@ -1,11 +1,18 @@
 import { ArrowUpRight } from 'lucide-react';
-import { Reveal } from '../PageTransition.jsx';
+import { Reveal } from '../Reveal.jsx';
 import { explore, sections, works } from '../../data/content.js';
+import { webpSrcSet } from '../../lib/images.js';
 import { useActiveSection } from '../../hooks/useActiveSection.jsx';
 
 const featured = works.find((work) => work.featured);
-const clientBuildCount = works.filter((work) => !work.featured).length;
-const peekShot = featured.gallery[0];
+// "Projects", not "builds": one of them is ongoing email, site and SEO work.
+const clientProjectCount = works.filter((work) => !work.featured).length;
+const projectsTitle = featured
+  ? `${featured.title.split(' — ')[0]}, plus ${clientProjectCount} client projects`
+  : `${clientProjectCount} client projects`;
+const peekShot = featured?.gallery?.[0];
+// The card is half the main column from 1280px and the full main column below.
+const PEEK_SIZES = '(min-width: 1280px) 34vw, (min-width: 1024px) 62vw, 90vw';
 
 // Five cards, four sizes. The 2+4 then 4+2 mirror at 768 is deliberate.
 const CARD_LAYOUT = {
@@ -17,10 +24,10 @@ const CARD_LAYOUT = {
 };
 
 function ExploreCard({ card, isActive }) {
-  const { place, tone = '', line = 'text-body', arrow = 'text-ink', isHalf = false } = CARD_LAYOUT[card.id];
+  const { place = '', tone = '', line = 'text-body', arrow = 'text-ink', isHalf = false } = CARD_LAYOUT[card.id] ?? {};
   const isProjects = card.id === 'work';
   const isResults = card.id === 'results';
-  const title = isProjects ? `${featured.title.split(' — ')[0]}, plus ${clientBuildCount} client builds` : card.title;
+  const title = isProjects ? projectsTitle : card.title;
 
   return (
     <li className={`flex ${place}`}>
@@ -45,13 +52,15 @@ function ExploreCard({ card, isActive }) {
           {card.line}
         </p>
 
-        {isProjects && (
+        {isProjects && peekShot && (
           <span
             aria-hidden="true"
             className="relative ml-[var(--pad)] mr-[calc(var(--pad)*-1)] mt-5 hidden min-h-[clamp(9rem,16vw,14rem)] flex-1 overflow-hidden rounded-tl-inner border-l border-t border-line bg-sunk [margin-bottom:calc(var(--pad)*-1)] md:block"
           >
             <img
               src={peekShot.src}
+              srcSet={webpSrcSet(peekShot.src)}
+              sizes={PEEK_SIZES}
               alt=""
               width={peekShot.w}
               height={peekShot.h}

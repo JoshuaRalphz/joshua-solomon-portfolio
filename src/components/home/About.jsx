@@ -1,5 +1,5 @@
 import { ChevronDown } from 'lucide-react';
-import { Reveal } from '../PageTransition.jsx';
+import { Reveal } from '../Reveal.jsx';
 import SectionHead from './SectionHead.jsx';
 import {
   benefits, earlierExperience, education, experience, profile, setup,
@@ -14,7 +14,7 @@ function Bullets({ items }) {
       {items.map((item) => (
         <li key={item} className="flex items-start gap-3 text-sm leading-relaxed text-body">
           <span aria-hidden="true" className="mt-[.5625rem] h-1.5 w-1.5 flex-none rounded-full bg-action" />
-          <span className="min-w-0">{item}</span>
+          <span className="min-w-0 max-w-[80ch]">{item}</span>
         </li>
       ))}
     </ul>

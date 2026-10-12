@@ -1,14 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
 import { Play } from 'lucide-react';
-import { profile } from '../../data/content.js';
-
-const initials = profile.name.split(' ').map((word) => word[0]).join('');
+import { initials, profile } from '../../data/content.js';
 
 /**
  * Click-to-load video facade. No iframe, no request to Loom and no Loom
  * thumbnail exist until the button is pressed; the poster is drawn in CSS.
  * If a CSP header is ever added to this site it must allow
  * `frame-src https://www.loom.com`.
+ *
+ * No video length is stated anywhere: add one only as profile.loom.length in
+ * content.js, once Joshua confirms it.
  */
 export default function LoomFacade() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -26,24 +27,24 @@ export default function LoomFacade() {
           <iframe
             ref={frameRef}
             src={`${profile.loom.embedUrl}?autoplay=1`}
-            title={`${profile.name}: 70-second intro video`}
+            title={`${profile.name}: intro video`}
             allow="autoplay; fullscreen; picture-in-picture"
             allowFullScreen
             className="h-full w-full border-0"
           />
         </div>
       ) : (
-        <button
-          type="button"
-          className="loom-poster"
-          aria-label="Play the 70-second intro video (loads from Loom)"
-          onClick={() => setIsPlaying(true)}
-        >
+        <button type="button" className="loom-poster" onClick={() => setIsPlaying(true)}>
           <span className="loom-mark" aria-hidden="true">{initials}</span>
           <span className="loom-disc">
             <Play size={22} fill="currentColor" aria-hidden="true" className="translate-x-px" />
           </span>
-          <span className="relative text-base font-bold leading-tight">Meet me in 70 seconds.</span>
+          {/* The accessible name contains the visible words (WCAG 2.5.3). */}
+          <span className="relative text-base font-bold leading-tight">
+            <span className="sr-only">Play the intro video: </span>
+            Meet me on video.
+            <span className="sr-only"> (loads from Loom)</span>
+          </span>
         </button>
       )}
     </div>

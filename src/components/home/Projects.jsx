@@ -1,17 +1,22 @@
 import { ArrowRight, Check, Info, ShieldCheck } from 'lucide-react';
-import { Reveal } from '../PageTransition.jsx';
+import { Reveal } from '../Reveal.jsx';
 import SectionHead from './SectionHead.jsx';
 import ProjectTile from './ProjectTile.jsx';
 import { works } from '../../data/content.js';
+import { webpSrcSet } from '../../lib/images.js';
 
 const featured = works.find((work) => work.featured);
 const clientWorks = works.filter((work) => !work.featured);
-// The builds with wins lead; the rest keep their content.js order.
+// The projects with wins lead; the rest keep their content.js order.
 const orderedClientWorks = [
   ...clientWorks.filter((work) => work.wins),
   ...clientWorks.filter((work) => !work.wins),
 ];
 
+// About 7/12 of the feature tile from 1280px; the full main column below that.
+const SHOT_SIZES = '(min-width: 1280px) 38vw, (min-width: 1024px) 60vw, 90vw';
+
+/** The page shows a WebP copy; the link opens the full-size PNG. */
 function Screenshot({ shot, className = '' }) {
   return (
     <figure className={className}>
@@ -24,6 +29,8 @@ function Screenshot({ shot, className = '' }) {
       >
         <img
           src={shot.src}
+          srcSet={webpSrcSet(shot.src)}
+          sizes={SHOT_SIZES}
           alt={shot.label}
           width={shot.w}
           height={shot.h}
@@ -98,15 +105,17 @@ export default function Projects() {
         intro="Every project below is my own hands-on work. Client work is shown with permission; the internal build is labelled. Want backend proof (A2P approvals, GHL workflows, DNS panels, codebases)? Just ask."
       />
 
-      <Reveal>
-        <ArrowFeature />
-      </Reveal>
+      {featured && (
+        <Reveal>
+          <ArrowFeature />
+        </Reveal>
+      )}
 
       <h3 className="label mb-4 mt-8">Client work</h3>
       <Reveal>
         <ul className="bento">
           {orderedClientWorks.map((work) => (
-            <ProjectTile key={work.id} work={work} variant={work.wins ? 'lead' : 'compact'} />
+            <ProjectTile key={work.id} work={work} />
           ))}
         </ul>
       </Reveal>

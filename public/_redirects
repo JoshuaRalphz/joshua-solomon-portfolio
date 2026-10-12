@@ -1,12 +1,10 @@
-# SPA fallback for React Router routes
-# Cloudflare rejected /* /index.html 200 as an "infinite loop"
-# — so we list each route explicitly.
-/about      /index.html  200
-/services   /index.html  200
-/works      /index.html  200
-/resume     /index.html  200
-/plan       /index.html  200
-/contact    /index.html  200
+# The site is one page. The old multi-page URLs go to their section.
+/about      /#about         301
+/services   /#capabilities  301
+/works      /#work          301
+/resume     /#about         301
+/contact    /#contact       301
+/plan       /               301
 
 # Old resume links -> current resume
 /Joshua_Solomon_Resume_v4.pdf  /Joshua_Solomon_Resume_v7.pdf  301

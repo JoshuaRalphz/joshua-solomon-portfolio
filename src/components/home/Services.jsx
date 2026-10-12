@@ -1,5 +1,5 @@
 import { Check, ChevronDown } from 'lucide-react';
-import { Reveal } from '../PageTransition.jsx';
+import { Reveal } from '../Reveal.jsx';
 import SectionHead from './SectionHead.jsx';
 import { services } from '../../data/content.js';
 

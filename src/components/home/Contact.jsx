@@ -1,5 +1,5 @@
 import { Download, Facebook, FileText, Github, Linkedin, Mail, MessageCircle } from 'lucide-react';
-import { Reveal } from '../PageTransition.jsx';
+import { Reveal } from '../Reveal.jsx';
 import SectionHead from './SectionHead.jsx';
 import ContactForm from './ContactForm.jsx';
 import { profile } from '../../data/content.js';

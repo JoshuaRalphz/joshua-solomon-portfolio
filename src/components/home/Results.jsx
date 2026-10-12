@@ -1,14 +1,14 @@
-import { Reveal } from '../PageTransition.jsx';
+import { Reveal } from '../Reveal.jsx';
 import SectionHead from './SectionHead.jsx';
 import { results } from '../../data/content.js';
 
 const leadResult = results.find((result) => result.lead);
 const otherResults = results.filter((result) => !result.lead);
 
-// The before/after bars sit on a 0-10% scale, so 4.5% draws at 45% width.
+// The two month bars sit on a 0-10% scale, so 4.5% draws at 45% width.
 const BAR_SCALE = 10;
 
-function BeforeAfterRow({ label, value, isAfter }) {
+function MonthRow({ label, value, isLater }) {
   return (
     <div>
       <p className="flex items-baseline justify-between gap-3 text-sm font-semibold text-ink">
@@ -17,7 +17,7 @@ function BeforeAfterRow({ label, value, isAfter }) {
       </p>
       <div
         aria-hidden="true"
-        className={`mt-1.5 h-3 rounded-full border-[1.5px] border-ink ${isAfter ? 'bg-ink' : 'bg-transparent'}`}
+        className={`mt-1.5 h-3 rounded-full border-[1.5px] border-ink ${isLater ? 'bg-ink' : 'bg-transparent'}`}
         style={{ width: `${value * BAR_SCALE}%` }}
       />
     </div>
@@ -31,8 +31,8 @@ function LeadResult() {
       <h3 className="t-h3 mt-4">{leadResult.title}</h3>
       <p className="mt-1 text-sm font-medium text-ink">{leadResult.note}</p>
       <div className="mt-auto space-y-3 pt-8">
-        <BeforeAfterRow label="Before" value={leadResult.before} />
-        <BeforeAfterRow label="After" value={leadResult.after} isAfter />
+        <MonthRow label={leadResult.beforeLabel} value={leadResult.before} />
+        <MonthRow label={leadResult.afterLabel} value={leadResult.after} isLater />
       </div>
     </div>
   );
@@ -47,8 +47,9 @@ function ResultTile({ result }) {
       </p>
       <h3 className="mt-3 font-bold leading-snug text-ink">{result.title}</h3>
       <p className="wrap-anywhere mt-1 text-sm font-medium leading-snug text-muted">{result.note}</p>
-      <a href={`#work-${result.workId}`} className="text-link mt-auto inline-flex min-h-[2.75rem] items-end self-start pt-2 text-sm">
-        See the project
+      {/* `relative` keeps the screen-reader-only text inside the link's box. */}
+      <a href={`#work-${result.workId}`} className="text-link relative mt-auto inline-flex min-h-[2.75rem] items-end self-start pt-2 text-sm">
+        See the project<span className="sr-only">: {result.title}</span>
       </a>
     </li>
   );

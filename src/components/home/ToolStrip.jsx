@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { useReducedMotion } from 'framer-motion';
 import { ChevronDown, Pause, Play } from 'lucide-react';
-import { Reveal } from '../PageTransition.jsx';
+import { Reveal } from '../Reveal.jsx';
 import { toolStrip, tools } from '../../data/content.js';
 
-const TIERS = ['Daily', 'Weekly', 'Occasional'];
+// In content.js order. Usage frequency (`tier`) is deliberately not shown.
+const CATEGORIES = [...new Set(tools.map((tool) => tool.category))];
 const ICON_CDN = 'https://cdn.simpleicons.org';
 const ICON_COLOUR = '0D2B23';
 
@@ -30,9 +31,9 @@ function ToolChip({ tool }) {
 }
 
 /**
- * One slow marquee row with a pause control, and the full tool list (by how
- * often each is used) in a disclosure under it. Under reduced motion the strip
- * is a static wrapped list and the pause button is not rendered.
+ * One slow marquee row with a pause control, and the full tool list (grouped by
+ * category) in a disclosure under it. Under reduced motion the strip is a
+ * static wrapped list and the pause button is not rendered.
  */
 export default function ToolStrip({ className = '' }) {
   const [isPaused, setIsPaused] = useState(false);
@@ -42,11 +43,11 @@ export default function ToolStrip({ className = '' }) {
     <Reveal className={`tile px-0 ${className}`}>
       <div className="flex min-h-[2.75rem] items-center justify-between gap-3 px-[var(--pad)]">
         <h2 className="label">Tools I work with</h2>
+        {/* The label alone carries the state: no aria-pressed beside it. */}
         {!prefersReducedMotion && (
           <button
             type="button"
             className="icon-link -mr-2"
-            aria-pressed={isPaused}
             aria-label={isPaused ? 'Play the tools strip' : 'Pause the tools strip'}
             onClick={() => setIsPaused((wasPaused) => !wasPaused)}
           >
@@ -69,15 +70,15 @@ export default function ToolStrip({ className = '' }) {
 
       <details className="mt-3 px-[var(--pad)]">
         <summary>
-          Full list, by how often I use it
+          Full list of tools
           <ChevronDown size={18} aria-hidden="true" className="chev flex-none" />
         </summary>
-        <div className="grid gap-x-[var(--pad)] gap-y-5 pb-1 pt-3 md:grid-cols-3">
-          {TIERS.map((tier) => (
-            <div key={tier} className="min-w-0">
-              <h3 className="label">{tier}</h3>
+        <div className="grid grid-cols-2 gap-x-[var(--pad)] gap-y-5 pb-1 pt-3 md:grid-cols-3 xl:grid-cols-4">
+          {CATEGORIES.map((category) => (
+            <div key={category} className="min-w-0">
+              <h3 className="label">{category}</h3>
               <ul className="mt-2 space-y-1 text-sm font-medium text-body">
-                {tools.filter((tool) => tool.tier === tier).map((tool) => (
+                {tools.filter((tool) => tool.category === category).map((tool) => (
                   <li key={tool.name}>{tool.name}</li>
                 ))}
               </ul>

@@ -1,6 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 // "Sage paper, pine ink, one lime signal." Light theme only.
-// Contrast notes live beside each token in src/styles.css.
 export default {
   content: ['./index.html', './src/**/*.{js,jsx}'],
   theme: {

@@ -36,7 +36,7 @@ export default function TopBar() {
   return (
     <header
       className="sticky top-0 z-40 border-b border-line bg-mist/[.88] backdrop-blur lg:hidden"
-      style={{ '--i': index }}
+      style={{ '--i': index, '--last': sections.length - 1 }}
     >
       <div className="mx-auto flex h-14 max-w-[96rem] items-center justify-between gap-2 px-[var(--shell-pad)]">
         <a
@@ -70,11 +70,11 @@ export default function TopBar() {
         </div>
       </div>
 
-      {/* The wire, lying flat: fills as you move down the six sections. */}
+      {/* The wire, lying flat: fills as you move down the sections (--i of --last). */}
       <span
         aria-hidden="true"
         className="absolute bottom-0 left-0 h-0.5 w-full origin-left bg-ink transition-transform duration-300"
-        style={{ transform: 'scaleX(calc(var(--i) / 5))' }}
+        style={{ transform: 'scaleX(calc(var(--i) / var(--last)))' }}
       />
 
       {isOpen && (
@@ -92,7 +92,7 @@ export default function TopBar() {
                     aria-current={i === index ? 'location' : undefined}
                     className={`flex min-h-[2.75rem] items-center gap-3 rounded-inner px-2 text-ink hover:bg-sunk ${i === index ? 'font-bold' : 'font-medium'}`}
                   >
-                    <span className="font-mono text-xs text-action">{section.num}</span>
+                    <span className="font-mono text-xs font-medium text-action">{section.num}</span>
                     {section.label}
                   </a>
                 </li>
