@@ -12,13 +12,13 @@ const SOCIAL_LINKS = [
   { label: 'Facebook', href: profile.facebook, Icon: Facebook },
 ];
 
-/** Monogram disc, or the photo if profile.photo is ever set. */
+/** The square face crop, or the monogram disc when profile.avatar is not set. */
 function Avatar() {
   return (
     <div className="avatar">
-      {profile.photo ? (
+      {profile.avatar ? (
         <img
-          src={profile.photo}
+          src={profile.avatar}
           alt={profile.name}
           width={144}
           height={144}

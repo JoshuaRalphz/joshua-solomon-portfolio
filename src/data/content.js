@@ -19,16 +19,13 @@ export const profile = {
   shortLocation: 'Olongapo City, PH · Remote',
   status: 'Available for full-time work',
   resumeUrl: '/Joshua_Solomon_Resume_v7.pdf',
-  // No photo yet: the avatar renders a monogram until this is set to an image path.
-  photo: null,
+  // Portrait tile photo and its square face crop for the round avatar. Null falls back to the monogram.
+  photo: '/joshua-solomon.webp',
+  avatar: '/joshua-solomon-avatar.webp',
   bio: 'Marketing automation specialist with hands-on agency experience building and running lifecycle email and SMS systems on GoHighLevel, Mailchimp, HubSpot, and Kajabi: audience segmentation, automated nurture and retention flows, A2P 10DLC SMS, and deliverability, plus the custom-coded sites and integrations behind them. Open to full-time remote, contract, or fractional roles.',
-  loom: {
-    shareUrl: 'https://www.loom.com/share/4b6619181760484796d88a5fc52827f1',
-    embedUrl: 'https://www.loom.com/embed/4b6619181760484796d88a5fc52827f1',
-  },
 };
 
-// Monogram for the avatar and the video poster.
+// Monogram fallback for the avatar and the portrait tile.
 export const initials = profile.name.split(' ').map((word) => word[0]).join('');
 
 // The wired section menu (rail, top bar, footer) and the scroll spy read this.

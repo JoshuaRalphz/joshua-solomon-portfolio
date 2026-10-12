@@ -1,8 +1,7 @@
 import { Reveal } from '../Reveal.jsx';
-import LoomFacade from './LoomFacade.jsx';
 import FlowTile from './FlowTile.jsx';
 import ToolStrip from './ToolStrip.jsx';
-import { hero, profile, stats } from '../../data/content.js';
+import { hero, initials, profile, stats } from '../../data/content.js';
 
 /** Who, what, proof: the headline tile is never animated (it is the largest paint). */
 function HeadlineTile() {
@@ -40,36 +39,37 @@ function HeadlineTile() {
   );
 }
 
-function VideoTile() {
+/** The photo, or the monogram until profile.photo is set. */
+function PortraitTile() {
   return (
     <Reveal className="tile flex flex-col md:[grid-column:span_4] xl:[grid-column:8/13] xl:[grid-row:1]">
-      <h2 className="label">Intro video</h2>
-      {/* From 1280 the ink panel stretches to the row height; below that it is 16:9. */}
-      <div className="mt-3 xl:flex xl:flex-1 xl:flex-col">
-        <LoomFacade />
+      {/* From 1280 the panel stretches to the row height; below that it has a fixed ratio. */}
+      <div className="portrait">
+        {profile.photo ? (
+          <img
+            src={profile.photo}
+            alt={`Portrait of ${profile.name}`}
+            width={960}
+            height={1399}
+            className="absolute inset-0 h-full w-full object-cover object-[50%_8%]"
+          />
+        ) : (
+          <span className="portrait-mark" aria-hidden="true">{initials}</span>
+        )}
       </div>
       <p className="mt-3 text-sm font-medium leading-snug text-muted">
-        A short Loom intro. Nothing loads from Loom until you press play.
+        <span className="font-bold text-ink">{profile.name}</span> · {profile.shortLocation}
       </p>
-      {/* On its own line: a 44px target, and underlined so it is not colour-only. */}
-      <a
-        href={profile.loom.shareUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-link relative inline-flex min-h-[2.75rem] items-center self-start text-sm underline"
-      >
-        Open on Loom<span className="sr-only"> (opens in a new tab)</span>
-      </a>
     </Reveal>
   );
 }
 
-/** First screen: headline + proof chips, intro video, the flow tile and the tools strip. */
+/** First screen: headline + proof chips, portrait, the flow tile and the tools strip. */
 export default function HeroBento() {
   return (
     <section aria-label="Overview" className="bento">
       <HeadlineTile />
-      <VideoTile />
+      <PortraitTile />
       <FlowTile className="md:[grid-column:span_2] xl:[grid-column:1/-1] xl:[grid-row:2]" />
       <ToolStrip />
     </section>
