@@ -21,7 +21,7 @@ export const profile = {
   // The ONE place the resume link is set (rail, top bar, contact all read it).
   // To switch CVs, change this line, e.g. to '/Joshua_Solomon_Resume_v8_AI_Engineer.pdf',
   // and add a "/Joshua_Solomon_Resume_v7.pdf -> new file 301" line in public/_redirects.
-  resumeUrl: '/Joshua_Solomon_Resume_v7.pdf',
+  resumeUrl: '/Joshua_Solomon_Resume_v8_AI_Engineer.pdf',
   // Portrait tile photo and its square face crop for the round avatar. Null falls back to the monogram.
   photo: '/joshua-solomon.webp',
   avatar: '/joshua-solomon-avatar.webp',
