@@ -15,14 +15,17 @@ export const profile = {
   linkedin: 'https://www.linkedin.com/in/joshua-ralph-adrian-solomon-1a0745347/',
   facebook: 'https://www.facebook.com/lionheart016',
   handle: '@JoshuaRalphz',
-  shortRole: 'Marketing Automation & Lifecycle Specialist',
+  shortRole: 'AI Engineer',
   shortLocation: 'Olongapo City, PH · Remote',
   status: 'Available for full-time work',
+  // The ONE place the resume link is set (rail, top bar, contact all read it).
+  // To switch CVs, change this line, e.g. to '/Joshua_Solomon_Resume_v8_AI_Engineer.pdf',
+  // and add a "/Joshua_Solomon_Resume_v7.pdf -> new file 301" line in public/_redirects.
   resumeUrl: '/Joshua_Solomon_Resume_v7.pdf',
   // Portrait tile photo and its square face crop for the round avatar. Null falls back to the monogram.
   photo: '/joshua-solomon.webp',
   avatar: '/joshua-solomon-avatar.webp',
-  bio: 'Marketing automation specialist with hands-on agency experience building and running lifecycle email and SMS systems on GoHighLevel, Mailchimp, HubSpot, and Kajabi: audience segmentation, automated nurture and retention flows, A2P 10DLC SMS, and deliverability, plus the custom-coded sites and integrations behind them. Open to full-time remote, contract, or fractional roles.',
+  bio: 'AI Engineer with about a year of remote work for US clients (since Sep 2025). I build LLM apps and AI automation on the Claude and OpenAI APIs, Cloudflare Workers + D1 and Google Apps Script, using AI-assisted development in Claude Code: my own AI video engine, my own outreach and job-application platform, and Gmail automation. Alongside that, hands-on agency work in GoHighLevel, lifecycle email and SMS, deliverability, and the custom-coded sites behind them. Open to full-time remote, contract, or fractional roles.',
 };
 
 // Monogram fallback for the avatar and the portrait tile.
@@ -39,22 +42,22 @@ export const sections = [
 ];
 
 export const hero = {
-  headline: 'I build email and SMS systems that get delivered.',
-  promise: 'I set up GoHighLevel and run lifecycle email and SMS for a US agency and its clients: segmentation, nurture flows, and the sending-domain and A2P 10DLC work that gets messages delivered.',
+  headline: 'AI Engineer. I build LLM apps and AI automation.',
+  promise: 'On the Claude and OpenAI APIs, built with Claude Code: a video engine that turns a one-line topic into a finished, captioned MP4, my own outreach and job-application platform on Cloudflare Workers, and Gmail automation in Apps Script. A human stays in the loop: nothing sends or posts until it is approved.',
 };
 
 export const stats = [
-  { value: '8', label: 'Clients handled at once at a US agency' },
+  { value: '3', label: 'AI and automation builds of my own, in use' },
   { value: '~1 yr', label: 'Remote work for US clients, since Sep 2025' },
   { value: '24h', label: 'Reply time · US Eastern hours preferred' },
 ];
 
-// The hero "how a campaign moves" tile. It describes a process, it is not live data.
+// The hero "how my AI pipelines run" tile. It describes a process, it is not live data.
 export const flow = [
-  { label: 'Segment', caption: 'Split the audience by tags and fields' },
-  { label: 'Build', caption: 'Emails, texts and the nurture flow' },
-  { label: 'Deliver', caption: 'SPF, DKIM, DMARC and A2P in place' },
-  { label: 'Report', caption: 'Opens, clicks and delivery, back to you' },
+  { label: 'Brief', caption: 'A one-line topic or task, given in Claude Code chat' },
+  { label: 'Generate', caption: 'Claude writes; OpenAI makes the images and voice' },
+  { label: 'Check', caption: 'Tests, checks and a cost estimate before spending' },
+  { label: 'Approve', caption: 'Nothing sends or posts without a human yes' },
 ];
 
 // Numbers only, each with where it came from. The projected ~89% cost figure is
@@ -63,17 +66,20 @@ export const flow = [
 // 11 in May). It is not a before/after test, so the bars are labelled by month.
 export const results = [
   { lead: true, value: '2x', title: 'Nonprofit average email click rate', note: '4.5% to 9.5% (Apr–May 2026)', before: 4.5, after: 9.5, beforeLabel: 'April 2026', afterLabel: 'May 2026' },
-  { value: '6,500', unit: '/day', title: 'Sending capacity after warmup', note: 'Dedicated sending subdomain, SPF/DKIM/DMARC aligned · HOME.FM', workId: 'homefm' },
-  { value: 'A2P 10DLC', title: 'SMS brand approval', note: 'Approved, with a verified business number · Alpha Omega Utility Services', workId: 'aoutility' },
+  // Four sub-results keep the 2x2 grid beside the lead tile. The email-only HOME.FM
+// (6,500/day) and A2P figures stay on their project tiles and in Services.
+// yt-engine figures: README "Costs per video" (a real 2-part run: $0.49 + $0.23) and its test table (406 unit tests).
+  { value: '$0.72', title: 'Real API cost of a 2-part AI video story', note: 'Script, images and voice, measured on a real run · AI video engine', workId: 'ytengine' },
+  { value: '400+', title: 'Unit tests on the AI video engine', note: 'Plus acceptance suites against a fake stand-in for the paid APIs', workId: 'ytengine' },
+  { value: '3,200+', title: 'Automated tests', note: 'Arrow Platform, built with Claude Code', workId: 'arrowplatform' },
   { value: '6', unit: 'accounts', title: 'Live about 5 weeks after the first commit', note: 'Aug–Sep 2026 · Arrow Platform', workId: 'arrowplatform' },
-  { value: '3,200+', title: 'Automated tests', note: 'Arrow Platform', workId: 'arrowplatform' },
 ];
 
 // The five Explore cards. The 01 title is computed from works in ExploreCards.jsx.
 export const explore = [
-  { num: '01', id: 'work', label: 'PROJECTS', title: null, line: 'An in-house email and SMS platform I built, and client work shown with permission.' },
-  { num: '02', id: 'results', label: 'RESULTS', title: '2x', line: 'Nonprofit average email click rate, 4.5% to 9.5% (Apr–May 2026). More numbers inside.' },
-  { num: '03', id: 'capabilities', label: 'SERVICES', title: 'Five things I can own', line: 'Lifecycle email, CRM, deliverability, automation, custom sites.' },
+  { num: '01', id: 'work', label: 'PROJECTS', title: null, line: 'My own AI builds first, then an in-house platform and client work shown with permission.' },
+  { num: '02', id: 'results', label: 'RESULTS', title: '$0.72', line: 'Real API cost of a 2-part AI video story: script, images and voice. More numbers inside.' },
+  { num: '03', id: 'capabilities', label: 'SERVICES', title: 'Five things I can own', line: 'LLM apps, AI automation, Workers apps, then email and CRM.' },
   { num: '04', id: 'about', label: 'ABOUT', title: 'About and experience', line: 'Arrow Group Consulting, Feb 2026 to present. Doneverse before that.' },
   { num: '05', id: 'contact', label: 'CONTACT', title: 'Hiring, contracting, or just want to talk?', line: 'I reply within 24 hours.' },
 ];
@@ -110,20 +116,20 @@ export const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit';
 // Strengths shown on the Home page — candidate-facing, employee-positioned.
 export const benefits = [
   {
-    title: 'Lifecycle systems, end to end.',
-    body: 'Audience segmentation, automated nurture and retention flows, multi-touch sequences, A/B testing, and the deliverability that gets them to the inbox. I build the whole lifecycle, not just one email.',
+    title: 'AI pipelines, end to end.',
+    body: 'From the brief to the finished output: Claude writes, OpenAI makes the images and voice, my code checks and renders, and every run records what it actually cost. I build the whole pipeline, not just one prompt.',
   },
   {
-    title: 'Email + SMS that actually lands.',
-    body: 'I own deliverability: dedicated sending domains, SPF/DKIM/DMARC alignment, warmup, and A2P 10DLC registration for compliant text campaigns. Then I report open, click, and delivery analytics back to stakeholders.',
+    title: 'A human in the loop, on purpose.',
+    body: 'What I build waits for a yes before it acts: emails in my platform\'s Approvals queue, job applications through the Gmail bridge, videos before they are posted. Cost estimates come first; money is spent only after a go.',
   },
   {
     title: 'Comfortable across the stack.',
-    body: 'GoHighLevel, HubSpot, Mailchimp, Kajabi, ActiveCampaign, n8n, Google Apps Script, Claude API, plus custom React + Vite when a build calls for it. I pick up whatever your team already uses.',
+    body: 'Claude Code, the Claude and OpenAI APIs, Python + FastAPI, Cloudflare Workers + D1 with Hono, Google Apps Script + Gmail API, React + Vite, plus GoHighLevel, HubSpot and Mailchimp from agency work. I pick up whatever your team already uses.',
   },
   {
     title: 'Founder-friendly communication.',
-    body: 'I translate automation and implementation details into plain English on calls and in writing. Comfortable speaking directly to founders, senior stakeholders, and end clients.',
+    body: 'I translate AI, automation and implementation details into plain English on calls and in writing. Comfortable speaking directly to founders, senior stakeholders, and end clients.',
   },
   {
     title: 'Async-first, flexible hours.',
@@ -136,25 +142,70 @@ export const benefits = [
 ];
 
 // Capabilities — what I deliver. No pricing, no tier framing.
-// Ordered to lead with lifecycle/email — matches the resume's positioning.
+// Ordered to lead with AI engineering; email/CRM follow as supporting experience.
 export const services = [
   {
+    id: 'ai-engineering',
+    title: 'AI Engineering & LLM Apps',
+    summary: 'LLM pipelines on the Claude and OpenAI APIs: scripts, drafts and topic ideas from Claude, images and voice from OpenAI, with checks, retries and cost tracking around every call. Built with Claude Code, with a human approval step before anything goes out.',
+    bullets: [
+      'Claude API pipelines: scripts, drafting, extraction, topic ideas',
+      'OpenAI API for image generation and text-to-speech',
+      'Cost estimate before every paid run; the actual cost recorded per run',
+      'Retries that resume where they stopped, never paying twice for a step',
+      'Tests against a fake stand-in for the paid APIs',
+      'AI-assisted development in Claude Code, driving the apps from chat',
+      'Human approval before anything sends or posts',
+    ],
+    outcome: 'AI pipelines that do real work, at a known cost, with a person signing off.',
+  },
+  {
+    id: 'automation',
+    title: 'Workflow Automation & Integrations',
+    summary: 'Google Apps Script and Gmail API automations, webhook/API integrations connecting your stack, and an n8n lead-generation workflow I designed.',
+    bullets: [
+      'Google Apps Script + Gmail API: reply tracking, sending from your own Gmail',
+      'The smallest Gmail permission that does the job; never deletes mail',
+      'GoHighLevel API + Google Sheets API integrations',
+      'n8n — designed a 47-node lead-generation workflow (personal project)',
+      'Multi-provider email enrichment (Hunter → Snov → Apollo)',
+      'Error handling + fallbacks + human review before anything sends',
+    ],
+    outcome: 'Repetitive work automated, with human review before anything sends.',
+  },
+  {
+    id: 'web-tools',
+    title: 'Apps, Sites & Internal Tools',
+    summary: 'Cloudflare Workers + D1 apps with Hono, React + Vite + Firebase internal tools, and hand-coded HTML/CSS/JS sites on Cloudflare Pages. Recently built an internal content-operations hub unifying a US agency\'s scattered tool stack. In daily production.',
+    bullets: [
+      'Cloudflare Workers + D1 apps with Hono',
+      'Custom-coded sites on Cloudflare Pages',
+      'React + Vite + Tailwind for app-style tools and portfolios',
+      'Firebase + GitHub Actions CI/CD + auto-deploy',
+      'PWA architecture — installable, offline-aware, mobile-first',
+      'Square API payments on a Cloudflare-hosted client site',
+      'Wix Studio + Velo, or WordPress, when the client needs to self-edit',
+    ],
+    outcome: 'Fast apps and internal tools the team owns forever.',
+  },
+  {
     id: 'email-lifecycle',
-    title: 'Email & Lifecycle Marketing',
-    summary: 'End-to-end lifecycle programs on GoHighLevel, Mailchimp, HubSpot, and Kajabi — audience segmentation, automated nurture and retention flows, multi-touch sequences, A/B testing, and analytics reporting back to stakeholders.',
+    title: 'Email, Lifecycle & Deliverability',
+    summary: 'End-to-end lifecycle programs on GoHighLevel, Mailchimp, HubSpot, and Kajabi — segmentation, nurture and retention flows, A/B tests and analytics — on dedicated sending domains with SPF/DKIM/DMARC aligned, so they reach the inbox.',
     bullets: [
       'Campaign builds — newsletters, promos, onboarding sequences',
-      'Audience segmentation + list hygiene',
-      'Automated nurture & retention flows',
-      'Multi-touch drip sequences',
+      'Audience segmentation + automated nurture & retention flows',
       'A/B split tests on subject lines and content',
       'Open / click / delivery analytics reporting',
+      'Dedicated sending subdomains, SPF / DKIM / DMARC + SSL',
+      'Email warmup to 6,500/day sending capacity',
+      'Pre-send QA — test sends, link + unsubscribe checks, phone preview',
     ],
-    outcome: 'Lifecycle programs that nurture, retain, and re-engage automatically.',
+    outcome: 'Lifecycle programs that land in the inbox and re-engage automatically.',
   },
   {
     id: 'crm',
-    title: 'CRM Configuration & Automation',
+    title: 'CRM Configuration & SMS',
     summary: 'GoHighLevel, HubSpot, and Mailchimp builds tied to real sales processes. Sub-account setup, pipelines, workflows triggered by tags and custom fields, and A2P 10DLC-compliant SMS campaigns.',
     bullets: [
       'GoHighLevel full builds — pipelines, automations, sub-accounts',
@@ -166,54 +217,46 @@ export const services = [
     ],
     outcome: 'Every lead tagged, every follow-up automated, every conversation logged.',
   },
-  {
-    id: 'deliverability',
-    title: 'Deliverability & Compliance',
-    summary: 'Dedicated sending domains with SPF/DKIM/DMARC properly aligned, warmup to high-volume capacity, and A2P 10DLC SMS registration so email and text campaigns actually reach the inbox — legally.',
-    bullets: [
-      'Dedicated sending subdomains configured end-to-end',
-      'SPF / DKIM / DMARC alignment + SSL',
-      'Email warmup to 6,500/day sending capacity',
-      'A2P 10DLC SMS registration + brand approval',
-      'Pre-send QA — test sends, link + unsubscribe checks, phone preview',
-    ],
-    outcome: 'Email and SMS that land in the inbox, not spam — and stay compliant.',
-  },
-  {
-    id: 'automation',
-    title: 'Workflow Automation & AI',
-    summary: 'Google Apps Script and webhook/API integrations connecting your stack, plus an n8n lead-generation workflow I designed. Anthropic Claude API wired into outreach personalization and content drafting.',
-    bullets: [
-      'n8n — designed a 47-node lead-generation workflow (personal project)',
-      'Google Apps Script automations',
-      'Anthropic Claude API for personalized drafting + extraction',
-      'GoHighLevel API + Google Sheets API integrations',
-      'Error handling + fallbacks + human review before anything sends',
-      'Multi-provider email enrichment (Hunter → Snov → Apollo)',
-    ],
-    outcome: 'Repetitive work automated, with human review before anything sends.',
-  },
-  {
-    id: 'web-tools',
-    title: 'Custom Sites & Internal Tools',
-    summary: 'Hand-coded HTML/CSS/JS sites on Cloudflare Pages, plus React + Vite + Firebase internal tools. Recently built an internal content-operations hub unifying a US agency\'s scattered tool stack. In daily production.',
-    bullets: [
-      'Custom-coded sites on Cloudflare Pages',
-      'React + Vite + Tailwind for app-style tools and portfolios',
-      'Wix Studio + Velo extensions for client self-edit access',
-      'WordPress when full editing freedom is the priority',
-      'Firebase + GitHub Actions CI/CD + auto-deploy',
-      'PWA architecture — installable, offline-aware, mobile-first',
-      'Square API payments on a Cloudflare-hosted client site',
-    ],
-    outcome: 'Fast sites and internal tools the team owns forever.',
-  },
 ];
 
-// The site lists these grouped by `category`. `tier` (how often each is used) is
-// kept here for reference only and is NOT shown: no CV states a usage frequency,
-// so show it again only once Joshua confirms each tier.
+// The site lists these grouped by `category`, in this order (AI first). `tier`
+// (how often each is used) is kept for reference only and is NOT shown: no CV
+// states a usage frequency. Tools added for the AI Engineer update have no tier
+// rather than a guessed one.
 export const tools = [
+  // AI & LLM
+  { name: 'Claude Code', category: 'AI' },
+  { name: 'Claude API',  tier: 'Weekly', category: 'AI' },
+  { name: 'OpenAI API',  tier: 'Weekly', category: 'AI' },
+
+  // Code
+  { name: 'Python',              category: 'Code' },
+  { name: 'FastAPI',             category: 'Code' },
+  { name: 'TypeScript',          category: 'Code' },
+  { name: 'Hono',                category: 'Code' },
+  { name: 'HTML/CSS/JS',         tier: 'Daily',  category: 'Code' },
+  { name: 'React',               tier: 'Weekly', category: 'Code' },
+  { name: 'Vite',                tier: 'Weekly', category: 'Code' },
+  { name: 'Tailwind CSS',        tier: 'Daily',  category: 'Code' },
+  { name: 'FFmpeg',              category: 'Code' },
+  { name: 'Git / GitHub',        tier: 'Daily',  category: 'Code' },
+
+  // Hosting & DevOps
+  { name: 'Cloudflare Workers', category: 'Hosting' },
+  { name: 'Cloudflare D1',      category: 'Hosting' },
+  { name: 'Cloudflare Pages', tier: 'Daily', category: 'Hosting' },
+  { name: 'Cloudflare DNS',   tier: 'Daily', category: 'Hosting' },
+  { name: 'Cloudflare Tunnel', category: 'Hosting' },
+  { name: 'Vercel',           tier: 'Weekly', category: 'Hosting' },
+  { name: 'Firebase',         tier: 'Weekly', category: 'Hosting' },
+  { name: 'GitHub Actions',   tier: 'Weekly', category: 'Hosting' },
+
+  // Automation — n8n: one personal 47-node workflow (designed; deployment not confirmed)
+  { name: 'Google Apps Script',  tier: 'Weekly', category: 'Automation' },
+  { name: 'Gmail API',   category: 'Automation' },
+  { name: 'Google Sheets API', category: 'Automation' },
+  { name: 'n8n',         tier: 'Occasional', category: 'Automation' },
+
   // CRM & Marketing Platforms
   { name: 'GoHighLevel', tier: 'Daily', category: 'CRM' },
   // HubSpot, Mailchimp, Kajabi: used at Doneverse (Sep 2025 – Feb 2026), not daily now
@@ -222,31 +265,13 @@ export const tools = [
   { name: 'Kajabi',      tier: 'Occasional', category: 'CRM' },
   { name: 'ActiveCampaign', tier: 'Occasional', category: 'CRM' },
 
-  // Automation — n8n: one personal 47-node workflow (designed; deployment not confirmed)
-  { name: 'n8n',         tier: 'Occasional', category: 'Automation' },
-
-  // AI & LLM
-  { name: 'Claude API',  tier: 'Weekly', category: 'AI' },
-  { name: 'OpenAI API',  tier: 'Weekly', category: 'AI' },
+  // Email & Deliverability
+  { name: 'Resend',         category: 'Email' },
+  { name: 'SPF/DKIM/DMARC', tier: 'Weekly', category: 'Email' },
 
   // SMS & Compliance
   { name: 'GHL A2P 10DLC',  tier: 'Occasional', category: 'SMS' },
   { name: 'SMS Automation', tier: 'Weekly', category: 'SMS' },
-
-  // Hosting & DevOps
-  { name: 'Cloudflare Pages', tier: 'Daily', category: 'Hosting' },
-  { name: 'Cloudflare DNS',   tier: 'Daily', category: 'Hosting' },
-  { name: 'Vercel',           tier: 'Weekly', category: 'Hosting' },
-  { name: 'Firebase',         tier: 'Weekly', category: 'Hosting' },
-  { name: 'GitHub Actions',   tier: 'Weekly', category: 'Hosting' },
-
-  // Code
-  { name: 'HTML/CSS/JS',         tier: 'Daily',  category: 'Code' },
-  { name: 'React',               tier: 'Weekly', category: 'Code' },
-  { name: 'Vite',                tier: 'Weekly', category: 'Code' },
-  { name: 'Tailwind CSS',        tier: 'Daily',  category: 'Code' },
-  { name: 'Git / GitHub',        tier: 'Daily',  category: 'Code' },
-  { name: 'Google Apps Script',  tier: 'Weekly', category: 'Code' },
 
   // SEO
   { name: 'On-page SEO',           tier: 'Weekly', category: 'SEO' },
@@ -266,9 +291,6 @@ export const tools = [
   { name: 'Square',        tier: 'Occasional', category: 'Payments' },
   { name: 'Stripe',        tier: 'Occasional', category: 'Payments' },
 
-  // Email & Deliverability
-  { name: 'SPF/DKIM/DMARC', tier: 'Weekly', category: 'Email' },
-
   // Design
   { name: 'Figma', tier: 'Weekly', category: 'Design' },
   { name: 'Canva', tier: 'Weekly', category: 'Design' },
@@ -279,25 +301,34 @@ export const tools = [
 ];
 
 // The hero tool strip: name + Simple Icons slug (null = no real mark, name only).
-// Every name here is also in `tools` above.
+// Every name here is also in `tools` above. AI tooling leads; agency tools follow.
 export const toolStrip = [
+  { name: 'Claude Code', slug: 'claude' },
+  { name: 'Claude API', slug: 'anthropic' },
+  { name: 'OpenAI API', slug: null },
+  { name: 'Cloudflare Workers', slug: 'cloudflareworkers' },
+  { name: 'Cloudflare D1', slug: 'cloudflare' },
+  { name: 'Hono', slug: 'hono' },
+  { name: 'Python', slug: 'python' },
+  { name: 'FastAPI', slug: 'fastapi' },
+  { name: 'FFmpeg', slug: 'ffmpeg' },
+  { name: 'Google Apps Script', slug: 'googleappsscript' },
+  { name: 'Gmail API', slug: 'gmail' },
+  { name: 'TypeScript', slug: 'typescript' },
+  { name: 'React', slug: 'react' },
+  { name: 'Vite', slug: 'vite' },
+  { name: 'Tailwind CSS', slug: 'tailwindcss' },
+  { name: 'Git / GitHub', slug: 'github' },
+  { name: 'Cloudflare Pages', slug: 'cloudflarepages' },
+  { name: 'n8n', slug: 'n8n' },
   { name: 'GoHighLevel', slug: null },
-  { name: 'Cloudflare Pages', slug: 'cloudflare' },
   { name: 'HubSpot', slug: 'hubspot' },
   { name: 'Mailchimp', slug: 'mailchimp' },
   { name: 'Kajabi', slug: null },
   { name: 'ActiveCampaign', slug: null },
-  { name: 'n8n', slug: 'n8n' },
-  { name: 'Claude API', slug: 'anthropic' },
-  { name: 'OpenAI API', slug: null },
-  { name: 'Google Apps Script', slug: 'googleappsscript' },
-  { name: 'React', slug: 'react' },
-  { name: 'Vite', slug: 'vite' },
-  { name: 'Tailwind CSS', slug: 'tailwindcss' },
   { name: 'Firebase', slug: 'firebase' },
   { name: 'Vercel', slug: 'vercel' },
   { name: 'GitHub Actions', slug: 'githubactions' },
-  { name: 'Git / GitHub', slug: 'github' },
   { name: 'ClickUp', slug: 'clickup' },
   { name: 'Google Workspace', slug: 'google' },
   { name: 'Notion', slug: 'notion' },
@@ -309,12 +340,57 @@ export const toolStrip = [
   { name: 'WordPress', slug: 'wordpress' },
 ];
 
+// My own AI and automation builds. They lead the Projects section, before the
+// in-house work platform and the client work. Facts only from each project's own
+// README / CLAUDE.md / SETUP.md. All three are private, so there are no live links.
+export const aiBuilds = [
+  {
+    id: 'behindworks',
+    title: 'Behind Works Platform — my own outreach and job-application platform',
+    tag: 'Own build · Live since Oct 2026',
+    summary: 'My own platform, built with Claude Code: contacts, a pipeline board, email campaigns, and an Approvals queue where every drafted email waits for my yes before it sends. It also runs my job-application pipeline: a Gmail bridge sends the applications I approve from my own Gmail with my CV attached, then reports the first real reply back so the application moves to Replied.',
+    wins: [
+      'Nothing sends without my approval',
+      'Outreach capped at 10 emails a day',
+      'Approved applications send from my own Gmail; replies flow back',
+      'Out-of-office replies and bounce notices are skipped',
+    ],
+    stack: ['Hono', 'Cloudflare Workers', 'D1', 'Resend', 'Google Apps Script', 'Built with Claude Code'],
+  },
+  {
+    id: 'ytengine',
+    title: 'AI video engine — a faceless-video pipeline on the Claude and OpenAI APIs',
+    tag: 'Own build · LLM pipeline',
+    summary: 'Turns a one-line topic into a finished 9:16 MP4 with burned captions, covers, and ready-to-paste captions for TikTok, YouTube Shorts and Facebook Reels. Claude writes the script and topic ideas, OpenAI makes the images and the voiceover, and FFmpeg renders it on my own PC. I drive it from Claude Code chat through a small control tool: it shows a cost estimate first and only spends after I say go. It never posts by itself.',
+    wins: [
+      '$0.72 real API cost for a 2-part story (script, images, voice)',
+      'Retries pick up where they stopped, never paying twice for a step',
+      '400+ unit tests, plus acceptance suites on a fake stand-in for the paid APIs',
+      'A phone-friendly Library to watch, download and copy captions',
+    ],
+    stack: ['Python', 'FastAPI', 'Claude API', 'OpenAI API (images + voice)', 'FFmpeg', 'Cloudflare Tunnel', 'Built with Claude Code'],
+  },
+  {
+    id: 'replytracker',
+    title: 'Job Tracker — Gmail reply alerts in Apps Script',
+    tag: 'Own build · Automation',
+    summary: 'Every 10 minutes a script in my own Google account checks new Gmail for replies to my job applications. It logs each one to a Google Sheet, labels it, and sends me one alert. Emails that only look job-related are flagged as unverified, links are stripped from alerts, and a private phone-friendly page lists my jobs and replies.',
+    wins: [
+      'Runs every 10 minutes, even with my computer off',
+      'Reads only sender, subject and preview; never deletes mail',
+      'The smallest Gmail permission that allows labelling',
+      'Possible scams flagged, not trusted',
+    ],
+    stack: ['Google Apps Script', 'Gmail API', 'Google Sheets', 'clasp', 'Built with Claude Code'],
+  },
+];
+
 export const works = [
   {
     id: 'arrowplatform',
     featured: true,
     title: 'Arrow Platform — in-house email & SMS marketing platform (Arrow Group Consulting)',
-    tag: 'Featured · In-house platform',
+    tag: 'In-house platform · built with Claude Code',
     role: 'Built for Arrow Group Consulting · 2026',
     summary: 'Wrote the business case (projected ~89% lower monthly platform cost, no external build spend), then built the agency\'s in-house email and SMS platform with AI-assisted development (Claude Code). It has an agency view plus per-client dashboards, campaigns and reporting. 6 accounts went live about 5 weeks after the first commit (Aug–Sep 2026), and it is now replacing GoHighLevel at the agency.',
     stack: ['TypeScript', 'Cloudflare Workers', 'D1', 'Queues', 'React', 'Resend (email)', 'Twilio (SMS)'],
