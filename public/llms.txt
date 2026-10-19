@@ -1,8 +1,8 @@
 # Joshua Solomon
 
-> Marketing Automation & Lifecycle Specialist — CRM, Email & SMS Systems. Based in Olongapo City, Philippines · US Eastern hours preferred; PH, AU or European hours also work. Available for full-time work; can start within 1-2 weeks of an offer.
+> AI Engineer — LLM apps and AI automation. Based in Olongapo City, Philippines · US Eastern hours preferred; PH, AU or European hours also work. Available for full-time work; can start within 1-2 weeks of an offer.
 
-Hands-on agency experience building and running lifecycle email and SMS systems on GoHighLevel, Mailchimp, HubSpot, and Kajabi — audience segmentation, automated nurture and retention flows, multi-touch sequences, A/B testing, A2P 10DLC SMS, and deliverability (dedicated sending domains, SPF/DKIM/DMARC). Also ships the custom-coded sites (Cloudflare Pages, React + Vite) and integrations (Google Apps Script, webhooks, Claude API; designed an n8n lead-gen workflow) behind them.
+Builds LLM apps and AI automation on the Claude and OpenAI APIs, Cloudflare Workers + D1 (Hono) and Google Apps Script + Gmail API, with AI-assisted development in Claude Code, and with a human approval step before anything sends or posts. About one year of remote work for US clients (since Sep 2025). Also hands-on agency experience building and running lifecycle email and SMS systems on GoHighLevel, Mailchimp, HubSpot, and Kajabi — audience segmentation, automated nurture and retention flows, multi-touch sequences, A/B testing, A2P 10DLC SMS, and deliverability (dedicated sending domains, SPF/DKIM/DMARC). Also ships the custom-coded sites (Cloudflare Pages, React + Vite) and integrations (Google Apps Script, webhooks, Claude API; designed an n8n lead-gen workflow) behind them.
 
 ## Contact
 - Email: solomonjoshua101602@gmail.com
@@ -13,6 +13,7 @@ Hands-on agency experience building and running lifecycle email and SMS systems 
 
 ## Capabilities
 
+- **AI Engineering & LLM Apps** — LLM pipelines on the Claude API (scripts, drafting, extraction, topic ideas) and the OpenAI API (images, text-to-speech), with a cost estimate before every paid run, the actual cost recorded per run, retries that never pay twice for a finished step, tests against a fake stand-in for the paid APIs, and human approval before anything sends or posts. Built with Claude Code.
 - **Email & Lifecycle Marketing** — End-to-end lifecycle programs on GoHighLevel, Mailchimp, HubSpot, and Kajabi. Campaign builds, audience segmentation, automated nurture and retention flows, multi-touch sequences, A/B split tests on subject lines and content, and open/click/delivery analytics reporting.
 - **CRM Configuration & Automation** — GoHighLevel full builds, HubSpot, Mailchimp, Kajabi, ActiveCampaign. Sub-accounts, pipelines, workflows triggered by tags and custom fields, pages in the GHL website/funnel builder, A2P 10DLC SMS brand approval (the GHL setup most builders avoid).
 - **Deliverability & Compliance** — Dedicated sending subdomains with SPF/DKIM/DMARC aligned, warmup to 6,500/day sending capacity, A2P 10DLC SMS registration, pre-send QA (test sends, link + unsubscribe checks, phone preview).
@@ -31,6 +32,12 @@ Technical implementer for 2 US founders: Arrow Group Consulting's founder, then 
 Social media for ADAP Real Estate, Subic: created listing graphics and posted property listings.
 
 ## Selected Work
+
+### My own AI builds (built with Claude Code; private, no public links)
+
+- **AI video engine** — Turns a one-line topic into a finished 9:16 MP4 with burned captions, covers and ready-to-paste captions for TikTok, YouTube Shorts and Facebook Reels. Claude writes the script and topic ideas, OpenAI makes the images and voiceover, FFmpeg renders on my own PC (Python, FastAPI). Driven from Claude Code chat: cost estimate first, spends only after a go, never posts by itself. A real 2-part story cost $0.72 in API calls; 400+ unit tests plus acceptance suites.
+- **Behind Works Platform** — My own platform on Hono + Cloudflare Workers + D1: contacts, pipeline, email campaigns, an Approvals queue (nothing sends without my yes; outreach capped at 10 a day), a job-application pipeline, and a Gmail bridge that sends approved applications from my own Gmail with my CV attached and reports replies back.
+- **Job Tracker** — Google Apps Script + Gmail API: every 10 minutes, logs replies to my job applications to a Google Sheet, labels them and sends one alert; flags look-alike emails as unverified; reads only sender, subject and preview, on the smallest Gmail permission that allows labelling.
 
 ### Internal builds (Arrow Group Consulting)
 
