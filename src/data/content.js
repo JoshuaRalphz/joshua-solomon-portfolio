@@ -43,7 +43,7 @@ export const sections = [
 
 export const hero = {
   headline: 'AI Engineer. I build LLM apps and AI automation.',
-  promise: 'On the Claude and OpenAI APIs, built with Claude Code: a video engine that turns a one-line topic into a finished, captioned MP4, my own outreach and job-application platform on Cloudflare Workers, and Gmail automation in Apps Script. A human stays in the loop: nothing sends or posts until it is approved.',
+  promise: 'On the Claude and OpenAI APIs, built with Claude Code: a video engine that turns a one-line topic into a finished, captioned MP4, my own outreach and job-application platform on Cloudflare Workers, and Gmail automation in Apps Script. A human stays in the loop: I approve what goes out, and anything that sends by itself waits behind a hold I can stop.',
 };
 
 export const stats = [
@@ -350,7 +350,7 @@ export const aiBuilds = [
     tag: 'Own build · Live since Oct 2026',
     summary: 'My own platform, built with Claude Code: contacts, a pipeline board, email campaigns, and an Approvals queue where every drafted email waits for my yes before it sends. It also runs my job-application pipeline: a Gmail bridge sends the applications I approve from my own Gmail with my CV attached, then reports the first real reply back so the application moves to Replied.',
     wins: [
-      'Nothing sends without my approval',
+      'Outreach waits for my yes; strong-fit applications send after a 3-hour hold',
       'Outreach capped at 10 emails a day',
       'Approved applications send from my own Gmail; replies flow back',
       'Out-of-office replies and bounce notices are skipped',
