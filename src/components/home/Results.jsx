@@ -64,7 +64,7 @@ export default function Results() {
         id="results"
         label="Results"
         title="Numbers, with where they came from."
-        intro="Each figure comes from my work at Arrow Group Consulting. Ask and I'll walk you through any of them."
+        intro="Each figure comes from my own AI builds or my work at Arrow Group Consulting. Ask and I'll walk you through any of them."
       />
 
       <Reveal className="split">

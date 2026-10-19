@@ -1,15 +1,16 @@
 import { ArrowUpRight } from 'lucide-react';
 import { Reveal } from '../Reveal.jsx';
-import { explore, sections, works } from '../../data/content.js';
+import { aiBuilds, explore, sections, works } from '../../data/content.js';
 import { webpSrcSet } from '../../lib/images.js';
 import { useActiveSection } from '../../hooks/useActiveSection.jsx';
 
 const featured = works.find((work) => work.featured);
 // "Projects", not "builds": one of them is ongoing email, site and SEO work.
 const clientProjectCount = works.filter((work) => !work.featured).length;
+// AI builds lead the title, the same order as the Projects section.
 const projectsTitle = featured
-  ? `${featured.title.split(' — ')[0]}, plus ${clientProjectCount} client projects`
-  : `${clientProjectCount} client projects`;
+  ? `${aiBuilds.length} AI builds, ${featured.title.split(' — ')[0]} and ${clientProjectCount} client projects`
+  : `${aiBuilds.length} AI builds and ${clientProjectCount} client projects`;
 const peekShot = featured?.gallery?.[0];
 // The card is half the main column from 1280px and the full main column below.
 const PEEK_SIZES = '(min-width: 1280px) 34vw, (min-width: 1024px) 62vw, 90vw';

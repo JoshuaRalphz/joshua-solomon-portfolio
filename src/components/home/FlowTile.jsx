@@ -4,7 +4,7 @@ import { Reveal } from '../Reveal.jsx';
 import { flow } from '../../data/content.js';
 
 /**
- * "How a campaign moves": four nodes on a line. One staggered run of about
+ * "How my AI pipelines run": four nodes on a line. One staggered run of about
  * 2.5 seconds when it enters view, then it rests lit. No loop, no counters:
  * it describes a process, it is not live data.
  */
@@ -16,7 +16,7 @@ export default function FlowTile({ className = '' }) {
 
   return (
     <Reveal className={`tile tile--ink on-ink ${className}`}>
-      <h2 className="label">How a campaign moves</h2>
+      <h2 className="label">How my AI pipelines run</h2>
       <ol ref={listRef} className="flow mt-5" data-lit={isLit}>
         {flow.map((step, i) => (
           <li key={step.label} style={{ '--n': i }}>

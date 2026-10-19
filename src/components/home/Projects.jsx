@@ -2,7 +2,7 @@ import { ArrowRight, Check, Info, ShieldCheck } from 'lucide-react';
 import { Reveal } from '../Reveal.jsx';
 import SectionHead from './SectionHead.jsx';
 import ProjectTile from './ProjectTile.jsx';
-import { works } from '../../data/content.js';
+import { aiBuilds, works } from '../../data/content.js';
 import { webpSrcSet } from '../../lib/images.js';
 
 const featured = works.find((work) => work.featured);
@@ -42,6 +42,42 @@ function Screenshot({ shot, className = '' }) {
       </a>
       <figcaption className="mt-2 text-sm font-medium leading-snug text-muted">{shot.label}</figcaption>
     </figure>
+  );
+}
+
+/**
+ * One of my own AI builds: what it is on the left, what it does and the stack in
+ * a sunk well on the right (stacked below 1280px). No screenshots: all three are private.
+ */
+function AiBuildTile({ build }) {
+  const [name, subtitle] = build.title.split(' — ');
+
+  return (
+    <li>
+      <article id={`work-${build.id}`} className="tile split gap-[var(--pad)]">
+        <div className="min-w-0">
+          <p className="label text-action">{build.tag}</p>
+          <h4 className="t-h3 mt-3">{name}</h4>
+          {subtitle && <p className="mt-1 text-sm font-medium leading-snug text-muted">{subtitle}</p>}
+          <p className="mt-3 max-w-[68ch] text-body">{build.summary}</p>
+        </div>
+
+        <div className="flex min-w-0 flex-col rounded-inner bg-sunk p-4 xl:self-start">
+          <p className="label">What it does</p>
+          <ul className="mt-3 space-y-2">
+            {build.wins.map((win) => (
+              <li key={win} className="flex items-start gap-2 text-sm font-medium leading-snug text-ink">
+                <Check size={16} aria-hidden="true" className="mt-0.5 flex-none text-action" />
+                {win}
+              </li>
+            ))}
+          </ul>
+          <p className="wrap-anywhere mt-4 border-t border-line pt-3 font-mono text-xs leading-relaxed text-muted">
+            {build.stack.join(' · ')}
+          </p>
+        </div>
+      </article>
+    </li>
   );
 }
 
@@ -102,16 +138,26 @@ export default function Projects() {
         id="work"
         label="Projects"
         title="Real builds. Clearly labelled."
-        intro="Every project below is my own hands-on work. Client work is shown with permission; the internal build is labelled. Want backend proof (A2P approvals, GHL workflows, DNS panels, codebases)? Just ask."
+        intro="Every project below is my own hands-on work. My AI builds come first; then the platform I built at work, and client work shown with permission. Want a code or live walkthrough? Just ask."
       />
 
+      <h3 className="label mb-4">My AI builds · built with Claude Code</h3>
+      <Reveal>
+        <ul className="flex flex-col gap-[var(--gap)]">
+          {aiBuilds.map((build) => <AiBuildTile key={build.id} build={build} />)}
+        </ul>
+      </Reveal>
+
       {featured && (
-        <Reveal>
-          <ArrowFeature />
-        </Reveal>
+        <>
+          <h3 className="label mb-4 mt-8">At work · an in-house platform</h3>
+          <Reveal>
+            <ArrowFeature />
+          </Reveal>
+        </>
       )}
 
-      <h3 className="label mb-4 mt-8">Client work</h3>
+      <h3 className="label mb-4 mt-8">Supporting experience · client work</h3>
       <Reveal>
         <ul className="bento">
           {orderedClientWorks.map((work) => (

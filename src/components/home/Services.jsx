@@ -27,7 +27,7 @@ export default function Services() {
         id="capabilities"
         label="Services"
         title="Five things I can own."
-        intro="Hands-on implementation work I've shipped across an agency placement and contract work."
+        intro="AI engineering first, from my own builds; then the implementation work I've shipped at an agency."
       />
 
       <Reveal className="split">
