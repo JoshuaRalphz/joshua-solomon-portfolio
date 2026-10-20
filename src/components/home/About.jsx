@@ -1,9 +1,13 @@
-import { ChevronDown } from 'lucide-react';
+import {
+  ChevronDown, Database, FlaskConical, MessageSquare, ShieldCheck, UserCheck, Wallet,
+} from 'lucide-react';
 import { Reveal } from '../Reveal.jsx';
 import SectionHead from './SectionHead.jsx';
 import {
-  benefits, earlierExperience, education, experience, profile, setup,
+  bio, earlierExperience, education, experience, principles, profile, setup,
 } from '../../data/content.js';
+
+const ICONS = { Database, FlaskConical, MessageSquare, ShieldCheck, UserCheck, Wallet };
 
 // How many bullets of each role show before the "Show N more points" disclosure.
 const VISIBLE_BULLETS = 3;
@@ -34,10 +38,10 @@ function Role({ job }) {
             <h4 className="t-h3">{job.role}</h4>
             <p className="mt-1 text-sm font-medium leading-snug">
               <span className="font-semibold text-action">{job.company}</span>
-              <span className="text-muted"> — {job.location} · {job.type}</span>
+              <span className="text-muted"> · {job.meta}</span>
             </p>
           </div>
-          <p className="flex-none rounded-inner bg-sunk px-2.5 py-1 font-mono text-xs text-ink">{job.dates}</p>
+          <p className="max-w-full rounded-inner bg-sunk px-2.5 py-1 font-mono text-xs text-ink">{job.dates}</p>
         </div>
 
         <div className="mt-4">
@@ -63,11 +67,12 @@ function Role({ job }) {
 export default function About() {
   return (
     <section id="about" aria-labelledby="about-title">
-      <SectionHead num="04" id="about" label="About" title="About and experience." />
+      <SectionHead num="05" id="about" label="About" title="About and experience." />
 
       <Reveal className="split split--rev">
         <div className="tile">
-          <p className="t-lead max-w-[68ch] text-body">{profile.bio}</p>
+          <p className="t-lead max-w-[68ch] text-ink">{bio}</p>
+          <p className="mt-4 font-mono text-xs leading-relaxed text-muted">{profile.experienceLine}</p>
         </div>
         <div className="tile bg-sunk shadow-none">
           <h3 className="label">Where and how I work</h3>
@@ -79,19 +84,24 @@ export default function About() {
         </div>
       </Reveal>
 
-      <h3 className="t-h3 mb-4 mt-10">Six things to know about how I work.</h3>
+      <h3 id="safety" className="t-h3 mb-1 mt-10">Six rules I build AI by.</h3>
+      <p className="intro mb-4 text-sm">For the people who sign off: how I keep AI safe, affordable and in a person’s hands.</p>
       <Reveal className="tile">
         <ul className="grid gap-x-[var(--pad)] gap-y-6 md:grid-cols-2 xl:grid-cols-3">
-          {benefits.map((benefit) => (
-            <li key={benefit.title} className="min-w-0 border-t border-line pt-4">
-              <p className="font-bold leading-snug text-ink">{benefit.title}</p>
-              <p className="mt-1.5 text-sm leading-relaxed text-body">{benefit.body}</p>
-            </li>
-          ))}
+          {principles.map(({ Icon, title, body }) => {
+            const Mark = ICONS[Icon];
+            return (
+              <li key={title} className="min-w-0 border-t border-line pt-4">
+                <span aria-hidden="true" className="svc-icon svc-icon--sm"><Mark size={18} strokeWidth={1.75} /></span>
+                <p className="mt-3 font-bold leading-snug text-ink">{title}</p>
+                <p className="mt-1.5 text-sm leading-relaxed text-body">{body}</p>
+              </li>
+            );
+          })}
         </ul>
       </Reveal>
 
-      <h3 id="experience" className="t-h3 mb-4 mt-10">Where I've worked.</h3>
+      <h3 id="experience" className="t-h3 mb-4 mt-10">Where I’ve worked.</h3>
       <Reveal className="relative pl-7">
         <span aria-hidden="true" className="absolute bottom-6 left-1 top-6 w-0.5 bg-line-strong" />
         <ol className="flex flex-col gap-[var(--gap)]">

@@ -1,34 +1,30 @@
 import { ArrowUpRight } from 'lucide-react';
 import { Reveal } from '../Reveal.jsx';
-import { aiBuilds, explore, sections, works } from '../../data/content.js';
+import { agencyCase, audiences, explore, sections } from '../../data/content.js';
 import { webpSrcSet } from '../../lib/images.js';
 import { useActiveSection } from '../../hooks/useActiveSection.jsx';
 
-const featured = works.find((work) => work.featured);
-// "Projects", not "builds": one of them is ongoing email, site and SEO work.
-const clientProjectCount = works.filter((work) => !work.featured).length;
-// AI builds lead the title, the same order as the Projects section.
-const projectsTitle = featured
-  ? `${aiBuilds.length} AI builds, ${featured.title.split(' — ')[0]} and ${clientProjectCount} client projects`
-  : `${aiBuilds.length} AI builds and ${clientProjectCount} client projects`;
-const peekShot = featured?.gallery?.[0];
+const peekShot = agencyCase.gallery[0];
 // The card is half the main column from 1280px and the full main column below.
 const PEEK_SIZES = '(min-width: 1280px) 34vw, (min-width: 1024px) 62vw, 90vw';
 
-// Five cards, four sizes. The 2+4 then 4+2 mirror at 768 is deliberate.
+// Six cards, five sizes. Phones: two half cards side by side, the rest full width.
 const CARD_LAYOUT = {
   work: { place: 'xl:[grid-column:1/7] xl:[grid-row:1/3]', tone: 'overflow-hidden' },
-  results: { place: 'col-span-1 md:[grid-column:span_2] xl:[grid-column:7/10] xl:[grid-row:1]', tone: 'tile--lime', line: 'text-ink', isHalf: true },
-  capabilities: { place: 'col-span-1 md:[grid-column:span_4] xl:[grid-column:10/13] xl:[grid-row:1]', isHalf: true },
-  about: { place: 'md:[grid-column:span_4] xl:[grid-column:7/13] xl:[grid-row:2]' },
-  contact: { place: 'md:[grid-column:span_2] xl:[grid-column:1/-1] xl:[grid-row:3]', tone: 'tile--ink on-ink', line: 'text-mist-dim', arrow: 'text-lime' },
+  'fit-agent': { place: 'col-span-1 md:[grid-column:span_3] xl:[grid-column:7/10] xl:[grid-row:1]', tone: 'tile--lime', line: 'text-ink', isHalf: true },
+  results: { place: 'col-span-1 md:[grid-column:span_3] xl:[grid-column:10/13] xl:[grid-row:1]', isHalf: true, isNumber: true },
+  capabilities: { place: 'md:[grid-column:span_2] xl:[grid-column:7/13] xl:[grid-row:2]' },
+  about: { place: 'md:[grid-column:span_4] xl:[grid-column:1/7] xl:[grid-row:3]' },
+  contact: { place: 'md:[grid-column:span_6] xl:[grid-column:7/13] xl:[grid-row:3]', tone: 'tile--ink on-ink', line: 'text-mist-dim', arrow: 'text-lime' },
 };
 
+/** Which audiences get the "For you" tag on this card, as a data-aud list. */
+const forYou = (id) => audiences.filter((a) => a.forYou.includes(id)).map((a) => a.id).join(' ');
+
 function ExploreCard({ card, isActive }) {
-  const { place = '', tone = '', line = 'text-body', arrow = 'text-ink', isHalf = false } = CARD_LAYOUT[card.id] ?? {};
+  const { place = '', tone = '', line = 'text-body', arrow = 'text-ink', isHalf = false, isNumber = false } = CARD_LAYOUT[card.id] ?? {};
   const isProjects = card.id === 'work';
-  const isResults = card.id === 'results';
-  const title = isProjects ? projectsTitle : card.title;
+  const tagFor = forYou(card.id);
 
   return (
     <li className={`flex ${place}`}>
@@ -41,19 +37,19 @@ function ExploreCard({ card, isActive }) {
             </span>
           </span>
           {/* The two half-width cards drop the arrow on phones so the label fits. */}
-          <ArrowUpRight
-            size={20}
-            aria-hidden="true"
-            className={`nudge flex-none ${arrow} ${isHalf ? 'max-md:hidden' : ''}`}
-          />
+          <ArrowUpRight size={20} aria-hidden="true" className={`nudge flex-none ${arrow} ${isHalf ? 'max-md:hidden' : ''}`} />
         </span>
 
-        <h3 className={`mt-4 ${isResults ? 't-num-lead' : 't-h3'}`}>{title}</h3>
-        <p className={`mt-2 max-w-[52ch] text-sm font-medium leading-snug ${line}`}>
-          {card.line}
-        </p>
+        {tagFor && <span data-aud={tagFor} className="for-you mt-3">For you</span>}
 
-        {isProjects && peekShot && (
+        <h3 className={`mt-3 ${isNumber ? 't-num-lead' : 't-h3'}`}>{card.title}</h3>
+        {Object.entries(card.lines).map(([audience, text]) => (
+          <span key={audience} data-aud={audience} className={`mt-2 block max-w-[52ch] text-sm font-medium leading-snug ${line}`}>
+            {text}
+          </span>
+        ))}
+
+        {isProjects && (
           <span
             aria-hidden="true"
             className="relative ml-[var(--pad)] mr-[calc(var(--pad)*-1)] mt-5 hidden min-h-[clamp(9rem,16vw,14rem)] flex-1 overflow-hidden rounded-tl-inner border-l border-t border-line bg-sunk [margin-bottom:calc(var(--pad)*-1)] md:block"
@@ -76,7 +72,7 @@ function ExploreCard({ card, isActive }) {
   );
 }
 
-/** Five numbered cards. Each one is a real link that jumps to its section. */
+/** Six numbered cards. Each one is a real link that jumps to its section. */
 export default function ExploreCards() {
   const activeId = sections[useActiveSection()]?.id;
 
@@ -84,7 +80,7 @@ export default function ExploreCards() {
     <section aria-labelledby="explore-title">
       <div className="mb-4 flex flex-wrap items-baseline gap-x-4 gap-y-1">
         <h2 id="explore-title" className="label">Explore</h2>
-        <p className="text-sm font-medium text-muted">Five cards. Each one opens a section.</p>
+        <p className="text-sm font-medium text-muted">Six cards. Each one opens a section; the ones tagged “For you” fit who you are.</p>
       </div>
       <Reveal>
         <ul className="bento">

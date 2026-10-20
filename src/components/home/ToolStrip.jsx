@@ -1,29 +1,31 @@
 import { useState } from 'react';
-import { useReducedMotion } from 'framer-motion';
 import { ChevronDown, Pause, Play } from 'lucide-react';
+import {
+  siAnthropic, siClaude, siCloudflare, siCloudflareworkers, siCursor, siFastapi, siFfmpeg,
+  siFirebase, siGithubactions, siGmail, siGoogleappsscript, siHono, siHubspot, siMailchimp,
+  siPython, siReact, siResend, siSquare, siStripe, siTailwindcss, siTypescript, siVercel,
+  siVite, siVitest, siWix,
+} from 'simple-icons';
 import { Reveal } from '../Reveal.jsx';
-import { toolStrip, tools } from '../../data/content.js';
+import { toolGroups, toolStrip } from '../../data/content.js';
 
-// In content.js order. Usage frequency (`tier`) is deliberately not shown.
-const CATEGORIES = [...new Set(tools.map((tool) => tool.category))];
-const ICON_CDN = 'https://cdn.simpleicons.org';
-const ICON_COLOUR = '0D2B23';
+// Named imports only, so the bundle carries these few paths, not the whole icon set.
+const ICONS = {
+  siAnthropic, siClaude, siCloudflare, siCloudflareworkers, siCursor, siFastapi, siFfmpeg,
+  siFirebase, siGithubactions, siGmail, siGoogleappsscript, siHono, siHubspot, siMailchimp,
+  siPython, siReact, siResend, siSquare, siStripe, siTailwindcss, siTypescript, siVercel,
+  siVite, siVitest, siWix,
+};
 
-/** One chip. Tools without a real mark show the name only: no made-up badges. */
+/** One chip. The brand mark is drawn inline (no third-party request, CSP stays 'self'). */
 function ToolChip({ tool }) {
+  const icon = tool.icon ? ICONS[tool.icon] : null;
   return (
     <li className="tool-chip">
-      {tool.slug && (
-        <img
-          src={`${ICON_CDN}/${tool.slug}/${ICON_COLOUR}`}
-          alt=""
-          width={18}
-          height={18}
-          loading="lazy"
-          decoding="async"
-          draggable={false}
-          onError={(event) => { event.currentTarget.style.display = 'none'; }}
-        />
+      {icon && (
+        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false" className="flex-none">
+          <path d={icon.path} fill="currentColor" />
+        </svg>
       )}
       {tool.name}
     </li>
@@ -31,29 +33,26 @@ function ToolChip({ tool }) {
 }
 
 /**
- * One slow marquee row with a pause control, and the full tool list (grouped by
- * category) in a disclosure under it. Under reduced motion the strip is a
- * static wrapped list and the pause button is not rendered.
+ * One slow marquee row with a pause control, and the full tool list (grouped as the CV
+ * groups it) in a disclosure under it. Under reduced motion the strip is a static
+ * wrapped list and the pause button is hidden (styles/signature.css).
  */
 export default function ToolStrip({ className = '' }) {
   const [isPaused, setIsPaused] = useState(false);
-  const prefersReducedMotion = useReducedMotion();
 
   return (
     <Reveal className={`tile px-0 ${className}`}>
       <div className="flex min-h-[2.75rem] items-center justify-between gap-3 px-[var(--pad)]">
-        <h2 className="label">Tools I work with</h2>
+        <h2 className="label">The stack I ship with</h2>
         {/* The label alone carries the state: no aria-pressed beside it. */}
-        {!prefersReducedMotion && (
-          <button
-            type="button"
-            className="icon-link -mr-2"
-            aria-label={isPaused ? 'Play the tools strip' : 'Pause the tools strip'}
-            onClick={() => setIsPaused((wasPaused) => !wasPaused)}
-          >
-            {isPaused ? <Play size={18} aria-hidden="true" /> : <Pause size={18} aria-hidden="true" />}
-          </button>
-        )}
+        <button
+          type="button"
+          className="icon-link marquee-toggle -mr-2"
+          aria-label={isPaused ? 'Play the tools strip' : 'Pause the tools strip'}
+          onClick={() => setIsPaused((wasPaused) => !wasPaused)}
+        >
+          {isPaused ? <Play size={18} aria-hidden="true" /> : <Pause size={18} aria-hidden="true" />}
+        </button>
       </div>
 
       <div className={`marquee-wrap marquee-mask mt-3 ${isPaused ? 'is-paused' : ''}`}>
@@ -73,14 +72,12 @@ export default function ToolStrip({ className = '' }) {
           Full list of tools
           <ChevronDown size={18} aria-hidden="true" className="chev flex-none" />
         </summary>
-        <div className="grid grid-cols-2 gap-x-[var(--pad)] gap-y-5 pb-1 pt-3 md:grid-cols-3 xl:grid-cols-4">
-          {CATEGORIES.map((category) => (
-            <div key={category} className="min-w-0">
-              <h3 className="label">{category}</h3>
+        <div className="grid grid-cols-2 gap-x-[var(--pad)] gap-y-5 pb-1 pt-3 md:grid-cols-3 xl:grid-cols-6">
+          {toolGroups.map((group) => (
+            <div key={group.category} className="min-w-0">
+              <h3 className="label">{group.category}</h3>
               <ul className="mt-2 space-y-1 text-sm font-medium text-body">
-                {tools.filter((tool) => tool.category === category).map((tool) => (
-                  <li key={tool.name}>{tool.name}</li>
-                ))}
+                {group.items.map((item) => <li key={item}>{item}</li>)}
               </ul>
             </div>
           ))}

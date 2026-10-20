@@ -1,12 +1,22 @@
-# The site is one page. The old multi-page URLs go to their section.
-/about      /#about         301
-/services   /#capabilities  301
-/works      /#work          301
-/resume     /#about         301
-/contact    /#contact       301
-/plan       /               301
+# Old multi-page URLs -> their section on the home page.
+/about      /#about     301
+/services   /#capabilities 301
+/works      /#work      301
+/resume     /#about     301
+/contact    /#contact   301
+/plan       /           301
 
-# Old resume links -> current resume
-/Joshua_Solomon_Resume_v4.pdf  /Joshua_Solomon_Resume_v7.pdf  301
-/Joshua_Solomon_Resume_v5.pdf  /Joshua_Solomon_Resume_v7.pdf  301
-/Joshua_Solomon_Resume_v6.pdf  /Joshua_Solomon_Resume_v7.pdf  301
+# Every older resume link -> the current CV (v9). Only v9 is served.
+/Joshua_Solomon_Resume_v4.pdf              /Joshua_Solomon_Resume_v9_AI_Solutions_Engineer.pdf  301
+/Joshua_Solomon_Resume_v5.pdf              /Joshua_Solomon_Resume_v9_AI_Solutions_Engineer.pdf  301
+/Joshua_Solomon_Resume_v6.pdf              /Joshua_Solomon_Resume_v9_AI_Solutions_Engineer.pdf  301
+/Joshua_Solomon_Resume_v7.pdf              /Joshua_Solomon_Resume_v9_AI_Solutions_Engineer.pdf  301
+/Joshua_Solomon_Resume_v7_B.pdf            /Joshua_Solomon_Resume_v9_AI_Solutions_Engineer.pdf  301
+/Joshua_Solomon_Resume_v8.pdf              /Joshua_Solomon_Resume_v9_AI_Solutions_Engineer.pdf  301
+/Joshua_Solomon_Resume_v8_AI_Engineer.pdf  /Joshua_Solomon_Resume_v9_AI_Solutions_Engineer.pdf  301
+
+/work/      /#work      301
+/work       /#work      301
+
+# /work/x without a slash: Cloudflare Pages adds the slash itself (no rule here, to avoid a loop).
+# Anything else that does not exist gets dist/404.html with a real 404 status.
