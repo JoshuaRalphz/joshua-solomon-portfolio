@@ -8,7 +8,7 @@ import { clean, cleanList, neutralizeTags, readText } from './text.js';
 import { CLINIC, FORM_TREATMENTS, MAX_MESSAGE, MIN_MESSAGE, PIPELINE, STAGES, WEBHOOK_URL } from './clinicShared.js';
 
 export { CLINIC, FORM_TREATMENTS, MAX_MESSAGE, MIN_MESSAGE, PIPELINE, STAGES, WEBHOOK_URL };
-export const MAX_TOKENS = 3000;
+export const MAX_TOKENS = 4000;
 const MAX_NAME = 80;
 const MAX_EMAIL = 120;
 const SMS_CHARS = 320;
@@ -189,30 +189,33 @@ export function normalize(raw, input) {
   const data = raw && typeof raw === 'object' ? raw : {};
   if (!INTENTS.includes(data.intent) || !clean(data.summary)) throw new Error('incomplete model output');
   const spamRisk = oneOf(data.spam_risk, RISK, 'medium');
-  const injection = data.injection_attempt === true;
+  // Code checks the visitor's own words too, so a fooled model cannot clear an obvious attempt.
+  const injection = data.injection_attempt === true || INJECTION_HINT.test(input.message);
   const isSpam = data.intent === 'spam' || spamRisk === 'high';
   // Drafts are never offered for spam or an injection attempt, whatever the model wrote.
   const blocked = isSpam || injection;
   const score = Number.isFinite(Number(data.lead_score)) ? Math.round(Math.min(100, Math.max(0, Number(data.lead_score)))) : 30;
-  const needsNurse = data.needs_nurse === true || data.intent === 'aftercare_concern';
+  const urgency = oneOf(data.urgency, URGENCY, 'this_week');
+  const needsNurse = data.needs_nurse === true || data.intent === 'aftercare_concern' || urgency === 'urgent';
+  const draft = (text) => (blocked || UNSAFE_DRAFT.test(text) ? '' : text);
   const result = {
     treatment: oneOf(data.treatment, TREATMENTS, 'other'),
     intent: data.intent,
     existing_patient: data.existing_patient === true,
-    urgency: oneOf(data.urgency, URGENCY, 'this_week'),
+    urgency,
     urgency_reason: clean(data.urgency_reason, 200),
     needs_nurse: needsNurse,
     nurse_reason: needsNurse ? clean(data.nurse_reason, 200) : '',
-    spam_risk: injection && spamRisk === 'low' ? 'medium' : spamRisk,
-    spam_signals: spamRisk === 'low' && !injection ? [] : cleanList(data.spam_signals, 4, 120),
+    spam_risk: isSpam ? 'high' : injection && spamRisk === 'low' ? 'medium' : spamRisk,
+    spam_signals: spamRisk === 'low' && !injection && !isSpam ? [] : cleanList(data.spam_signals, 4, 120),
     injection_attempt: injection,
     missing_info: blocked ? [] : cleanList(data.missing_info, 4, 80),
     lead_score: blocked ? 0 : score,
     score_reason: clean(data.score_reason, 200),
     summary: clean(data.summary, 240),
-    sms_draft: blocked ? '' : clean(data.sms_draft, SMS_CHARS),
+    sms_draft: draft(clean(data.sms_draft, SMS_CHARS)),
     email_subject: blocked ? '' : clean(data.email_subject, 90).replace(/\n/g, ' '),
-    email_draft: blocked ? '' : boundWords(clean(data.email_draft, 1200), EMAIL_WORDS),
+    email_draft: draft(boundWords(clean(data.email_draft, 1200), EMAIL_WORDS)),
     note_for_staff: clean(data.note_for_staff, 240),
     blocked,
     isSpam,
@@ -220,8 +223,10 @@ export function normalize(raw, input) {
   return { ...result, ghl: route(result, input) };
 }
 
+// A draft with a link, a price or a percentage is never offered: the clinic confirms those, not the AI.
+const UNSAFE_DRAFT = /https?:\/\/|www\.|\$\s?\d|\d\s?%/i;
 const SPAM_HINT = /\b(seo|ranking|page 1|guarantee|free audit|leads|crypto|click here)\b/i;
-const INJECTION_HINT = /\b(ignore (all )?(previous|prior) instructions|system prompt|you are now)\b/i;
+const INJECTION_HINT = /\b(ignore\s+(all\s+|any\s+)?(the\s+|your\s+)?(previous\s+|prior\s+|above\s+|earlier\s+)?(instructions|rules|prompt)|system prompt)\b/i;
 const URGENT_HINT = /\b(pain(ful)?|pale|white|blue|grey|swollen|swelling|blister|rash|infection)\b/i;
 const PRICE_HINT = /\b(how much|price|cost|per unit|offer|deal)\b/i;
 const BOOK_HINT = /\b(book|start|appointment|come in|available)\b/i;
@@ -259,6 +264,7 @@ export const MESSAGES = {
   contact: 'Add a phone number or an email address.',
   short: `Add a message (at least ${MIN_MESSAGE} characters).`,
   long: `Keep the message under ${MAX_MESSAGE.toLocaleString('en-US')} characters.`,
+  incomplete: 'The answer ran out of room. Try again.',
 };
 
 export const demo = { id: 'clinic', enabledVar: 'DEMO_CLINIC_ENABLED', messages: MESSAGES, parse, build, normalize, mock };

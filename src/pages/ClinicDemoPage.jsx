@@ -23,7 +23,7 @@ export default function ClinicDemoPage() {
               An enquiry comes in, Claude sorts it and drafts the replies, code decides what happens in GoHighLevel, and a person approves before anything goes out.
             </p>
             <p className="cl-honest mt-4">
-              The clinic and every sample enquiry are fictional. No GoHighLevel account is called, no message is sent, and nothing you type is stored.
+              The clinic and every sample enquiry are fictional. No GoHighLevel account is called and no message is sent. What you type goes to Claude to be sorted and is not kept by this site.
             </p>
             <ol className="cl-flow mt-5">
               {FLOW.map((f) => (

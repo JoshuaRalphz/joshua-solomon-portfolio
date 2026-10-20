@@ -1,4 +1,4 @@
-import { useId, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import { AlertTriangle, Check, Mail, MessageSquare, Send, ShieldAlert, Stethoscope, Trash2 } from 'lucide-react';
 
 export const TREATMENT_LABEL = {
@@ -111,6 +111,16 @@ export function DraftsCard({ result, decision, onDecide }) {
   const [subject, setSubject] = useState(result.email_subject);
   const [body, setBody] = useState(result.email_draft);
   const ids = { sms: useId(), subject: useId(), body: useId() };
+  const headRef = useRef(null);
+  const isFirstRender = useRef(true);
+  // The pressed button unmounts when the card swaps, so move focus to the new card's heading.
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    headRef.current?.focus();
+  }, [decision]);
   const smsStep = result.ghl.steps.find((s) => s.id === 'sms');
   const emailStep = result.ghl.steps.find((s) => s.id === 'email');
 
@@ -128,7 +138,7 @@ export function DraftsCard({ result, decision, onDecide }) {
     const isSent = decision === 'sent';
     return (
       <div className={`tile flex min-w-0 flex-col ${isSent ? 'tile--lime' : 'cl-dashed'}`}>
-        <p className="label"><span className="label-num">03</span> {isSent ? 'Approved' : 'Discarded'}</p>
+        <p ref={headRef} tabIndex={-1} className="label"><span className="label-num">03</span> {isSent ? 'Approved' : 'Discarded'}</p>
         <p className="t-h3 mt-3">{isSent ? 'Sent (simulated).' : 'Replies discarded.'}</p>
         <p className="mt-2 text-ink">
           {isSent
@@ -142,7 +152,7 @@ export function DraftsCard({ result, decision, onDecide }) {
 
   return (
     <div className="tile tile--ink on-ink flex min-w-0 flex-col">
-      <p className="label"><span className="label-num">03</span> Replies waiting for approval · edit them if you like</p>
+      <p ref={headRef} tabIndex={-1} className="label"><span className="label-num">03</span> Replies waiting for approval · edit them if you like</p>
       {canSms ? (
         <div className="mt-4">
           <label htmlFor={ids.sms} className="flex items-center gap-2 text-sm font-semibold text-mist"><MessageSquare size={16} aria-hidden="true" /> SMS</label>

@@ -25,7 +25,7 @@ export default function EnquiryForm({ form, onChange, onSample, onSubmit, active
             </button>
           ))}
         </div>
-        <p className="mt-3 text-sm text-mist-dim">Or type your own into the form. Nothing you type is stored.</p>
+        <p className="mt-3 text-sm text-mist-dim">Or type your own into the form. It goes to Claude and is not kept by this site.</p>
       </div>
 
       <div className="shot-frame">

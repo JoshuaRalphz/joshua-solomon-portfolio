@@ -8,14 +8,15 @@ export function clean(value, maxChars = 400) {
     .slice(0, maxChars * 4)
     .replace(/\s*—\s*|\s+–\s+/g, ', ')
     .replace(/[ \t]+/g, ' ')
-    .replace(/\s*\n\s*/g, '\n')
+    .replace(/[ \t]*\n[ \t]*/g, '\n')
+    .replace(/\n{3,}/g, '\n\n')
     .trim();
   return text.length > maxChars ? `${text.slice(0, maxChars - 1).trimEnd()}…` : text;
 }
 
 /** Bounded list of cleaned strings. */
 export function cleanList(value, max, maxChars = 200) {
-  return (Array.isArray(value) ? value : []).map((item) => clean(item, maxChars)).filter(Boolean).slice(0, max);
+  return [...new Set((Array.isArray(value) ? value : []).map((item) => clean(item, maxChars)).filter(Boolean))].slice(0, max);
 }
 
 /** Removes our own delimiter tags from untrusted text, so it cannot close the data block. */

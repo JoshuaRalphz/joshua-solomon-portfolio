@@ -9,6 +9,7 @@ const STATUS = {
   later: { label: 'Runs later', Icon: Clock },
   skip: { label: 'Skipped', Icon: Ban },
   done: { label: 'Sent (simulated)', Icon: Check },
+  dropped: { label: 'Discarded', Icon: Ban },
 };
 
 function Board({ result, name, stage }) {
@@ -43,13 +44,13 @@ function Board({ result, name, stage }) {
   );
 }
 
-function Steps({ steps, approved }) {
+function Steps({ steps, decision }) {
   return (
     <div className="tile min-w-0">
       <h3 className="label"><span className="label-num">05</span> Workflow: “Website enquiry → triage”</h3>
       <ol className="cl-steps mt-4">
         {steps.map((s, i) => {
-          const status = approved && s.status === 'wait' ? 'done' : s.status;
+          const status = s.status === 'wait' && decision ? (decision === 'sent' ? 'done' : 'dropped') : s.status;
           const { label, Icon } = STATUS[status];
           return (
             <li key={s.id} data-status={status}>
@@ -59,7 +60,7 @@ function Steps({ steps, approved }) {
                   {s.label}
                   <span className="cl-status" data-status={status}><Icon size={12} aria-hidden="true" /> {label}</span>
                 </p>
-                <p className="cl-step-detail">{status === 'done' ? 'Approved by a person. Nothing really left this page.' : s.detail}</p>
+                <p className="cl-step-detail">{status === 'done' ? 'Approved by a person. Nothing really left this page.' : status === 'dropped' ? 'Discarded by staff: the front desk answers by hand.' : s.detail}</p>
               </div>
             </li>
           );
@@ -112,7 +113,7 @@ export default function GhlPanel({ result, name, decision }) {
       <div className="mt-5 grid gap-[var(--gap)]">
         <Board result={result} name={name} stage={shownStage} />
         <div className="cl-ghl-split">
-          <Steps steps={result.ghl.steps} approved={approved} />
+          <Steps steps={result.ghl.steps} decision={decision} />
           <Payload payload={result.ghl.payload} />
         </div>
       </div>

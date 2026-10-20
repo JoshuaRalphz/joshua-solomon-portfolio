@@ -155,10 +155,14 @@ export async function handleDemo(request, env, ctx, deps, demo) {
     const reserved = demoMaxCostMicro(promptBytes, call.maxTokens);
     // Demo sub-cap first, then the shared pool; a refusal by the pool hands the sub-cap reservation back.
     if (!(await store.reserve(demoPeriods, reserved, readDemoCaps(env)))) return fail(429, 'budget');
-    if (!(await store.reserve(periods, reserved, { day: limits.dayMicro, month: limits.monthMicro }))) {
-      await store.settle(demoPeriods, reserved, 0).catch(() => {});
-      return fail(429, 'budget');
+    let pooled = false;
+    try {
+      pooled = await store.reserve(periods, reserved, { day: limits.dayMicro, month: limits.monthMicro });
+    } finally {
+      // Hand the sub-cap reservation back when the pool says no or the store throws.
+      if (!pooled) await store.settle(demoPeriods, reserved, 0).catch(() => {});
     }
+    if (!pooled) return fail(429, 'budget');
 
     let response = null;
     try {

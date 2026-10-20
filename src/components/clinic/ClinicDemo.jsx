@@ -71,6 +71,11 @@ export default function ClinicDemo() {
     setForm(sample.form);
     setActiveSample(sample.id);
     setFormError('');
+    if (!isRunning) {
+      setAnswer(null);
+      setDecision(null);
+      setStatus('idle');
+    }
   };
 
   const handleSubmit = async (event) => {
