@@ -24,7 +24,9 @@ const PROMPT_TOKENS_UPPER = Math.ceil((SYSTEM_PROMPT.length + JSON.stringify(FIT
 
 const ORIGINS = ['https://solomonjoshua.com', 'https://www.solomonjoshua.com'];
 export const LOCAL_HOSTS = new Set(['localhost', '127.0.0.1', '[::1]']);
-const PREVIEW_ORIGIN = /^https:\/\/([a-z0-9-]+\.)?joshua-solomon-portfolio\.pages\.dev$/;
+// Pages preview hosts: the project's own *.pages.dev name, or ONE label in front of it
+// (branch and deployment aliases). Anchored at both ends, so look-alike hosts never match.
+const PREVIEW_ORIGIN = /^https:\/\/([a-z0-9-]+\.)?joshua-solomon(-portfolio)?\.pages\.dev$/;
 
 const MESSAGES = {
   disabled: 'The fit check is paused right now.',

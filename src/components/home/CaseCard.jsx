@@ -9,7 +9,7 @@ function ProofRow({ results }) {
     <ul className="proof proof--3 mt-6">
       {results.slice(0, 3).map((r) => (
         <li key={r.label}>
-          <span className="t-chip block text-ink">{r.value}</span>
+          <span className="t-chip block text-ink">{r.value}</span>{' '}
           <span className="mt-1 block text-sm font-medium leading-snug text-muted">{r.label}</span>
         </li>
       ))}

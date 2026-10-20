@@ -151,6 +151,8 @@
   .case-hero { display: grid; gap: var(--pad); grid-template-columns: minmax(0, 1fr); align-items: center; }
   @media (min-width: 1024px) { .case-hero { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); } }
 
+  /* Stacked experience cards (About): the same gap as every other tile stack. */
+  .roles { display: grid; gap: var(--gap); grid-template-columns: minmax(0, 1fr); }
   .cards-3 { display: grid; gap: var(--gap); grid-template-columns: minmax(0, 1fr); }
   .cards-3 > * { min-width: 0; }
   @media (min-width: 900px) { .cards-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
@@ -165,6 +167,10 @@
   .results-grid > li { min-width: 0; }
   @media (min-width: 900px) { .results-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
   @media (max-width: 359.98px) { .results-grid { grid-template-columns: minmax(0, 1fr); } }
+  /* Two columns and an odd count: the last result takes the full row instead of sitting alone. */
+  @media (min-width: 360px) and (max-width: 899.98px) {
+    .results-grid:not(.results-grid--light) > li:last-child:nth-child(odd) { grid-column: 1 / -1; }
+  }
   .results-grid.results-grid--light { grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr)); }
   .results-grid--light .t-num { font-size: clamp(1.5rem, 1.2rem + 1vw, 2.25rem); overflow-wrap: normal; white-space: nowrap; }
   .result .t-num { overflow-wrap: normal; }
@@ -174,6 +180,17 @@
   .offers { display: grid; gap: var(--gap); grid-template-columns: minmax(0, 1fr); }
   .offers > * { min-width: 0; }
   @media (min-width: 900px) { .offers { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+  /* Work with me: real examples beside the lime price-and-steps tile. */
+  .example-link { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 2.75rem; padding-block: .875rem; }
+  .example-link:hover .font-bold { text-decoration: underline; text-underline-offset: 3px; }
+  .example-link .nudge { transition: transform 180ms; }
+  .example-link:hover .nudge, .example-link:focus-visible .nudge { transform: translateX(3px); }
+  .hire-call { container-type: inline-size; }
+  .steps { display: grid; gap: .875rem 1rem; grid-template-columns: minmax(0, 1fr); }
+  .steps > li { display: flex; align-items: flex-start; gap: .75rem; min-width: 0; }
+  @container (min-width: 24rem) { .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @container (min-width: 44rem) { .steps { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
   .proof-link { display: inline-flex; align-items: center; gap: .375rem; min-height: 2.75rem; padding-top: 1rem; font-size: .875rem; font-weight: 600; text-underline-offset: 3px; }
   .proof-link:hover { text-decoration: underline; }
 
@@ -314,6 +331,9 @@
   .btn-primary:hover { background: theme('colors.lime.deep'); }
   .btn-secondary { background: theme('colors.card'); color: theme('colors.ink'); border: 1.5px solid theme('colors.line-strong'); }
   .btn-secondary:hover { border-color: theme('colors.ink'); }
+  /* The main action on a lime tile, where the lime primary button would vanish. */
+  .btn-ink { background: theme('colors.ink'); color: theme('colors.mist'); border: 1.5px solid theme('colors.ink'); }
+  .btn-ink:hover { background: theme('colors.ink-2'); }
 
   .icon-link {
     display: inline-grid;
@@ -342,6 +362,17 @@
   .field::placeholder { color: theme('colors.muted'); opacity: 1; }
   .field:hover, .field:focus { border-color: theme('colors.ink'); }
   .field[aria-invalid="true"] { border-color: theme('colors.danger'); }
+  select.field {
+    appearance: none;
+    padding-right: 2.75rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%230D2B23' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m4 6 4 4 4-4'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    cursor: pointer;
+  }
+  /* "Choose one" reads as a placeholder, not an answer. */
+  select.field:has(option[value=""]:checked) { color: theme('colors.muted'); }
+  select.field option { color: theme('colors.ink'); }
 
   /* ---------- the node shared by rail, Explore cards and section heads ---------- */
   .wire-node {

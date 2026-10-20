@@ -7,7 +7,6 @@ export default function Results() {
   return (
     <section id="results" aria-labelledby="results-title">
       <SectionHead
-        num="04"
         id="results"
         label="Results"
         title="Numbers, with where they came from."
@@ -17,7 +16,7 @@ export default function Results() {
           {results.map((r) => (
             <li key={r.label}>
               <a href={r.href} className="result">
-                <span className="t-num block text-lime">{r.value}</span>
+                <span className="t-num block text-lime">{r.value}</span>{' '}
                 <span className="mt-2 block text-sm font-medium leading-snug text-mist">{r.label}</span>
               </a>
             </li>

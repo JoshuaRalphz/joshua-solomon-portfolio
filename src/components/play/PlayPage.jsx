@@ -7,7 +7,7 @@ import BusyworkPlan from './BusyworkPlan.jsx';
 import LeadTriage from './LeadTriage.jsx';
 import AskPortfolio from './AskPortfolio.jsx';
 import MissedCall from './MissedCall.jsx';
-import { CALL_HREF, CALL_LABEL, OFFERS, playBySlug, playDemos } from '../../data/play.js';
+import { CALL_HREF, CALL_LABEL, PRICE_LINE, playBySlug, playDemos } from '../../data/play.js';
 import { profile } from '../../data/content.js';
 import './play.css';
 
@@ -47,7 +47,7 @@ function Cta({ demo }) {
         <p className="mt-1 text-ink">
           {isRecruiter
             ? 'Download the CV or email me. I reply within 24 hours.'
-            : `Tell me the busywork on a free 15-minute call. ${OFFERS.starter.label} ${OFFERS.starter.price}; ${OFFERS.care.label.toLowerCase()} ${OFFERS.care.price}.`}
+            : PRICE_LINE}
         </p>
       </div>
       <div className="flex flex-wrap gap-2.5">

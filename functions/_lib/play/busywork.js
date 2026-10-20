@@ -1,8 +1,8 @@
 // Demo 1: "Busywork -> plan & price". A business owner describes what eats the week;
 // Claude Haiku 5.5 suggests the first 1-3 automations Josh would build, with an
-// hours-saved ESTIMATE and its assumption. Prices never come from the model: it only
-// picks one of two offer ids, and the server maps them to Josh's real offers.
-import { OFFERS } from '../../../src/data/play.js';
+// hours-saved ESTIMATE and its assumption. Prices never come from the model: the server
+// adds Josh's one real price line, and any amount the model writes is removed.
+import { PRICE_LINE } from '../../../src/data/play.js';
 import { clean, neutralizeTags, pick, readText } from './text.js';
 
 export const MIN_CHARS = 30;
@@ -21,13 +21,12 @@ export const TOOLS = [
   'Webhooks', 'A small web dashboard',
 ];
 
-const OFFER_IDS = ['starter', 'starter_then_care'];
 const CURRENCY = /(?:US\s?)?[$€£₱]\s?\d[\d,.]*(?:\s?[kKmM]\b)?|\b(?:usd|eur|gbp|php|aud|cad)\s?\d[\d,.]*|\b\d[\d,.]*\s?(?:k\s)?(?:usd|eur|gbp|aud|cad|dollars?|bucks|euros?|pounds?|pesos?|php)\b|\b(?:hundred|thousand)\s+(?:dollars|bucks|euros|pounds|pesos)\b/gi;
 
 export const SCHEMA = {
   type: 'object',
   additionalProperties: false,
-  required: ['is_business_task', 'summary', 'automations', 'offer', 'offer_reason', 'call_agenda'],
+  required: ['is_business_task', 'summary', 'automations', 'call_agenda'],
   properties: {
     is_business_task: { type: 'boolean', description: 'false when the text is not a description of work a business does.' },
     summary: { type: 'string', description: 'One sentence restating their busywork in plain words.' },
@@ -50,8 +49,6 @@ export const SCHEMA = {
         },
       },
     },
-    offer: { type: 'string', enum: OFFER_IDS },
-    offer_reason: { type: 'string', description: 'One sentence: why that offer fits.' },
     call_agenda: { type: 'string', description: 'One sentence: what the free 15-minute call would check first.' },
   },
 };
@@ -76,7 +73,7 @@ How to estimate
 - Prefer the simplest build. Say "No AI needed" in ai_part when plain rules do the job.
 
 Price
-- Never write a price, a currency amount or a cost anywhere. Only pick the offer: "starter" for a one-time build, or "starter_then_care" when the work needs ongoing running, monitoring or monthly changes.
+- Never write a price, a currency amount or a cost anywhere. The site adds Josh's real pricing itself.
 
 Style: plain English, short sentences, no jargon, no hype words, no em dashes. Talk to the owner as "you" and about Josh as "Josh".`;
 
@@ -103,7 +100,7 @@ export function build(input) {
   return { system: SYSTEM_PROMPT, user: buildUserMessage(input), schema: SCHEMA, maxTokens: MAX_TOKENS };
 }
 
-/** Model text with any currency amount replaced: prices only ever come from OFFERS. */
+/** Model text with any currency amount replaced: prices only ever come from PRICE_LINE. */
 const noPrice = (value, maxChars) => clean(value, maxChars).replace(CURRENCY, 'a price agreed on the call');
 
 const toHours = (value) => (Number.isFinite(value) ? Math.min(MAX_HOURS_EACH, Math.max(0, Math.round(value))) : null);
@@ -137,7 +134,6 @@ export function normalize(raw) {
     ? (Array.isArray(data.automations) ? data.automations : []).map(toAutomation).filter(Boolean).slice(0, MAX_AUTOMATIONS)
     : [];
   const isTask = data.is_business_task && automations.length > 0;
-  const offerId = OFFER_IDS.includes(data.offer) ? data.offer : 'starter';
   return {
     is_business_task: isTask,
     summary: noPrice(data.summary, 300),
@@ -146,11 +142,7 @@ export function normalize(raw) {
       low: automations.reduce((sum, item) => sum + item.hours_low, 0),
       high: automations.reduce((sum, item) => sum + item.hours_high, 0),
     },
-    offer: {
-      id: offerId,
-      items: offerId === 'starter_then_care' ? [OFFERS.starter, OFFERS.care] : [OFFERS.starter],
-      reason: noPrice(data.offer_reason, 240),
-    },
+    price_line: PRICE_LINE,
     call_agenda: noPrice(data.call_agenda, 240),
   };
 }
@@ -181,8 +173,6 @@ export function mock(input) {
         assumption: 'Assumes 10 to 15 minutes a day spent copying details by hand.',
       },
     ],
-    offer: 'starter_then_care',
-    offer_reason: 'The first build is one-time; monthly care keeps it running as your forms and emails change.',
     call_agenda: 'Which inbox and forms the enquiries arrive in, and who approves replies today.',
   };
 }

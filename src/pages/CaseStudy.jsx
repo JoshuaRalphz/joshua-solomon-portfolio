@@ -35,7 +35,7 @@ function Hero({ study }) {
         <ul className="proof mt-7">
           {study.results.slice(0, 4).map((r) => (
             <li key={r.label}>
-              <span className="t-chip block text-ink">{r.value}</span>
+              <span className="t-chip block text-ink">{r.value}</span>{' '}
               <span className="mt-1 block text-sm font-medium leading-snug text-muted">{r.label}</span>
             </li>
           ))}
@@ -155,7 +155,7 @@ export default function CaseStudy({ slug }) {
             <ul className="results-grid results-grid--light">
               {study.results.map((r) => (
                 <li key={r.label} className="tile">
-                  <span className="t-num block text-ink">{r.value}</span>
+                  <span className="t-num block text-ink">{r.value}</span>{' '}
                   <span className="mt-2 block text-sm font-medium leading-snug text-body">{r.label}</span>
                 </li>
               ))}

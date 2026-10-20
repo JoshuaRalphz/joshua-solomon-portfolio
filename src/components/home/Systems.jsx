@@ -10,7 +10,6 @@ export default function Systems() {
   return (
     <section id="work" aria-labelledby="work-title">
       <SectionHead
-        num="01"
         id="work"
         label="Systems"
         title="Systems I’ve shipped."

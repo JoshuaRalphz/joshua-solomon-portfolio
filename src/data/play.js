@@ -1,15 +1,14 @@
 // The four interactive demos ("Try my systems"). Copy for the home cards and the
 // /play/<slug>/ pages. Truthful by rule: every page says what is real and what is
-// simulated, and no number here is a result (prices are Josh's real offers).
+// simulated, and no number here is a result.
+import { PROJECT_HASH, workWithMe } from './content.js';
 
-// Josh's only two offers. The busywork planner may show nothing else.
-export const OFFERS = {
-  starter: { label: 'Starter automation', price: 'from $500 one-time' },
-  care: { label: 'Ongoing systems care', price: 'from $500/month' },
-};
+// Josh's pricing, as ONE plain line (no tiers, no grid). The figures come from the
+// "Work with me" section (content.js), so there is a single source for prices.
+export const PRICE_LINE = `Monthly partnership from ${workWithMe.monthly}. Custom builds from ${workWithMe.build}, with a fixed quote after a free 15-minute call.`;
 
-// Free call CTA. ?topic=project preselects the contact form topic where supported.
-export const CALL_HREF = '/?topic=project#contact';
+// Free call CTA: lands on the home contact form with "A project for my business" picked.
+export const CALL_HREF = `/${PROJECT_HASH}`;
 export const CALL_LABEL = 'Ask for a free 15-minute call';
 
 export const playDemos = [
@@ -23,7 +22,7 @@ export const playDemos = [
     framing: 'Every business has a job nobody wants: copying leads, chasing invoices, answering the same email. Describe it and get a starting plan you can take into a real conversation.',
     real: [
       'A real AI call (Claude Haiku 5.5) reads what you type and picks from tools I actually use.',
-      'Prices come from my two real offers only. The AI cannot invent a price.',
+      'The price line is my real pricing, written by me. The AI cannot add or change a price.',
     ],
     simulated: [
       'Hours saved are estimates from what you wrote, with the assumption shown. Not a quote.',
@@ -33,7 +32,7 @@ export const playDemos = [
       { label: 'You describe it', caption: 'What eats the week, plus team size and industry if you like' },
       { label: 'Claude plans', caption: 'Haiku 5.5 picks 1 to 3 builds from tools I really use, as strict JSON' },
       { label: 'Code checks it', caption: 'Hours are clamped, unknown tools dropped, any price the AI writes is removed' },
-      { label: 'Real prices only', caption: 'The plan maps to one of my two offers; the call turns it into a quote' },
+      { label: 'Real prices only', caption: 'The plan ends with my one real price line; the free call turns it into a fixed quote' },
     ],
     seo: 'Describe the busywork that eats your week and get a starting automation plan: what Joshua Solomon would build first, estimated hours saved, and his real starting prices.',
   },

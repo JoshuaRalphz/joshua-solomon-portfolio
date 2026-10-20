@@ -10,7 +10,6 @@ export default function PlaySection() {
   return (
     <section id="play" aria-labelledby="play-title">
       <SectionHead
-        num="03"
         id="play"
         label="Try it"
         title="Play with my systems."

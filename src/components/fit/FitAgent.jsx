@@ -131,7 +131,6 @@ export default function FitAgent() {
   return (
     <section id="fit-agent" aria-labelledby="fit-agent-title">
       <SectionHead
-        num="02"
         id="fit-agent"
         label="How I'd help"
         title="See how I'd help your team."

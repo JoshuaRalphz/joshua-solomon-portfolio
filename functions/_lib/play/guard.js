@@ -2,9 +2,9 @@
 // agent (functions/_lib/fitAgent.js), and the SAME counters (functions/_lib/store.js):
 // - one spend pool: every demo reserves from the fit agent's daily + monthly rows
 //   (FIT_DAILY_BUDGET_USD / FIT_MONTHLY_BUDGET_USD, default $1 / $30), priced per model;
-// - one per-visitor counter: the same salted-hash row per visitor per UTC day, so
-//   fit runs and play runs add up (PLAY_RUNS_PER_VISITOR, default 8; the fit agent
-//   keeps its own lower cap of 5 on that same shared count);
+// - a per-visitor counter of their own: the same table and salted hash as the fit agent,
+//   but a 'play:'-prefixed row, so demo runs never use up a visitor's fit checks
+//   (PLAY_RUNS_PER_VISITOR, default 8 a day across all demos; the fit agent keeps 5);
 // - plus a play-only sub-cap inside that pool (PLAY_DAILY_BUDGET_USD / PLAY_MONTHLY_BUDGET_USD,
 //   default $0.50 / $15), so the demos can never spend the fit agent's whole day.
 //   Its counters are separate rows in the same table ('pd:YYYY-MM-DD', 'pm:YYYY-MM').
@@ -160,7 +160,7 @@ export async function handlePlay(request, env, ctx, deps, demo) {
 
   try {
     const visitor = await hashVisitor(env.FIT_IP_SALT ?? 'mock-salt', day, visitorKey(ip));
-    if (limit < 1 || !(await store.takeVisitorRun(day, visitor, limit))) return fail(429, 'visitor');
+    if (limit < 1 || !(await store.takeVisitorRun(day, `play:${visitor}`, limit))) return fail(429, 'visitor');
     ctx.waitUntil?.(store.prune(day).catch(() => {}));
 
     const call = demo.build(input, prepared.context);

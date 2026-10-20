@@ -6,10 +6,10 @@ import { useActiveSection } from '../../hooks/useActiveSection.jsx';
  * optional intro. The node turns lime while its section is on screen, the same
  * node the rail and the Explore cards use.
  */
-export default function SectionHead({ num: fallbackNum, id, label, title, intro }) {
+export default function SectionHead({ id, label, title, intro }) {
   const isActive = sections[useActiveSection()]?.id === id;
-  // The number comes from `sections` (content.js), so the menu and the heads never disagree.
-  const num = sections.find((section) => section.id === id)?.num ?? fallbackNum;
+  // The number comes from the menu, so a new section can never leave the two out of step.
+  const num = sections.find((section) => section.id === id)?.num;
 
   return (
     <div className="mb-6">

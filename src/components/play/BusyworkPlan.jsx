@@ -116,16 +116,8 @@ function PlanResult({ result, isMock, headingRef }) {
       </div>
 
       <div className="tile tile--lime flex flex-col md:[grid-column:span_6] xl:[grid-column:8/13]">
-        <h3 className="label">Where the price starts</h3>
-        <ul className="mt-4 grid gap-3">
-          {result.offer.items.map((offer) => (
-            <li key={offer.label} className="play-offer">
-              <span className="font-bold text-ink">{offer.label}</span>
-              <span className="t-h3">{offer.price}</span>
-            </li>
-          ))}
-        </ul>
-        {result.offer.reason && <p className="mt-4 text-sm font-medium leading-snug text-ink">{result.offer.reason}</p>}
+        <h3 className="label">What it would cost</h3>
+        <p className="t-lead mt-4 font-semibold text-ink">{result.price_line}</p>
         <p className="mt-4 rounded-inner bg-card/70 px-3 py-2 text-sm font-semibold text-ink">Estimates, not a quote. A real price comes after the free call.</p>
         <div className="mt-auto flex flex-wrap gap-2.5 pt-5">
           <a href={CALL_HREF} className="btn btn-secondary">{CALL_LABEL} <ArrowRight size={18} aria-hidden="true" /></a>
@@ -249,7 +241,7 @@ export default function BusyworkPlan() {
           <p className="label"><span className="label-num">02</span> What happens</p>
           <div className="mt-5"><Pipeline steps={STEPS} states={states} label="Planning steps" tone="light" vertical /></div>
           <p className="mt-auto rounded-inner bg-sunk p-4 pt-4 text-sm font-medium leading-snug text-ink">
-            It can only pick tools I actually use and only show my two real prices. Hours are estimates, and it tells you what each one assumes.
+            It can only pick tools I actually use, and it can’t write a price: the price line is mine. Hours are estimates, and it tells you what each one assumes.
           </p>
         </div>
       </div>

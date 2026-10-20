@@ -194,7 +194,6 @@
   @keyframes playGrow { from { transform: scaleX(0); } }
 }
 .play-hours-val { font-family: theme('fontFamily.mono'); font-size: .8125rem; color: theme('colors.mist'); white-space: nowrap; }
-.play-offer { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: .25rem 1rem; padding: .875rem 1rem; border-radius: theme('borderRadius.inner'); background: theme('colors.card'); border: 1.5px solid theme('colors.ink'); }
 .play-builds { display: grid; gap: var(--gap); grid-template-columns: minmax(0, 1fr); }
 .play-builds > li { min-width: 0; }
 @media (min-width: 900px) { .play-builds { grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); } }

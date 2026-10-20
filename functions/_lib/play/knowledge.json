@@ -137,7 +137,7 @@
    "title": "Case study · AI Job Hunt engine",
    "url": "/work/ai-job-hunt/",
    "source": "Case study",
-   "text": "AI Job Hunt engine\nOwn product · platform live since Oct 2026 · hunt built to run unattended\nA job search built to run itself, that only asks me about what matters.\nClaude Opus 5.5 finds remote AI roles, scores the fit, writes an honest application and drafts answers to employers, on Cloudflare’s cron with my PC off. A rule in the database decides what may send by itself; everything else waits for me. It runs on my own outreach platform (Behind Works), deployed on Cloudflare; the hunt stays switched off until my Claude API key is set.\nThe problem: Applying well is a part-time job: finding real remote roles, judging fit, writing an honest tailored application, sending it, then answering replies fast. By hand it ate my evenings, and rushing it means weak, generic applications.\nThe same shape fits any team that qualifies leads, triages inbound email or screens applications: AI does the reading and drafting, code enforces the rules, and a person approves the exceptions."
+   "text": "AI Job Hunt engine\nOwn product · live since 20 Oct 2026 · runs every day\nAn AI system that checks job fit, catches scams and drafts honest applications, with my approval.\nEvery day from 7 AM Manila time, Claude Opus 5.5 vets new remote AI roles from five public job boards: fit, scam risk and pay. It drafts an application for the best ones, and a second Claude pass strips any claim that is not in my CV. Job posts are treated as untrusted text, the send rules live in the database, and a hard daily budget caps the AI spend. Anything unclear waits for me. It runs on my own outreach platform (Behind Works) on Cloudflare, with my PC off.\nThe problem: Applying well is a part-time job: finding real remote roles, judging fit, writing an honest tailored application, sending it, then answering replies fast. By hand it ate my evenings, and rushing it means weak, generic applications.\nThe same shape fits any team that qualifies leads, triages inbound email or screens applications: AI does the reading and drafting, code enforces the rules, and a person approves the exceptions."
   },
   {
    "id": "ai-job-hunt-constraints",
@@ -151,7 +151,14 @@
    "title": "Case study · AI Job Hunt engine · Find and vet",
    "url": "/work/ai-job-hunt/#built",
    "source": "Case study",
-   "text": "Find and vet: Once a Manila day the Worker reads five public job APIs (Himalayas, Jobicy, RemoteOK, Remotive, Arbeitnow) and keeps up to 30 new AI roles. Claude Opus 5.5 vets each one: fit 1–10, apply / maybe / skip, scam risk, pay and how to apply."
+   "text": "Find and vet: Every day from 7 AM Manila time the Worker reads five public job APIs (Himalayas, Jobicy, RemoteOK, Remotive, Arbeitnow) and keeps up to 30 new AI roles. Claude Opus 5.5 vets each one: fit 1–10, apply / maybe / skip, scam risk, pay and how to apply."
+  },
+  {
+   "id": "ai-job-hunt-built-screen-for-scams-and-prompt-in",
+   "title": "Case study · AI Job Hunt engine · Screen for scams and prompt injection",
+   "url": "/work/ai-job-hunt/#built",
+   "source": "Case study",
+   "text": "Screen for scams and prompt injection: Job posts and employer emails reach Claude as data inside <untrusted_…> tags. A post that tries to instruct Claude, or asks for applications to a free email address, turns into a “maybe” for me, and a scam risk that is not low never goes anywhere by itself."
   },
   {
    "id": "ai-job-hunt-built-write-then-check-for-honesty",
@@ -161,11 +168,18 @@
    "text": "Write, then check for honesty: Claude writes the best 10 by fit as JSON in a fixed schema. A second, adversarial Claude pass removes anything not in my CV, and a check in code blocks claims I must not make (tools I don’t use, more than about a year of experience, the agency’s name)."
   },
   {
-   "id": "ai-job-hunt-built-the-gate",
-   "title": "Case study · AI Job Hunt engine · The gate",
+   "id": "ai-job-hunt-built-rules-in-the-database-not-the-",
+   "title": "Case study · AI Job Hunt engine · Rules in the database, not the prompt",
    "url": "/work/ai-job-hunt/#built",
    "source": "Case study",
-   "text": "The gate: A strong fit (8+, “apply”, an address, nothing to ask me) sends by itself 3 hours later unless I hold it. The database refuses any other auto-send row with a CHECK constraint, and the queue checks again right before sending."
+   "text": "Rules in the database, not the prompt: Anything unclear (a question for me, a gap in my CV, a scam risk that is not low) waits in my approval queue. The one exception is narrow and can be switched off: a clean, strong fit with nothing to ask me may send itself after a 3-hour hold that I can stop. A database CHECK constraint refuses any other self-sending row, and the queue checks again right before sending."
+  },
+  {
+   "id": "ai-job-hunt-built-a-hard-daily-cost-cap",
+   "title": "Case study · AI Job Hunt engine · A hard daily cost cap",
+   "url": "/work/ai-job-hunt/#built",
+   "source": "Case study",
+   "text": "A hard daily cost cap: Every Claude call is priced from its token usage and stored. Once the day’s spend reaches the budget, no more calls are made until the next Manila day. A full day (30 posts read, 10 written and checked) is usually about $1–2.50, estimated."
   },
   {
    "id": "ai-job-hunt-built-send-from-my-own-gmail",
@@ -182,18 +196,11 @@
    "text": "Answer employers in the thread: The bridge brings employer emails back into the application’s thread. Claude drafts an answer: simple facts (CV, availability, timezone) may go by themselves; interview times, tests, offers, pay or anything not in my CV waits for me."
   },
   {
-   "id": "ai-job-hunt-built-treat-outside-text-as-untruste",
-   "title": "Case study · AI Job Hunt engine · Treat outside text as untrusted",
-   "url": "/work/ai-job-hunt/#built",
-   "source": "Case study",
-   "text": "Treat outside text as untrusted: Job posts and employer emails reach Claude as data inside <untrusted_…> tags. A post that tries to instruct Claude, or asks for applications to a free email address, turns into a “maybe” for me."
-  },
-  {
    "id": "ai-job-hunt-decision-1",
    "title": "Case study · AI Job Hunt engine · Decision 1",
    "url": "/work/ai-job-hunt/#decisions",
    "source": "Case study",
-   "text": "Chose: Enforce auto-send in the database. Rejected: Trusting the prompt and the app code alone. Why: A prompt can be talked around and code can regress. With a CHECK constraint a bad auto-send row cannot even be stored, and the queue re-checks before every send."
+   "text": "Chose: Enforce the send rules in the database. Rejected: Trusting the prompt and the app code alone. Why: A prompt can be talked around and code can regress. With a CHECK constraint a row that breaks the rules cannot even be stored, and the queue re-checks before every send."
   },
   {
    "id": "ai-job-hunt-decision-2",
@@ -235,7 +242,7 @@
    "title": "Case study · AI Job Hunt engine · Results",
    "url": "/work/ai-job-hunt/#results",
    "source": "Case study",
-   "text": "- 700+: automated tests, run with no server and no network\n- ~$1–2.50: estimated AI cost of a full day (30 posts read, 10 written and checked), under a hard daily budget\n- 5 min: cron cycle on Cloudflare: built to run unattended, PC off\n- 10/day: application cap; at most 15 drafted answers a day\n- 0: bounces on the first 20 approved outreach emails, sent 10 a day on schedule"
+   "text": "- 30/day: new remote roles vetted by Claude for fit, scam risk and pay\n- ~$1–2.50: estimated AI cost of a full day (30 posts read, 10 written and checked), under a hard daily budget\n- Every day: live since 20 Oct 2026: the search starts at 7 AM Manila and the engine checks in every 5 minutes, PC off\n- 700+: automated tests, run with no server and no network\n- 10/day: application cap; at most 15 drafted answers a day\n- 0: bounces on the first 20 approved outreach emails, sent 10 a day on schedule"
   },
   {
    "id": "ai-job-hunt-stack",
@@ -403,7 +410,7 @@
    "title": "Site · Results",
    "url": "/#results",
    "source": "Website",
-   "text": "- 700+: automated tests on the AI job hunt platform, run with no network\n- ~$1–2.50: estimated AI cost of a full job-hunt day, under a hard daily dollar budget\n- 406 + 300: unit tests and acceptance checks on the AI video engine\n- $0.72: real API cost of a 2-part AI video story ($0.49 + $0.23)\n- 6 in ~5 wks: client accounts live on the agency platform after the first commit\n- 3,200+: automated tests on the agency platform\nFrom agency email work: a nonprofit’s average click rate went from 4.5% (April 2026) to 9.5% (May 2026). Two months compared, not an A/B test."
+   "text": "- ~89%: lower monthly platform cost for the agency (projected, not yet measured)\n- 6,500/day: emails from HOME.FM’s sending domain, which I set up and warmed\n- 6 in ~5 wks: client accounts live on the agency platform after the first commit\n- ~$1: per finished AI video, vs ~$12 for paid generative video\n- $0.72: real API cost of a 2-part AI video story ($0.49 + $0.23)\n- ~$1–2.50: estimated AI cost of a full job-hunt day, under a hard daily dollar budget\n- 3,200+: automated tests on the agency platform\n- 700+: automated tests on the AI job hunt platform, run with no network\n- 406 + 300: unit tests and acceptance checks on the AI video engine\nFrom agency email work: a nonprofit’s average click rate went from 4.5% (April 2026) to 9.5% (May 2026). Two months compared, not an A/B test."
   },
   {
    "id": "site-bio",
@@ -431,7 +438,7 @@
    "title": "Site · Experience · AI & Systems Lead",
    "url": "/#about",
    "source": "Website",
-   "text": "AI & Systems Lead, Arrow Group Consulting (US outsourced-CMO agency · Michigan, USA (remote) · Part-time contract), Feb 2026 — Present.\n- Built and launched the agency’s in-house email/SMS platform with AI-assisted development in Claude Code: 6 accounts live about 5 weeks after the first commit (Aug–Sep 2026). The agency is now replacing GoHighLevel with it.\n- Added Claude features: drafting helpers for subject lines and preview text, plus Claude Haiku 4.5 subject lines, revision suggestions, a help chat and task-image analysis in the team’s daily content-operations app.\n- Wrote the business case (projected ~89% lower monthly platform cost, no external build spend) and planned a phased migration of 10,000+ client contacts, running the old platform in parallel.\n- Handle 8 clients at once: onboarding end to end (GoHighLevel, Cloudflare sites, DNS, SPF/DKIM/DMARC, A2P 10DLC), explained in plain language on onboarding calls.\n- Built client back-office tools on Cloudflare Workers (a nonprofit funnel-tracker dashboard and a resale startup’s admin dashboard) and integrated Square payments through the Square API."
+   "text": "AI & Systems Lead, Arrow Group Consulting (US outsourced-CMO agency · Michigan, USA (remote) · Part-time contract, on-call), Feb 2026 — Present.\n- Built and launched the agency’s in-house email/SMS platform with AI-assisted development in Claude Code: 6 client accounts live on it about 5 weeks after the first commit (Aug–Sep 2026). The agency is now replacing GoHighLevel with it.\n- Added Claude features: drafting helpers for subject lines and preview text, plus Claude Haiku 4.5 subject lines, revision suggestions, a help chat and task-image analysis in the team’s daily content-operations app.\n- Wrote the business case (projected ~89% lower monthly platform cost, no external build spend) and planned a phased migration of 10,000+ client contacts, running the old platform in parallel.\n- Handle 8 of the agency’s clients at once as their technical lead: onboarding end to end (GoHighLevel, Cloudflare sites, DNS, SPF/DKIM/DMARC, A2P 10DLC), explained in plain language on onboarding calls.\n- Built client back-office tools on Cloudflare Workers (a nonprofit funnel-tracker dashboard and a resale startup’s admin dashboard) and integrated Square payments through the Square API."
   },
   {
    "id": "site-experience-doneverse",
@@ -452,7 +459,7 @@
    "title": "Site · Agency email & SMS platform",
    "url": "/#work-agency",
    "source": "Website",
-   "text": "At work · Arrow Group Consulting · 2026\nThe agency stops renting its marketing platform: a projected ~89% lower monthly platform cost, with no external build spend.\n- 6 client accounts live about 5 weeks after the first commit (Aug–Sep 2026)\n- Now replacing GoHighLevel at the agency, with the old platform run in parallel\n- 3,200+ automated tests, run inside the Workers runtime so no test can send a real message\n- Claude API helpers draft subject lines and preview text; OpenAI makes images\nSafe by default: test mode until switched on, opt-outs re-checked before every send, SMS blocked until A2P 10DLC approval, and 4-role default-deny access.\nStack: TypeScript, Cloudflare Workers + Hono, D1, Queues, React, Resend, Twilio, Claude API\nPrivate company platform, so there is no public link. Screenshots shown with the agency owner’s approval; the client’s name and figures are blurred."
+   "text": "At work · Arrow Group Consulting · 2026\nThe agency stops renting its marketing platform: a projected ~89% lower monthly platform cost, with no external build spend.\n- 6 client accounts live on the platform about 5 weeks after the first commit (Aug–Sep 2026)\n- Now replacing GoHighLevel at the agency, with the old platform run in parallel\n- 3,200+ automated tests, run inside the Workers runtime so no test can send a real message\n- Claude API helpers draft subject lines and preview text; OpenAI makes images\nSafe by default: test mode until switched on, opt-outs re-checked before every send, SMS blocked until A2P 10DLC approval, and 4-role default-deny access.\nStack: TypeScript, Cloudflare Workers + Hono, D1, Queues, React, Resend, Twilio, Claude API\nPrivate company platform, so there is no public link. Screenshots shown with the agency owner’s approval; the client’s name and figures are blurred."
   },
   {
    "id": "site-client-work",
@@ -480,14 +487,28 @@
    "title": "Site summary · Case studies",
    "url": "/llms.txt",
    "source": "Site summary",
-   "text": "- AI Job Hunt engine: built to run unattended on a Cloudflare Worker's 5-minute cron. Claude Opus 5.5 vets public job-board posts (fit 1–10, scam risk, pay), writes the best 10, and an adversarial second pass removes any claim not in the CV. Only strong, clean fits send by themselves after a 3-hour hold, enforced by a database CHECK constraint and re-checked before sending; the rest wait for approval. A Google Apps Script Gmail bridge sends from Gmail and brings replies back into the thread. Hard daily dollar budget; 700+ automated tests.\n- AI Video Engine: a one-line topic becomes a finished 1080x1920 short with burned captions. Claude writes the script, OpenAI makes images and voice, a custom FFmpeg engine renders. About $1 per video vs about $12 for paid generative video; a real 2-part story cost $0.72. Cost estimate before every paid command; never posts by itself; 406 unit tests and 300 acceptance checks.\n- Agency email & SMS platform (Arrow Group Consulting, 2026): built with Claude Code on Cloudflare Workers + D1; 6 accounts live about 5 weeks after the first commit; 3,200+ automated tests; projected ~89% lower monthly platform cost; now replacing GoHighLevel."
+   "text": "- AI Job Hunt engine: an AI system that checks job fit, catches scams and drafts honest applications, with Josh's approval. Live since 20 Oct 2026 on Cloudflare Workers: every day from 7 AM Manila time, Claude Opus 5.5 vets new roles from 5 public job-board APIs (fit 1–10, scam risk, pay). Job posts are untrusted input (prompt-injection checks), an adversarial second pass removes any claim not in the CV, send rules are enforced by a database CHECK constraint, and a hard daily budget caps AI spend (about $1–2.50 a day, estimated). Anything unclear waits for approval; a Google Apps Script Gmail bridge sends from Gmail. 700+ automated tests.\n- AI Video Engine: a one-line topic becomes a finished 1080x1920 short with burned captions. Claude writes the script, OpenAI makes images and voice, a custom FFmpeg engine renders. About $1 per video vs about $12 for paid generative video; a real 2-part story cost $0.72. Cost estimate before every paid command; never posts by itself; 406 unit tests and 300 acceptance checks.\n- Agency email & SMS platform (Arrow Group Consulting, 2026): built with Claude Code on Cloudflare Workers + D1; 6 client accounts live on it about 5 weeks after the first commit; 3,200+ automated tests; projected ~89% lower monthly platform cost (a projection from the business case); now replacing GoHighLevel."
+  },
+  {
+   "id": "llms-client-results",
+   "title": "Site summary · Client results",
+   "url": "/llms.txt",
+   "source": "Site summary",
+   "text": "- HOME.FM (radio station): dedicated sending subdomain with SPF/DKIM/DMARC, warmed to 6,500 emails a day.\n- A nonprofit client's average email click rate went from 4.5% (April 2026) to 9.5% (May 2026). Two months compared, not an A/B test."
+  },
+  {
+   "id": "llms-work-with-me-business-owners",
+   "title": "Site summary · Work with me (business owners)",
+   "url": "/llms.txt",
+   "source": "Site summary",
+   "text": "- I build your custom system, then keep it running every month: the tools your team runs on every day (a client portal, an AI lead pipeline, an internal dashboard, an email/SMS platform), built around how you work.\n- Monthly partnership from $1,000/month. Custom builds start at $2,500, with a fixed quote after a free 15-minute call.\n- Steps: free 15-minute call, fixed quote, I build it (you approve what goes out), then I run and improve it every month. Contact: https://solomonjoshua.com/#start-a-project or WhatsApp https://wa.me/639615562117"
   },
   {
    "id": "llms-experience",
    "title": "Site summary · Experience",
    "url": "/llms.txt",
    "source": "Site summary",
-   "text": "- AI & Systems Lead, Arrow Group Consulting (Michigan, USA; remote, part-time contract), Feb 2026 – present.\n- Virtual Marketing Assistant (VMA), Doneverse (Philippines), Sep 2025 – Feb 2026, about 6 months."
+   "text": "- AI & Systems Lead, Arrow Group Consulting (Michigan, USA; remote, part-time contract, on-call; handles 8 of the agency's clients at once), Feb 2026 – present.\n- Virtual Marketing Assistant (VMA), Doneverse (Philippines), Sep 2025 – Feb 2026, about 6 months."
   },
   {
    "id": "llms-education",

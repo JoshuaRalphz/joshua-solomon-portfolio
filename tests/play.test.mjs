@@ -12,7 +12,7 @@ import { retrieve, CHUNK_BY_ID } from '../functions/_lib/play/retrieval.js';
 import { handleFit } from '../functions/_lib/fitAgent.js';
 import { MOCK_RESULT } from '../functions/_lib/mockResult.js';
 import { memoryStore } from '../functions/_lib/store.js';
-import { OFFERS } from '../src/data/play.js';
+import { PRICE_LINE } from '../src/data/play.js';
 import { buildKnowledge, serialize } from '../scripts/build-knowledge.mjs';
 
 const ORIGIN = 'https://solomonjoshua.com';
@@ -107,6 +107,18 @@ describe('request checks (every demo)', () => {
       }
     });
   }
+
+  test('Pages preview hosts are allowed by exact suffix only', async () => {
+    for (const origin of ['https://joshua-solomon.pages.dev', 'https://feat-interactive-projects.joshua-solomon.pages.dev', 'https://a1b2c3d4.joshua-solomon.pages.dev']) {
+      assert.equal((await run('triage', { request: post('/api/play/triage', BODIES.triage, { origin }) })).res.status, 200, origin);
+    }
+    for (const origin of [
+      'https://evil-joshua-solomon.pages.dev', 'https://joshua-solomon.pages.dev.evil.example', 'http://joshua-solomon.pages.dev',
+      'https://a.b.joshua-solomon.pages.dev', 'https://joshua-solomonx.pages.dev', 'https://joshua-solomon.pages.dev:8443',
+    ]) {
+      assert.equal((await run('triage', { request: post('/api/play/triage', BODIES.triage, { origin }) })).res.status, 403, origin);
+    }
+  });
 
   test('field validation: lengths, types and chips', async () => {
     assert.equal((await run('busywork', { body: { text: 'too short' } })).json.code, 'short');
@@ -248,23 +260,32 @@ describe('shared budget and visitor limit', () => {
     assert.equal((await run('triage', { store })).json.code, 'budget');
   });
 
-  test('8 AI runs per visitor per day across all demos; the fit agent keeps its cap of 5 on the same count', async () => {
+  test('8 AI runs per visitor per day across all demos, counted apart from the fit agent (5)', async () => {
     const store = memoryStore();
-    const order = ['busywork', 'triage', 'ask', 'busywork', 'triage'];
-    for (const name of order) assert.equal((await run(name, { store })).res.status, 200, name);
-    // 5 play runs used: the fit agent (cap 5) now says no for this visitor...
-    const fitReq = new Request('https://solomonjoshua.com/api/fit', {
-      method: 'POST', headers: { 'content-type': 'application/json', origin: ORIGIN, 'cf-connecting-ip': '203.0.113.7' },
-      body: JSON.stringify({ jobText: 'We need an AI engineer to build Claude tools for our support team. '.repeat(4) }),
+    const fitBody = JSON.stringify({ jobText: 'We need an AI engineer to build Claude tools for our support team. '.repeat(4) });
+    const fitRun = () => handleFit(new Request('https://solomonjoshua.com/api/fit', {
+      method: 'POST', headers: { 'content-type': 'application/json', origin: ORIGIN, 'cf-connecting-ip': '203.0.113.7' }, body: fitBody,
+    }), { ...ENV }, {}, {
+      store, now: NOW, sleep: async () => {},
+      createClient: () => ({ beta: { messages: { create: async () => ({ stop_reason: 'end_turn', usage: { input_tokens: 10, output_tokens: 10 }, content: [{ type: 'text', text: JSON.stringify(MOCK_RESULT) }] }) } } }),
     });
-    const fit = await handleFit(fitReq, { ...ENV }, {}, { store, now: NOW, createClient: () => { throw new Error('must not call'); } });
-    assert.equal(fit.status, 429);
-    // ...while play demos go on to 8 in total.
-    for (const name of ['ask', 'triage', 'busywork']) assert.equal((await run(name, { store })).res.status, 200, name);
+    // Play runs share one count across the three demos...
+    for (const name of ['busywork', 'triage', 'ask', 'busywork', 'triage', 'ask', 'triage', 'busywork']) {
+      assert.equal((await run(name, { store })).res.status, 200, name);
+    }
     const ninth = await run('ask', { store });
     assert.equal(ninth.res.status, 429);
     assert.equal(ninth.json.code, 'visitor');
     assert.equal(ninth.client.calls.length, 0);
+    // ...that does not touch the fit agent's own 5 a day.
+    for (let i = 0; i < 5; i += 1) assert.equal((await fitRun()).status, 200, `fit run ${i + 1}`);
+    assert.equal((await fitRun()).status, 429);
+    // And fit runs never used up play runs: a fresh store with 5 fit runs still allows play.
+    const other = memoryStore();
+    for (let i = 0; i < 5; i += 1) await handleFit(new Request('https://solomonjoshua.com/api/fit', {
+      method: 'POST', headers: { 'content-type': 'application/json', origin: ORIGIN, 'cf-connecting-ip': '203.0.113.7' }, body: fitBody,
+    }), { ...ENV }, {}, { store: other, now: NOW, sleep: async () => {}, createClient: () => ({ beta: { messages: { create: async () => ({ stop_reason: 'end_turn', usage: {}, content: [{ type: 'text', text: JSON.stringify(MOCK_RESULT) }] }) } } }) });
+    assert.equal((await run('triage', { store: other })).res.status, 200);
     // Another visitor is unaffected; PLAY_RUNS_PER_VISITOR overrides the default.
     assert.equal((await run('ask', { store, ip: '198.51.100.9' })).res.status, 200);
     assert.equal((await run('ask', { store: memoryStore(), env: { PLAY_RUNS_PER_VISITOR: '0' } })).json.code, 'visitor');
@@ -279,11 +300,15 @@ describe('shared budget and visitor limit', () => {
 });
 
 describe('busywork: plan & price', () => {
-  test('prices come only from the two real offers', async () => {
-    const { json } = await run('busywork');
+  test('the only price shown is the one real price line', async () => {
+    const { json, client } = await run('busywork');
     assert.equal(json.ok, true);
-    assert.deepEqual(json.result.offer.items, [OFFERS.starter, OFFERS.care]);
-    assert.deepEqual(OFFERS, { starter: { label: 'Starter automation', price: 'from $500 one-time' }, care: { label: 'Ongoing systems care', price: 'from $500/month' } });
+    assert.equal(json.result.price_line, PRICE_LINE);
+    assert.equal(PRICE_LINE, 'Monthly partnership from $1,000/month. Custom builds from $2,500, with a fixed quote after a free 15-minute call.');
+    assert.equal('offer' in json.result, false); // no tiers
+    // The model is never asked to pick or write a price.
+    assert.equal('offer' in client.calls[0].output_config.format.schema.properties, false);
+    assert.doesNotMatch(busywork.SYSTEM_PROMPT, /\$\s?\d/);
   });
 
   test('currency amounts in model text are removed; unknown tools dropped; hours clamped', () => {
@@ -295,29 +320,26 @@ describe('busywork: plan & price', () => {
         { title: '', how_it_works: 'no title', ai_part: '', human_step: '', tools: [], hours_low: 1, hours_high: 2, assumption: '' },
         { title: 'Bad hours', how_it_works: 'x', ai_part: '', human_step: '', tools: [], hours_low: 'many', hours_high: 2, assumption: '' },
       ],
-      offer: 'premium_package',
-      offer_reason: 'Just $1k.',
-      call_agenda: 'ok',
+      call_agenda: 'Costs $1k to start.',
     });
-    assert.doesNotMatch(JSON.stringify(result.summary + result.automations[0].how_it_works + result.offer.reason), /\$\s?\d|€|\d\s?usd/i);
+    assert.doesNotMatch(JSON.stringify(result.summary + result.automations[0].how_it_works + result.call_agenda), /\$\s?\d|€|\d\s?usd/i);
     assert.deepEqual(result.automations[0].tools, ['Claude API']);
     // 90 and -3 are clamped to 0..20, then high is held to at most double the low (or low + 2).
     assert.deepEqual([result.automations[0].hours_low, result.automations[0].hours_high], [0, 2]);
     assert.equal(result.automations.length, 1);
     assert.deepEqual(result.hours, { low: 0, high: 2 });
-    assert.deepEqual(result.offer.items, [OFFERS.starter]); // unknown offer id -> the one-time starter
   });
 
   test('other ways of writing a price are removed too', () => {
     const texts = ['USD 500 a build', 'about 500 bucks', '2k usd', 'five hundred dollars', '300 euros', 'EUR 99'];
     for (const t of texts) {
-      const r = busywork.normalize({ is_business_task: true, summary: t, automations: [{ title: 'x', how_it_works: t, hours_low: 1, hours_high: 2 }], offer: 'starter', offer_reason: '', call_agenda: '' });
+      const r = busywork.normalize({ is_business_task: true, summary: t, automations: [{ title: 'x', how_it_works: t, hours_low: 1, hours_high: 2 }], call_agenda: '' });
       assert.match(r.summary, /price agreed on the call/, t);
     }
   });
 
   test('not a business task: no automations shown', () => {
-    const result = busywork.normalize({ is_business_task: false, summary: 'That reads like a joke.', automations: [{ title: 'x', how_it_works: 'y', hours_low: 1, hours_high: 2 }], offer: 'starter', offer_reason: '', call_agenda: '' });
+    const result = busywork.normalize({ is_business_task: false, summary: 'That reads like a joke.', automations: [{ title: 'x', how_it_works: 'y', hours_low: 1, hours_high: 2 }], call_agenda: '' });
     assert.equal(result.is_business_task, false);
     assert.deepEqual(result.automations, []);
     assert.throws(() => busywork.normalize({ summary: 'no flag' }));
