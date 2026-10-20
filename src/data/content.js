@@ -106,12 +106,12 @@ export const agencyCase = {
 // Client work, shown as one compact list. `url` only where the domain still belongs to
 // that client: adasclosetsau.com and aoutilityservices.com now redirect to other brands.
 export const clientWork = [
-  { name: 'Alpha Omega Utility Services', place: 'Michigan', line: 'Business texting approved: A2P 10DLC brand registration on GoHighLevel, plus site, email and domain setup.' },
-  { name: 'HOME.FM', place: 'Spring Arbor, MI', line: 'Email that reaches the inbox: a dedicated sending subdomain with SPF/DKIM/DMARC, warmed to 6,500 emails a day.', url: 'https://www.home.fm' },
-  { name: 'Ada’s Closet', place: 'Spring Arbor, MI', line: 'Back-office for a student consignment startup: listings to Poshmark, eBay and Depop, live inventory, sale alerts in Apps Script.' },
-  { name: 'Alliance Service Brands', place: 'Jackson, MI', line: 'One custom site that unifies six home-service brands.', url: 'https://www.allianceservicebrands.com' },
-  { name: 'Endtime Entrepreneurs', place: 'USA', line: 'A site built from scratch on Cloudflare Pages, plus CRM, music distribution and SEO.', url: 'https://endtimeentrepreneurs.com' },
-  { name: 'TrueCare Chiropractic', place: 'Lansing, MI', line: 'Email marketing, site upkeep and SEO for a chiropractic clinic.', url: 'https://www.truecarechiro.com' },
+  { name: 'Alpha Omega Safety Solutions (AOSS)', place: 'Michigan', line: 'Built the website, plus approved business texting (A2P 10DLC brand registration on GoHighLevel), email and domain setup.', url: 'https://aosafe.com' },
+  { name: 'HOME.FM', place: 'Spring Arbor, MI', line: 'Built the website, plus email that reaches the inbox: a dedicated sending subdomain with SPF/DKIM/DMARC, warmed to 6,500 emails a day.', url: 'https://listenhome.fm' },
+  { name: 'Ada’s Closet', place: 'Spring Arbor, MI', line: 'Built the website and back-office for a student consignment startup: listings to Poshmark, eBay and Depop, live inventory, sale alerts in Apps Script.' },
+  { name: 'Alliance Service Brands', place: 'Jackson, MI', line: 'Built one custom website that unifies six home-service brands.', url: 'https://www.allianceservicebrands.com' },
+  { name: 'Endtime Entrepreneurs', place: 'USA', line: 'Built the website from scratch on Cloudflare Pages, plus CRM, music distribution and SEO.', url: 'https://endtimeentrepreneurs.com' },
+  { name: 'TrueCare Chiropractic', place: 'Lansing, MI', line: 'Built the website, plus email marketing, upkeep and SEO for a chiropractic clinic.', url: 'https://www.truecarechiro.com' },
 ];
 
 // "What I build": three offers, framed as what the business gets.
