@@ -17,7 +17,7 @@ export const PLAY_MODEL = 'claude-haiku-5-5';
 // USD per million tokens = micro-dollars per token. Prompts here stay far under the
 // 100K-token line where Haiku 5.5's higher rate ($0.50 / $2.50) starts.
 export const HAIKU_PRICE = { input: 0.1, output: 0.5 };
-export const MAX_BODY_BYTES = 8 * 1024;
+export const MAX_BODY_BYTES = 16 * 1024;
 const DEFAULT_RUNS_PER_VISITOR = 8;
 const DEFAULT_PLAY_BUDGET = { dailyUsd: 0.5, monthlyUsd: 15 };
 const API_TIMEOUT_MS = 30_000;

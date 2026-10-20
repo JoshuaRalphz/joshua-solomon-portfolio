@@ -130,7 +130,9 @@ export default function MissedCall() {
   const [isInteractive, setIsInteractive] = useState(false);
   const [path, setPath] = useState({ reply: '', slot: '' });
   const [at, setAt] = useState(0);
+  const [hasActed, setHasActed] = useState(false);
   const timelineRef = useRef(null);
+  const controlsRef = useRef(null);
 
   useEffect(() => setIsInteractive(true), []);
 
@@ -149,13 +151,22 @@ export default function MissedCall() {
     timelineRef.current?.querySelector('[aria-current="step"]')?.scrollIntoView({ block: 'nearest', behavior: reduce ? 'auto' : 'smooth' });
   }, [at, isInteractive]);
 
-  const next = () => setAt((i) => Math.min(i + 1, last));
+  // The control group swaps (Next <-> choices); keep keyboard focus inside it once the visitor has acted.
+  useEffect(() => {
+    if (hasActed) controlsRef.current?.querySelector('[role="group"] button, .btn-primary')?.focus();
+  }, [waitingFor, isDone, hasActed]);
+
+  const next = () => {
+    setHasActed(true);
+    setAt((i) => Math.min(i + 1, last));
+  };
   const back = () => setAt((i) => Math.max(i - 1, 0));
   const restart = () => {
     setPath({ reply: '', slot: '' });
     setAt(0);
   };
   const choose = (key, value) => {
+    setHasActed(true);
     setPath((p) => ({ ...p, [key]: value }));
   };
 
@@ -168,7 +179,7 @@ export default function MissedCall() {
         <div className="play-sim-phone">
           <Phone steps={steps} at={isInteractive ? at : last} />
           {isInteractive && (
-            <div className="play-sim-controls">
+            <div ref={controlsRef} className="play-sim-controls">
               {waitingFor === 'reply' && (
                 <div role="group" aria-label="What does Dana reply?" className="grid gap-2">
                   <p className="text-sm font-bold text-ink">What does Dana reply?</p>
@@ -232,7 +243,7 @@ export default function MissedCall() {
       </div>
 
       <div aria-live="polite" className="sr-only">
-        {isInteractive && (waitingFor ? `Step ${at + 1}: ${current.title}. Choose an option.` : `Step ${at + 1} of ${last + 1}: ${current.title}. ${current.text ?? ''}`)}
+        {hasActed && (waitingFor ? `Step ${at + 1}: ${current.title}. Choose an option.` : `Step ${at + 1} of ${last + 1}: ${current.title}. ${current.text ?? ''}`)}
       </div>
 
       <div className="split mt-[var(--gap)]">

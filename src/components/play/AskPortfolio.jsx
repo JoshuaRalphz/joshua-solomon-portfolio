@@ -62,7 +62,7 @@ function Answer({ turn }) {
           <span key={`${i}-${sentence.text}`}>
             {sentence.text}
             {sentence.source_ids.map((id) => (
-              <sup key={id} className="play-sup"><span className="sr-only">source </span>{number.get(id)}</sup>
+              <sup key={id} className="play-sup"><span className="sr-only"> source </span>{number.get(id)}</sup>
             ))}{' '}
           </span>
         ))}
@@ -91,7 +91,7 @@ export default function AskPortfolio() {
     if (last && turns.length) last.scrollIntoView({ block: 'nearest', behavior: reduce ? 'auto' : 'smooth' });
   }, [turns]);
 
-  const ask = async (text) => {
+  const ask = async (text, { fromInput = false } = {}) => {
     const q = text.replace(/\s+/g, ' ').trim();
     if (isRunning) return;
     if (q.length < 3 || q.length > MAX_CHARS) {
@@ -101,7 +101,7 @@ export default function AskPortfolio() {
     }
     setFormError('');
     setIsRunning(true);
-    setQuestion('');
+    if (fromInput) setQuestion('');
     const id = Date.now();
     setTurns((list) => [...list, { id, question: q, pending: true }].slice(-MAX_TURNS));
     const { data, error } = await postPlay('/api/play/ask', { question: q });
@@ -114,7 +114,7 @@ export default function AskPortfolio() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    ask(question);
+    ask(question, { fromInput: true });
   };
 
   const last = turns.at(-1);
@@ -158,7 +158,10 @@ export default function AskPortfolio() {
                 ref={inputRef}
                 className="min-w-0 flex-1 bg-transparent text-ink outline-none placeholder:text-muted"
                 value={question}
-                onChange={(event) => setQuestion(event.target.value)}
+                onChange={(event) => {
+                  setQuestion(event.target.value);
+                  if (formError) setFormError('');
+                }}
                 maxLength={MAX_CHARS}
                 placeholder="e.g. What has he built with Cloudflare?"
                 autoComplete="off"

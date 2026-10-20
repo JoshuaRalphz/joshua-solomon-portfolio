@@ -29,7 +29,7 @@ const SYNONYMS = {
   located: ['based', 'olongapo'], location: ['based', 'olongapo'], live: ['based', 'olongapo'], country: ['philippines'],
   timezone: ['hours', 'eastern'], time: ['hours'], zone: ['hours'], availability: ['available', 'start'],
   start: ['available', 'start'], hire: ['available', 'start'], salary: ['pay'], rate: ['pay'],
-  email: ['email'], contact: ['email', 'whatsapp', 'reach'], reach: ['email', 'whatsapp'], phone: ['whatsapp'],
+  email: ['email', 'gmail.com', 'reach'], contact: ['email', 'gmail.com', 'whatsapp', 'reach'], reach: ['email', 'whatsapp'], phone: ['whatsapp'],
   languages: ['english', 'filipino'], speak: ['english', 'filipino'], english: ['english', 'proficiency'],
   testing: ['tests', 'test'], tests: ['tests', 'test'], cost: ['cost', 'budget'], cheap: ['cost'], price: ['cost'],
   video: ['video', 'ffmpeg'], videos: ['video'], job: ['job', 'work', 'role'], hunting: ['hunt'], crm: ['crm', 'gohighlevel', 'hubspot'],
@@ -45,6 +45,7 @@ export function tokenize(text) {
     .toLowerCase()
     .normalize('NFKD')
     .replace(/[̀-ͯ]/g, '')
+    .replace(/[’']s/g, '')
     .replace(/[’']/g, '')
     .split(/[^a-z0-9$.]+/)
     .map((word) => word.replace(/^\.+|\.+$/g, ''))
@@ -79,8 +80,11 @@ export const CHUNKS = knowledge.chunks;
 export const CHUNK_BY_ID = new Map(knowledge.chunks.map((chunk) => [chunk.id, chunk]));
 
 /** Each question word with the document words it may match (itself plus synonyms). */
+// Keys are compared after stemming, like the question words ("located" -> "locat").
+const STEMMED_SYNONYMS = Object.fromEntries(Object.entries(SYNONYMS).map(([key, extra]) => [stem(key), extra]));
+
 function expand(question) {
-  return [...new Set(tokenize(question))].map((word) => ({ word, terms: [...new Set([word, ...(SYNONYMS[word] ?? []).map(stem)])] }));
+  return [...new Set(tokenize(question))].map((word) => ({ word, terms: [...new Set([word, ...(STEMMED_SYNONYMS[word] ?? []).map(stem)])] }));
 }
 
 /**

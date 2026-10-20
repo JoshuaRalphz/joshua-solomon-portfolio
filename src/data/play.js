@@ -10,7 +10,7 @@ export const OFFERS = {
 
 // Free call CTA. ?topic=project preselects the contact form topic where supported.
 export const CALL_HREF = '/?topic=project#contact';
-export const CALL_LABEL = 'Book the free 15-minute call';
+export const CALL_LABEL = 'Ask for a free 15-minute call';
 
 export const playDemos = [
   {

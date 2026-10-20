@@ -9,7 +9,7 @@ export const MIN_CHARS = 30;
 export const MAX_CHARS = 1500;
 export const MAX_TOKENS = 3000;
 const MAX_AUTOMATIONS = 3;
-const MAX_HOURS_EACH = 40;
+const MAX_HOURS_EACH = 20;
 
 export const TEAM_SIZES = ['Just me', '2–5', '6–20', '21–50', '50+'];
 export const INDUSTRIES = ['Home services', 'Clinic or health', 'Retail or e-commerce', 'Agency or consulting', 'Nonprofit', 'Real estate', 'Other'];
@@ -116,6 +116,7 @@ function toAutomation(item) {
   let high = toHours(item.hours_high);
   if (!title || !how || low === null || high === null) return null;
   if (low > high) [low, high] = [high, low];
+  high = Math.min(high, Math.max(low * 2, low + 2)); // the prompt's "high at most double the low", enforced
   return {
     title,
     how_it_works: how,

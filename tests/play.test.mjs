@@ -301,9 +301,10 @@ describe('busywork: plan & price', () => {
     });
     assert.doesNotMatch(JSON.stringify(result.summary + result.automations[0].how_it_works + result.offer.reason), /\$\s?\d|€|\d\s?usd/i);
     assert.deepEqual(result.automations[0].tools, ['Claude API']);
-    assert.deepEqual([result.automations[0].hours_low, result.automations[0].hours_high], [0, 40]);
+    // 90 and -3 are clamped to 0..20, then high is held to at most double the low (or low + 2).
+    assert.deepEqual([result.automations[0].hours_low, result.automations[0].hours_high], [0, 2]);
     assert.equal(result.automations.length, 1);
-    assert.deepEqual(result.hours, { low: 0, high: 40 });
+    assert.deepEqual(result.hours, { low: 0, high: 2 });
     assert.deepEqual(result.offer.items, [OFFERS.starter]); // unknown offer id -> the one-time starter
   });
 

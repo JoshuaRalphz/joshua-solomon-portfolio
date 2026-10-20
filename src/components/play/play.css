@@ -230,6 +230,7 @@
 .play-bubble--q { justify-self: end; background: theme('colors.lime.DEFAULT'); color: theme('colors.ink'); font-weight: 600; border-bottom-right-radius: .25rem; }
 .play-bubble--a { justify-self: start; background: theme('colors.card'); color: theme('colors.ink'); border-bottom-left-radius: .25rem; }
 .play-bubble--none { background: theme('colors.mist'); border: 1.5px dashed theme('colors.line-strong'); }
+.play-sup + .play-sup { margin-left: .2rem; }
 .play-sup { margin-left: .125rem; padding: 0 .3rem; border-radius: .375rem; background: theme('colors.lime.DEFAULT'); color: theme('colors.ink'); font-family: theme('fontFamily.mono'); font-size: .6875rem; font-weight: 500; }
 .play-source {
   display: flex;
