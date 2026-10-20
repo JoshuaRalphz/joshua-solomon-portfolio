@@ -1,10 +1,10 @@
 // Retrieval for "Ask my portfolio": BM25 keyword ranking over the ~70 bundled passages
-// in knowledge.json. Why BM25 and not embeddings: the corpus is tiny and fixed, BM25
+// in knowledge.js. Why BM25 and not embeddings: the corpus is tiny and fixed, BM25
 // runs in well under a millisecond inside the Worker with no binding, no network call
 // and no extra cost, it is deterministic, and the offline eval (evals/ask-portfolio.jsonl)
 // can test it exactly. Embeddings (e.g. Workers AI) would add a binding, a network hop
 // per question and results that are harder to test offline, for little gain at this size.
-import knowledge from './knowledge.json' with { type: 'json' };
+import knowledge from './knowledge.js';
 
 export const TOP_K = 5;
 // A passage must score at least this much to be sent to Claude. Below it, the

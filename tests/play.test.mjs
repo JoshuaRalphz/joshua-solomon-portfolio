@@ -426,8 +426,8 @@ describe('ask my portfolio', () => {
     assert.ok(['cv-education', 'site-education', 'llms-education'].includes(json.result.sources[0].id));
   });
 
-  test('knowledge.json is up to date with its sources (run: node scripts/build-knowledge.mjs)', async () => {
-    const committed = readFileSync(new URL('../functions/_lib/play/knowledge.json', import.meta.url), 'utf8').replace(/\r\n/g, '\n');
+  test('knowledge.js is up to date with its sources (run: node scripts/build-knowledge.mjs)', async () => {
+    const committed = readFileSync(new URL('../functions/_lib/play/knowledge.js', import.meta.url), 'utf8').replace(/\r\n/g, '\n');
     assert.equal(committed, serialize(await buildKnowledge()));
   });
 });
