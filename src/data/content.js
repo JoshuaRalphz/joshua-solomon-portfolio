@@ -37,12 +37,11 @@ export const sections = [
   { id: 'top', num: '00', label: 'Overview' },
   { id: 'work', num: '01', label: 'Systems' },
   { id: 'fit-agent', num: '02', label: 'How I’d help' },
-  { id: 'play', num: '03', label: 'Try it' },
-  { id: 'build', num: '04', label: 'What I build' },
-  { id: 'work-with-me', num: '05', label: 'Work with me' },
-  { id: 'results', num: '06', label: 'Results' },
-  { id: 'about', num: '07', label: 'About' },
-  { id: 'contact', num: '08', label: 'Contact' },
+  { id: 'build', num: '03', label: 'What I build' },
+  { id: 'work-with-me', num: '04', label: 'Work with me' },
+  { id: 'results', num: '05', label: 'Results' },
+  { id: 'about', num: '06', label: 'About' },
+  { id: 'contact', num: '07', label: 'Contact' },
 ];
 
 export const hero = {

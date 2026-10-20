@@ -15,10 +15,10 @@
 /Joshua_Solomon_Resume_v8.pdf              /Joshua_Solomon_Resume_v9_AI_Solutions_Engineer.pdf  301
 /Joshua_Solomon_Resume_v8_AI_Engineer.pdf  /Joshua_Solomon_Resume_v9_AI_Solutions_Engineer.pdf  301
 
-/play/      /#play      301
-/play       /#play      301
 /work/      /#work      301
 /work       /#work      301
 
 # /work/x without a slash: Cloudflare Pages adds the slash itself (no rule here, to avoid a loop).
 # Anything else that does not exist gets dist/404.html with a real 404 status.
+/play /  302
+/play/* /  302
