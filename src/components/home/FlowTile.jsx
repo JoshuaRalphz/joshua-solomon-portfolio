@@ -13,6 +13,8 @@ export default function FlowTile({ className = '' }) {
   const listRef = useRef(null);
   const isLit = useInViewOnce(listRef, 0.5);
   const [active, setActive] = useState(0);
+  // Announce a step chosen by click, tap or keyboard; stay quiet while a pointer just passes over.
+  const [live, setLive] = useState('polite');
   const panelId = useId();
 
   return (
@@ -29,8 +31,8 @@ export default function FlowTile({ className = '' }) {
               className="flow-step"
               aria-pressed={i === active}
               aria-controls={panelId}
-              onClick={() => setActive(i)}
-              onMouseEnter={() => setActive(i)}
+              onClick={() => { setLive('polite'); setActive(i); }}
+              onMouseEnter={() => { setLive('off'); setActive(i); }}
             >
               <strong>{step.label}</strong>
               <span>{step.caption}</span>
@@ -39,7 +41,7 @@ export default function FlowTile({ className = '' }) {
         ))}
       </ol>
 
-      <div id={panelId} aria-live="polite" className="flow-example mt-5">
+      <div id={panelId} aria-live={live} className="flow-example mt-5">
         <p className="label">
           <span className="label-num">Step {active + 1} of {flow.length}</span> · In the AI Job Hunt engine
         </p>
