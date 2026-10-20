@@ -5,7 +5,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['"Bricolage Grotesque"', 'system-ui', '-apple-system', 'sans-serif'],
+        sans: ['"Bricolage Grotesque Variable"', 'system-ui', '-apple-system', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
       colors: {

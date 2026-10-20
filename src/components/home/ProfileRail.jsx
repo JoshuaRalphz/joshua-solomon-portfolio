@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { ArrowRight, Download, Facebook, Github, Linkedin, Mail, MapPin, MessageCircle } from 'lucide-react';
+import { ArrowRight, Download, Github, Linkedin, Mail, MapPin, MessageCircle } from 'lucide-react';
 import WireNav from './WireNav.jsx';
 import { initials, profile } from '../../data/content.js';
 import { useRailFit } from '../../hooks/useRailFit.js';
@@ -9,7 +9,6 @@ const SOCIAL_LINKS = [
   { label: 'WhatsApp', href: profile.whatsappLink, Icon: MessageCircle },
   { label: 'LinkedIn', href: profile.linkedin, Icon: Linkedin },
   { label: 'GitHub', href: profile.github, Icon: Github },
-  { label: 'Facebook', href: profile.facebook, Icon: Facebook },
 ];
 
 /** The square face crop, or the monogram disc when profile.avatar is not set. */
@@ -60,7 +59,7 @@ export default function ProfileRail() {
           <p className="mt-1 text-sm font-medium leading-snug text-body">
             <span className="font-mono text-xs text-ink">{profile.handle}</span>
             <span aria-hidden="true"> · </span>
-            {profile.shortRole}
+            {profile.title}
           </p>
           <p className="rail-location mt-1.5 flex items-center gap-1.5 text-sm font-medium text-muted">
             <MapPin size={14} aria-hidden="true" className="flex-none" />
@@ -76,13 +75,13 @@ export default function ProfileRail() {
           </a>
           <a href={profile.resumeUrl} download className="btn btn-secondary rail-resume px-3">
             <Download size={18} aria-hidden="true" className="flex-none max-[420px]:hidden" />
-            <span className="rail-resume-text">Download resume</span>
+            <span className="rail-resume-text">Download CV</span>
           </a>
         </div>
 
         <WireNav className="rail-nav mt-5 hidden lg:block" />
 
-        {/* Five 44px targets are 220px; the narrowest rail has 222px, so no gap from 1024px. */}
+        {/* Four 44px targets; the narrowest rail has 222px. */}
         <ul className="rail-social mt-3 flex justify-between gap-1 md:justify-end lg:mt-4 lg:justify-between lg:gap-0">
           {SOCIAL_LINKS.map(({ label, href, Icon }) => {
             const isExternal = href.startsWith('http');

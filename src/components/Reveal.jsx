@@ -1,22 +1,8 @@
-import { m } from 'framer-motion';
-
-const REVEAL_EASE = [0.16, 1, 0.3, 1];
-
 /**
- * Reveal-on-scroll wrapper: once per element, 12px up + fade in.
- * Under prefers-reduced-motion, MotionConfig (App.jsx) drops the transform.
- * `m` (not `motion`) because App.jsx loads only the domAnimation features.
+ * Reveal-on-scroll with no JavaScript: `.reveal` uses a CSS scroll-driven animation
+ * (styles.css) where the browser supports it, and is simply visible everywhere else,
+ * under reduced motion, and in the prerendered HTML.
  */
-export function Reveal({ children, delay = 0, className }) {
-  return (
-    <m.div
-      initial={{ opacity: 0, y: 12 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-50px' }}
-      transition={{ duration: 0.45, ease: REVEAL_EASE, delay }}
-      className={className}
-    >
-      {children}
-    </m.div>
-  );
+export function Reveal({ children, className = '', as: Tag = 'div' }) {
+  return <Tag className={`reveal ${className}`}>{children}</Tag>;
 }

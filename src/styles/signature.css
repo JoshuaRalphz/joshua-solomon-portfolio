@@ -1,5 +1,5 @@
-/* The signature pieces: the wire menu, the flow tile, the tool strip and the
-   click-to-load video facade. Plain CSS outside any @layer, loaded after the
+/* The signature pieces: the wire menu, the flow tile, the tool chips and the
+   portrait. Plain CSS outside any @layer, loaded after the
    Tailwind utilities, so a rule here beats a utility of equal specificity:
    keep spacing resets out of this file. */
 
@@ -111,8 +111,7 @@
 .flow[data-lit="true"] li::before { background: theme('colors.lime.DEFAULT'); box-shadow: 0 0 0 2px theme('colors.lime.DEFAULT'); }
 .flow strong { display: block; color: theme('colors.mist'); font-weight: 700; }
 .flow span { color: theme('colors.mist-dim'); }
-@media (max-width: 22.49rem) { .flow li { padding-right: .375rem; font-size: .8125rem; } }
-@media (min-width: 768px) and (max-width: 1279.98px) {
+@media (max-width: 1279.98px) {
   .flow { grid-template-columns: minmax(0, 1fr); row-gap: 1rem; }
   .flow::before { display: none; }
   .flow li { padding: 0 0 0 1.75rem; }
@@ -126,42 +125,19 @@
   }
 }
 
-/* ---------- TOOL STRIP: one slow row, pausable ---------- */
-@keyframes marqueeLeft {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-.marquee-wrap { overflow-x: hidden; overflow-x: clip; }
-.marquee-mask {
-  -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
-          mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
-}
-.marquee-track { display: flex; width: max-content; animation: marqueeLeft 80s linear infinite; }
-.marquee-track > ul { display: flex; flex: none; list-style: none; margin: 0; padding: 0; }
-.marquee-wrap:hover .marquee-track,
-.marquee-wrap:focus-within .marquee-track,
-.marquee-wrap.is-paused .marquee-track { animation-play-state: paused; }
+/* ---------- TOOL CHIPS: static, wrapped ---------- */
 .tool-chip {
   display: inline-flex;
   align-items: center;
   gap: .5rem;
-  margin-inline: .375rem;
-  padding: .625rem 1rem;
+  padding: .5rem .875rem;
   background: theme('colors.sunk');
   border: 1px solid theme('colors.line');
   border-radius: 999px;
-  white-space: nowrap;
   color: theme('colors.ink');
   font-weight: 600;
   font-size: .875rem;
   line-height: 1.2;
-}
-@media (prefers-reduced-motion: reduce) {
-  /* A static, wrapped list: no loop, no duplicate row, no edge fade. */
-  .marquee-track { animation: none; width: auto; display: block; }
-  .marquee-track > ul { flex-wrap: wrap; row-gap: .5rem; padding-inline: calc(var(--pad) - .375rem); }
-  .marquee-track > [aria-hidden="true"] { display: none; }
-  .marquee-mask { -webkit-mask-image: none; mask-image: none; }
 }
 
 /* ---------- PORTRAIT TILE: the photo, or the monogram until profile.photo is set ---------- */
@@ -169,14 +145,14 @@
   position: relative;
   display: grid;
   place-items: center;
-  aspect-ratio: 1 / 1;
   background-color: theme('colors.ink');
   background-image: radial-gradient(rgba(238, 242, 236, .10) 1px, transparent 1.2px);
   background-size: 24px 24px;
   border-radius: .75rem;
   overflow: hidden;
 }
-@media (min-width: 768px) { .portrait { aspect-ratio: 4 / 3; } }
+@media (max-width: 767.98px) { .portrait { aspect-ratio: 4 / 3; } }
+@media (min-width: 768px) { .portrait { aspect-ratio: 3 / 4; } }
 @media (min-width: 1280px) { .portrait { aspect-ratio: auto; flex: 1 1 auto; min-height: 12rem; } }
 .portrait-mark {
   font-size: clamp(5rem, 22vw, 9rem);

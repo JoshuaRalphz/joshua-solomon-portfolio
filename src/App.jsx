@@ -1,29 +1,17 @@
-import { LazyMotion, MotionConfig, domAnimation } from 'framer-motion';
-import TopBar from './components/TopBar.jsx';
 import Home from './pages/Home.jsx';
-import { ActiveSectionProvider } from './hooks/useActiveSection.jsx';
+import CaseStudy from './pages/CaseStudy.jsx';
+import NotFound from './pages/NotFound.jsx';
+import { cases } from './data/cases.js';
+import { normalizePath } from './routes.js';
 
 /**
- * One page, no router. The old multi-page paths (/about, /services, /works,
- * /resume, /contact, /plan) are redirected to their section in
- * public/_redirects, and the browser's own scroll restoration handles Back
- * and reload, so nothing here touches the scroll position.
+ * No router: each page is prerendered to its own HTML file (scripts/prerender.mjs)
+ * and hydrated by main.jsx with the same path, so server and client render the same tree.
  */
-export default function App() {
-  return (
-    <LazyMotion features={domAnimation} strict>
-      <MotionConfig reducedMotion="user">
-        <ActiveSectionProvider>
-          <a
-            href="#main"
-            className="btn btn-primary sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-50 focus:px-5"
-          >
-            Skip to content
-          </a>
-          <TopBar />
-          <Home />
-        </ActiveSectionProvider>
-      </MotionConfig>
-    </LazyMotion>
-  );
+export default function App({ path }) {
+  const route = normalizePath(path);
+  if (route === '/') return <Home />;
+  const study = cases.find((c) => c.path === route);
+  if (study) return <CaseStudy slug={study.slug} />;
+  return <NotFound />;
 }
