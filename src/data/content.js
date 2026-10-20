@@ -35,6 +35,8 @@ export const initials = profile.name.split(' ').map((word) => word[0]).join('');
 export const sections = [
   { id: 'top', num: '00', label: 'Overview' },
   { id: 'work', num: '01', label: 'Projects' },
+  // The live fit agent (src/components/fit). 'AI' instead of a number keeps 02-05 unchanged.
+  { id: 'fit', num: 'AI', label: "How I'd help" },
   { id: 'results', num: '02', label: 'Results' },
   { id: 'capabilities', num: '03', label: 'Services' },
   { id: 'about', num: '04', label: 'About' },

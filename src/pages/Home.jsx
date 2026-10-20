@@ -2,6 +2,7 @@ import ProfileRail from '../components/home/ProfileRail.jsx';
 import HeroBento from '../components/home/HeroBento.jsx';
 import ExploreCards from '../components/home/ExploreCards.jsx';
 import Projects from '../components/home/Projects.jsx';
+import FitAgent from '../components/fit/FitAgent.jsx';
 import Results from '../components/home/Results.jsx';
 import Services from '../components/home/Services.jsx';
 import About from '../components/home/About.jsx';
@@ -26,6 +27,7 @@ export default function Home() {
             <ExploreCards />
           </div>
           <Projects />
+          <FitAgent />
           <Results />
           <Services />
           <About />
