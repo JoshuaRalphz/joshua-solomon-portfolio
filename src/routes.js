@@ -2,6 +2,8 @@ import { cases } from './data/cases.js';
 import { profile } from './data/content.js';
 
 export const SITE = 'https://solomonjoshua.com';
+// Unlisted interview demo: noindex, and not in the nav, home page, sitemap.xml or llms.txt.
+export const CLINIC_DEMO_PATH = '/demo/clinic/';
 
 const HOME_DESCRIPTION = 'AI Solutions Engineer: I build AI that saves businesses time and money. Claude or OpenAI does the drafting, writing or sorting; the code around it keeps costs known, output checked and a person in charge. Case studies: an AI system that checks job fit, catches scams and drafts honest applications for my approval (Claude Opus on Cloudflare Workers), and an AI video engine at about $1 per video. For business owners: custom systems, built and then run every month.';
 
@@ -19,6 +21,13 @@ export const routes = [
     title: `${c.name}: case study · ${profile.name}, ${profile.title}`,
     description: c.seo,
   })),
+  {
+    path: CLINIC_DEMO_PATH,
+    file: 'demo/clinic/index.html',
+    title: `Clinic enquiry assistant (demo) · ${profile.name}`,
+    description: 'An interview demo: a clinic website enquiry is triaged by Claude, replies are drafted for a person to approve, and code decides the GoHighLevel routing. Fictional clinic and enquiries.',
+    noindex: true,
+  },
   {
     path: '/404',
     file: '404.html',
