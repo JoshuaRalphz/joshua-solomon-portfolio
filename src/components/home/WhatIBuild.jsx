@@ -8,7 +8,6 @@ export default function WhatIBuild() {
   return (
     <section id="build" aria-labelledby="build-title">
       <SectionHead
-        num="03"
         id="build"
         label="What I build"
         title="What I build for a team."

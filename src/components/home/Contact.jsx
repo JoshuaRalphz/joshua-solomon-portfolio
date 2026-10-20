@@ -2,7 +2,7 @@ import { Download, FileText, Github, Linkedin, Mail, MessageCircle } from 'lucid
 import { Reveal } from '../Reveal.jsx';
 import SectionHead from './SectionHead.jsx';
 import ContactForm from './ContactForm.jsx';
-import { profile } from '../../data/content.js';
+import { PROJECT_HASH, profile } from '../../data/content.js';
 
 const DIRECT_CONTACTS = [
   { Icon: Mail, label: 'Email · replies within 24h', value: profile.email, href: `mailto:${profile.email}` },
@@ -23,7 +23,7 @@ function ContactRow({ Icon, label, value, href }) {
       >
         <Icon size={18} aria-hidden="true" className="flex-none text-mist-dim" />
         <span className="min-w-0">
-          <span className="block text-[.8125rem] font-medium leading-snug text-mist-dim">{label}</span>
+          <span className="block text-[.8125rem] font-medium leading-snug text-mist-dim">{label}</span>{' '}
           <span className="wrap-anywhere block text-sm font-semibold leading-snug text-mist">{value}</span>
         </span>
         {isExternal && <span className="sr-only"> (opens in a new tab)</span>}
@@ -38,17 +38,19 @@ export default function Contact() {
     <section id="contact" aria-labelledby="contact-title" className="tile tile--ink">
       <div className="on-ink">
         <SectionHead
-          num="06"
           id="contact"
           label="Contact"
-          title="Hiring, contracting, or just want to talk?"
-          intro="Available for full-time remote work; can start within 1–2 weeks of an offer. I reply within 24 hours. References available on request."
+          title="Hiring, or a project for your business?"
+          intro="Hiring: I’m available for full-time remote work and can start within 1–2 weeks of an offer. Running a business: pick “A project for my business” and tell me the busywork. I reply within 24 hours. References available on request."
         />
       </div>
 
       <Reveal className="split split--rev">
-        {/* The form card is deliberately outside .on-ink so its focus rings stay ink. */}
-        <ContactForm />
+        {/* The form card is deliberately outside .on-ink so its focus rings stay ink.
+            The id is the "Ask for a free call" target: it lands here with the business topic picked. */}
+        <div id={PROJECT_HASH.slice(1)}>
+          <ContactForm />
+        </div>
 
         <div className="on-ink">
           <h3 className="label">Or reach me directly</h3>

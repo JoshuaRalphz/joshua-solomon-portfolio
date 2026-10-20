@@ -38,9 +38,10 @@ export const sections = [
   { id: 'work', num: '01', label: 'Systems' },
   { id: 'fit-agent', num: '02', label: 'How I’d help' },
   { id: 'build', num: '03', label: 'What I build' },
-  { id: 'results', num: '04', label: 'Results' },
-  { id: 'about', num: '05', label: 'About' },
-  { id: 'contact', num: '06', label: 'Contact' },
+  { id: 'work-with-me', num: '04', label: 'Work with me' },
+  { id: 'results', num: '05', label: 'Results' },
+  { id: 'about', num: '06', label: 'About' },
+  { id: 'contact', num: '07', label: 'Contact' },
 ];
 
 export const hero = {
@@ -48,12 +49,13 @@ export const hero = {
   promise: 'Systems that take the busywork off a team: Claude or OpenAI does the drafting, writing or sorting, and the code around it keeps costs known, output checked and a person in charge of anything customer-facing. I ship them by directing AI coding agents (Claude Code).',
 };
 
-// Hero proof: system numbers only, each from a README or the CV.
+// Hero proof: business results first (client and agency work), each from the CV or a
+// case below. Test counts live in Results and on the case pages, not here.
 export const heroStats = [
-  { value: '30 → 10', label: 'job posts vetted, then applications written and honesty-checked by Claude each day' },
-  { value: '~$1', label: 'per finished AI video, vs ~$12 for generated video' },
-  { value: '~5 wks', label: 'first commit to 6 client accounts live' },
-  { value: '3,200+', label: 'automated tests on one production platform' },
+  { value: '6,500/day', label: 'emails from HOME.FM’s sending domain, which I set up and warmed' },
+  { value: '~89%', label: 'lower monthly platform cost for the agency (projected, in my business case)' },
+  { value: '~$1', label: 'per finished AI video, vs ~$12 for paid generative video' },
+  { value: '9.5%', label: 'a nonprofit client’s email click rate in May 2026, up from 4.5% in April (two months compared)' },
 ];
 
 // "How my AI systems run": a process, not live data.
@@ -89,7 +91,7 @@ export const agencyCase = {
   title: 'Agency email & SMS platform',
   outcome: 'The agency stops renting its marketing platform: a projected ~89% lower monthly platform cost, with no external build spend.',
   changed: [
-    '6 client accounts live about 5 weeks after the first commit (Aug–Sep 2026)',
+    '6 client accounts live on the platform about 5 weeks after the first commit (Aug–Sep 2026)',
     'Now replacing GoHighLevel at the agency, with the old platform run in parallel',
     '3,200+ automated tests, run inside the Workers runtime so no test can send a real message',
     'Claude API helpers draft subject lines and preview text; OpenAI makes images',
@@ -105,10 +107,11 @@ export const agencyCase = {
 
 // Client work, shown as one compact list. `url` only where the domain still belongs to
 // that client: adasclosetsau.com and aoutilityservices.com now redirect to other brands.
+// Ada's Closet's site is arrowconsignment.com (Josh confirmed, 2026-10-20).
 export const clientWork = [
   { name: 'Alpha Omega Safety Solutions (AOSS)', place: 'Michigan', line: 'Built the website, plus approved business texting (A2P 10DLC brand registration on GoHighLevel), email and domain setup.', url: 'https://aosafe.com' },
   { name: 'HOME.FM', place: 'Spring Arbor, MI', line: 'Built the website, plus email that reaches the inbox: a dedicated sending subdomain with SPF/DKIM/DMARC, warmed to 6,500 emails a day.', url: 'https://listenhome.fm' },
-  { name: 'Ada’s Closet', place: 'Spring Arbor, MI', line: 'Built the website and back-office for a student consignment startup: listings to Poshmark, eBay and Depop, live inventory, sale alerts in Apps Script.' },
+  { name: 'Ada’s Closet', place: 'Spring Arbor, MI', line: 'Built the website and back-office for a student consignment startup: listings to Poshmark, eBay and Depop, live inventory, sale alerts in Apps Script.', url: 'https://www.arrowconsignment.com/' },
   { name: 'Alliance Service Brands', place: 'Jackson, MI', line: 'Built one custom website that unifies six home-service brands.', url: 'https://www.allianceservicebrands.com' },
   { name: 'Endtime Entrepreneurs', place: 'USA', line: 'Built the website from scratch on Cloudflare Pages, plus CRM, music distribution and SEO.', url: 'https://endtimeentrepreneurs.com' },
   { name: 'TrueCare Chiropractic', place: 'Lansing, MI', line: 'Built the website, plus email marketing, upkeep and SEO for a chiropractic clinic.', url: 'https://www.truecarechiro.com' },
@@ -136,14 +139,40 @@ export const offers = [
   },
 ];
 
-// Numbers, each with its source. System numbers lead; the one marketing figure sits last.
+// "Work with me": for business owners. Wording, prices and steps exactly as Josh set them
+// (2026-10-20, final: lead with a monthly partnership). No testimonials yet, no other guarantees.
+export const PROJECT_HASH = '#start-a-project'; // lands on the contact form with "A project for my business" picked
+export const workWithMe = {
+  title: 'I build your custom system, then keep it running every month.',
+  body: 'The tools your team runs on every day: a client portal, an AI lead pipeline, an internal dashboard, an email/SMS platform. Built around how you work, not forced into a generic app.',
+  monthly: '$1,000/month',
+  build: '$2,500',
+  // Real systems I built that show the kind of thing, each with its own page or section.
+  examples: [
+    { label: 'AI job hunt platform', note: 'An AI pipeline that vets, screens for scams and drafts honest applications', href: '/work/ai-job-hunt/' },
+    { label: 'Agency email & SMS platform', note: 'An agency’s own platform, now replacing GoHighLevel', href: '#work-agency' },
+    { label: 'AI video engine', note: 'Content at a cost known before it runs', href: '/work/ai-video-engine/' },
+  ],
+  steps: [
+    { title: '15-minute call', body: 'Free. Tell me the busywork.' },
+    { title: 'Fixed quote', body: 'One clear price for the build.' },
+    { title: 'I build it', body: 'You approve what goes out.' },
+    { title: 'I run it', body: 'And improve it every month.' },
+  ],
+};
+
+// Numbers, each with its source. Business results lead, then costs, then test counts;
+// the one marketing figure sits under the grid.
 export const results = [
-  { value: '700+', label: 'automated tests on the AI job hunt platform, run with no network', href: '/work/ai-job-hunt/' },
-  { value: '~$1–2.50', label: 'estimated AI cost of a full job-hunt day, under a hard daily dollar budget', href: '/work/ai-job-hunt/' },
-  { value: '406 + 300', label: 'unit tests and acceptance checks on the AI video engine', href: '/work/ai-video-engine/' },
-  { value: '$0.72', label: 'real API cost of a 2-part AI video story ($0.49 + $0.23)', href: '/work/ai-video-engine/' },
+  { value: '~89%', label: 'lower monthly platform cost for the agency (projected, not yet measured)', href: '#work-agency' },
+  { value: '6,500/day', label: 'emails from HOME.FM’s sending domain, which I set up and warmed', href: '#clients' },
   { value: '6 in ~5 wks', label: 'client accounts live on the agency platform after the first commit', href: '#work-agency' },
+  { value: '~$1', label: 'per finished AI video, vs ~$12 for paid generative video', href: '/work/ai-video-engine/' },
+  { value: '$0.72', label: 'real API cost of a 2-part AI video story ($0.49 + $0.23)', href: '/work/ai-video-engine/' },
+  { value: '~$1–2.50', label: 'estimated AI cost of a full job-hunt day, under a hard daily dollar budget', href: '/work/ai-job-hunt/' },
   { value: '3,200+', label: 'automated tests on the agency platform', href: '#work-agency' },
+  { value: '700+', label: 'automated tests on the AI job hunt platform, run with no network', href: '/work/ai-job-hunt/' },
+  { value: '406 + 300', label: 'unit tests and acceptance checks on the AI video engine', href: '/work/ai-video-engine/' },
 ];
 export const agencyMarketingResult = 'From agency email work: a nonprofit’s average click rate went from 4.5% (April 2026) to 9.5% (May 2026). Two months compared, not an A/B test.';
 
@@ -162,13 +191,13 @@ export const experience = [
   {
     role: 'AI & Systems Lead',
     company: 'Arrow Group Consulting',
-    meta: 'US outsourced-CMO agency · Michigan, USA (remote) · Part-time contract',
+    meta: 'US outsourced-CMO agency · Michigan, USA (remote) · Part-time contract, on-call',
     dates: 'Feb 2026 — Present',
     bullets: [
-      'Built and launched the agency’s in-house email/SMS platform with AI-assisted development in Claude Code: 6 accounts live about 5 weeks after the first commit (Aug–Sep 2026). The agency is now replacing GoHighLevel with it.',
+      'Built and launched the agency’s in-house email/SMS platform with AI-assisted development in Claude Code: 6 client accounts live on it about 5 weeks after the first commit (Aug–Sep 2026). The agency is now replacing GoHighLevel with it.',
       'Added Claude features: drafting helpers for subject lines and preview text, plus Claude Haiku 4.5 subject lines, revision suggestions, a help chat and task-image analysis in the team’s daily content-operations app.',
       'Wrote the business case (projected ~89% lower monthly platform cost, no external build spend) and planned a phased migration of 10,000+ client contacts, running the old platform in parallel.',
-      'Handle 8 clients at once: onboarding end to end (GoHighLevel, Cloudflare sites, DNS, SPF/DKIM/DMARC, A2P 10DLC), explained in plain language on onboarding calls.',
+      'Handle 8 of the agency’s clients at once as their technical lead: onboarding end to end (GoHighLevel, Cloudflare sites, DNS, SPF/DKIM/DMARC, A2P 10DLC), explained in plain language on onboarding calls.',
       'Built client back-office tools on Cloudflare Workers (a nonprofit funnel-tracker dashboard and a resale startup’s admin dashboard) and integrated Square payments through the Square API.',
     ],
   },

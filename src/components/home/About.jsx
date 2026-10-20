@@ -53,7 +53,7 @@ function Role({ job }) {
 export default function About() {
   return (
     <section id="about" aria-labelledby="about-title">
-      <SectionHead num="05" id="about" label="About" title="About and experience." />
+      <SectionHead id="about" label="About" title="About and experience." />
       <Reveal className="split split--rev">
         <div className="tile">
           <p className="t-lead text-ink">{bio}</p>

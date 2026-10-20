@@ -3,6 +3,7 @@ import HeroBento from '../components/home/HeroBento.jsx';
 import Systems from '../components/home/Systems.jsx';
 import FitAgentSection from '../components/home/FitAgentSection.jsx';
 import WhatIBuild from '../components/home/WhatIBuild.jsx';
+import WorkWithMe from '../components/home/WorkWithMe.jsx';
 import Results from '../components/home/Results.jsx';
 import About from '../components/home/About.jsx';
 import Contact from '../components/home/Contact.jsx';
@@ -29,6 +30,7 @@ export default function Home() {
             <Systems />
             <FitAgentSection />
             <WhatIBuild />
+            <WorkWithMe />
             <Results />
             <About />
             <Contact />

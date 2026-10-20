@@ -3,7 +3,7 @@ import { profile } from './data/content.js';
 
 export const SITE = 'https://solomonjoshua.com';
 
-const HOME_DESCRIPTION = 'AI Solutions Engineer: I build AI that saves businesses time and money. Claude or OpenAI does the drafting, writing or sorting; the code around it keeps costs known, output checked and a person in charge. Case studies: an unattended AI job-hunt engine on Claude Opus and Cloudflare Workers, and an AI video engine at about $1 per video.';
+const HOME_DESCRIPTION = 'AI Solutions Engineer: I build AI that saves businesses time and money. Claude or OpenAI does the drafting, writing or sorting; the code around it keeps costs known, output checked and a person in charge. Case studies: an AI system that checks job fit, catches scams and drafts honest applications for my approval (Claude Opus on Cloudflare Workers), and an AI video engine at about $1 per video. For business owners: custom systems, built and then run every month.';
 
 /** Every prerendered page: path, file to write, and its head. */
 export const routes = [

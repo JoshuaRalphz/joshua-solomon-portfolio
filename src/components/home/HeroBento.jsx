@@ -31,10 +31,10 @@ function HeadlineTile() {
           </a>
         </div>
 
-        <ul className="proof mt-auto pt-7" aria-label="Proof from systems I shipped">
+        <ul className="proof mt-auto pt-7" aria-label="Results from client, agency and own work">
           {heroStats.map((stat) => (
             <li key={stat.label}>
-              <span className="t-chip block text-ink">{stat.value}</span>
+              <span className="t-chip block text-ink">{stat.value}</span>{' '}
               <span className="mt-1 block text-sm font-medium leading-snug text-muted">{stat.label}</span>
             </li>
           ))}

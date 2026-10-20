@@ -1,7 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AlertCircle, CheckCircle2 } from 'lucide-react';
-import { profile, WEB3FORMS_ACCESS_KEY, WEB3FORMS_ENDPOINT } from '../../data/content.js';
+import { PROJECT_HASH, profile, WEB3FORMS_ACCESS_KEY, WEB3FORMS_ENDPOINT } from '../../data/content.js';
+
+// What the message is about. The message label and hint follow the choice.
+const TOPICS = {
+  role: { label: 'Hiring for a role', ask: 'What’s the role?', hint: 'Role title, timeline, stack, team size. Whatever’s helpful.' },
+  project: { label: 'A project for my business', ask: 'What busywork do you want gone?', hint: 'What your team does by hand today, the tools you use and how often. A few lines is plenty.' },
+  other: { label: 'Something else', ask: 'Your message', hint: 'Whatever’s on your mind. Or just say hi.' },
+};
 
 /** Label + control + error text, wired together for assistive tech. */
 function Field({ id, label, error, children }) {
@@ -35,9 +42,20 @@ function controlProps(id, error, isRequired = false) {
 
 /** The contact form: react-hook-form + Web3Forms + honeypot. */
 export default function ContactForm() {
-  const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm();
+  const { register, handleSubmit, reset, setValue, watch, formState: { errors, isSubmitting } } = useForm({ defaultValues: { topic: '' } });
   const [submitStatus, setSubmitStatus] = useState(null); // null | 'success' | 'error'
   const successHeadingRef = useRef(null);
+  const topic = TOPICS[watch('topic')] ?? TOPICS.other;
+
+  // "Ask for a free call" links to #start-a-project: land here with the business topic picked.
+  useEffect(() => {
+    const pickProjectFromHash = () => {
+      if (window.location.hash === PROJECT_HASH) setValue('topic', 'project', { shouldValidate: true });
+    };
+    pickProjectFromHash();
+    window.addEventListener('hashchange', pickProjectFromHash);
+    return () => window.removeEventListener('hashchange', pickProjectFromHash);
+  }, [setValue]);
 
   // The form (and the focused button) is replaced on success: move focus to the
   // confirmation so keyboard and screen-reader users land on it.
@@ -59,10 +77,12 @@ export default function ContactForm() {
 
       // Web3Forms payload — `access_key` auths the request; everything else
       // is included verbatim in the email sent to solomonjoshua101602@gmail.com.
+      const topicLabel = TOPICS[data.topic]?.label ?? TOPICS.other.label;
       const payload = {
         access_key: WEB3FORMS_ACCESS_KEY,
-        subject: `Portfolio inquiry — ${data.name || 'no name'}${data.company ? ` (${data.company})` : ''}`,
+        subject: `Portfolio inquiry: ${topicLabel} — ${data.name || 'no name'}${data.company ? ` (${data.company})` : ''}`,
         from_name: 'solomonjoshua.com contact form',
+        topic: topicLabel,
         name: data.name || '',
         email: data.email || '',
         company: data.company || '',
@@ -101,6 +121,15 @@ export default function ContactForm() {
   return (
     <div className="tile">
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+        <Field id="contact-topic" label="What’s it about?" error={errors.topic?.message}>
+          <select
+            {...register('topic', { required: 'Pick one' })}
+            {...controlProps('contact-topic', errors.topic, true)}
+          >
+            <option value="" disabled>Choose one</option>
+            {Object.entries(TOPICS).map(([value, { label }]) => <option key={value} value={value}>{label}</option>)}
+          </select>
+        </Field>
         <Field id="contact-name" label="Your name" error={errors.name?.message}>
           <input
             {...register('name', { required: 'Required' })}
@@ -126,12 +155,12 @@ export default function ContactForm() {
             autoComplete="organization"
           />
         </Field>
-        <Field id="contact-message" label="What's the role / opportunity?" error={errors.message?.message}>
+        <Field id="contact-message" label={topic.ask} error={errors.message?.message}>
           <textarea
             {...register('message', { required: 'Required', minLength: { value: 10, message: 'A few more details please' } })}
             {...controlProps('contact-message', errors.message, true)}
             rows={5}
-            placeholder="Role title, timeline, stack, team size. Whatever's helpful. Or just say hi."
+            placeholder={topic.hint}
             style={{ resize: 'vertical' }}
           />
         </Field>

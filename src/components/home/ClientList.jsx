@@ -4,7 +4,7 @@ import { clientWork } from '../../data/content.js';
 /** Supporting client work: one dense list, outcomes first, no big website screenshots. */
 export default function ClientList() {
   return (
-    <div className="tile">
+    <div id="clients" className="tile">
       <h3 className="label">Also shipped for clients · supporting work</h3>
       <ul className="clients mt-4">
         {clientWork.map((client) => (
