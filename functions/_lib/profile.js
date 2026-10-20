@@ -73,7 +73,7 @@ POSITIONING: AI Solutions Engineer. Ships production systems with AI coding agen
 Building software with AI since 2024 (Cursor, in college). Professionally since 2025.
 
 EXPERIENCE
-1. Implementation Specialist, Arrow Group Consulting (US outsourced-CMO agency, Michigan; remote, part-time contract), Feb 2026 to now. Handles 8 client accounts at once.
+1. AI & Systems Lead, Arrow Group Consulting (US outsourced-CMO agency, Michigan; remote, part-time contract), Feb 2026 to now. Handles 8 client accounts at once.
    - Built and launched the agency's in-house email/SMS platform (TypeScript, Cloudflare Workers + Hono, D1, Queues, Resend, Twilio, React/Vite) with Claude Code. 6 accounts live about 5 weeks after the first commit (Aug-Sep 2026); 3,200+ automated tests; the agency is replacing GoHighLevel with it.
    - Added Claude API drafting helpers for subject lines and preview text, plus OpenAI gpt-image-1 image generation.
    - Wrote the business case (PROJECTED about 89% lower monthly platform cost; a projection, not a result) and planned a phased move of 10,000+ client contacts with the old platform running in parallel.

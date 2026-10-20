@@ -19,7 +19,7 @@ Building software with AI since 2024 (Cursor, in college). Professionally since 
 - Agency email & SMS platform (Arrow Group Consulting, 2026): built with Claude Code on Cloudflare Workers + D1; 6 accounts live about 5 weeks after the first commit; 3,200+ automated tests; projected ~89% lower monthly platform cost; now replacing GoHighLevel.
 
 ## Experience
-- Implementation Specialist — CRM, Web & Marketing Systems, Arrow Group Consulting (Michigan, USA; remote, part-time contract), Feb 2026 – present.
+- AI & Systems Lead, Arrow Group Consulting (Michigan, USA; remote, part-time contract), Feb 2026 – present.
 - Virtual Marketing Assistant (VMA), Doneverse (Philippines), Sep 2025 – Feb 2026, about 6 months.
 
 ## Education

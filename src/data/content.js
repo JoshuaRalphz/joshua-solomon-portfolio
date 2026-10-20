@@ -160,7 +160,7 @@ export const education = 'BS Computer Science, Gordon College (2021–2025). The
 // Described as the v8 CV does.
 export const experience = [
   {
-    role: 'Implementation Specialist — CRM, Web & Marketing Systems',
+    role: 'AI & Systems Lead',
     company: 'Arrow Group Consulting',
     meta: 'US outsourced-CMO agency · Michigan, USA (remote) · Part-time contract',
     dates: 'Feb 2026 — Present',
