@@ -252,7 +252,7 @@ export default function LeadTriage() {
               {isRunning ? 'Triaging…' : 'Triage it'}
             </button>
           </div>
-          <p className="label mt-auto pt-6">Claude Haiku 5.5 · nothing is sent · your text isn’t stored</p>
+          <p className="label mt-auto pt-6">Claude Opus 5.5 · nothing is sent · your text isn’t stored</p>
         </form>
 
         {answer && status === 'done' ? (

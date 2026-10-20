@@ -13,10 +13,10 @@ import Anthropic from '@anthropic-ai/sdk';
 import { LOCAL_HOSTS, hashVisitor, isAllowedOrigin, readCapped, readLimits, reply, visitorKey } from '../fitAgent.js';
 import { d1Store, sharedMemoryStore } from '../store.js';
 
-export const PLAY_MODEL = 'claude-haiku-5-5';
-// USD per million tokens = micro-dollars per token. Prompts here stay far under the
-// 100K-token line where Haiku 5.5's higher rate ($0.50 / $2.50) starts.
-export const HAIKU_PRICE = { input: 0.1, output: 0.5 };
+export const PLAY_MODEL = 'claude-opus-5-5';
+// USD per million tokens = micro-dollars per token.
+// Opus 5.5 rates, the same the fit agent uses (Haiku 5.5 is refused for this key: 403).
+export const PLAY_PRICE = { input: 4, output: 20 };
 export const MAX_BODY_BYTES = 16 * 1024;
 const DEFAULT_RUNS_PER_VISITOR = 8;
 const DEFAULT_PLAY_BUDGET = { dailyUsd: 0.5, monthlyUsd: 15 };
@@ -43,15 +43,15 @@ const COMMON_MESSAGES = {
 };
 
 /** Worst case: every byte we send is a token (true for any tokenizer), plus every output token. */
-export function haikuMaxCostMicro(promptBytes, maxTokens) {
-  return Math.ceil((promptBytes + OVERHEAD_TOKENS) * HAIKU_PRICE.input + maxTokens * HAIKU_PRICE.output);
+export function playMaxCostMicro(promptBytes, maxTokens) {
+  return Math.ceil((promptBytes + OVERHEAD_TOKENS) * PLAY_PRICE.input + maxTokens * PLAY_PRICE.output);
 }
 
 /** Real cost from usage. Thinking tokens are already inside output_tokens. */
-export function haikuActualCostMicro(usage) {
+export function playActualCostMicro(usage) {
   if (!usage) return null;
   const input = (usage.input_tokens ?? 0) + (usage.cache_creation_input_tokens ?? 0) + (usage.cache_read_input_tokens ?? 0);
-  return Math.ceil(input * HAIKU_PRICE.input + (usage.output_tokens ?? 0) * HAIKU_PRICE.output);
+  return Math.ceil(input * PLAY_PRICE.input + (usage.output_tokens ?? 0) * PLAY_PRICE.output);
 }
 
 function readUsd(value, fallback) {
@@ -165,7 +165,7 @@ export async function handlePlay(request, env, ctx, deps, demo) {
 
     const call = demo.build(input, prepared.context);
     const promptBytes = new TextEncoder().encode(call.system + call.user + JSON.stringify(call.schema)).length;
-    const reserved = haikuMaxCostMicro(promptBytes, call.maxTokens);
+    const reserved = playMaxCostMicro(promptBytes, call.maxTokens);
     // Play sub-cap first, then the shared pool; a refusal by the pool hands the sub-cap reservation back.
     if (!(await store.reserve(playPeriods, reserved, readPlayCaps(env)))) return fail(429, 'budget');
     if (!(await store.reserve(periods, reserved, { day: limits.dayMicro, month: limits.monthMicro }))) {
@@ -181,8 +181,8 @@ export async function handlePlay(request, env, ctx, deps, demo) {
         response = { stop_reason: 'end_turn', usage: { input_tokens: Math.ceil(promptBytes / 4), output_tokens: 600 }, content: [{ type: 'text', text }] };
       } else {
         const client = (deps.createClient ?? defaultClient)(env);
-        // Haiku 5.5: adaptive thinking is on by default; low effort keeps it short.
-        // No `fallbacks`: Haiku 5.5 has no server-side refusal fallback.
+        // Opus 5.5: adaptive thinking is on by default; low effort keeps it short.
+        // No `fallbacks`: Opus 5.5 has no server-side refusal fallback.
         response = await client.messages.create({
           model: PLAY_MODEL,
           max_tokens: call.maxTokens,
@@ -195,7 +195,7 @@ export async function handlePlay(request, env, ctx, deps, demo) {
       return fail(...apiErrorCode(apiError));
     } finally {
       // A failed call, or one with no usage, stays counted at its maximum possible cost.
-      const actual = response ? haikuActualCostMicro(response.usage) : null;
+      const actual = response ? playActualCostMicro(response.usage) : null;
       for (const p of [periods, playPeriods]) {
         await store.settle(p, reserved, actual ?? reserved).catch((settleError) => {
           console.error(`play/${demo.id}: settle failed, spend stays at the reserved maximum`, settleError?.constructor?.name);

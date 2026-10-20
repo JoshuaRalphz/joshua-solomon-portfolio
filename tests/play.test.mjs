@@ -3,7 +3,7 @@ import { test, describe } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import Anthropic from '@anthropic-ai/sdk';
-import { handlePlay, haikuActualCostMicro, haikuMaxCostMicro, readPlayCaps, HAIKU_PRICE, PLAY_MODEL } from '../functions/_lib/play/guard.js';
+import { handlePlay, playActualCostMicro, playMaxCostMicro, readPlayCaps, PLAY_PRICE, PLAY_MODEL } from '../functions/_lib/play/guard.js';
 import { safePath } from '../src/components/play/api.js';
 import * as busywork from '../functions/_lib/play/busywork.js';
 import * as triage from '../functions/_lib/play/triage.js';
@@ -136,12 +136,12 @@ describe('request checks (every demo)', () => {
 
 describe('the Claude request', () => {
   for (const name of Object.keys(DEMOS)) {
-    test(`${name}: Haiku 5.5, low effort, JSON schema, no fallbacks or sampling params`, async () => {
+    test(`${name}: Opus 5.5, low effort, JSON schema, no fallbacks or sampling params`, async () => {
       const { client } = await run(name);
       assert.equal(client.calls.length, 1);
       const params = client.calls[0];
       assert.equal(params.model, PLAY_MODEL);
-      assert.equal(PLAY_MODEL, 'claude-haiku-5-5');
+      assert.equal(PLAY_MODEL, 'claude-opus-5-5');
       assert.equal(params.output_config.effort, 'low');
       assert.equal(params.output_config.format.type, 'json_schema');
       assert.ok(params.max_tokens >= 2000 && params.max_tokens <= 4000);
@@ -187,25 +187,25 @@ describe('model output handling', () => {
 });
 
 describe('shared budget and visitor limit', () => {
-  test('Haiku pricing: $0.10 / $0.50 per million tokens', () => {
-    assert.deepEqual(HAIKU_PRICE, { input: 0.1, output: 0.5 });
-    assert.equal(haikuActualCostMicro({ input_tokens: 10_000, output_tokens: 2_000 }), 1000 + 1000);
-    assert.equal(haikuActualCostMicro({ input_tokens: 1, output_tokens: 0 }), 1); // rounded up, never down
-    assert.equal(haikuMaxCostMicro(5000, 3000), Math.ceil((5000 + 600) * 0.1 + 3000 * 0.5));
-    assert.equal(haikuActualCostMicro(null), null);
+  test('Opus pricing: $4 / $20 per million tokens', () => {
+    assert.deepEqual(PLAY_PRICE, { input: 4, output: 20 });
+    assert.equal(playActualCostMicro({ input_tokens: 10_000, output_tokens: 2_000 }), 40_000 + 40_000);
+    assert.equal(playActualCostMicro({ input_tokens: 1, output_tokens: 0 }), 4); // rounded up, never down
+    assert.equal(playMaxCostMicro(5000, 3000), Math.ceil((5000 + 600) * 4 + 3000 * 20));
+    assert.equal(playActualCostMicro(null), null);
   });
 
-  test('spend is settled at actual Haiku usage; failures stay at the maximum', async () => {
+  test('spend is settled at actual usage; failures stay at the maximum', async () => {
     const store = memoryStore();
     await run('triage', { store });
-    assert.equal(store.spendFor('d:2026-10-20'), haikuActualCostMicro({ input_tokens: 3000, output_tokens: 700 }));
-    assert.equal(store.spendFor('d:2026-10-20'), 650);
+    assert.equal(store.spendFor('d:2026-10-20'), playActualCostMicro({ input_tokens: 3000, output_tokens: 700 }));
+    assert.equal(store.spendFor('d:2026-10-20'), 26_000);
 
     const failing = memoryStore();
     await run('triage', { store: failing, client: fakeClient(() => { throw new Anthropic.APIConnectionTimeoutError(); }) });
     const user = triage.buildUserMessage({ text: BODIES.triage.text });
     const bytes = new TextEncoder().encode(triage.SYSTEM_PROMPT + user + JSON.stringify(triage.SCHEMA)).length;
-    assert.equal(failing.spendFor('d:2026-10-20'), haikuMaxCostMicro(bytes, triage.MAX_TOKENS));
+    assert.equal(failing.spendFor('d:2026-10-20'), playMaxCostMicro(bytes, triage.MAX_TOKENS));
     assert.equal(failing.spendFor('m:2026-10'), failing.spendFor('d:2026-10-20'));
   });
 
@@ -251,7 +251,7 @@ describe('shared budget and visitor limit', () => {
     const ok = memoryStore();
     await run('triage', { store: ok });
     assert.equal(ok.spendFor('pd:2026-10-20'), ok.spendFor('d:2026-10-20'));
-    assert.equal(ok.spendFor('pm:2026-10'), 650);
+    assert.equal(ok.spendFor('pm:2026-10'), 26_000);
   });
 
   test('the monthly cap is shared too (default $30)', async () => {

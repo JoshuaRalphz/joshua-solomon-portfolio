@@ -1,5 +1,5 @@
 // Demo 2: lead triage. A customer enquiry for a DEMO plumbing business is classified
-// by Claude Haiku 5.5 (job type, urgency, spam/scam risk, missing details) and a short
+// by Claude Opus 5.5 (job type, urgency, spam/scam risk, missing details) and a short
 // reply is drafted. Nothing is ever sent: approval in the UI is simulated.
 // Labels follow the same idea as Josh's n8n lead-triage design; that repo has no
 // prompts/ folder yet (2026-10-20), so this prompt is written here.

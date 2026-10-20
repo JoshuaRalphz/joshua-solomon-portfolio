@@ -234,7 +234,7 @@ export default function BusyworkPlan() {
               ))}
             </div>
           </div>
-          <p className="label mt-auto pt-6">Claude Haiku 5.5 · capped daily · your text isn’t stored</p>
+          <p className="label mt-auto pt-6">Claude Opus 5.5 · capped daily · your text isn’t stored</p>
         </form>
 
         <div className="tile flex min-w-0 flex-col">

@@ -172,7 +172,7 @@ export default function AskPortfolio() {
             </div>
             {formError && <p role="alert" className="play-warn mt-2 text-sm font-semibold">{formError}</p>}
           </form>
-          <p className="label mt-4">Claude Haiku 5.5 · answers only from my documents · questions aren’t stored</p>
+          <p className="label mt-4">Claude Opus 5.5 · answers only from my documents · questions aren’t stored</p>
         </div>
 
         <div className="tile flex min-w-0 flex-col">

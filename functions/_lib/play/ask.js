@@ -1,6 +1,6 @@
 // Demo 3: "Ask my portfolio". Retrieval first (retrieval.js, no model call); when no
 // passage clears the bar the answer is "not in my documents" for free. Otherwise
-// Claude Haiku 5.5 answers ONLY from the top passages and cites them by id. The
+// Claude Opus 5.5 answers ONLY from the top passages and cites them by id. The
 // server keeps a sentence only when it cites a passage that was actually sent, and
 // every number in it appears in one of those cited passages.
 import { profile } from '../../../src/data/content.js';

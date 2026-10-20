@@ -21,7 +21,7 @@ export const playDemos = [
     value: 'Tell it what eats your week. Get the first automations I’d build, the hours they could save, and where the price starts.',
     framing: 'Every business has a job nobody wants: copying leads, chasing invoices, answering the same email. Describe it and get a starting plan you can take into a real conversation.',
     real: [
-      'A real AI call (Claude Haiku 5.5) reads what you type and picks from tools I actually use.',
+      'A real AI call (Claude Opus 5.5) reads what you type and picks from tools I actually use.',
       'The price line is my real pricing, written by me. The AI cannot add or change a price.',
     ],
     simulated: [
@@ -30,7 +30,7 @@ export const playDemos = [
     ],
     how: [
       { label: 'You describe it', caption: 'What eats the week, plus team size and industry if you like' },
-      { label: 'Claude plans', caption: 'Haiku 5.5 picks 1 to 3 builds from tools I really use, as strict JSON' },
+      { label: 'Claude plans', caption: 'Opus 5.5 picks 1 to 3 builds from tools I really use, as strict JSON' },
       { label: 'Code checks it', caption: 'Hours are clamped, unknown tools dropped, any price the AI writes is removed' },
       { label: 'Real prices only', caption: 'The plan ends with my one real price line; the free call turns it into a fixed quote' },
     ],
@@ -45,7 +45,7 @@ export const playDemos = [
     value: 'Paste a customer enquiry. Watch it get sorted, flagged and answered, then approve the reply yourself.',
     framing: 'Enquiries pile up in an inbox and the urgent one gets answered last. This sorts each one in seconds and drafts a reply, but a person still presses send.',
     real: [
-      'A real AI call (Claude Haiku 5.5) classifies the enquiry: job type, urgency, spam or scam risk, missing details.',
+      'A real AI call (Claude Opus 5.5) classifies the enquiry: job type, urgency, spam or scam risk, missing details.',
       'The draft reply is written live for the enquiry you pasted.',
     ],
     simulated: [
@@ -54,7 +54,7 @@ export const playDemos = [
     ],
     how: [
       { label: 'Received', caption: 'An enquiry arrives by email, form or text' },
-      { label: 'Classified', caption: 'Claude Haiku 5.5 labels job type, urgency, spam risk and what is missing' },
+      { label: 'Classified', caption: 'Claude Opus 5.5 labels job type, urgency, spam risk and what is missing' },
       { label: 'Drafted', caption: 'A short reply in the business’s voice; code blocks replies to spam and pitches' },
       { label: 'You approve', caption: 'Nothing goes out until a person presses send (simulated here)' },
     ],
@@ -70,7 +70,7 @@ export const playDemos = [
     framing: 'Skimming a CV takes time and still leaves questions. Ask in plain words; if the answer is not in my documents, it says so instead of guessing.',
     real: [
       'Answers come only from my CV, my case studies and this site’s summary, split into passages you can click.',
-      'Search runs on the server (keyword ranking, BM25); Claude Haiku 5.5 writes the answer from the top passages only.',
+      'Search runs on the server (keyword ranking, BM25); Claude Opus 5.5 writes the answer from the top passages only.',
     ],
     simulated: [
       'Nothing is simulated, but it only knows what is written down. Anything else: email me.',
@@ -79,7 +79,7 @@ export const playDemos = [
     how: [
       { label: 'Search', caption: 'Your question is matched against about 70 passages from my documents (BM25)' },
       { label: 'Nothing found?', caption: 'Then it says so, with no AI call at all' },
-      { label: 'Answer', caption: 'Claude Haiku 5.5 answers from the top 5 passages only, citing each one' },
+      { label: 'Answer', caption: 'Claude Opus 5.5 answers from the top 5 passages only, citing each one' },
       { label: 'Code checks it', caption: 'A sentence survives only if it cites a passage it was given, with matching numbers' },
     ],
     seo: 'Ask questions about Joshua Solomon, AI Solutions Engineer, and get answers drawn only from his CV and case studies, each with clickable source citations.',

@@ -1,5 +1,5 @@
 // Demo 1: "Busywork -> plan & price". A business owner describes what eats the week;
-// Claude Haiku 5.5 suggests the first 1-3 automations Josh would build, with an
+// Claude Opus 5.5 suggests the first 1-3 automations Josh would build, with an
 // hours-saved ESTIMATE and its assumption. Prices never come from the model: the server
 // adds Josh's one real price line, and any amount the model writes is removed.
 import { PRICE_LINE } from '../../../src/data/play.js';
