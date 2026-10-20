@@ -1,0 +1,12 @@
+# Forwards the portfolio's Anthropic calls from a US location. Cloudflare's Hong Kong
+# data center serves some Philippine visitors, and Anthropic refuses Hong Kong (403).
+# No public route: only the joshua-solomon Pages project reaches it, via a service binding.
+name = "joshua-solomon-ai-relay"
+main = "index.js"
+compatibility_date = "2025-05-26"
+account_id = "5f100dadfc20381dc9a1e3800439b710"
+workers_dev = false
+preview_urls = false
+
+[placement]
+region = "aws:us-east-1"

@@ -15,6 +15,9 @@ binding = "FIT_DB"
 database_name = "fit-agent"
 database_id = "eb87237c-effd-46ca-b236-5a40aa595991"
 
-# Run Functions near the Anthropic API: Cloudflare HKG serves some PH visitors and Anthropic refuses Hong Kong (403 "Request not allowed").
-[placement]
-mode = "smart"
+
+# Anthropic calls go out through a US-pinned Worker (ai-relay/): Cloudflare HKG serves some
+# Philippine visitors and Anthropic refuses Hong Kong (403 "Request not allowed").
+[[services]]
+binding = "AI_RELAY"
+service = "joshua-solomon-ai-relay"

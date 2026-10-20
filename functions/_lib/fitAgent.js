@@ -178,8 +178,13 @@ async function readInput(request) {
   return { input: { jobText, company, turnstileToken: body.turnstileToken } };
 }
 
+/** Send Anthropic calls through the US-pinned ai-relay Worker when bound (see wrangler.toml). */
+export function relayFetch(env) {
+  return env.AI_RELAY ? (url, init) => env.AI_RELAY.fetch(url, init) : undefined;
+}
+
 function defaultClient(env) {
-  return new Anthropic({ apiKey: env.ANTHROPIC_API_KEY, maxRetries: 0, timeout: API_TIMEOUT_MS });
+  return new Anthropic({ apiKey: env.ANTHROPIC_API_KEY, maxRetries: 0, timeout: API_TIMEOUT_MS, fetch: relayFetch(env) });
 }
 
 async function askClaude(client, jobText, company) {

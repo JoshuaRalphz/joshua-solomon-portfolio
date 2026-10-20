@@ -10,7 +10,7 @@
 //   Its counters are separate rows in the same table ('pd:YYYY-MM-DD', 'pm:YYYY-MM').
 // Nothing typed by the visitor is stored or logged.
 import Anthropic from '@anthropic-ai/sdk';
-import { LOCAL_HOSTS, hashVisitor, isAllowedOrigin, readCapped, readLimits, reply, visitorKey } from '../fitAgent.js';
+import { LOCAL_HOSTS, hashVisitor, isAllowedOrigin, readCapped, readLimits, relayFetch, reply, visitorKey } from '../fitAgent.js';
 import { d1Store, sharedMemoryStore } from '../store.js';
 
 export const PLAY_MODEL = 'claude-opus-5-5';
@@ -86,7 +86,7 @@ function apiErrorCode(error) {
 }
 
 function defaultClient(env) {
-  return new Anthropic({ apiKey: env.ANTHROPIC_API_KEY, maxRetries: 0, timeout: API_TIMEOUT_MS });
+  return new Anthropic({ apiKey: env.ANTHROPIC_API_KEY, maxRetries: 0, timeout: API_TIMEOUT_MS, fetch: relayFetch(env) });
 }
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
