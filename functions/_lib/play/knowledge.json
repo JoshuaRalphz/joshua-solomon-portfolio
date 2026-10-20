@@ -1,0 +1,500 @@
+{
+ "sources": [
+  "kb/cv.md",
+  "src/data/cases.js",
+  "src/data/content.js",
+  "public/llms.txt"
+ ],
+ "chunks": [
+  {
+   "id": "cv-contact",
+   "title": "CV · Contact",
+   "url": "/Joshua_Solomon_Resume_v9_AI_Solutions_Engineer.pdf",
+   "source": "CV",
+   "text": "Name: Joshua Ralph Adrian Solomon\n\nAI Solutions Engineer\n\nOlongapo City, Philippines | Remote, US hours (Eastern preferred) or PH/AU hours\n\nsolomonjoshua101602@gmail.com | +63 961 556 2117 | solomonjoshua.com\n\nlinkedin.com/in/joshua-ralph-adrian-solomon-1a0745347 | github.com/JoshuaRalphz"
+  },
+  {
+   "id": "cv-summary",
+   "title": "CV · Summary",
+   "url": "/Joshua_Solomon_Resume_v9_AI_Solutions_Engineer.pdf",
+   "source": "CV",
+   "text": "I turn slow, manual business work into AI-powered systems that run on their own, with a person approving what matters. Building software with AI since 2024 (Cursor, in college). Professionally since 2025. Available for full-time work; can start within 1–2 weeks."
+  },
+  {
+   "id": "cv-key-results",
+   "title": "CV · Key Results",
+   "url": "/Joshua_Solomon_Resume_v9_AI_Solutions_Engineer.pdf",
+   "source": "CV",
+   "text": "- Projected ~89% lower monthly platform cost for the agency, from my business case for its own platform\n- 6,500 emails a day from a radio station client's sending domain, which I set up and warmed\n- About $1 per finished AI video, vs about $12 for paid generative video\n- Nonprofit email click rate from 4.5% to 9.5% (April to May 2026), from agency email work"
+  },
+  {
+   "id": "cv-ai-systems-lead",
+   "title": "CV · Experience · AI & Systems Lead",
+   "url": "/Joshua_Solomon_Resume_v9_AI_Solutions_Engineer.pdf",
+   "source": "CV",
+   "text": "AI & Systems Lead · Feb 2026 – Present\nArrow Group Consulting | Michigan, USA (remote) | Part-time contract, on-call\n\nUS outsourced-CMO agency. I built its in-house platform and lead client onboarding, handling 8 clients at once."
+  },
+  {
+   "id": "cv-in-house-email-sms-platform",
+   "title": "CV · Experience · AI & Systems Lead · In-house email/SMS platform",
+   "url": "/Joshua_Solomon_Resume_v9_AI_Solutions_Engineer.pdf",
+   "source": "CV",
+   "text": "- Built and launched it with Claude Code (6 client accounts live), with Claude drafting and OpenAI images\n- Wrote the business case; now replacing GoHighLevel, moving 10,000+ contacts with the old platform in parallel\n- Safe by default: test mode, opt-outs re-checked before each send, 4 user roles, 3,200+ tests that never send\n\nStack: TypeScript, Cloudflare Workers, Hono, D1, Queues, Resend, Twilio, React, Vite, Claude API, OpenAI API"
+  },
+  {
+   "id": "cv-ai-in-the-team-s-daily-content-app-agc-hub-re",
+   "title": "CV · Experience · AI & Systems Lead · AI in the team's daily content app (AGC HUB: React, Firebase, Vercel, Claude API)",
+   "url": "/Joshua_Solomon_Resume_v9_AI_Solutions_Engineer.pdf",
+   "source": "CV",
+   "text": "- Added Claude Haiku 4.5 features: subject lines, revision ideas, a help chat and task-image analysis\n- Brought the content team's work from 5 tools (Drive, ClickUp, Trello, GoHighLevel, Canva) into one app"
+  },
+  {
+   "id": "cv-client-systems-and-onboarding",
+   "title": "CV · Experience · AI & Systems Lead · Client systems and onboarding",
+   "url": "/Joshua_Solomon_Resume_v9_AI_Solutions_Engineer.pdf",
+   "source": "CV",
+   "text": "- Built a nonprofit funnel tracker, a resale startup's admin dashboard and Square payments on a client site\n- Moved client sites to Cloudflare and one from WordPress to Wix; run client onboarding end to end\n- Explain each build in plain language on calls; warmed a radio station's domain to 6,500 emails/day\n\nStack: Cloudflare Workers, D1, Pages, Square API, GoHighLevel, DNS, SPF/DKIM/DMARC, A2P 10DLC"
+  },
+  {
+   "id": "cv-virtual-marketing-assistant-vma-agency-placem",
+   "title": "CV · Experience · Virtual Marketing Assistant (VMA), agency placement",
+   "url": "/Joshua_Solomon_Resume_v9_AI_Solutions_Engineer.pdf",
+   "source": "CV",
+   "text": "Virtual Marketing Assistant (VMA), agency placement · Sep 2025 – Feb 2026\nDoneverse | Philippines | ~6 months | agency matching trained marketing talent with US founders\n\nTechnical implementer for Arrow Group Consulting's founder (led to a direct hire), then speaker Jonathan Fanning.\n- Built Wix and Wix Studio sites; set up and ran Mailchimp, GoHighLevel, HubSpot and Kajabi; also used Jotform\n- Learned HubSpot on the job, then recommended HubSpot and ActiveCampaign; the agency adopted both"
+  },
+  {
+   "id": "cv-ai-projects",
+   "title": "CV · AI Projects",
+   "url": "/Joshua_Solomon_Resume_v9_AI_Solutions_Engineer.pdf",
+   "source": "CV",
+   "text": "Personal projects, built with AI-assisted development (Claude Code). Walkthroughs on request."
+  },
+  {
+   "id": "cv-pipeline-ai-job-fit-checks-and-honest-applica",
+   "title": "CV · AI Projects · Pipeline: AI job-fit checks and honest applications, with my approval",
+   "url": "/Joshua_Solomon_Resume_v9_AI_Solutions_Engineer.pdf",
+   "source": "CV",
+   "text": "Pipeline: AI job-fit checks and honest applications, with my approval\nMy own CRM and email platform, plus an AI job hunt that runs every day on Cloudflare (live since Oct 2026) under a hard daily AI budget (about $1–2.50 a day, estimated).\n- Claude Opus 5.5 vets up to 30 new roles a day from 5 job-board APIs: fit score, scam risk and pay\n- Job posts are untrusted input (prompt-injection checks); a second AI pass strips any claim not in my CV\n- Send rules enforced in the database; anything unclear waits for my approval; 700+ tests\n\nStack: JavaScript, Hono, Cloudflare Workers, D1, Cron Triggers, Email Routing, Claude API, Apps Script, Gmail API"
+  },
+  {
+   "id": "cv-yt-engine-ai-short-video-pipeline",
+   "title": "CV · AI Projects · yt-engine: AI short-video pipeline",
+   "url": "/Joshua_Solomon_Resume_v9_AI_Solutions_Engineer.pdf",
+   "source": "CV",
+   "text": "yt-engine: AI short-video pipeline\nTurns a one-line topic into a finished vertical video with captions for TikTok, Shorts and Reels. I approve and post every video by hand.\n- Cut cost to about $1 a video (a real 2-part series cost $0.72) by animating AI stills instead of paying for AI video\n- Claude writes the script, OpenAI makes the images and voice, and my own FFmpeg engine renders the video\n- Shows the cost before any paid call; Claude can run it from chat, paid steps wait for my yes; 406 unit tests\n\nStack: Python, FastAPI, Claude API, OpenAI API (images, text-to-speech), FFmpeg, Cloudflare Tunnel"
+  },
+  {
+   "id": "cv-skills-ai-and-llms",
+   "title": "CV · Skills · AI and LLMs",
+   "url": "/Joshua_Solomon_Resume_v9_AI_Solutions_Engineer.pdf",
+   "source": "CV",
+   "text": "- AI and LLMs: Claude API (Haiku 4.5, Opus 5.5), OpenAI API (gpt-image-1, gpt-4o-mini-tts), fal.ai, ElevenLabs, prompt design, structured JSON output, adversarial second-pass checks, prompt-injection checks, human-in-the-loop approval, cost estimates, spend tracking, daily AI budgets"
+  },
+  {
+   "id": "cv-skills-automation-and-integrations",
+   "title": "CV · Skills · Automation and integrations",
+   "url": "/Joshua_Solomon_Resume_v9_AI_Solutions_Engineer.pdf",
+   "source": "CV",
+   "text": "- Automation and integrations: REST APIs, webhooks, JSON, cron jobs, queues, idempotent retries, HMAC-signed links, Google Apps Script, Gmail API (OAuth), Google Sheets API, GoHighLevel API, Resend, Twilio, Stripe, Square API; familiar with n8n (one 47-node workflow design, personal)"
+  },
+  {
+   "id": "cv-skills-web-and-backend",
+   "title": "CV · Skills · Web and backend",
+   "url": "/Joshua_Solomon_Resume_v9_AI_Solutions_Engineer.pdf",
+   "source": "CV",
+   "text": "- Web and backend: Python (FastAPI), JavaScript, TypeScript, Hono, React, Vite, Tailwind CSS, Cloudflare Workers, D1, Queues, Cron Triggers, R2, Pages, Email Routing, Tunnel, Firebase, Vercel, FFmpeg, database CHECK constraints, role-based access control (default-deny), fail-closed APIs"
+  },
+  {
+   "id": "cv-skills-crm-email-and-web",
+   "title": "CV · Skills · CRM, email and web",
+   "url": "/Joshua_Solomon_Resume_v9_AI_Solutions_Engineer.pdf",
+   "source": "CV",
+   "text": "- CRM, email and web: GoHighLevel, HubSpot, Kajabi, Mailchimp, ActiveCampaign, Jotform, Wix / Wix Studio, SPF/DKIM/DMARC, A2P 10DLC, sending-domain warm-up, suppression lists, recipient allowlists"
+  },
+  {
+   "id": "cv-skills-tools",
+   "title": "CV · Skills · Tools",
+   "url": "/Joshua_Solomon_Resume_v9_AI_Solutions_Engineer.pdf",
+   "source": "CV",
+   "text": "- Tools: Claude Code (daily, custom skills and CLI tools), Cursor (since 2024), Git, GitHub Actions, Vitest, workerd"
+  },
+  {
+   "id": "cv-education",
+   "title": "CV · Education",
+   "url": "/Joshua_Solomon_Resume_v9_AI_Solutions_Engineer.pdf",
+   "source": "CV",
+   "text": "BS Computer Science, Gordon College | 2021–2025 | Thesis published at IRCITE 2025 (Bulacan State University)\n\nSenior High School, TVL–ICT Track, Columban College Inc., Olongapo City | 2019–2021 | With High Honors"
+  },
+  {
+   "id": "cv-additional",
+   "title": "CV · Additional",
+   "url": "/Joshua_Solomon_Resume_v9_AI_Solutions_Engineer.pdf",
+   "source": "CV",
+   "text": "Languages: English (professional working proficiency), Filipino (native). Setup: laptop, two separate internet providers (one as backup), UPS for the internet router."
+  },
+  {
+   "id": "ai-job-hunt-overview",
+   "title": "Case study · AI Job Hunt engine",
+   "url": "/work/ai-job-hunt/",
+   "source": "Case study",
+   "text": "AI Job Hunt engine\nOwn product · platform live since Oct 2026 · hunt built to run unattended\nA job search built to run itself, that only asks me about what matters.\nClaude Opus 5.5 finds remote AI roles, scores the fit, writes an honest application and drafts answers to employers, on Cloudflare’s cron with my PC off. A rule in the database decides what may send by itself; everything else waits for me. It runs on my own outreach platform (Behind Works), deployed on Cloudflare; the hunt stays switched off until my Claude API key is set.\nThe problem: Applying well is a part-time job: finding real remote roles, judging fit, writing an honest tailored application, sending it, then answering replies fast. By hand it ate my evenings, and rushing it means weak, generic applications.\nThe same shape fits any team that qualifies leads, triages inbound email or screens applications: AI does the reading and drafting, code enforces the rules, and a person approves the exceptions."
+  },
+  {
+   "id": "ai-job-hunt-constraints",
+   "title": "Case study · AI Job Hunt engine · Constraints",
+   "url": "/work/ai-job-hunt/#constraints",
+   "source": "Case study",
+   "text": "- Run with my PC off.\n- Never claim anything that is not in my CV.\n- Spend no more than a fixed amount on AI per day.\n- Send from my real Gmail, so replies land in the same thread.\n- Read only job boards that publish an API for programs. No scraping.\n- Interview times, pay talk, tests and offers always wait for me."
+  },
+  {
+   "id": "ai-job-hunt-built-find-and-vet",
+   "title": "Case study · AI Job Hunt engine · Find and vet",
+   "url": "/work/ai-job-hunt/#built",
+   "source": "Case study",
+   "text": "Find and vet: Once a Manila day the Worker reads five public job APIs (Himalayas, Jobicy, RemoteOK, Remotive, Arbeitnow) and keeps up to 30 new AI roles. Claude Opus 5.5 vets each one: fit 1–10, apply / maybe / skip, scam risk, pay and how to apply."
+  },
+  {
+   "id": "ai-job-hunt-built-write-then-check-for-honesty",
+   "title": "Case study · AI Job Hunt engine · Write, then check for honesty",
+   "url": "/work/ai-job-hunt/#built",
+   "source": "Case study",
+   "text": "Write, then check for honesty: Claude writes the best 10 by fit as JSON in a fixed schema. A second, adversarial Claude pass removes anything not in my CV, and a check in code blocks claims I must not make (tools I don’t use, more than about a year of experience, the agency’s name)."
+  },
+  {
+   "id": "ai-job-hunt-built-the-gate",
+   "title": "Case study · AI Job Hunt engine · The gate",
+   "url": "/work/ai-job-hunt/#built",
+   "source": "Case study",
+   "text": "The gate: A strong fit (8+, “apply”, an address, nothing to ask me) sends by itself 3 hours later unless I hold it. The database refuses any other auto-send row with a CHECK constraint, and the queue checks again right before sending."
+  },
+  {
+   "id": "ai-job-hunt-built-send-from-my-own-gmail",
+   "title": "Case study · AI Job Hunt engine · Send from my own Gmail",
+   "url": "/work/ai-job-hunt/#built",
+   "source": "Case study",
+   "text": "Send from my own Gmail: A Google Apps Script “Gmail bridge” claims approved applications every 5 minutes through secret-authenticated routes and sends them from my Gmail with my CV attached, at most 10 a day. If a send is never reported, the script looks in Sent instead of sending twice."
+  },
+  {
+   "id": "ai-job-hunt-built-answer-employers-in-the-thread",
+   "title": "Case study · AI Job Hunt engine · Answer employers in the thread",
+   "url": "/work/ai-job-hunt/#built",
+   "source": "Case study",
+   "text": "Answer employers in the thread: The bridge brings employer emails back into the application’s thread. Claude drafts an answer: simple facts (CV, availability, timezone) may go by themselves; interview times, tests, offers, pay or anything not in my CV waits for me."
+  },
+  {
+   "id": "ai-job-hunt-built-treat-outside-text-as-untruste",
+   "title": "Case study · AI Job Hunt engine · Treat outside text as untrusted",
+   "url": "/work/ai-job-hunt/#built",
+   "source": "Case study",
+   "text": "Treat outside text as untrusted: Job posts and employer emails reach Claude as data inside <untrusted_…> tags. A post that tries to instruct Claude, or asks for applications to a free email address, turns into a “maybe” for me."
+  },
+  {
+   "id": "ai-job-hunt-decision-1",
+   "title": "Case study · AI Job Hunt engine · Decision 1",
+   "url": "/work/ai-job-hunt/#decisions",
+   "source": "Case study",
+   "text": "Chose: Enforce auto-send in the database. Rejected: Trusting the prompt and the app code alone. Why: A prompt can be talked around and code can regress. With a CHECK constraint a bad auto-send row cannot even be stored, and the queue re-checks before every send."
+  },
+  {
+   "id": "ai-job-hunt-decision-2",
+   "title": "Case study · AI Job Hunt engine · Decision 2",
+   "url": "/work/ai-job-hunt/#decisions",
+   "source": "Case study",
+   "text": "Chose: Send through my own Gmail (Apps Script). Rejected: A transactional email service. Why: Applications come from a real inbox, employers reply in the same thread, and the bridge reads those replies back into the app."
+  },
+  {
+   "id": "ai-job-hunt-decision-3",
+   "title": "Case study · AI Job Hunt engine · Decision 3",
+   "url": "/work/ai-job-hunt/#decisions",
+   "source": "Case study",
+   "text": "Chose: Run inside the Worker’s 5-minute cron. Rejected: A scheduled task on my PC. Why: It runs with my PC off. At most 3 Claude calls per run, and none started after 20 seconds, keep each run inside the Worker’s limits. The PC task stays as a backup."
+  },
+  {
+   "id": "ai-job-hunt-broke-day-one-approved-emails-did-no",
+   "title": "Case study · AI Job Hunt engine · What broke: Day one: approved emails did not send",
+   "url": "/work/ai-job-hunt/#broke",
+   "source": "Case study",
+   "text": "Day one: approved emails did not send: On launch day (Oct 13) my first 20 approved outreach emails sat for hours, and the Worker log showed no cron runs at all. It cleared overnight and the cause was never confirmed, so I don’t claim a fix. What I do now: if an approval has not sent within a day, the cron log is the first place I look, and “Send due emails now” names the reason (outside the window, cap reached, no app URL). All 20 went out 10 a day on Oct 14–15, with no bounces."
+  },
+  {
+   "id": "ai-job-hunt-broke-a-database-limit-local-tests-w",
+   "title": "Case study · AI Job Hunt engine · What broke: A database limit local tests would miss",
+   "url": "/work/ai-job-hunt/#broke",
+   "source": "Case study",
+   "text": "A database limit local tests would miss: Cloudflare D1 refuses a LIKE pattern longer than 50 bytes, while plain SQLite accepts it. Search uses instr() instead, and the D1 stand-in the 700+ tests run against enforces the same 50-byte rule, so it cannot creep back in."
+  },
+  {
+   "id": "ai-job-hunt-broke-one-login-more-than-one-cloudf",
+   "title": "Case study · AI Job Hunt engine · What broke: One login, more than one Cloudflare account",
+   "url": "/work/ai-job-hunt/#broke",
+   "source": "Case study",
+   "text": "One login, more than one Cloudflare account: My Cloudflare login can see more than one account, and wrangler stops at an account picker in scripts. The project pins its account_id in wrangler.toml and the key script pins it too, so a deploy or a secret cannot land in the wrong account."
+  },
+  {
+   "id": "ai-job-hunt-results",
+   "title": "Case study · AI Job Hunt engine · Results",
+   "url": "/work/ai-job-hunt/#results",
+   "source": "Case study",
+   "text": "- 700+: automated tests, run with no server and no network\n- ~$1–2.50: estimated AI cost of a full day (30 posts read, 10 written and checked), under a hard daily budget\n- 5 min: cron cycle on Cloudflare: built to run unattended, PC off\n- 10/day: application cap; at most 15 drafted answers a day\n- 0: bounces on the first 20 approved outreach emails, sent 10 a day on schedule"
+  },
+  {
+   "id": "ai-job-hunt-stack",
+   "title": "Case study · AI Job Hunt engine · Stack",
+   "url": "/work/ai-job-hunt/#stack",
+   "source": "Case study",
+   "text": "Stack: Claude API (Opus 5.5, adaptive thinking, JSON schema), Cloudflare Workers, Hono, D1, Cron Triggers, Email Routing, Google Apps Script, Gmail API, Built with Claude Code"
+  },
+  {
+   "id": "ai-video-engine-overview",
+   "title": "Case study · AI Video Engine",
+   "url": "/work/ai-video-engine/",
+   "source": "Case study",
+   "text": "AI Video Engine\nOwn product · runs on my own PC · makes shorts for my own channel\nA finished, captioned short from a one-line topic, for about $1 instead of about $12.\nClaude writes the script, OpenAI makes the images and the voice, and my FFmpeg engine renders a 1080×1920 video with burned captions and covers. A cost estimate comes first; nothing is spent or posted without a yes.\nThe problem: Short videos need a script, visuals, a voice, captions and an edit for every post. Paid generative video costs about $12 a video and drifts between shots; doing it by hand takes hours each time.\nAny team that needs a steady stream of content (product explainers, training clips, social posts) gets the same thing: AI drafts, code renders, a person approves before anything is published, at a cost known in advance."
+  },
+  {
+   "id": "ai-video-engine-constraints",
+   "title": "Case study · AI Video Engine · Constraints",
+   "url": "/work/ai-video-engine/#constraints",
+   "source": "Case study",
+   "text": "- About $1 per video, with a cost estimate before any paid step.\n- Never post by itself: I approve and post every video.\n- Render on my own PC: no hosted render bills.\n- One file that works on TikTok, YouTube Shorts and Facebook Reels.\n- A failed run must retry without paying twice."
+  },
+  {
+   "id": "ai-video-engine-built-run-from-chat",
+   "title": "Case study · AI Video Engine · Run from chat",
+   "url": "/work/ai-video-engine/#built",
+   "source": "Case study",
+   "text": "Run from chat: I ask Claude Code for a video. It drives the service through a small CLI and a Claude Code skill: estimate, make, status, retry. Paid commands are blocked until an explicit yes."
+  },
+  {
+   "id": "ai-video-engine-built-script",
+   "title": "Case study · AI Video Engine · Script",
+   "url": "/work/ai-video-engine/#built",
+   "source": "Case study",
+   "text": "Script: Claude Opus 5.5 writes the script plus title, description and tags, checked against hook rules. It can also suggest topics from real YouTube search suggestions."
+  },
+  {
+   "id": "ai-video-engine-built-images-and-voice",
+   "title": "Case study · AI Video Engine · Images and voice",
+   "url": "/work/ai-video-engine/#built",
+   "source": "Case study",
+   "text": "Images and voice: OpenAI makes the images and the voiceover. Claude sets one style-anchor sentence per video and the code adds it to every image prompt, so a video looks consistent. Providers are switchable (fal.ai, ElevenLabs)."
+  },
+  {
+   "id": "ai-video-engine-built-render",
+   "title": "Case study · AI Video Engine · Render",
+   "url": "/work/ai-video-engine/#built",
+   "source": "Case study",
+   "text": "Render: A custom FFmpeg engine adds Ken Burns motion, crossfades, burned captions and music ducked under the voice, then makes covers and ready-to-paste captions for TikTok, Shorts and Reels."
+  },
+  {
+   "id": "ai-video-engine-built-queue-and-cost",
+   "title": "Case study · AI Video Engine · Queue and cost",
+   "url": "/work/ai-video-engine/#built",
+   "source": "Case study",
+   "text": "Queue and cost: A restart-safe job queue renders one video at a time. A retry never pays twice for a script, image or voiceover it already has, and every video records what it actually cost."
+  },
+  {
+   "id": "ai-video-engine-decision-1",
+   "title": "Case study · AI Video Engine · Decision 1",
+   "url": "/work/ai-video-engine/#decisions",
+   "source": "Case study",
+   "text": "Chose: Motion on AI stills (Ken Burns). Rejected: Paid generative video. Why: About $1 a video instead of about $12, and stills don’t morph or drift between cuts the way generated video does in explainers."
+  },
+  {
+   "id": "ai-video-engine-decision-2",
+   "title": "Case study · AI Video Engine · Decision 2",
+   "url": "/work/ai-video-engine/#decisions",
+   "source": "Case study",
+   "text": "Chose: One control path: Claude in chat. Rejected: A web dashboard with make and retry buttons. Why: Every paid action goes through one tool that shows the estimate and waits for a yes. The phone Library only watches, downloads and copies captions, so nothing there can spend money."
+  },
+  {
+   "id": "ai-video-engine-decision-3",
+   "title": "Case study · AI Video Engine · Decision 3",
+   "url": "/work/ai-video-engine/#decisions",
+   "source": "Case study",
+   "text": "Chose: Render on my own PC. Rejected: A hosted render service. Why: No per-minute render billing. A 24-second vertical video renders in about 37 seconds here (measured on the test run)."
+  },
+  {
+   "id": "ai-video-engine-broke-every-caption-showed-twice",
+   "title": "Case study · AI Video Engine · What broke: Every caption showed twice",
+   "url": "/work/ai-video-engine/#broke",
+   "source": "Case study",
+   "text": "Every caption showed twice: Captions are burned into the video, but a caption file published next to the MP4 made VLC and mpv load it as a second track: every line twice, in another font. The caption script is now published under a name players don’t auto-load."
+  },
+  {
+   "id": "ai-video-engine-broke-an-8-pixel-black-strip",
+   "title": "Case study · AI Video Engine · What broke: An 8-pixel black strip",
+   "url": "/work/ai-video-engine/#broke",
+   "source": "Case study",
+   "text": "An 8-pixel black strip: One effect needs RGB frames, and at width 1080 FFmpeg 8.1.1’s conversion left an 8 px black strip down the right edge of the whole shot. Converting to rgb24 first fixed it, and a test now renders the effect and checks the last 8 columns of every frame."
+  },
+  {
+   "id": "ai-video-engine-broke-the-last-word-got-clipped",
+   "title": "Case study · AI Video Engine · What broke: The last word got clipped",
+   "url": "/work/ai-video-engine/#broke",
+   "source": "Case study",
+   "text": "The last word got clipped: Loudness normalization stamps its final audio a few dozen milliseconds late, so the length cut clipped the tail of the last word. Renumbering the audio timestamps fixed it on every audio path."
+  },
+  {
+   "id": "ai-video-engine-results",
+   "title": "Case study · AI Video Engine · Results",
+   "url": "/work/ai-video-engine/#results",
+   "source": "Case study",
+   "text": "- ~$1: per finished video, vs ~$12 for paid generative video\n- $0.72: real API cost of a 2-part story ($0.49 + $0.23)\n- 406: unit tests, plus 300 acceptance checks on a fake paid-API stand-in\n- ~37 s: to render a 24-second vertical video (test run)\n- 1 file: 1080×1920 MP4 for TikTok, YouTube Shorts and Facebook Reels"
+  },
+  {
+   "id": "ai-video-engine-stack",
+   "title": "Case study · AI Video Engine · Stack",
+   "url": "/work/ai-video-engine/#stack",
+   "source": "Case study",
+   "text": "Stack: Python, FastAPI, Claude API (Opus 5.5), OpenAI API (images, text-to-speech), FFmpeg, Cloudflare Tunnel, Built with Claude Code"
+  },
+  {
+   "id": "site-profile",
+   "title": "Site · Profile",
+   "url": "/#about",
+   "source": "Website",
+   "text": "Joshua Solomon, AI Solutions Engineer. Olongapo City, PH · Remote.\nAvailable for full-time remote work · can start within 1–2 weeks\nBuilding software with AI since 2024 (Cursor, in college). Professionally since 2025.\nEmail: solomonjoshua101602@gmail.com. WhatsApp: +63 961 556 2117."
+  },
+  {
+   "id": "site-hero",
+   "title": "Site · What I do",
+   "url": "/",
+   "source": "Website",
+   "text": "I build AI that saves businesses time and money.\nSystems that take the busywork off a team: Claude or OpenAI does the drafting, writing or sorting, and the code around it keeps costs known, output checked and a person in charge of anything customer-facing. I ship them by directing AI coding agents (Claude Code)."
+  },
+  {
+   "id": "site-flow",
+   "title": "Site · How my AI systems run",
+   "url": "/",
+   "source": "Website",
+   "text": "- Trigger: A schedule, an email, a form or a request in chat\n- AI does the work: Claude reads, scores and drafts; OpenAI makes images and voice\n- Code checks it: Rules, caps and budgets enforced in code and in the database\n- You approve: A person signs off on what matters before it goes out"
+  },
+  {
+   "id": "site-tools",
+   "title": "Site · Tools",
+   "url": "/",
+   "source": "Website",
+   "text": "Main tools: Claude Code, Claude API, OpenAI API, Python, FastAPI, TypeScript, Hono, Cloudflare Workers, Cloudflare D1, FFmpeg, Apps Script + Gmail API, React.\nAlso used: GoHighLevel, HubSpot, Mailchimp, ActiveCampaign, Kajabi, Wix Studio, Jotform, Resend, Twilio, Square API, Firebase, Vercel."
+  },
+  {
+   "id": "site-offer-busywork",
+   "title": "Site · What I build · Take the busywork off your team",
+   "url": "/#build",
+   "source": "Website",
+   "text": "Take the busywork off your team: AI workflows that read, sort, draft and reply: inbound email, leads, applications, support. Code enforces the rules and caps; a person approves the exceptions."
+  },
+  {
+   "id": "site-offer-content",
+   "title": "Site · What I build · Content at a cost you know first",
+   "url": "/#build",
+   "source": "Website",
+   "text": "Content at a cost you know first: AI production pipelines (scripts, images, voice, video) that show a cost estimate before every paid step and never publish without a yes."
+  },
+  {
+   "id": "site-offer-own",
+   "title": "Site · What I build · Own your tools instead of renting them",
+   "url": "/#build",
+   "source": "Website",
+   "text": "Own your tools instead of renting them: Internal platforms on Cloudflare Workers and D1 that replace per-seat software: built fast with Claude Code, covered by tests, safe by default."
+  },
+  {
+   "id": "site-results",
+   "title": "Site · Results",
+   "url": "/#results",
+   "source": "Website",
+   "text": "- 700+: automated tests on the AI job hunt platform, run with no network\n- ~$1–2.50: estimated AI cost of a full job-hunt day, under a hard daily dollar budget\n- 406 + 300: unit tests and acceptance checks on the AI video engine\n- $0.72: real API cost of a 2-part AI video story ($0.49 + $0.23)\n- 6 in ~5 wks: client accounts live on the agency platform after the first commit\n- 3,200+: automated tests on the agency platform\nFrom agency email work: a nonprofit’s average click rate went from 4.5% (April 2026) to 9.5% (May 2026). Two months compared, not an A/B test."
+  },
+  {
+   "id": "site-bio",
+   "title": "Site · About",
+   "url": "/#about",
+   "source": "Website",
+   "text": "I ship production systems by directing AI coding agents (Claude Code), and I put AI inside them: Claude and OpenAI do the reading, writing and generating; the code around them keeps every step checked, capped and approved by a person. At a US marketing agency I am the technical lead for client onboarding and built its in-house email and SMS platform. Before that, about 6 months as a marketing VA with US founders."
+  },
+  {
+   "id": "site-setup",
+   "title": "Site · Work setup",
+   "url": "/#about",
+   "source": "Website",
+   "text": "- Olongapo City, Philippines · US Eastern hours preferred; PH, AU or European hours also work\n- Laptop, two internet providers (one as backup), and a UPS for the internet router\n- English (professional working proficiency), Filipino (native)"
+  },
+  {
+   "id": "site-education",
+   "title": "Site · Education",
+   "url": "/#about",
+   "source": "Website",
+   "text": "BS Computer Science, Gordon College (2021–2025). Thesis published at IRCITE 2025 (Bulacan State University). Senior High School, TVL–ICT, Columban College, With High Honors."
+  },
+  {
+   "id": "site-experience-arrow-group-consulting",
+   "title": "Site · Experience · AI & Systems Lead",
+   "url": "/#about",
+   "source": "Website",
+   "text": "AI & Systems Lead, Arrow Group Consulting (US outsourced-CMO agency · Michigan, USA (remote) · Part-time contract), Feb 2026 — Present.\n- Built and launched the agency’s in-house email/SMS platform with AI-assisted development in Claude Code: 6 accounts live about 5 weeks after the first commit (Aug–Sep 2026). The agency is now replacing GoHighLevel with it.\n- Added Claude features: drafting helpers for subject lines and preview text, plus Claude Haiku 4.5 subject lines, revision suggestions, a help chat and task-image analysis in the team’s daily content-operations app.\n- Wrote the business case (projected ~89% lower monthly platform cost, no external build spend) and planned a phased migration of 10,000+ client contacts, running the old platform in parallel.\n- Handle 8 clients at once: onboarding end to end (GoHighLevel, Cloudflare sites, DNS, SPF/DKIM/DMARC, A2P 10DLC), explained in plain language on onboarding calls.\n- Built client back-office tools on Cloudflare Workers (a nonprofit funnel-tracker dashboard and a resale startup’s admin dashboard) and integrated Square payments through the Square API."
+  },
+  {
+   "id": "site-experience-doneverse",
+   "title": "Site · Experience · Virtual Marketing Assistant (VMA), agency placement",
+   "url": "/#about",
+   "source": "Website",
+   "text": "Virtual Marketing Assistant (VMA), agency placement, Doneverse (Philippines · matches marketing talent with US founders), Sep 2025 — Feb 2026 · about 6 months.\n- Marketing VA for 2 US founders: Arrow Group Consulting’s founder (which led to a direct hire), then keynote speaker Jonathan Fanning (Kajabi).\n- Built sites on Wix Studio; tools used included Mailchimp, HubSpot, Kajabi, GoHighLevel, ActiveCampaign and Jotform.\n- Learned HubSpot on the job, then recommended HubSpot and ActiveCampaign; the agency adopted both, and ActiveCampaign fixed one client’s Mailchimp login errors."
+  },
+  {
+   "id": "site-earlier-experience",
+   "title": "Site · Earlier experience",
+   "url": "/#about",
+   "source": "Website",
+   "text": "Earlier (2024–2025, during college): working student doing social media for ADAP Real Estate, Subic."
+  },
+  {
+   "id": "site-agency-platform",
+   "title": "Site · Agency email & SMS platform",
+   "url": "/#work-agency",
+   "source": "Website",
+   "text": "At work · Arrow Group Consulting · 2026\nThe agency stops renting its marketing platform: a projected ~89% lower monthly platform cost, with no external build spend.\n- 6 client accounts live about 5 weeks after the first commit (Aug–Sep 2026)\n- Now replacing GoHighLevel at the agency, with the old platform run in parallel\n- 3,200+ automated tests, run inside the Workers runtime so no test can send a real message\n- Claude API helpers draft subject lines and preview text; OpenAI makes images\nSafe by default: test mode until switched on, opt-outs re-checked before every send, SMS blocked until A2P 10DLC approval, and 4-role default-deny access.\nStack: TypeScript, Cloudflare Workers + Hono, D1, Queues, React, Resend, Twilio, Claude API\nPrivate company platform, so there is no public link. Screenshots shown with the agency owner’s approval; the client’s name and figures are blurred."
+  },
+  {
+   "id": "site-client-work",
+   "title": "Site · Client work",
+   "url": "/#work",
+   "source": "Website",
+   "text": "- Alpha Omega Safety Solutions (AOSS) (Michigan): Built the website, plus approved business texting (A2P 10DLC brand registration on GoHighLevel), email and domain setup.\n- HOME.FM (Spring Arbor, MI): Built the website, plus email that reaches the inbox: a dedicated sending subdomain with SPF/DKIM/DMARC, warmed to 6,500 emails a day.\n- Ada’s Closet (Spring Arbor, MI): Built the website and back-office for a student consignment startup: listings to Poshmark, eBay and Depop, live inventory, sale alerts in Apps Script.\n- Alliance Service Brands (Jackson, MI): Built one custom website that unifies six home-service brands.\n- Endtime Entrepreneurs (USA): Built the website from scratch on Cloudflare Pages, plus CRM, music distribution and SEO.\n- TrueCare Chiropractic (Lansing, MI): Built the website, plus email marketing, upkeep and SEO for a chiropractic clinic."
+  },
+  {
+   "id": "llms-intro",
+   "title": "Site summary (llms.txt)",
+   "url": "/llms.txt",
+   "source": "Site summary",
+   "text": "> AI Solutions Engineer: I build AI that saves businesses time and money. Claude or OpenAI does the drafting, writing or sorting; the code around it keeps costs known, output checked and a person in charge of anything customer-facing. Based in Olongapo City, Philippines; US Eastern hours preferred. Available for full-time remote work; can start within 1–2 weeks.\n\nBuilding software with AI since 2024 (Cursor, in college). Professionally since 2025. Ships production systems by directing AI coding agents (Claude Code) and puts Claude and OpenAI to work inside them."
+  },
+  {
+   "id": "llms-contact",
+   "title": "Site summary · Contact",
+   "url": "/llms.txt",
+   "source": "Site summary",
+   "text": "- Email: solomonjoshua101602@gmail.com\n- WhatsApp: +63 961 556 2117\n- LinkedIn: https://www.linkedin.com/in/joshua-ralph-adrian-solomon-1a0745347/\n- GitHub: https://github.com/JoshuaRalphz\n- Website: https://solomonjoshua.com\n- CV: https://solomonjoshua.com/Joshua_Solomon_Resume_v9_AI_Solutions_Engineer.pdf"
+  },
+  {
+   "id": "llms-case-studies",
+   "title": "Site summary · Case studies",
+   "url": "/llms.txt",
+   "source": "Site summary",
+   "text": "- AI Job Hunt engine: built to run unattended on a Cloudflare Worker's 5-minute cron. Claude Opus 5.5 vets public job-board posts (fit 1–10, scam risk, pay), writes the best 10, and an adversarial second pass removes any claim not in the CV. Only strong, clean fits send by themselves after a 3-hour hold, enforced by a database CHECK constraint and re-checked before sending; the rest wait for approval. A Google Apps Script Gmail bridge sends from Gmail and brings replies back into the thread. Hard daily dollar budget; 700+ automated tests.\n- AI Video Engine: a one-line topic becomes a finished 1080x1920 short with burned captions. Claude writes the script, OpenAI makes images and voice, a custom FFmpeg engine renders. About $1 per video vs about $12 for paid generative video; a real 2-part story cost $0.72. Cost estimate before every paid command; never posts by itself; 406 unit tests and 300 acceptance checks.\n- Agency email & SMS platform (Arrow Group Consulting, 2026): built with Claude Code on Cloudflare Workers + D1; 6 accounts live about 5 weeks after the first commit; 3,200+ automated tests; projected ~89% lower monthly platform cost; now replacing GoHighLevel."
+  },
+  {
+   "id": "llms-experience",
+   "title": "Site summary · Experience",
+   "url": "/llms.txt",
+   "source": "Site summary",
+   "text": "- AI & Systems Lead, Arrow Group Consulting (Michigan, USA; remote, part-time contract), Feb 2026 – present.\n- Virtual Marketing Assistant (VMA), Doneverse (Philippines), Sep 2025 – Feb 2026, about 6 months."
+  },
+  {
+   "id": "llms-education",
+   "title": "Site summary · Education",
+   "url": "/llms.txt",
+   "source": "Site summary",
+   "text": "- BS Computer Science, Gordon College (2021–2025). Thesis published at IRCITE 2025."
+  }
+ ]
+}

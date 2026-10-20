@@ -1,7 +1,7 @@
 import Anthropic from '@anthropic-ai/sdk';
 import { FIT_SCHEMA, SYSTEM_PROMPT, buildUserMessage } from './fitPrompt.js';
 import { normalizeResult } from './fitResult.js';
-import { d1Store, memoryStore } from './store.js';
+import { d1Store, sharedMemoryStore } from './store.js';
 import { MOCK_RESULT, MOCK_USAGE } from './mockResult.js';
 
 export const MODEL = 'claude-opus-5-5';
@@ -23,7 +23,7 @@ const FALLBACK_PRICE = { input: 5, output: 25 };
 const PROMPT_TOKENS_UPPER = Math.ceil((SYSTEM_PROMPT.length + JSON.stringify(FIT_SCHEMA).length) / 3) + 300;
 
 const ORIGINS = ['https://solomonjoshua.com', 'https://www.solomonjoshua.com'];
-const LOCAL_HOSTS = new Set(['localhost', '127.0.0.1', '[::1]']);
+export const LOCAL_HOSTS = new Set(['localhost', '127.0.0.1', '[::1]']);
 const PREVIEW_ORIGIN = /^https:\/\/([a-z0-9-]+\.)?joshua-solomon-portfolio\.pages\.dev$/;
 
 const MESSAGES = {
@@ -95,7 +95,7 @@ export function actualCostMicro(usage) {
   return Math.ceil(input * rate.input + (usage?.output_tokens ?? 0) * rate.output);
 }
 
-async function hashVisitor(salt, day, ip) {
+export async function hashVisitor(salt, day, ip) {
   const encoder = new TextEncoder();
   const key = await crypto.subtle.importKey('raw', encoder.encode(salt), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
   const signature = await crypto.subtle.sign('HMAC', key, encoder.encode(`${day}|${ip}`));
@@ -118,7 +118,7 @@ async function verifyTurnstile(secret, token, ip, fetchImpl) {
 }
 
 /** Reads the body but stops at `limit` bytes (a chunked body has no Content-Length). */
-async function readCapped(request, limit) {
+export async function readCapped(request, limit) {
   if (!request.body) return '';
   const reader = request.body.getReader();
   const chunks = [];
@@ -216,8 +216,6 @@ function resultReply(response, isMock) {
   }
 }
 
-let mockMemory = null;
-
 /**
  * POST /api/fit. `deps` exists for tests: createClient, store, fetch, sleep, now.
  * @param {Request} request
@@ -246,7 +244,7 @@ export async function handleFit(request, env, ctx = {}, deps = {}) {
     return fail(403, 'captcha');
   }
 
-  const store = deps.store ?? (env.FIT_DB ? d1Store(env.FIT_DB) : (mockMemory ??= memoryStore()));
+  const store = deps.store ?? (env.FIT_DB ? d1Store(env.FIT_DB) : sharedMemoryStore());
   const limits = readLimits(env);
   const iso = new Date(deps.now ?? Date.now()).toISOString();
   const periods = { day: `d:${iso.slice(0, 10)}`, month: `m:${iso.slice(0, 7)}` };

@@ -93,3 +93,10 @@ export function memoryStore() {
     spendFor: (period) => spend.get(period) ?? 0,
   };
 }
+
+let shared = null;
+/** One in-memory store per isolate, shared by every AI demo in mock mode (so the shared caps apply there too). */
+export function sharedMemoryStore() {
+  shared ??= memoryStore();
+  return shared;
+}
