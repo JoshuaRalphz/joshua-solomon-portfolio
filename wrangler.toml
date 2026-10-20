@@ -3,3 +3,14 @@
 name = "joshua-solomon-portfolio"
 compatibility_date = "2025-05-26"
 pages_build_output_dir = "./dist"
+
+# ---- Fit agent (functions/api/fit.js) ----
+# Counters for the per-visitor limit and the daily/monthly spend caps.
+# Uncomment after `npx wrangler d1 create fit-agent` and paste the id it prints.
+# Until then /api/fit answers "not available" (it fails closed without FIT_DB).
+# Budgets and limits default in code ($1/day, $30/month, 5 runs per visitor per day);
+# override with FIT_DAILY_BUDGET_USD, FIT_MONTHLY_BUDGET_USD, FIT_RUNS_PER_VISITOR.
+# [[d1_databases]]
+# binding = "FIT_DB"
+# database_name = "fit-agent"
+# database_id = "PASTE-THE-ID-HERE"
