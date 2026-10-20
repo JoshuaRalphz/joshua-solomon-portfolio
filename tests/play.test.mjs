@@ -3,7 +3,8 @@ import { test, describe } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import Anthropic from '@anthropic-ai/sdk';
-import { handlePlay, haikuActualCostMicro, haikuMaxCostMicro, HAIKU_PRICE, PLAY_MODEL } from '../functions/_lib/play/guard.js';
+import { handlePlay, haikuActualCostMicro, haikuMaxCostMicro, readPlayCaps, HAIKU_PRICE, PLAY_MODEL } from '../functions/_lib/play/guard.js';
+import { safePath } from '../src/components/play/api.js';
 import * as busywork from '../functions/_lib/play/busywork.js';
 import * as triage from '../functions/_lib/play/triage.js';
 import * as ask from '../functions/_lib/play/ask.js';
@@ -220,6 +221,27 @@ describe('shared budget and visitor limit', () => {
     assert.equal(shared.spendFor('d:2026-10-20'), spent + 1000 * 4 + 200 * 20);
   });
 
+  test('play has its own sub-cap ($0.50/day, $15/month by default) so it cannot starve the fit agent', async () => {
+    assert.deepEqual(readPlayCaps({}), { day: 500_000, month: 15_000_000 });
+    assert.deepEqual(readPlayCaps({ PLAY_DAILY_BUDGET_USD: '0.2', PLAY_MONTHLY_BUDGET_USD: '5' }), { day: 200_000, month: 5_000_000 });
+    const store = memoryStore();
+    await store.reserve({ day: 'pd:2026-10-20', month: 'pm:2026-10' }, 500_000 - 100, { day: Infinity, month: Infinity });
+    const { json, client } = await run('triage', { store });
+    assert.equal(json.code, 'budget');
+    assert.equal(client.calls.length, 0);
+    assert.equal(store.spendFor('d:2026-10-20'), 0); // the shared pool was never touched
+    // When the shared pool says no, the sub-cap reservation is handed back.
+    const full = memoryStore();
+    await full.reserve({ day: 'd:2026-10-20', month: 'm:2026-10' }, 1_000_000 - 100, { day: Infinity, month: Infinity });
+    assert.equal((await run('triage', { store: full })).json.code, 'budget');
+    assert.equal(full.spendFor('pd:2026-10-20'), 0);
+    // A normal run is settled in both places at the same actual cost.
+    const ok = memoryStore();
+    await run('triage', { store: ok });
+    assert.equal(ok.spendFor('pd:2026-10-20'), ok.spendFor('d:2026-10-20'));
+    assert.equal(ok.spendFor('pm:2026-10'), 650);
+  });
+
   test('the monthly cap is shared too (default $30)', async () => {
     const store = memoryStore();
     await store.reserve({ day: 'd:2026-10-01', month: 'm:2026-10' }, 30_000_000 - 100, { day: Infinity, month: Infinity });
@@ -283,6 +305,14 @@ describe('busywork: plan & price', () => {
     assert.equal(result.automations.length, 1);
     assert.deepEqual(result.hours, { low: 0, high: 40 });
     assert.deepEqual(result.offer.items, [OFFERS.starter]); // unknown offer id -> the one-time starter
+  });
+
+  test('other ways of writing a price are removed too', () => {
+    const texts = ['USD 500 a build', 'about 500 bucks', '2k usd', 'five hundred dollars', '300 euros', 'EUR 99'];
+    for (const t of texts) {
+      const r = busywork.normalize({ is_business_task: true, summary: t, automations: [{ title: 'x', how_it_works: t, hours_low: 1, hours_high: 2 }], offer: 'starter', offer_reason: '', call_agenda: '' });
+      assert.match(r.summary, /price agreed on the call/, t);
+    }
   });
 
   test('not a business task: no automations shown', () => {
@@ -357,6 +387,9 @@ describe('ask my portfolio', () => {
     assert.deepEqual(result.sentences[0].source_ids, [real]);
     assert.deepEqual(result.sources.map((s) => s.id), [real]);
     assert.match(result.sources[0].url, /^\//);
+    // Only same-site paths render as links.
+    assert.equal(safePath('/work/ai-job-hunt/#built'), '/work/ai-job-hunt/#built');
+    for (const bad of ['//evil.example', 'https://evil.example', 'javascript:alert(1)', '/x y', null]) assert.equal(safePath(bad), null);
     // Nothing left after the filter -> the honest "not in my documents".
     const empty = ask.normalize({ answerable: true, sentences: [{ text: 'Invented 999 clients.', source_ids: [real] }] }, {}, { passages });
     assert.equal(empty.answered, false);

@@ -22,7 +22,7 @@ export const TOOLS = [
 ];
 
 const OFFER_IDS = ['starter', 'starter_then_care'];
-const CURRENCY = /(?:US\s?)?[$€£₱]\s?\d[\d,.]*(?:\s?[kKmM]\b)?|\b\d[\d,.]*\s?(?:usd|dollars|pesos|php)\b/gi;
+const CURRENCY = /(?:US\s?)?[$€£₱]\s?\d[\d,.]*(?:\s?[kKmM]\b)?|\b(?:usd|eur|gbp|php|aud|cad)\s?\d[\d,.]*|\b\d[\d,.]*\s?(?:k\s)?(?:usd|eur|gbp|aud|cad|dollars?|bucks|euros?|pounds?|pesos?|php)\b|\b(?:hundred|thousand)\s+(?:dollars|bucks|euros|pounds|pesos)\b/gi;
 
 export const SCHEMA = {
   type: 'object',

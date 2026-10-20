@@ -3,7 +3,9 @@
 /** Plain, bounded string from untrusted model output. Em dashes (and spaced en dashes) become commas; ranges like 2021–2025 stay. */
 export function clean(value, maxChars = 400) {
   if (typeof value !== 'string') return '';
+  // Cut first: the whitespace regexes below should never see a huge string.
   const text = value
+    .slice(0, maxChars * 4)
     .replace(/\s*—\s*|\s+–\s+/g, ', ')
     .replace(/[ \t]+/g, ' ')
     .replace(/\s*\n\s*/g, '\n')

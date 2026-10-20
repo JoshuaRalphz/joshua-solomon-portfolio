@@ -4,7 +4,10 @@
 //   (FIT_DAILY_BUDGET_USD / FIT_MONTHLY_BUDGET_USD, default $1 / $30), priced per model;
 // - one per-visitor counter: the same salted-hash row per visitor per UTC day, so
 //   fit runs and play runs add up (PLAY_RUNS_PER_VISITOR, default 8; the fit agent
-//   keeps its own lower cap of 5 on that same shared count).
+//   keeps its own lower cap of 5 on that same shared count);
+// - plus a play-only sub-cap inside that pool (PLAY_DAILY_BUDGET_USD / PLAY_MONTHLY_BUDGET_USD,
+//   default $0.50 / $15), so the demos can never spend the fit agent's whole day.
+//   Its counters are separate rows in the same table ('pd:YYYY-MM-DD', 'pm:YYYY-MM').
 // Nothing typed by the visitor is stored or logged.
 import Anthropic from '@anthropic-ai/sdk';
 import { LOCAL_HOSTS, hashVisitor, isAllowedOrigin, readCapped, readLimits, reply, visitorKey } from '../fitAgent.js';
@@ -16,6 +19,7 @@ export const PLAY_MODEL = 'claude-haiku-5-5';
 export const HAIKU_PRICE = { input: 0.1, output: 0.5 };
 export const MAX_BODY_BYTES = 8 * 1024;
 const DEFAULT_RUNS_PER_VISITOR = 8;
+const DEFAULT_PLAY_BUDGET = { dailyUsd: 0.5, monthlyUsd: 15 };
 const API_TIMEOUT_MS = 30_000;
 const MOCK_DELAY_MS = 1200;
 // Fixed request overhead (roles, schema wrapper) on top of the bytes we send.
@@ -48,6 +52,19 @@ export function haikuActualCostMicro(usage) {
   if (!usage) return null;
   const input = (usage.input_tokens ?? 0) + (usage.cache_creation_input_tokens ?? 0) + (usage.cache_read_input_tokens ?? 0);
   return Math.ceil(input * HAIKU_PRICE.input + (usage.output_tokens ?? 0) * HAIKU_PRICE.output);
+}
+
+function readUsd(value, fallback) {
+  const number = Number(value);
+  return value !== undefined && value !== '' && Number.isFinite(number) && number >= 0 ? number : fallback;
+}
+
+/** The play-only sub-cap, in micro-dollars. */
+export function readPlayCaps(env) {
+  return {
+    day: Math.round(readUsd(env.PLAY_DAILY_BUDGET_USD, DEFAULT_PLAY_BUDGET.dailyUsd) * 1e6),
+    month: Math.round(readUsd(env.PLAY_MONTHLY_BUDGET_USD, DEFAULT_PLAY_BUDGET.monthlyUsd) * 1e6),
+  };
 }
 
 function runsPerVisitor(env) {
@@ -138,6 +155,7 @@ export async function handlePlay(request, env, ctx, deps, demo) {
   const iso = new Date(deps.now ?? Date.now()).toISOString();
   const day = iso.slice(0, 10);
   const periods = { day: `d:${day}`, month: `m:${iso.slice(0, 7)}` };
+  const playPeriods = { day: `pd:${day}`, month: `pm:${iso.slice(0, 7)}` };
   const ip = request.headers.get('cf-connecting-ip') ?? 'unknown';
 
   try {
@@ -148,7 +166,12 @@ export async function handlePlay(request, env, ctx, deps, demo) {
     const call = demo.build(input, prepared.context);
     const promptBytes = new TextEncoder().encode(call.system + call.user + JSON.stringify(call.schema)).length;
     const reserved = haikuMaxCostMicro(promptBytes, call.maxTokens);
-    if (!(await store.reserve(periods, reserved, { day: limits.dayMicro, month: limits.monthMicro }))) return fail(429, 'budget');
+    // Play sub-cap first, then the shared pool; a refusal by the pool hands the sub-cap reservation back.
+    if (!(await store.reserve(playPeriods, reserved, readPlayCaps(env)))) return fail(429, 'budget');
+    if (!(await store.reserve(periods, reserved, { day: limits.dayMicro, month: limits.monthMicro }))) {
+      await store.settle(playPeriods, reserved, 0).catch(() => {});
+      return fail(429, 'budget');
+    }
 
     let response = null;
     try {
@@ -173,9 +196,11 @@ export async function handlePlay(request, env, ctx, deps, demo) {
     } finally {
       // A failed call, or one with no usage, stays counted at its maximum possible cost.
       const actual = response ? haikuActualCostMicro(response.usage) : null;
-      await store.settle(periods, reserved, actual ?? reserved).catch((settleError) => {
-        console.error(`play/${demo.id}: settle failed, spend stays at the reserved maximum`, settleError?.constructor?.name);
-      });
+      for (const p of [periods, playPeriods]) {
+        await store.settle(p, reserved, actual ?? reserved).catch((settleError) => {
+          console.error(`play/${demo.id}: settle failed, spend stays at the reserved maximum`, settleError?.constructor?.name);
+        });
+      }
     }
 
     if (response.stop_reason === 'refusal') return fail(422, 'refused');

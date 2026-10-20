@@ -26,4 +26,4 @@ export async function postPlay(path, body) {
 }
 
 /** Only same-site paths (from the server's fixed passage list) are ever rendered as links. */
-export const safePath = (url) => (typeof url === 'string' && /^\/[a-z0-9/#._-]*$/i.test(url) ? url : null);
+export const safePath = (url) => (typeof url === 'string' && /^\/(?!\/)[a-z0-9/#._-]*$/i.test(url) ? url : null);
