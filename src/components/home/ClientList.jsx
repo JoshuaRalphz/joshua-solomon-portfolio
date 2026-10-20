@@ -17,8 +17,8 @@ export default function ClientList() {
                   <span className="sr-only"> (opens in a new tab)</span>
                 </a>
               ) : client.name}
-              <span className="font-medium text-muted"> · {client.place}</span>
             </p>
+            <p className="font-mono text-xs text-muted">{client.place}</p>
             <p className="mt-1 text-sm leading-snug text-body">{client.line}</p>
           </li>
         ))}

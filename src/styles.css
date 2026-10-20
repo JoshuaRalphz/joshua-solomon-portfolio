@@ -198,7 +198,7 @@
   @media (min-width: 768px) { .clients { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   @media (min-width: 1280px) { .clients { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
   .clients > li { min-width: 0; border-top: 1px solid theme('colors.line'); padding-top: .875rem; }
-  .client-link { display: inline-flex; align-items: center; gap: .25rem; min-height: 2.75rem; margin-block: -.75rem; }
+  .client-link { display: flex; align-items: center; gap: .25rem; min-height: 2.75rem; }
   .client-link:hover { text-decoration: underline; }
 
   /* Screenshots: a browser frame with an optional overlapping phone */

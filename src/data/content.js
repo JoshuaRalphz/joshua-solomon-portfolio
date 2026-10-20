@@ -110,7 +110,7 @@ export const agencyCase = {
 // that client: adasclosetsau.com and aoutilityservices.com now redirect to other brands.
 // Ada's Closet's site is arrowconsignment.com (Josh confirmed, 2026-10-20).
 export const clientWork = [
-  { name: 'Alpha Omega Safety Solutions (AOSS)', place: 'Michigan', line: 'Built the website, plus approved business texting (A2P 10DLC brand registration on GoHighLevel), email and domain setup.', url: 'https://aosafe.com' },
+  { name: 'Alpha Omega Safety Solutions', place: 'Michigan', line: 'Built the website, plus approved business texting (A2P 10DLC brand registration on GoHighLevel), email and domain setup.', url: 'https://aosafe.com' },
   { name: 'HOME.FM', place: 'Spring Arbor, MI', line: 'Built the website, plus email that reaches the inbox: a dedicated sending subdomain with SPF/DKIM/DMARC, warmed to 6,500 emails a day.', url: 'https://listenhome.fm' },
   { name: 'Ada’s Closet', place: 'Spring Arbor, MI', line: 'Built the website and back-office for a student consignment startup: listings to Poshmark, eBay and Depop, live inventory, sale alerts in Apps Script.', url: 'https://www.arrowconsignment.com/' },
   { name: 'Alliance Service Brands', place: 'Jackson, MI', line: 'Built one custom website that unifies six home-service brands.', url: 'https://www.allianceservicebrands.com' },
