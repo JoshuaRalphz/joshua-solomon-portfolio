@@ -2,17 +2,13 @@ import { Mail, Sparkles } from 'lucide-react';
 import { profile } from '../data/content.js';
 
 /**
- * Mount point for the live "see how I'd help your team" demo.
+ * Placeholder for the live "see how I'd help your team" demo (built on branch
+ * feat/fit-agent: src/components/fit/*, functions/api/fit.js).
  *
- * The demo is built separately (src/components/FitAgent.jsx, or FitAgent/index.jsx,
- * with its API in functions/api/fit). This glob picks the component up at build time
- * the moment that file exists: no edit here is needed. Until then the glob is empty
- * and the teaser below renders. The demo must be SSR-safe (no window/document during
- * render), because every page is prerendered.
+ * To mount the demo, edit ONE line in src/components/home/FitAgentSection.jsx:
+ * replace <FitAgentSlot /> with the demo component. The demo must be SSR-safe
+ * (no window/document during render) because every page is prerendered.
  */
-const found = import.meta.glob(['./FitAgent.jsx', './FitAgent/index.jsx'], { eager: true });
-const FitAgent = Object.values(found)[0]?.default ?? null;
-
 function Teaser() {
   return (
     <div className="tile tile--lime flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
@@ -38,5 +34,5 @@ function Teaser() {
 }
 
 export default function FitAgentSlot() {
-  return FitAgent ? <FitAgent /> : <Teaser />;
+  return <Teaser />;
 }
