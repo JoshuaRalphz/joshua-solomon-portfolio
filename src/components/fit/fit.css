@@ -1,0 +1,151 @@
+/* The fit agent ("See how I'd help your team"). Self-contained: every class
+   starts with fit-. Plain CSS loaded after the utilities, so no margin/padding
+   here on elements that also carry spacing utilities. */
+
+.fit-textarea {
+  min-height: clamp(12rem, 30vh, 20rem);
+  resize: vertical;
+  font-size: .9375rem;
+  line-height: 1.55;
+}
+
+/* Readable on the ink panel (AA): a light coral, not the light-theme red. */
+.fit-warn { color: #FFB8AD; }
+
+.fit-btn-ghost {
+  background: transparent;
+  color: theme('colors.mist');
+  border: 1.5px solid theme('colors.mist-dim');
+}
+.fit-btn-ghost:hover { border-color: theme('colors.lime.DEFAULT'); color: theme('colors.lime.DEFAULT'); }
+.fit-form .btn:disabled, .fit-form .btn[aria-disabled="true"] { cursor: progress; opacity: .7; }
+
+.fit-spin { animation: fitSpin 900ms linear infinite; }
+@keyframes fitSpin { to { transform: rotate(360deg); } }
+
+/* ---------- the agent steps: the site's wire, standing up ---------- */
+.fit-steps { position: relative; list-style: none; }
+.fit-steps li { position: relative; padding: 0 0 1.25rem 2rem; }
+.fit-steps li:last-child { padding-bottom: 0; }
+.fit-steps li::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  left: .25rem;
+  top: .3125rem;
+  width: .75rem;
+  height: .75rem;
+  border-radius: 50%;
+  background: theme('colors.card');
+  box-shadow: 0 0 0 2px theme('colors.line-strong');
+  transition: background-color 200ms, box-shadow 200ms;
+}
+.fit-steps li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: calc(.625rem - 1px);
+  top: 1.25rem;
+  bottom: -.0625rem;
+  width: 2px;
+  background: theme('colors.line-strong');
+  transform-origin: top;
+  transition: background-color 300ms;
+}
+.fit-steps strong { display: block; color: theme('colors.ink'); font-weight: 700; line-height: 1.35; }
+.fit-steps span { display: block; margin-top: .125rem; font-size: .875rem; line-height: 1.45; color: theme('colors.muted'); }
+.fit-steps li[data-state="done"]::before { background: theme('colors.ink'); box-shadow: 0 0 0 2px theme('colors.ink'); }
+.fit-steps li[data-state="done"]:not(:last-child)::after { background: theme('colors.ink'); }
+.fit-steps li[data-state="active"]::before {
+  background: theme('colors.lime.DEFAULT');
+  box-shadow: 0 0 0 2px theme('colors.ink');
+  animation: fitPulse 1.2s ease-in-out infinite;
+}
+@keyframes fitPulse {
+  50% { box-shadow: 0 0 0 2px theme('colors.ink'), 0 0 0 7px rgba(201, 242, 108, .45); }
+}
+
+/* ---------- score ring ---------- */
+.fit-ring { position: relative; flex: none; width: clamp(6.5rem, 5rem + 5vw, 8.5rem); aspect-ratio: 1; }
+.fit-ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+.fit-ring circle { fill: none; stroke-width: 10; }
+.fit-ring-track { stroke: theme('colors.ink-2'); }
+.fit-ring-arc {
+  stroke: theme('colors.lime.DEFAULT');
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1100ms cubic-bezier(.16, 1, .3, 1);
+}
+.fit-ring-value { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; }
+.fit-ring-num { font-size: clamp(2rem, 1.5rem + 1.5vw, 2.75rem); font-weight: 800; line-height: 1; letter-spacing: -.03em; color: theme('colors.mist'); }
+.fit-ring-of { font-family: theme('fontFamily.mono'); font-size: .75rem; color: theme('colors.mist-dim'); }
+
+.fit-mock {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1.3;
+  margin-left: .625rem;
+  padding: .125rem .5rem;
+  border: 1px solid theme('colors.mist-dim');
+  border-radius: 999px;
+  color: theme('colors.mist');
+}
+
+.fit-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: .375rem;
+  min-height: 2.75rem;
+  padding: .5rem .875rem;
+  border: 1px solid theme('colors.mist-dim');
+  border-radius: 999px;
+  color: theme('colors.mist');
+  font-size: .875rem;
+  font-weight: 600;
+  line-height: 1.25;
+  transition: border-color 150ms, color 150ms;
+}
+.fit-chip:hover { border-color: theme('colors.lime.DEFAULT'); color: theme('colors.lime.DEFAULT'); }
+
+/* What I'd do first: big numbered steps on the lime tile. */
+.fit-help { list-style: none; counter-reset: help; display: grid; gap: 1rem; }
+.fit-help li {
+  counter-increment: help;
+  position: relative;
+  padding-left: 2.75rem;
+  color: theme('colors.ink');
+  font-size: clamp(1rem, .95rem + .3vw, 1.1875rem);
+  font-weight: 600;
+  line-height: 1.4;
+}
+.fit-help li::before {
+  content: counter(help, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: .05rem;
+  font-family: theme('fontFamily.mono');
+  font-size: .8125rem;
+  font-weight: 500;
+  padding: .125rem .375rem;
+  border: 1.5px solid theme('colors.ink');
+  border-radius: .375rem;
+}
+
+/* Gaps: a dashed edge says "not there yet" without looking like an error. */
+.fit-gaps { border-style: dashed; border-color: theme('colors.line-strong'); box-shadow: none; }
+
+.fit-note {
+  padding-left: 1rem;
+  border-left: 3px solid theme('colors.lime.DEFAULT');
+  color: theme('colors.ink');
+  max-width: 72ch;
+  font-size: clamp(1rem, .96rem + .2vw, 1.0625rem);
+  line-height: 1.6;
+  white-space: pre-line;
+}
+
+.fit-error { border-color: theme('colors.ink'); border-left-width: 4px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .fit-steps li[data-state="active"]::before { animation: none; }
+  .fit-ring-arc { transition: none; }
+  .fit-spin { animation: none; }
+}
