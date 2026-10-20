@@ -1,5 +1,6 @@
 import { cases } from './data/cases.js';
 import { profile } from './data/content.js';
+import { playDemos } from './data/play.js';
 
 export const SITE = 'https://solomonjoshua.com';
 
@@ -18,6 +19,12 @@ export const routes = [
     file: `${c.path.replace(/^\/|\/$/g, '')}/index.html`,
     title: `${c.name}: case study · ${profile.name}, ${profile.title}`,
     description: c.seo,
+  })),
+  ...playDemos.map((d) => ({
+    path: d.path,
+    file: `${d.path.replace(/^\/|\/$/g, '')}/index.html`,
+    title: `${d.name}: live demo · ${profile.name}, ${profile.title}`,
+    description: d.seo,
   })),
   {
     path: '/404',

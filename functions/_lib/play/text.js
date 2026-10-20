@@ -1,10 +1,10 @@
 // Helpers for untrusted text going in (visitor input) and coming out (model output).
 
-/** Plain, bounded string from untrusted model output. Long dashes become commas. */
+/** Plain, bounded string from untrusted model output. Em dashes (and spaced en dashes) become commas; ranges like 2021–2025 stay. */
 export function clean(value, maxChars = 400) {
   if (typeof value !== 'string') return '';
   const text = value
-    .replace(/\s*[—–]\s*/g, ', ')
+    .replace(/\s*—\s*|\s+–\s+/g, ', ')
     .replace(/[ \t]+/g, ' ')
     .replace(/\s*\n\s*/g, '\n')
     .trim();

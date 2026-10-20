@@ -3,4 +3,8 @@
   <url><loc>https://solomonjoshua.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://solomonjoshua.com/work/ai-job-hunt/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://solomonjoshua.com/work/ai-video-engine/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://solomonjoshua.com/play/busywork-plan/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://solomonjoshua.com/play/lead-triage/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://solomonjoshua.com/play/ask-my-portfolio/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://solomonjoshua.com/play/missed-call-text-back/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>

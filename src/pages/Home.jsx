@@ -2,6 +2,7 @@ import ProfileRail from '../components/home/ProfileRail.jsx';
 import HeroBento from '../components/home/HeroBento.jsx';
 import Systems from '../components/home/Systems.jsx';
 import FitAgentSection from '../components/home/FitAgentSection.jsx';
+import PlaySection from '../components/play/PlaySection.jsx';
 import WhatIBuild from '../components/home/WhatIBuild.jsx';
 import Results from '../components/home/Results.jsx';
 import About from '../components/home/About.jsx';
@@ -28,6 +29,7 @@ export default function Home() {
             <div id="top"><HeroBento /></div>
             <Systems />
             <FitAgentSection />
+            <PlaySection />
             <WhatIBuild />
             <Results />
             <About />
