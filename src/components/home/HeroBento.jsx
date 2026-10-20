@@ -22,7 +22,7 @@ function HeadlineTile() {
         <p className="t-lead mt-3 max-w-[62ch] text-body">{hero.promise}</p>
         <p className="mt-3 font-mono text-xs leading-relaxed text-muted">{profile.experienceLine}</p>
 
-        <div className="mt-6 flex flex-wrap gap-2.5">
+        <div className="mb-7 mt-6 flex flex-wrap gap-2.5">
           <a href="#fit-agent" className="btn btn-primary">
             See how I’d help your team <ArrowRight size={18} aria-hidden="true" />
           </a>
