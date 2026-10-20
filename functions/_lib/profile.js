@@ -4,7 +4,7 @@
 // that those files do not support: the model is told this is everything it knows.
 
 export const CONTACT = {
-  name: 'Joshua (Josh) Solomon',
+  name: 'Joshua Solomon',
   email: 'solomonjoshua101602@gmail.com',
   portfolio: 'solomonjoshua.com',
 };
