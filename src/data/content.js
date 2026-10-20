@@ -35,7 +35,7 @@ export const initials = profile.name.split(' ').map((word) => word[0]).join('');
 // The wired section menu (rail, top bar, footer) and the scroll spy read this.
 export const sections = [
   { id: 'top', num: '00', label: 'Overview' },
-  { id: 'work', num: '01', label: 'Systems' },
+  { id: 'work', num: '01', label: 'Work' },
   { id: 'fit-agent', num: '02', label: 'How I’d help' },
   { id: 'build', num: '03', label: 'What I build' },
   { id: 'work-with-me', num: '04', label: 'Work with me' },
@@ -105,16 +105,17 @@ export const agencyCase = {
   note: 'Private company platform, so there is no public link. Screenshots shown with the agency owner’s approval; the client’s name and figures are blurred.',
 };
 
-// Client work, shown as one compact list. `url` only where the domain still belongs to
-// that client: adasclosetsau.com and aoutilityservices.com now redirect to other brands.
+// Client websites, shown as a screenshot gallery. `thumb` names public/work-thumbs/<thumb>.png
+// (+ -640/-1280.webp), a 1440x900 capture of the live homepage. `url` only where the domain
+// still belongs to that client: adasclosetsau.com and aoutilityservices.com now redirect to other brands.
 // Ada's Closet's site is arrowconsignment.com (Josh confirmed, 2026-10-20).
 export const clientWork = [
-  { name: 'Alpha Omega Safety Solutions', place: 'Michigan', line: 'Built the website, plus approved business texting (A2P 10DLC brand registration on GoHighLevel), email and domain setup.', url: 'https://aosafe.com' },
-  { name: 'HOME.FM', place: 'Spring Arbor, MI', line: 'Built the website, plus email that reaches the inbox: a dedicated sending subdomain with SPF/DKIM/DMARC, warmed to 6,500 emails a day.', url: 'https://listenhome.fm' },
-  { name: 'Ada’s Closet', place: 'Spring Arbor, MI', line: 'Built the website and back-office for a student consignment startup: listings to Poshmark, eBay and Depop, live inventory, sale alerts in Apps Script.', url: 'https://www.arrowconsignment.com/' },
-  { name: 'Alliance Service Brands', place: 'Jackson, MI', line: 'Built one custom website that unifies six home-service brands.', url: 'https://www.allianceservicebrands.com' },
-  { name: 'Endtime Entrepreneurs', place: 'USA', line: 'Built the website from scratch on Cloudflare Pages, plus CRM, music distribution and SEO.', url: 'https://endtimeentrepreneurs.com' },
-  { name: 'TrueCare Chiropractic', place: 'Lansing, MI', line: 'Built the website, plus email marketing, upkeep and SEO for a chiropractic clinic.', url: 'https://www.truecarechiro.com' },
+  { name: 'Alpha Omega Safety Solutions', thumb: 'aosafe', place: 'Michigan', line: 'Built the website, plus approved business texting (A2P 10DLC brand registration on GoHighLevel), email and domain setup.', url: 'https://aosafe.com' },
+  { name: 'HOME.FM', thumb: 'homefm', place: 'Spring Arbor, MI', line: 'Built the website, plus email that reaches the inbox: a dedicated sending subdomain with SPF/DKIM/DMARC, warmed to 6,500 emails a day.', url: 'https://listenhome.fm' },
+  { name: 'Ada’s Closet', thumb: 'adas', place: 'Spring Arbor, MI', line: 'Built the website and back-office for a student consignment startup: listings to Poshmark, eBay and Depop, live inventory, sale alerts in Apps Script.', url: 'https://www.arrowconsignment.com/' },
+  { name: 'Alliance Service Brands', thumb: 'alliance', place: 'Jackson, MI', line: 'Built one custom website that unifies six home-service brands.', url: 'https://www.allianceservicebrands.com' },
+  { name: 'Endtime Entrepreneurs', thumb: 'endtime', place: 'USA', line: 'Built the website from scratch on Cloudflare Pages, plus CRM, music distribution and SEO.', url: 'https://endtimeentrepreneurs.com' },
+  { name: 'TrueCare Chiropractic', thumb: 'truecare', place: 'Lansing, MI', line: 'Built the website, plus email marketing, upkeep and SEO for a chiropractic clinic.', url: 'https://www.truecarechiro.com' },
 ];
 
 // "What I build": three offers, framed as what the business gets.

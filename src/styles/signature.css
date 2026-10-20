@@ -152,7 +152,8 @@
   overflow: hidden;
 }
 @media (max-width: 767.98px) { .portrait { aspect-ratio: 4 / 3; } }
-@media (min-width: 768px) { .portrait { aspect-ratio: 3 / 4; } }
+/* Tablet: the portrait has the row to itself (the flow tile moved below Work), so it runs wide. */
+@media (min-width: 768px) { .portrait { aspect-ratio: 16 / 9; } }
 @media (min-width: 1280px) { .portrait { aspect-ratio: auto; flex: 1 1 auto; min-height: 12rem; } }
 .portrait-mark {
   font-size: clamp(5rem, 22vw, 9rem);

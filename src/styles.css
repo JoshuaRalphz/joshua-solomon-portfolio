@@ -194,12 +194,23 @@
   .proof-link { display: inline-flex; align-items: center; gap: .375rem; min-height: 2.75rem; padding-top: 1rem; font-size: .875rem; font-weight: 600; text-underline-offset: 3px; }
   .proof-link:hover { text-decoration: underline; }
 
-  .clients { display: grid; gap: 1.25rem var(--pad); grid-template-columns: minmax(0, 1fr); }
-  @media (min-width: 768px) { .clients { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (min-width: 1280px) { .clients { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-  .clients > li { min-width: 0; border-top: 1px solid theme('colors.line'); padding-top: .875rem; }
-  .client-link { display: flex; align-items: center; gap: .25rem; min-height: 2.75rem; }
-  .client-link:hover { text-decoration: underline; }
+  /* Work: a small sub-heading with a hairline running to the edge. */
+  .sub-head { display: flex; align-items: center; gap: .75rem; color: theme('colors.ink'); }
+  .sub-head::after { content: ""; flex: 1; height: 1px; background: theme('colors.line'); }
+
+  /* Client websites: screenshot cards, 1 / 2 / 3 across. Only the two links are links. */
+  .sites { display: grid; gap: var(--gap); grid-template-columns: minmax(0, 1fr); }
+  .sites > li { min-width: 0; }
+  @media (min-width: 768px) { .sites { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 1280px) { .sites { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .site-thumb { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; }
+  .site-title { color: theme('colors.ink'); text-underline-offset: 3px; }
+  .site-title:hover { text-decoration: underline; }
+  .site-card:hover, .site-card:focus-within { box-shadow: theme('boxShadow.lift'); }
+  @media (prefers-reduced-motion: no-preference) {
+    .site-card { transition: transform 180ms, box-shadow 180ms; }
+    .site-card:hover, .site-card:focus-within { transform: translateY(-3px); }
+  }
 
   /* Screenshots: a browser frame with an optional overlapping phone */
   .shot { position: relative; }

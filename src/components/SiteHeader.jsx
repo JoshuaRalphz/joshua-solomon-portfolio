@@ -3,7 +3,7 @@ import Logo from './Logo.jsx';
 import { profile } from '../data/content.js';
 
 const LINKS = [
-  { href: '/#work', label: 'Systems' },
+  { href: '/#work', label: 'Work' },
   { href: '/#fit-agent', label: 'How I’d help' },
   { href: '/#contact', label: 'Contact' },
 ];

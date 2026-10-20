@@ -46,7 +46,7 @@ export const PROJECTS = [
     id: 'aoutility',
     title: 'Alpha Omega Utility Services (A2P SMS + marketing system)',
     summary: 'Got a Michigan contractor approved for A2P 10DLC texting, plus website, lifecycle email, CRM and domain setup.',
-    link: '#work-aoutility',
+    link: '#work-aosafe',
   },
   {
     id: 'homefm',

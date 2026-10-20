@@ -1,6 +1,7 @@
 import ProfileRail from '../components/home/ProfileRail.jsx';
 import HeroBento from '../components/home/HeroBento.jsx';
-import Systems from '../components/home/Systems.jsx';
+import Work from '../components/home/Work.jsx';
+import HowItRuns from '../components/home/HowItRuns.jsx';
 import FitAgentSection from '../components/home/FitAgentSection.jsx';
 import WhatIBuild from '../components/home/WhatIBuild.jsx';
 import WorkWithMe from '../components/home/WorkWithMe.jsx';
@@ -27,7 +28,8 @@ export default function Home() {
         <div className="min-w-0">
           <main id="main" tabIndex={-1} className="flex flex-col gap-[var(--section)]">
             <div id="top"><HeroBento /></div>
-            <Systems />
+            <Work />
+            <HowItRuns />
             <FitAgentSection />
             <WhatIBuild />
             <WorkWithMe />

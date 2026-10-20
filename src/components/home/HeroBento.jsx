@@ -1,6 +1,4 @@
 import { ArrowRight, Download } from 'lucide-react';
-import FlowTile from './FlowTile.jsx';
-import ToolStrip from './ToolStrip.jsx';
 import PortraitMedia from './PortraitMedia.jsx';
 import { hero, heroStats, profile } from '../../data/content.js';
 
@@ -46,7 +44,7 @@ function HeadlineTile() {
 
 function PortraitTile() {
   return (
-    <div className="tile flex flex-col md:[grid-column:span_2] xl:[grid-column:9/13] xl:[grid-row:1]">
+    <div className="tile flex flex-col xl:[grid-column:9/13] xl:[grid-row:1]">
       <div className="portrait">
         <PortraitMedia />
       </div>
@@ -57,14 +55,12 @@ function PortraitTile() {
   );
 }
 
-/** First screen: headline + proof, portrait, how the systems run, and the stack. */
+/** First screen: headline + proof beside the portrait. How the systems run follows the Work section. */
 export default function HeroBento() {
   return (
     <section aria-label="Overview" className="bento">
       <HeadlineTile />
       <PortraitTile />
-      <FlowTile className="md:[grid-column:span_4] xl:[grid-column:1/8] xl:[grid-row:2]" />
-      <ToolStrip className="md:[grid-column:span_6] xl:[grid-column:8/13] xl:[grid-row:2]" />
     </section>
   );
 }
