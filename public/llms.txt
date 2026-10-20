@@ -1,8 +1,8 @@
 # Joshua Solomon
 
-> AI Engineer — LLM apps and AI automation. Based in Olongapo City, Philippines · US Eastern hours preferred; PH, AU or European hours also work. Available for full-time work; can start within 1-2 weeks of an offer.
+> AI Solutions Engineer: I build AI that saves businesses time and money. Claude or OpenAI does the drafting, writing or sorting; the code around it keeps costs known, output checked and a person in charge of anything customer-facing. Based in Olongapo City, Philippines; US Eastern hours preferred. Available for full-time remote work; can start within 1–2 weeks.
 
-Builds LLM apps and AI automation on the Claude and OpenAI APIs, Cloudflare Workers + D1 (Hono) and Google Apps Script + Gmail API, with AI-assisted development in Claude Code, and with a human approval step before anything sends or posts. About one year of remote work for US clients (since Sep 2025). Also hands-on agency experience building and running lifecycle email and SMS systems on GoHighLevel, Mailchimp, HubSpot, and Kajabi — audience segmentation, automated nurture and retention flows, multi-touch sequences, A/B testing, A2P 10DLC SMS, and deliverability (dedicated sending domains, SPF/DKIM/DMARC). Also ships the custom-coded sites (Cloudflare Pages, React + Vite) and integrations (Google Apps Script, webhooks, Claude API; designed an n8n lead-gen workflow) behind them.
+Building software with AI since 2024 (Cursor, in college). Professionally since 2025. Ships production systems by directing AI coding agents (Claude Code) and puts Claude and OpenAI to work inside them.
 
 ## Contact
 - Email: solomonjoshua101602@gmail.com
@@ -10,60 +10,17 @@ Builds LLM apps and AI automation on the Claude and OpenAI APIs, Cloudflare Work
 - LinkedIn: https://www.linkedin.com/in/joshua-ralph-adrian-solomon-1a0745347/
 - GitHub: https://github.com/JoshuaRalphz
 - Website: https://solomonjoshua.com
+- CV: https://solomonjoshua.com/Joshua_Solomon_Resume_v9_AI_Solutions_Engineer.pdf
 
-## Capabilities
+## Case studies
 
-- **AI Engineering & LLM Apps** — LLM pipelines on the Claude API (scripts, drafting, extraction, topic ideas) and the OpenAI API (images, text-to-speech), with a cost estimate before every paid run, the actual cost recorded per run, retries that never pay twice for a finished step, tests against a fake stand-in for the paid APIs, and human approval before anything sends or posts. Built with Claude Code.
-- **Email & Lifecycle Marketing** — End-to-end lifecycle programs on GoHighLevel, Mailchimp, HubSpot, and Kajabi. Campaign builds, audience segmentation, automated nurture and retention flows, multi-touch sequences, A/B split tests on subject lines and content, and open/click/delivery analytics reporting.
-- **CRM Configuration & Automation** — GoHighLevel full builds, HubSpot, Mailchimp, Kajabi, ActiveCampaign. Sub-accounts, pipelines, workflows triggered by tags and custom fields, pages in the GHL website/funnel builder, A2P 10DLC SMS brand approval (the GHL setup most builders avoid).
-- **Deliverability & Compliance** — Dedicated sending subdomains with SPF/DKIM/DMARC aligned, warmup to 6,500/day sending capacity, A2P 10DLC SMS registration, pre-send QA (test sends, link + unsubscribe checks, phone preview).
-- **Workflow Automation & AI** — n8n (designed a 47-node lead-generation workflow as a personal project), Google Apps Script automations, Anthropic Claude API for personalized outreach drafting, multi-provider email enrichment. GoHighLevel API + Google Sheets API integrations.
-- **Custom Sites & Internal Tools** — Hand-coded HTML/CSS/JS on Cloudflare Pages, React + Vite + Firebase internal tools. Recently built an internal content-operations hub that brings a US agency's work from 5 tools (Drive, ClickUp, Trello, GHL, Canva) into one app. In daily production. Also built the agency's in-house email/SMS platform (Cloudflare Workers + D1, React, Resend, Twilio), which is now replacing GoHighLevel, and integrated Square payments through the Square API on a Cloudflare-hosted client site.
+- [AI Job Hunt engine](https://solomonjoshua.com/work/ai-job-hunt/): built to run unattended on a Cloudflare Worker's 5-minute cron. Claude Opus 5.5 vets public job-board posts (fit 1–10, scam risk, pay), writes the best 10, and an adversarial second pass removes any claim not in the CV. Only strong, clean fits send by themselves after a 3-hour hold, enforced by a database CHECK constraint and re-checked before sending; the rest wait for approval. A Google Apps Script Gmail bridge sends from Gmail and brings replies back into the thread. Hard daily dollar budget; 700+ automated tests.
+- [AI Video Engine](https://solomonjoshua.com/work/ai-video-engine/): a one-line topic becomes a finished 1080x1920 short with burned captions. Claude writes the script, OpenAI makes images and voice, a custom FFmpeg engine renders. About $1 per video vs about $12 for paid generative video; a real 2-part story cost $0.72. Cost estimate before every paid command; never posts by itself; 406 unit tests and 300 acceptance checks.
+- Agency email & SMS platform (Arrow Group Consulting, 2026): built with Claude Code on Cloudflare Workers + D1; 6 accounts live about 5 weeks after the first commit; 3,200+ automated tests; projected ~89% lower monthly platform cost; now replacing GoHighLevel.
 
-## Professional Experience
-
-### Implementation Specialist — CRM, Web & Marketing Systems · Arrow Group Consulting (Michigan, USA) · Part-time contract · Feb 2026 – Present
-US outsourced-CMO agency; hired directly after the Doneverse placement. Handle 8 clients at once: build and run monthly email campaigns (plus SMS where needed) and lifecycle automations — audience segmentation, nurture and retention flows — and report open/click/delivery analytics to founder and clients. Own deliverability across the portfolio (dedicated sending domains, SPF/DKIM/DMARC, A2P 10DLC registration). Configure GoHighLevel sub-accounts end-to-end. Moved the agency onto GoHighLevel in Feb 2026 because 2 clients needed SMS. Then wrote the business case (projected ~89% lower monthly platform cost) and built the agency's in-house email/SMS platform (Cloudflare Workers + D1, React, Resend, Twilio) with AI-assisted development (Claude Code); 6 accounts went live about 5 weeks after the first commit (Aug–Sep 2026). It is now replacing GoHighLevel. Built an internal content-operations hub (React + Firebase PWA, Vercel serverless routes, GoHighLevel API) that brings 5 scattered tools into one app. Integrated Square payments through the Square API on a Cloudflare-hosted client site. Technical advisor to clients and the founder.
-
-### Virtual Marketing Assistant (VMA) — Doneverse (Philippines VMA agency) · Sep 2025 – Feb 2026
-Technical implementer for 2 US founders: Arrow Group Consulting's founder, then keynote speaker Jonathan Fanning (Kajabi). Built and shipped Mailchimp and HubSpot email marketing systems for founder clients — automated onboarding sequences and nurture flows. Built and configured client accounts on HubSpot, Mailchimp, Kajabi, and Wix Studio. Owned client onboarding including domain configuration and email deliverability setup. Delivered Wix Studio sites for founder clients. At Arrow Group Consulting (then on Mailchimp), learned HubSpot on the job, then recommended HubSpot and ActiveCampaign — the agency adopted both.
-
-### Earlier — working student (2024 to 2025, during college)
-Social media for ADAP Real Estate, Subic: created listing graphics and posted property listings.
-
-## Selected Work
-
-### My own AI builds (built with Claude Code; private, no public links)
-
-- **AI video engine** — Turns a one-line topic into a finished 9:16 MP4 with burned captions, covers and ready-to-paste captions for TikTok, YouTube Shorts and Facebook Reels. Claude writes the script and topic ideas, OpenAI makes the images and voiceover, FFmpeg renders on my own PC (Python, FastAPI). Driven from Claude Code chat: cost estimate first, spends only after a go, never posts by itself. A real 2-part story cost $0.72 in API calls; 400+ unit tests plus acceptance suites.
-- **Behind Works Platform** — My own platform on Hono + Cloudflare Workers + D1: contacts, pipeline, email campaigns, an Approvals queue (nothing sends without my yes; outreach capped at 10 a day), a job-application pipeline, and a Gmail bridge that sends approved applications from my own Gmail with my CV attached and reports replies back.
-- **Job Tracker** — Google Apps Script + Gmail API: every 10 minutes, logs replies to my job applications to a Google Sheet, labels them and sends one alert; flags look-alike emails as unverified; reads only sender, subject and preview, on the smallest Gmail permission that allows labelling.
-
-### Internal builds (Arrow Group Consulting)
-
-- **Arrow Platform** (in-house email & SMS marketing platform, built 2026) — Wrote the business case (projected ~89% lower monthly platform cost, no external build spend), then built it with AI-assisted development (Claude Code): TypeScript on Cloudflare Workers + D1 + Queues, React, Resend (email), Twilio (SMS). Agency view plus per-client dashboards, campaigns and reporting. 6 accounts went live about 5 weeks after the first commit (Aug–Sep 2026); 3,200+ automated tests. Safety built in: one-click unsubscribe, automatic opt-out on bounces and complaints, SMS blocked until A2P 10DLC approval, test mode by default. Now replacing GoHighLevel at the agency. Not publicly accessible — private company platform, no public link.
-
-### Client work (delivered under Arrow Group Consulting, shown with permission)
-
-- **Alpha Omega Utility Services** (Michigan) — Full marketing stack including A2P 10DLC brand approval on GoHighLevel. https://www.aoutilityservices.com
-- **HOME.FM** (Spring Arbor, MI radio station) — Dedicated email-sending infrastructure (subdomain mail.listenhome.fm, SPF/DKIM/DMARC aligned, SSL issued, warmup to 6,500 emails/day capacity). https://www.home.fm
-- **Alliance Service Brands** (Jackson, MI) — Custom multi-brand site unifying 6 specialized brands. https://www.allianceservicebrands.com
-- **Endtime Entrepreneurs** (USA) — Built full Cloudflare Pages site from scratch + GHL CRM + DistroKid music distribution + ongoing SEO. https://endtimeentrepreneurs.com
-- **Ada's Closet** (Spring Arbor, MI) — Custom Google Apps Script back-office for a student-run consignment startup, multi-platform listing flow across Poshmark/eBay/Depop. https://www.adasclosetsau.com
-- **TrueCare Chiropractic** (Lansing, MI) — Email marketing, ongoing site maintenance, SEO, planned Cloudflare migration. https://www.truecarechiro.com
+## Experience
+- Implementation Specialist — CRM, Web & Marketing Systems, Arrow Group Consulting (Michigan, USA; remote, part-time contract), Feb 2026 – present.
+- Virtual Marketing Assistant (VMA), Doneverse (Philippines), Sep 2025 – Feb 2026, about 6 months.
 
 ## Education
-
-- **BS Computer Science** — Gordon College, Olongapo City (2021 – 2025). Thesis: "DevPath: Bridging Students to Learning Opportunities through On-Demand Webinars and Certifications." Published at IRCITE 2025 — Bulacan State University.
-- **Senior High School (TVL ICT Track)** — Columban College Inc., Olongapo City (2019 – 2021). Graduated With High Honors.
-
-## Communication Style
-
-Async-first. Strong written communication for distributed teams. Comfortable speaking directly with founders and senior stakeholders. Reply time typically under 24 hours.
-
-## Availability
-
-- Available for full-time work; can start within 1-2 weeks of an offer
-- Hours: US Eastern preferred; PH, AU or European hours also work
-- Work setup: laptop, two internet providers (one as backup), UPS for the internet router
-- References available on request
+- BS Computer Science, Gordon College (2021–2025). Thesis published at IRCITE 2025.
