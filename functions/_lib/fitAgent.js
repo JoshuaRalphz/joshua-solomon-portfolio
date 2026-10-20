@@ -23,6 +23,7 @@ const FALLBACK_PRICE = { input: 5, output: 25 };
 const PROMPT_TOKENS_UPPER = Math.ceil((SYSTEM_PROMPT.length + JSON.stringify(FIT_SCHEMA).length) / 3) + 300;
 
 const ORIGINS = ['https://solomonjoshua.com', 'https://www.solomonjoshua.com'];
+const LOCAL_HOSTS = new Set(['localhost', '127.0.0.1', '[::1]']);
 const PREVIEW_ORIGIN = /^https:\/\/([a-z0-9-]+\.)?joshua-solomon-portfolio\.pages\.dev$/;
 
 const MESSAGES = {
@@ -87,6 +88,7 @@ export function maxCostMicro(jobBytes) {
 
 /** Actual cost from the response usage (top-level counts are cumulative over hops). */
 export function actualCostMicro(usage) {
+  if (!usage) return null;
   const fellBack = (usage?.iterations ?? []).some((entry) => entry?.type === 'fallback_message');
   const rate = fellBack ? FALLBACK_PRICE : PRICE;
   const input = (usage?.input_tokens ?? 0) + (usage?.cache_creation_input_tokens ?? 0) + (usage?.cache_read_input_tokens ?? 0);
@@ -115,14 +117,49 @@ async function verifyTurnstile(secret, token, ip, fetchImpl) {
   }
 }
 
+/** Reads the body but stops at `limit` bytes (a chunked body has no Content-Length). */
+async function readCapped(request, limit) {
+  if (!request.body) return '';
+  const reader = request.body.getReader();
+  const chunks = [];
+  let size = 0;
+  for (;;) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    size += value.byteLength;
+    if (size > limit) {
+      await reader.cancel();
+      return null;
+    }
+    chunks.push(value);
+  }
+  const bytes = new Uint8Array(size);
+  let offset = 0;
+  for (const chunk of chunks) {
+    bytes.set(chunk, offset);
+    offset += chunk.byteLength;
+  }
+  return new TextDecoder().decode(bytes);
+}
+
+/** One counter per IPv4 address, or per /64 for IPv6 (one home or phone gets a whole /64). */
+export function visitorKey(ip) {
+  if (!ip.includes(':')) return ip;
+  const [head, tail = ''] = ip.toLowerCase().split('::');
+  const left = head ? head.split(':') : [];
+  const right = tail ? tail.split(':') : [];
+  const groups = ip.includes('::') ? [...left, ...Array(Math.max(0, 8 - left.length - right.length)).fill('0'), ...right] : left;
+  return `${groups.slice(0, 4).map((group) => group.replace(/^0+(?=.)/, '')).join(':')}::/64`;
+}
+
 /** Reads and checks the body. Returns { input } or { error: Response }. */
 async function readInput(request) {
   if (!String(request.headers.get('content-type') ?? '').toLowerCase().startsWith('application/json')) {
     return { error: fail(415, 'type') };
   }
   if (Number(request.headers.get('content-length') ?? 0) > MAX_BODY_BYTES) return { error: fail(413, 'size') };
-  const raw = await request.text();
-  if (new TextEncoder().encode(raw).length > MAX_BODY_BYTES) return { error: fail(413, 'size') };
+  const raw = await readCapped(request, MAX_BODY_BYTES);
+  if (raw === null) return { error: fail(413, 'size') };
 
   let body;
   try {
@@ -171,8 +208,8 @@ function apiErrorReply(error) {
 function resultReply(response, isMock) {
   if (response.stop_reason === 'refusal') return fail(422, 'refused');
   if (response.stop_reason === 'max_tokens') return fail(502, 'incomplete');
-  const text = response.content.filter((block) => block.type === 'text').pop()?.text;
   try {
+    const text = (response.content ?? []).filter((block) => block.type === 'text').pop()?.text;
     return reply(200, { ok: true, mock: isMock, result: normalizeResult(JSON.parse(text)) });
   } catch {
     return fail(502, 'error');
@@ -195,9 +232,12 @@ export async function handleFit(request, env, ctx = {}, deps = {}) {
   const { input, error } = await readInput(request);
   if (error) return error;
 
-  const isMock = env.FIT_AGENT_MOCK === '1';
-  if (!isMock && (!env.ANTHROPIC_API_KEY || !env.FIT_DB || !env.FIT_IP_SALT)) {
-    console.error('fit-agent: missing config', ['ANTHROPIC_API_KEY', 'FIT_DB', 'FIT_IP_SALT'].filter((name) => !env[name]).join(','));
+  // Mock answers only ever come from a local dev server, never from a real host.
+  const isMock = env.FIT_AGENT_MOCK === '1' && LOCAL_HOSTS.has(new URL(request.url).hostname);
+  const needed = ['ANTHROPIC_API_KEY', 'FIT_DB', 'FIT_IP_SALT'];
+  if (env.FIT_REQUIRE_TURNSTILE === '1') needed.push('TURNSTILE_SECRET');
+  if (!isMock && needed.some((name) => !env[name])) {
+    console.error('fit-agent: missing config', needed.filter((name) => !env[name]).join(','));
     return fail(503, 'unavailable');
   }
 
@@ -212,11 +252,11 @@ export async function handleFit(request, env, ctx = {}, deps = {}) {
   const periods = { day: `d:${iso.slice(0, 10)}`, month: `m:${iso.slice(0, 7)}` };
 
   try {
-    ctx.waitUntil?.(store.prune(iso.slice(0, 10)).catch(() => {}));
-    const visitor = await hashVisitor(env.FIT_IP_SALT ?? 'mock-salt', iso.slice(0, 10), ip);
+    const visitor = await hashVisitor(env.FIT_IP_SALT ?? 'mock-salt', iso.slice(0, 10), visitorKey(ip));
     if (limits.runsPerVisitor < 1 || !(await store.takeVisitorRun(iso.slice(0, 10), visitor, limits.runsPerVisitor))) {
       return fail(429, 'visitor');
     }
+    ctx.waitUntil?.(store.prune(iso.slice(0, 10)).catch(() => {}));
 
     const reserved = maxCostMicro(new TextEncoder().encode(input.jobText + input.company).length);
     if (!(await store.reserve(periods, reserved, { day: limits.dayMicro, month: limits.monthMicro }))) {
@@ -234,8 +274,11 @@ export async function handleFit(request, env, ctx = {}, deps = {}) {
     } catch (apiError) {
       return apiErrorReply(apiError);
     } finally {
-      // A failed or timed-out call stays counted at its maximum possible cost.
-      await store.settle(periods, reserved, response ? actualCostMicro(response.usage) : reserved);
+      // A failed or timed-out call (or one with no usage) stays counted at its maximum possible cost.
+      const actual = response ? actualCostMicro(response.usage) : null;
+      await store.settle(periods, reserved, actual ?? reserved).catch((settleError) => {
+        console.error('fit-agent: settle failed, spend stays at the reserved maximum', settleError?.constructor?.name);
+      });
     }
     return resultReply(response, isMock);
   } catch (storeError) {

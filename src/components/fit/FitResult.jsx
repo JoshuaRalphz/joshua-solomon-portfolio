@@ -67,21 +67,23 @@ const FitResult = forwardRef(function FitResult({ result, company, isMock }, hea
         )}
       </div>
 
-      <div className="tile tile--lime flex flex-col md:[grid-column:span_6] xl:[grid-column:6/13]">
-        <h3 className="label">How I'd help in the first 30 to 60 days</h3>
-        <ol className="fit-help mt-4">
-          {result.how_i_would_help.map((item) => <li key={item}>{item}</li>)}
-        </ol>
-        <p className="mt-auto pt-6 text-sm font-medium text-ink">
-          A starting plan read from your post, not a promise. I'd check it with your team in week one.
-        </p>
-      </div>
+      {result.how_i_would_help.length > 0 && (
+        <div className="tile tile--lime flex flex-col md:[grid-column:span_6] xl:[grid-column:6/13]">
+          <h3 className="label">How I'd help in the first 30 to 60 days</h3>
+          <ol className="fit-help mt-4">
+            {result.how_i_would_help.map((item, i) => <li key={`${i}-${item}`}>{item}</li>)}
+          </ol>
+          <p className="mt-auto pt-6 text-sm font-medium text-ink">
+            A starting plan read from your post, not a promise. I'd check it with your team in week one.
+          </p>
+        </div>
+      )}
 
       <div className="tile md:[grid-column:span_6] xl:[grid-column:1/8]">
         <h3 className="label">Where I fit · and what it gets you</h3>
         <ul className="mt-4 divide-y divide-line">
-          {result.strengths.map((strength) => (
-            <li key={strength.requirement} className="py-4 first:pt-0 last:pb-0">
+          {result.strengths.map((strength, i) => (
+            <li key={`${i}-${strength.requirement}`} className="py-4 first:pt-0 last:pb-0">
               <p className="flex items-start gap-2 font-bold leading-snug text-ink">
                 <Check size={18} aria-hidden="true" className="mt-0.5 flex-none text-action" />
                 {strength.requirement}
@@ -104,8 +106,8 @@ const FitResult = forwardRef(function FitResult({ result, company, isMock }, hea
           <h3 className="label">Honest gaps</h3>
           <p className="mt-2 text-sm font-medium text-muted">What I haven't clearly done yet. Better you hear it here.</p>
           <ul className="mt-4 space-y-4">
-            {result.gaps.map((gap) => (
-              <li key={gap.requirement} className="flex items-start gap-2.5">
+            {result.gaps.map((gap, i) => (
+              <li key={`${i}-${gap.requirement}`} className="flex items-start gap-2.5">
                 <CircleDashed size={18} aria-hidden="true" className="mt-0.5 flex-none text-muted" />
                 <div className="min-w-0">
                   <p className="font-bold leading-snug text-ink">{gap.requirement}</p>
@@ -120,8 +122,8 @@ const FitResult = forwardRef(function FitResult({ result, company, isMock }, hea
           <div className="tile flex-1 bg-sunk">
             <h3 className="label">Ask me about</h3>
             <ul className="mt-4 space-y-3">
-              {result.interview_questions_to_ask_him.map((question) => (
-                <li key={question} className="flex items-start gap-2.5 font-medium leading-snug text-ink">
+              {result.interview_questions_to_ask_him.map((question, i) => (
+                <li key={`${i}-${question}`} className="flex items-start gap-2.5 font-medium leading-snug text-ink">
                   <MessageCircleQuestion size={18} aria-hidden="true" className="mt-0.5 flex-none text-action" />
                   {question}
                 </li>
@@ -134,6 +136,7 @@ const FitResult = forwardRef(function FitResult({ result, company, isMock }, hea
       <div className="tile md:[grid-column:span_6] xl:[grid-column:1/-1]">
         <h3 className="label">A short note from me</h3>
         <blockquote className="fit-note mt-4">{result.short_note}</blockquote>
+        <p className="mt-3 text-sm font-medium text-muted">Drafted by the agent in my voice, from my real profile. Read it before you forward it.</p>
         <CopyNote note={result.short_note} />
       </div>
     </div>

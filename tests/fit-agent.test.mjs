@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { DatabaseSync } from 'node:sqlite';
 import Anthropic from '@anthropic-ai/sdk';
-import { handleFit, maxCostMicro, actualCostMicro, MAX_TOKENS, MODEL } from '../functions/_lib/fitAgent.js';
+import { handleFit, maxCostMicro, actualCostMicro, visitorKey, MAX_TOKENS, MODEL } from '../functions/_lib/fitAgent.js';
 import { normalizeResult, fixNote } from '../functions/_lib/fitResult.js';
 import { d1Store, memoryStore } from '../functions/_lib/store.js';
 import { MOCK_RESULT } from '../functions/_lib/mockResult.js';
@@ -108,6 +108,20 @@ describe('request checks', () => {
     assert.equal((await run({ jobText: `  ${'a'.repeat(200)}  ` })).res.status, 200);
   });
 
+  test('a chunked body over 16 KB is cut off while reading', async () => {
+    const big = new TextEncoder().encode(JSON.stringify({ jobText: 'x'.repeat(20 * 1024) }));
+    const body = new ReadableStream({ start(controller) { controller.enqueue(big.slice(0, 9000)); controller.enqueue(big.slice(9000)); controller.close(); } });
+    const request = new Request('https://solomonjoshua.com/api/fit', {
+      method: 'POST', body, duplex: 'half', headers: { 'content-type': 'application/json', origin: ORIGIN },
+    });
+    assert.equal((await run(null, { request })).res.status, 413);
+  });
+
+  test('FIT_REQUIRE_TURNSTILE=1 without a secret fails closed', async () => {
+    const { json } = await run({ jobText: JOB }, { env: { FIT_REQUIRE_TURNSTILE: '1' } });
+    assert.equal(json.code, 'unavailable');
+  });
+
   test('missing key, database or salt fails closed', async () => {
     const client = fakeClient();
     for (const missing of ['ANTHROPIC_API_KEY', 'FIT_DB', 'FIT_IP_SALT']) {
@@ -197,6 +211,7 @@ describe('normalizeResult', () => {
   test('clamps the score, bounds lists and never returns empty gaps', () => {
     const result = normalizeResult({
       fit_score: 140,
+      verdict: 'Fine.',
       strengths: Array.from({ length: 9 }, () => ({ requirement: 'r', evidence: 'e', outcome: 'o', project_id: 'nope' })),
       gaps: [],
       how_i_would_help: ['a', 'b', 'c', 'd'],
@@ -210,8 +225,23 @@ describe('normalizeResult', () => {
     assert.equal(result.how_i_would_help.length, 3);
     assert.deepEqual(result.matching_projects.map((p) => p.id), ['ytengine']);
     assert.equal(result.interview_questions_to_ask_him.length, 3);
-    assert.equal(normalizeResult(null).fit_score, 0);
-    assert.equal(normalizeResult({ fit_score: -5 }).fit_score, 0);
+    assert.equal(normalizeResult({ fit_score: -5, verdict: 'No.' }).fit_score, 0);
+  });
+
+  test('a reply without a score or verdict is an error, not a 0% fit', async () => {
+    assert.throws(() => normalizeResult(null));
+    assert.throws(() => normalizeResult({ fit_score: 70 }));
+    assert.throws(() => normalizeResult({ fit_score: 'high', verdict: 'Good' }));
+    const client = fakeClient(() => okResponse({ content: [{ type: 'text', text: '{"strengths": []}' }] }));
+    assert.equal((await run({ jobText: JOB }, { client })).res.status, 502);
+  });
+
+  test('trimming keeps abbreviations and handles one long sentence', () => {
+    const fixed = fixNote(`We use AI tools, e.g. Claude, across U.S. offices. ${'Long sentence word '.repeat(30)}end. More text here.`);
+    assert.match(fixed, /e\.g\. Claude, across U\.S\. offices\./);
+    const single = fixNote(`${'word '.repeat(120)}`);
+    assert.ok(single.split(/\s+/).length <= 90);
+    assert.match(single, /word\. You can reach me/);
   });
 
   test('the note is at most 90 words, has no long dashes, and ends with contact details', () => {
@@ -267,6 +297,24 @@ describe('rate limit and budget', () => {
     assert.equal(failing.spendFor('m:2026-10'), failing.spendFor('d:2026-10-20'));
   });
 
+  test('a response with no usage stays counted at the maximum', async () => {
+    const store = memoryStore();
+    await run({ jobText: JOB }, { store, client: fakeClient(() => okResponse({ usage: undefined })) });
+    assert.equal(store.spendFor('d:2026-10-20'), maxCostMicro(new TextEncoder().encode(JOB.trim()).length));
+  });
+
+  test('IPv6 visitors are counted per /64', async () => {
+    assert.equal(visitorKey('203.0.113.7'), '203.0.113.7');
+    assert.equal(visitorKey('2001:db8:abcd:12:1:2:3:4'), '2001:db8:abcd:12::/64');
+    assert.equal(visitorKey('2001:db8:abcd:0012::99'), '2001:db8:abcd:12::/64');
+    assert.equal(visitorKey('2001:db8::1'), '2001:db8:0:0::/64');
+    const store = memoryStore();
+    for (let i = 1; i <= 5; i += 1) {
+      assert.equal((await run(null, { store, request: post({ jobText: JOB }, { ip: `2001:db8:abcd:12::${i}` }) })).res.status, 200);
+    }
+    assert.equal((await run(null, { store, request: post({ jobText: JOB }, { ip: '2001:db8:abcd:12::ffff' }) })).json.code, 'visitor');
+  });
+
   test('a fallback hop is priced at the fallback rate', () => {
     const usage = { input_tokens: 1000, output_tokens: 100, iterations: [{ type: 'message' }, { type: 'fallback_message' }] };
     assert.equal(actualCostMicro(usage), 1000 * 5 + 100 * 25);
@@ -298,9 +346,17 @@ describe('Turnstile (only when TURNSTILE_SECRET is set)', () => {
 });
 
 describe('mock mode', () => {
+  test('mock is ignored on a real host: no key means unavailable, not a canned answer', async () => {
+    const res = await handleFit(post({ jobText: JOB }), { FIT_AGENT_ENABLED: '1', FIT_AGENT_MOCK: '1' }, {}, { sleep: async () => {} });
+    assert.equal(res.status, 503);
+  });
+
   test('FIT_AGENT_MOCK=1 needs no key or database and never calls Claude', async () => {
     const client = fakeClient();
-    const res = await handleFit(post({ jobText: JOB }), { FIT_AGENT_ENABLED: '1', FIT_AGENT_MOCK: '1' }, {}, {
+    const local = new Request('http://127.0.0.1:8795/api/fit', {
+      method: 'POST', body: JSON.stringify({ jobText: JOB }), headers: { 'content-type': 'application/json', origin: 'http://127.0.0.1:8795' },
+    });
+    const res = await handleFit(local, { FIT_AGENT_ENABLED: '1', FIT_AGENT_MOCK: '1', FIT_ALLOWED_ORIGINS: 'http://127.0.0.1:8795' }, {}, {
       createClient: client.createClient,
       sleep: async () => {},
     });

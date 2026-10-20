@@ -23,6 +23,7 @@ export function useTurnstile(siteKey) {
   const containerRef = useRef(null);
   const widgetRef = useRef(null);
   const [token, setToken] = useState('');
+  const [hasFailed, setHasFailed] = useState(false);
 
   useEffect(() => {
     if (!siteKey || !containerRef.current) return undefined;
@@ -38,7 +39,7 @@ export function useTurnstile(siteKey) {
           'error-callback': () => setToken(''),
         });
       })
-      .catch(() => {});
+      .catch(() => setHasFailed(true));
     return () => {
       isCancelled = true;
       if (widgetRef.current !== null) window.turnstile?.remove(widgetRef.current);
@@ -52,5 +53,5 @@ export function useTurnstile(siteKey) {
     if (widgetRef.current !== null) window.turnstile?.reset(widgetRef.current);
   };
 
-  return { containerRef, token, reset, isEnabled: Boolean(siteKey) };
+  return { containerRef, token, reset, hasFailed, isEnabled: Boolean(siteKey) };
 }

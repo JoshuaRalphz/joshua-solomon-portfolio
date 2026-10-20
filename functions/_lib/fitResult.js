@@ -39,16 +39,20 @@ export function fixNote(rawNote) {
 
   const body = hasContact ? note.slice(0, note.indexOf(CONTACT.email)).replace(/[^.!?]*$/, '') : note;
   const budget = NOTE_WORD_LIMIT - words(CONTACT_LINE).length;
-  const sentences = body.match(/[^.!?]+[.!?]+/g) ?? [body];
+  // Split only at a sentence end followed by a capital, so "e.g." and "U.S." survive.
+  const sentences = body.trim().split(/(?<=[.!?])\s+(?=[A-Z0-9"'])/).filter(Boolean);
   const kept = [];
   let used = 0;
   for (const sentence of sentences) {
     const count = words(sentence).length;
     if (used + count > budget) break;
-    kept.push(sentence.trim());
+    kept.push(sentence);
     used += count;
   }
-  return [...kept, CONTACT_LINE].join(' ').trim();
+  if (!kept.length && body.trim()) kept.push(`${words(body).slice(0, budget).join(' ').replace(/[,;:]$/, '')}.`);
+  const text = kept.join(' ').trim();
+  const ended = text && !/[.!?]$/.test(text) ? `${text}.` : text;
+  return [ended, CONTACT_LINE].filter(Boolean).join(' ');
 }
 
 const asArray = (value) => (Array.isArray(value) ? value : []);
@@ -65,7 +69,9 @@ function toProject(id) {
  */
 export function normalizeResult(raw) {
   const data = raw && typeof raw === 'object' ? raw : {};
-  const score = Number.isFinite(data.fit_score) ? Math.round(data.fit_score) : 0;
+  // A reply without a score or a verdict is broken, not a "0% fit": report an error instead.
+  if (!Number.isFinite(data.fit_score) || !cleanText(data.verdict)) throw new Error('incomplete model output');
+  const score = Math.round(data.fit_score);
 
   const strengths = asArray(data.strengths)
     .filter((item) => item && typeof item === 'object')

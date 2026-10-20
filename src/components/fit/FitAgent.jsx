@@ -92,6 +92,11 @@ export default function FitAgent() {
       textareaRef.current?.focus();
       return;
     }
+    if (turnstile.hasFailed) {
+      setStatus('error');
+      setError("The human check didn't load (an ad blocker can do this).");
+      return;
+    }
     if (turnstile.isEnabled && !turnstile.token) {
       setFormError('Please complete the quick human check first.');
       return;
@@ -173,7 +178,8 @@ export default function FitAgent() {
           {formError && <p role="alert" className="fit-warn mt-3 text-sm font-semibold">{formError}</p>}
 
           <div className="mt-5 flex flex-wrap gap-3">
-            <button type="submit" className="btn btn-primary" disabled={isRunning} aria-disabled={isRunning}>
+            {/* aria-disabled, not disabled: keyboard focus stays on the button during the run. */}
+            <button type="submit" className="btn btn-primary" aria-disabled={isRunning}>
               {isRunning ? <Loader2 size={18} aria-hidden="true" className="fit-spin" /> : <ArrowRight size={18} aria-hidden="true" />}
               {isRunning ? 'Checking the fit…' : 'Run the fit check'}
             </button>
@@ -182,7 +188,7 @@ export default function FitAgent() {
             </button>
           </div>
 
-          <p className="label mt-auto pt-6">Powered by Claude Opus 5.5 · capped daily · your text isn't stored</p>
+          <p className="label mt-auto pt-6">Powered by Claude Opus 5.5 · capped daily · your text isn't stored on this site</p>
         </form>
 
         <div className="tile flex min-w-0 flex-col">
