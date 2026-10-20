@@ -18,7 +18,7 @@ export default function Systems() {
       />
       <div className="flex flex-col gap-[var(--gap)]">
         {cases.map((study, i) => (
-          <Reveal key={study.slug}><CaseCard study={study} isFirst={i === 0} showDiagram={i === 0} /></Reveal>
+          <Reveal key={study.slug}><CaseCard study={study} showDiagram={i === 0} /></Reveal>
         ))}
         <Reveal><AgencyCase /></Reveal>
         <Reveal><ClientList /></Reveal>

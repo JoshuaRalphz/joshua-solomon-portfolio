@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Play } from 'lucide-react';
 import { initials, profile } from '../../data/content.js';
 
@@ -24,6 +24,12 @@ function Photo({ isDecorative = false }) {
 export default function PortraitMedia() {
   const video = profile.introVideo;
   const [state, setState] = useState('idle'); // idle | playing | failed
+  const videoRef = useRef(null);
+
+  // After the play button is swapped for the player, keyboard focus moves onto it.
+  useEffect(() => {
+    if (state === 'playing') videoRef.current?.focus();
+  }, [state]);
 
   if (!video || state === 'failed') return <Photo />;
 
@@ -32,6 +38,8 @@ export default function PortraitMedia() {
   if (state === 'playing') {
     return (
       <video
+        ref={videoRef}
+        aria-label={`Intro video from ${profile.name}`}
         controls
         autoPlay
         playsInline

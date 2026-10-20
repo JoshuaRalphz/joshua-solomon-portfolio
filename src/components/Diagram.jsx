@@ -41,7 +41,7 @@ function wrap(text, maxChars) {
   return lines;
 }
 
-const H = { width: 1000, pad: 6, gap: 32, rowGap: 60, inset: 14, tagY: 26, titleY: 52, titleLh: 21, subLh: 18, titleSize: 17, subSize: 14, titleChars: 15, subChars: 19 };
+const H = { width: 1000, pad: 6, gap: 32, rowGap: 60, inset: 14, tagY: 26, titleY: 52, titleLh: 21, subLh: 18, titleSize: 17, subSize: 15, titleChars: 15, subChars: 18 };
 const V = { width: 340, pad: 4, gap: 30, inset: 16, tagY: 24, titleY: 48, titleLh: 21, subLh: 18, titleSize: 17, subSize: 14, titleChars: 28, subChars: 36 };
 
 function boxHeight(node, g) {
@@ -115,7 +115,7 @@ function Horizontal({ id, diagram }) {
   });
 
   return (
-    <svg className="dg-h" viewBox={`0 0 ${g.width} ${height}`} role="img" aria-labelledby={`${id}-h-t ${id}-h-d`}>
+    <svg className="dg-h" viewBox={`0 0 ${g.width} ${height}`} role="img" aria-labelledby={`${id}-h-t`} aria-describedby={`${id}-h-d`}>
       <title id={`${id}-h-t`}>{diagram.title}</title>
       <desc id={`${id}-h-d`}>{describe(diagram)}</desc>
       <Markers id={`${id}-h`} />
@@ -137,7 +137,7 @@ function Vertical({ id, diagram }) {
   const cx = g.width / 2;
 
   return (
-    <svg className="dg-v" viewBox={`0 0 ${g.width} ${height}`} role="img" aria-labelledby={`${id}-v-t ${id}-v-d`}>
+    <svg className="dg-v" viewBox={`0 0 ${g.width} ${height}`} role="img" aria-labelledby={`${id}-v-t`} aria-describedby={`${id}-v-d`}>
       <title id={`${id}-v-t`}>{diagram.title}</title>
       <desc id={`${id}-v-d`}>{describe(diagram)}</desc>
       <Markers id={`${id}-v`} />

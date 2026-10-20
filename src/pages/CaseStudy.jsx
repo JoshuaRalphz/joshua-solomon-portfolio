@@ -7,6 +7,9 @@ import VideoFacade from '../components/media/VideoFacade.jsx';
 import { Reveal } from '../components/Reveal.jsx';
 import { cases } from '../data/cases.js';
 
+// Which phone screenshot sits on the hero browser frame (the gallery skips it).
+const HERO_PHONE = 1;
+
 /** Numbered section: mono step label + h2, the same voice as the home page heads. */
 function Part({ n, id, title, children, className = '' }) {
   return (
@@ -41,7 +44,7 @@ function Hero({ study }) {
       <div className="min-w-0">
         {study.video
           ? <VideoFacade video={study.video} />
-          : <BrowserShot shot={study.shots[0]} phone={study.phoneShots?.[1]} isEager />}
+          : <BrowserShot shot={study.shots[0]} phone={study.phoneShots?.[HERO_PHONE]} isEager />}
       </div>
     </header>
   );
@@ -123,7 +126,7 @@ export default function CaseStudy({ slug }) {
                 {study.shots.slice(1).map((shot) => <BrowserShot key={shot.src} shot={shot} />)}
                 {study.phoneShots && (
                   <figure className="flex items-end justify-center gap-[var(--gap)] rounded-inner bg-sunk p-4">
-                    {study.phoneShots.map((p) => (
+                    {study.phoneShots.filter((_, i) => i !== HERO_PHONE).map((p) => (
                       <img key={p.src} src={p.src} alt={p.label} width={p.w} height={p.h} loading="lazy" decoding="async" className="phone-shot" />
                     ))}
                   </figure>

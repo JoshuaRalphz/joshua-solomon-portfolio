@@ -21,7 +21,7 @@ function ProofRow({ results }) {
  * A case study on the home page: business problem -> what I built -> what changed,
  * with the real product visual beside it and (on wide screens) the architecture.
  */
-export default function CaseCard({ study, isFirst = false, showDiagram = false }) {
+export default function CaseCard({ study, showDiagram = false }) {
   const hasVideo = Boolean(study.video);
 
   return (
@@ -57,7 +57,7 @@ export default function CaseCard({ study, isFirst = false, showDiagram = false }
         <div className="min-w-0">
           {hasVideo
             ? <VideoFacade video={study.video} />
-            : <BrowserShot shot={study.shots[0]} phone={study.phoneShots?.[0]} isEager={isFirst} />}
+            : <BrowserShot shot={study.shots[0]} phone={study.phoneShots?.[0]} />}
         </div>
       </div>
 
