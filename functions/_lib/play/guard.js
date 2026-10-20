@@ -75,7 +75,7 @@ function runsPerVisitor(env) {
 }
 
 function apiErrorCode(error) {
-  console.error('play: Claude call failed', error?.constructor?.name, error?.status ?? '');
+  console.error('play: Claude call failed', error?.constructor?.name, error?.status ?? '', String(error?.error?.error?.message ?? '').slice(0, 300));
   if (error instanceof Anthropic.APIConnectionTimeoutError) return [504, 'timeout'];
   if (error instanceof Anthropic.APIConnectionError) return [502, 'error'];
   if (error instanceof Anthropic.RateLimitError) return [503, 'busy'];
