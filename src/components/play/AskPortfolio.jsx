@@ -7,7 +7,7 @@ const MAX_CHARS = 300;
 const MAX_TURNS = 6;
 
 const SUGGESTIONS = [
-  'Where is Josh based and what hours can he work?',
+  'Where is Joshua based and what hours can he work?',
   'Has he built anything with the Claude API?',
   'How does the job hunt stop bad applications going out?',
   'How much does one AI video cost to make?',
@@ -48,7 +48,7 @@ function Answer({ turn }) {
       <div className="play-bubble play-bubble--a play-bubble--none">
         <p className="font-semibold text-ink">{result.message}</p>
         <a href={`mailto:${profile.email}?subject=${encodeURIComponent('A question about your work')}`} className="text-link mt-2 inline-flex min-h-[2.75rem] items-center gap-1.5">
-          <Mail size={16} aria-hidden="true" /> Email Josh
+          <Mail size={16} aria-hidden="true" /> Email Joshua
         </a>
       </div>
     );

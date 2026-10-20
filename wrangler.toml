@@ -14,3 +14,7 @@ pages_build_output_dir = "./dist"
 binding = "FIT_DB"
 database_name = "fit-agent"
 database_id = "eb87237c-effd-46ca-b236-5a40aa595991"
+
+# Run Functions near the Anthropic API: Cloudflare HKG serves some PH visitors and Anthropic refuses Hong Kong (403 "Request not allowed").
+[placement]
+region = "aws:us-east-1"
