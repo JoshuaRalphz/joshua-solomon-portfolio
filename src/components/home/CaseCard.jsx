@@ -29,7 +29,7 @@ export default function CaseCard({ study, showDiagram = false }) {
       <div className={`case-grid ${hasVideo ? 'case-grid--video' : ''}`}>
         <div className="min-w-0">
           <p className="label"><span className="label-num">{study.num}</span> {study.kicker}</p>
-          <h3 id={`${study.slug}-title`} className="t-h2 mt-3">{study.name}</h3>
+          <h4 id={`${study.slug}-title`} className="t-h2 mt-3">{study.name}</h4>
           <p className="t-outcome t-outcome--sm mt-3">{study.outcome}</p>
 
           <dl className="case-facts mt-5">

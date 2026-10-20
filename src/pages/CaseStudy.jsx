@@ -25,7 +25,7 @@ function Hero({ study }) {
   return (
     <header className="case-hero">
       <div className="min-w-0">
-        <a href="/#work" className="text-link inline-flex min-h-[2.75rem] items-center gap-1.5 text-sm">
+        <a href="/#ai-systems" className="text-link inline-flex min-h-[2.75rem] items-center gap-1.5 text-sm">
           <ArrowLeft size={16} aria-hidden="true" /> All systems
         </a>
         <p className="label mt-3"><span className="label-num">Case study {study.num}</span> · {study.kicker}</p>

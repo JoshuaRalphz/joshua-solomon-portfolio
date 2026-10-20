@@ -20,7 +20,7 @@ export default function Work() {
           <h3 className="label sub-head mb-4 text-ink">Websites I built for clients</h3>
           <Reveal><ClientList /></Reveal>
         </div>
-        <div>
+        <div id="ai-systems">
           <h3 className="label sub-head mb-4 text-ink">AI systems I built</h3>
           <div className="flex flex-col gap-[var(--gap)]">
             {cases.map((study, i) => (

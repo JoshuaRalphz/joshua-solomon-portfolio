@@ -29,7 +29,7 @@ export default function AgencyCase() {
       <div className="case-grid">
         <div className="min-w-0">
           <p className="label"><span className="label-num">03</span> {agencyCase.kicker}</p>
-          <h3 id="agency-title" className="t-h2 mt-3">{agencyCase.title}</h3>
+          <h4 id="agency-title" className="t-h2 mt-3">{agencyCase.title}</h4>
           <p className="t-outcome t-outcome--sm mt-3">{agencyCase.outcome}</p>
           <ul className="mt-5 space-y-2">
             {agencyCase.changed.map((line) => (
