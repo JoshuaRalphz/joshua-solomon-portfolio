@@ -50,7 +50,7 @@ export default function TopBar() {
         </a>
 
         <div className="flex flex-none items-center gap-1">
-          <a href={profile.resumeUrl} download aria-label="Download resume (PDF)" className="icon-link">
+          <a href={profile.resumeUrl} download aria-label="Download CV (PDF)" className="icon-link">
             <Download size={20} aria-hidden="true" />
           </a>
           <a href="#contact" onClick={closeMenu} className="btn btn-primary hidden min-h-[2.75rem] min-[480px]:inline-flex">
@@ -103,7 +103,7 @@ export default function TopBar() {
                 Get in touch <ArrowRight size={18} aria-hidden="true" />
               </a>
               <a href={profile.resumeUrl} download onClick={closeMenu} className="btn btn-secondary">
-                <Download size={18} aria-hidden="true" /> Download resume
+                <Download size={18} aria-hidden="true" /> Download CV
               </a>
             </div>
           </nav>

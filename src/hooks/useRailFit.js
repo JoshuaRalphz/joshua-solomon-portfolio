@@ -1,4 +1,7 @@
-import { useLayoutEffect } from 'react';
+import { useEffect, useLayoutEffect } from 'react';
+
+// useLayoutEffect in the browser (measure before paint); useEffect while prerendering.
+const useIsoLayoutEffect = typeof window === 'undefined' ? useEffect : useLayoutEffect;
 
 // Roomiest first. The CSS for each one is in styles.css (.rail[data-density]).
 const DENSITIES = ['full', 'compact', 'tight'];
@@ -16,7 +19,7 @@ const RAIL_MARGIN_REM = 3;
  * @param {{ current: HTMLElement | null }} railRef
  */
 export function useRailFit(railRef) {
-  useLayoutEffect(() => {
+  useIsoLayoutEffect(() => {
     const rail = railRef.current;
     if (!rail) return undefined;
 

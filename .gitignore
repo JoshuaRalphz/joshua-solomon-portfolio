@@ -6,3 +6,7 @@ dist/
 *.log
 .vscode/
 .idea/
+dist-ssr/
+.wrangler/
+.dev.vars
+.dev.vars.*

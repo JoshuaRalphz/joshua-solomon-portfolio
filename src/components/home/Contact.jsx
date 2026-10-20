@@ -1,4 +1,4 @@
-import { Download, Facebook, FileText, Github, Linkedin, Mail, MessageCircle } from 'lucide-react';
+import { Download, FileText, Github, Linkedin, Mail, MessageCircle } from 'lucide-react';
 import { Reveal } from '../Reveal.jsx';
 import SectionHead from './SectionHead.jsx';
 import ContactForm from './ContactForm.jsx';
@@ -9,7 +9,6 @@ const DIRECT_CONTACTS = [
   { Icon: MessageCircle, label: 'WhatsApp · fastest channel', value: profile.whatsapp, href: profile.whatsappLink },
   { Icon: Linkedin, label: 'LinkedIn', value: profile.name, href: profile.linkedin },
   { Icon: Github, label: 'GitHub', value: profile.handle, href: profile.github },
-  { Icon: Facebook, label: 'Facebook · Messenger', value: profile.name, href: profile.facebook },
 ];
 
 function ContactRow({ Icon, label, value, href }) {
@@ -39,11 +38,11 @@ export default function Contact() {
     <section id="contact" aria-labelledby="contact-title" className="tile tile--ink">
       <div className="on-ink">
         <SectionHead
-          num="05"
+          num="06"
           id="contact"
           label="Contact"
           title="Hiring, contracting, or just want to talk?"
-          intro="Available for full-time work; can start within 1-2 weeks of an offer. I reply within 24 hours. References available on request."
+          intro="Available for full-time remote work; can start within 1–2 weeks of an offer. I reply within 24 hours. References available on request."
         />
       </div>
 
