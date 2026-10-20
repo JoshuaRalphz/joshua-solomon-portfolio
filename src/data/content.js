@@ -100,7 +100,7 @@ export const agencyCase = {
     { src: '/work-thumbs/arrowplatform-1.png', w: 1600, h: 925, label: 'Client dashboard: the month at a glance, with a monthly report' },
     { src: '/work-thumbs/arrowplatform-2.png', w: 1600, h: 680, label: 'Campaigns: delivery, opens, clicks and unsubscribes for every send' },
   ],
-  note: 'Private company platform, so there is no public link. Screenshots shown with the agency owner’s approval.',
+  note: 'Private company platform, so there is no public link. Screenshots shown with the agency owner’s approval; the client’s name and figures are blurred.',
 };
 
 // Client work, shown as one compact list. `url` only where the domain still belongs to

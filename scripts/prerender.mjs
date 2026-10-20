@@ -37,8 +37,9 @@ for (const route of routes) {
   ].filter(Boolean).join('\n    ');
 
   const html = template
-    .replace('<!--head-->', head)
-    .replace('<!--app-html-->', render(route.path));
+    // Function replacers: a `$&` or `$'` in the content must stay literal text.
+    .replace('<!--head-->', () => head)
+    .replace('<!--app-html-->', () => render(route.path));
   if (html.includes('<!--head-->') || html.includes('<!--app-html-->')) throw new Error(`Placeholder left in ${route.file}`);
 
   const out = join(dist, route.file);
