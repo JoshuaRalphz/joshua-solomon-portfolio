@@ -3,7 +3,6 @@ import SiteHeader from '../components/SiteHeader.jsx';
 import Footer from '../components/Footer.jsx';
 import Diagram from '../components/Diagram.jsx';
 import BrowserShot from '../components/media/BrowserShot.jsx';
-import VideoFacade from '../components/media/VideoFacade.jsx';
 import { Reveal } from '../components/Reveal.jsx';
 import { cases } from '../data/cases.js';
 
@@ -42,9 +41,7 @@ function Hero({ study }) {
         </ul>
       </div>
       <div className="min-w-0">
-        {study.video
-          ? <VideoFacade video={study.video} />
-          : <BrowserShot shot={study.shots[0]} phone={study.phoneShots?.[HERO_PHONE]} isEager />}
+        <BrowserShot shot={study.shots[0]} phone={study.phoneShots?.[HERO_PHONE]} isEager />
       </div>
     </header>
   );
@@ -74,7 +71,8 @@ function Decisions({ items }) {
 export default function CaseStudy({ slug }) {
   const index = cases.findIndex((c) => c.slug === slug);
   const study = cases[index];
-  const next = cases[(index + 1) % cases.length];
+  // With a single case study there is no "next" one to link to.
+  const next = cases.length > 1 ? cases[(index + 1) % cases.length] : null;
 
   return (
     <>
@@ -175,7 +173,7 @@ export default function CaseStudy({ slug }) {
             </div>
             <div className="flex flex-wrap gap-2.5">
               <a href="/#fit-agent" className="btn btn-secondary">See how I’d help <ArrowRight size={18} aria-hidden="true" /></a>
-              <a href={next.path} className="btn btn-secondary">Next: {next.name} <ArrowRight size={18} aria-hidden="true" /></a>
+              {next && <a href={next.path} className="btn btn-secondary">Next: {next.name} <ArrowRight size={18} aria-hidden="true" /></a>}
             </div>
           </nav>
         </main>

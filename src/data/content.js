@@ -2,8 +2,10 @@
 //
 // Positioning (Josh, 2026-10-20): AI Solutions Engineer. Lead with systems shipped,
 // told as business problem -> what I built -> what changed, tech second.
-// Facts only from the v8 CV, the project READMEs (yt-engine, Behind Works Pipeline)
-// and Josh's own statements. No invented numbers, clients or titles.
+// Facts only from the v8 CV, the Behind Works Pipeline README, the Lux work pack
+// (applications/lux-work-pack: work-pack.html, arrow-results.md) and Josh's own
+// statements. No invented numbers, clients or titles.
+// Never show the AI short-video side project to employers (Josh, 2026-10-21).
 
 export const profile = {
   name: 'Joshua Solomon',
@@ -54,14 +56,14 @@ export const hero = {
 export const heroStats = [
   { value: '6,500/day', label: 'emails from HOME.FM’s sending domain, which I set up and warmed' },
   { value: '~89%', label: 'lower monthly platform cost for the agency (projected, in my business case)' },
-  { value: '~$1', label: 'per finished AI video, vs ~$12 for paid generative video' },
+  { value: '82.7k', label: 'emails delivered in 54 campaigns on the agency platform I built (Sep 17 – Oct 25, 2026)' },
   { value: '9.5%', label: 'a nonprofit client’s email click rate in May 2026, up from 4.5% in April (two months compared)' },
 ];
 
 // "How my AI systems run": a process, not live data.
 export const flow = [
   { label: 'Trigger', caption: 'A schedule, an email, a form or a request in chat' },
-  { label: 'AI does the work', caption: 'Claude reads, scores and drafts; OpenAI makes images and voice' },
+  { label: 'AI does the work', caption: 'Claude reads, scores and drafts; OpenAI makes images' },
   { label: 'Code checks it', caption: 'Rules, caps and budgets enforced in code and in the database' },
   { label: 'You approve', caption: 'A person signs off on what matters before it goes out' },
 ];
@@ -77,11 +79,11 @@ export const tools = [
   { name: 'Hono', icon: 'siHono' },
   { name: 'Cloudflare Workers', icon: 'siCloudflareworkers' },
   { name: 'Cloudflare D1', icon: 'siCloudflare' },
-  { name: 'FFmpeg', icon: 'siFfmpeg' },
+  { name: 'GoHighLevel', icon: null },
   { name: 'Apps Script + Gmail API', icon: 'siGoogleappsscript' },
   { name: 'React', icon: 'siReact' },
 ];
-export const alsoUsed = 'GoHighLevel, HubSpot, Mailchimp, ActiveCampaign, Kajabi, Wix Studio, Jotform, Resend, Twilio, Square API, Firebase, Vercel.';
+export const alsoUsed = 'HubSpot, Mailchimp, ActiveCampaign, Kajabi, Wix Studio, Jotform, Resend, Twilio, Square API, Firebase, Vercel.';
 
 // The shorter third case, shown on the home page only. Facts from the v8 CV and the
 // existing card; screenshots approved by the agency owner. No new private details.
@@ -105,18 +107,141 @@ export const agencyCase = {
   note: 'Private company platform, so there is no public link. Screenshots shown with the agency owner’s approval; the client’s name and figures are blurred.',
 };
 
-// Client websites, shown as a screenshot gallery. `thumb` names public/work-thumbs/<thumb>.png
+// Client work, "my contribution" cards: screenshot, role tag, one first-person line,
+// a link out and a "Read more" project overview. `thumb` names public/work-thumbs/<thumb>.png
 // (+ -640/-1280.webp), a 1440x900 capture of the live homepage. `url` only where the domain
 // still belongs to that client: adasclosetsau.com and aoutilityservices.com now redirect to other brands.
 // Ada's Closet's site is arrowconsignment.com (Josh confirmed, 2026-10-20).
+// Campaign figures: arrow-results.md (human clicks only, link-scanner bots filtered out).
 export const clientWork = [
-  { name: 'Alpha Omega Safety Solutions', thumb: 'aosafe', place: 'Michigan', line: 'Built the website, plus approved business texting (A2P 10DLC brand registration on GoHighLevel), email and domain setup.', url: 'https://aosafe.com' },
-  { name: 'HOME.FM', thumb: 'homefm', place: 'Spring Arbor, MI', line: 'Built the website, plus email that reaches the inbox: a dedicated sending subdomain with SPF/DKIM/DMARC, warmed to 6,500 emails a day.', url: 'https://listenhome.fm' },
-  { name: 'Ada’s Closet', thumb: 'adas', place: 'Spring Arbor, MI', line: 'Built the website and back-office for a student consignment startup: listings to Poshmark, eBay and Depop, live inventory, sale alerts in Apps Script.', url: 'https://www.arrowconsignment.com/' },
-  { name: 'Alliance Service Brands', thumb: 'alliance', place: 'Jackson, MI', line: 'Built one custom website that unifies six home-service brands.', url: 'https://www.allianceservicebrands.com' },
-  { name: 'Endtime Entrepreneurs', thumb: 'endtime', place: 'USA', line: 'Built the website from scratch on Cloudflare Pages, plus CRM, music distribution and SEO.', url: 'https://endtimeentrepreneurs.com' },
-  { name: 'TrueCare Chiropractic', thumb: 'truecare', place: 'Lansing, MI', line: 'Built the website, plus email marketing, upkeep and SEO for a chiropractic clinic.', url: 'https://www.truecarechiro.com' },
+  {
+    name: 'Alpha Omega Safety Solutions',
+    thumb: 'aosafe',
+    url: 'https://aosafe.com',
+    role: 'Website · business texting · email',
+    line: 'I built their website, got the business approved for texting (A2P 10DLC on GoHighLevel), and set up their email and domain.',
+    overview: [
+      'A safety-training company in Michigan. I built the website, set up their email and domain, and registered the business for A2P 10DLC on GoHighLevel so it can send texts.',
+      'I also write, design and send their email campaigns. A “Meet the team” founder spotlight reached 528 inboxes and 2.1% of them clicked.',
+    ],
+  },
+  {
+    name: 'HOME.FM',
+    thumb: 'homefm',
+    url: 'https://listenhome.fm',
+    role: 'Website · email deliverability · lead pipeline',
+    line: 'I built the website and set up email that reaches the inbox: a dedicated sending subdomain, warmed to 6,500 emails a day.',
+    overview: [
+      'A radio station in Spring Arbor, Michigan. I set up a dedicated sending subdomain with SPF, DKIM and DMARC and warmed it to 6,500 emails a day, for weekly emails to about 3,250 people.',
+      'Their website forms feed a sales pipeline: since Sep 9, 20 deals were created automatically from form submissions. My “Your ad reaches 15,000+ listeners” email reached 3,348 inboxes and 1.5% clicked.',
+    ],
+  },
+  {
+    name: 'Ada’s Closet',
+    thumb: 'adas',
+    url: 'https://www.arrowconsignment.com/',
+    role: 'Website · back-office',
+    line: 'I built the website and back-office for a student consignment startup: listings to Poshmark, eBay and Depop, live inventory and sale alerts.',
+    overview: [
+      'A student consignment startup in Spring Arbor, Michigan. I built the launch website and the back-office behind it: items list to Poshmark, eBay and Depop, inventory stays live, and Apps Script sends an alert when something sells.',
+    ],
+  },
+  {
+    name: 'Alliance Service Brands',
+    thumb: 'alliance',
+    url: 'https://www.allianceservicebrands.com',
+    role: 'Custom website',
+    line: 'I built one custom website that brings six home-service brands under one look.',
+    overview: [
+      'A group of six home-service brands in Jackson, Michigan. I built the custom website that brings all six under one look.',
+    ],
+  },
+  {
+    name: 'Endtime Entrepreneurs',
+    thumb: 'endtime',
+    url: 'https://endtimeentrepreneurs.com',
+    role: 'Website · CRM · SEO',
+    line: 'I built the website from scratch on Cloudflare Pages, plus their CRM, music distribution and SEO.',
+    overview: [
+      'A US business. I built the full website from scratch on Cloudflare Pages, and set up the CRM, email marketing, domain, music distribution and SEO.',
+    ],
+  },
+  {
+    name: 'TrueCare Chiropractic',
+    thumb: 'truecare',
+    url: 'https://www.truecarechiro.com',
+    role: 'Website · email marketing · SEO',
+    line: 'I built the website, and I handle their email marketing, upkeep and SEO.',
+    overview: [
+      'A chiropractic clinic in Lansing, Michigan. When their contact form came under a bot attack, the spam filter and bot check I set up blocked about 2,480 junk submissions, and the real enquiries still came through.',
+      'I write and send their patient emails: the new-doctor announcement reached 2,330 inboxes (1.2% clicked) and the World Spine Day email 2,298 (22 people clicked).',
+    ],
+  },
 ];
+
+// Three client projects rebuilt in GoHighLevel sample sub-accounts (Oct 2026). Facts and
+// screenshots from the Lux work pack. The Lux Seats Four Us concept demo is left out on
+// purpose: it uses Lux's own photos and brand.
+export const GHL_REBUILD_LABEL = 'Rebuilt in GoHighLevel by Joshua Solomon from his original client work.';
+export const GHL_SAMPLE_NOTE = 'A sample sub-account, not the client’s live system: the workflows are switched off and the leads are test data.';
+export const ghlRebuilds = [
+  {
+    id: 'ghl-truecare',
+    name: 'TrueCare Chiropractic',
+    img: '/work/ghl/truecare',
+    url: 'https://sites.leadconnectorhq.com/preview/0sXx0W6SW3eu0wplFB2x',
+    role: 'GoHighLevel · funnel, pipeline, workflow',
+    line: 'I rebuilt their new-patient path in GoHighLevel: a funnel page with their real photos and offer, a native form, a pipeline and a follow-up workflow.',
+    overview: [
+      'A new request lands in the “New Patient Requests” pipeline. The workflow sends an instant text and a confirmation email with what the first visit includes, alerts the front desk to call, and texts again on day 1 if the patient hasn’t booked. It stops as soon as they reply.',
+      'I also rebuilt the new-doctor email I sent for them as a GoHighLevel email template.',
+    ],
+    pipeline: { src: '/work/ghl/truecare-pipeline-1040.webp', alt: 'The New Patient Requests pipeline in GoHighLevel, with a made-up test lead' },
+  },
+  {
+    id: 'ghl-bbbs',
+    name: 'Big Brothers Big Sisters of Jackson County',
+    img: '/work/ghl/bbbs',
+    url: 'https://sites.leadconnectorhq.com/preview/5ICjHk65OeRXB9SJ7ZNc',
+    role: 'GoHighLevel · volunteer funnel, pipeline',
+    line: 'I rebuilt their volunteer recruiting path in GoHighLevel: a “Become a Big” page with their own photos and numbers, a volunteer form, a pipeline and a follow-up workflow.',
+    overview: [
+      'An inquiry lands in “Volunteer Inquiries”. The workflow sends an instant thank-you text with the office number and a welcome email on the two ways to mentor, alerts the match team to call within 2 business days, and on day 2 texts an invite to an info session. It stops as soon as they reply.',
+      'The Game Day Gala thank-you email I sent for them is rebuilt as a GoHighLevel email template. The original: the bbbsjackson.org forms and emails I run.',
+    ],
+    pipeline: { src: '/work/ghl/bbbs-pipeline-1040.webp', alt: 'The Volunteer Inquiries pipeline in GoHighLevel, with a made-up test lead' },
+  },
+  {
+    id: 'ghl-homefm',
+    name: 'HOME.FM 106.9',
+    img: '/work/ghl/homefm',
+    url: 'https://sites.leadconnectorhq.com/preview/tEGtKscf2eVlYinHAVzr',
+    role: 'GoHighLevel · ad sales, through to the invoice',
+    line: 'I rebuilt their advertiser path in GoHighLevel: the ad page with their real packages ($500 to $2,500 a month), an inquiry form, a pipeline, a follow-up workflow and an invoice.',
+    overview: [
+      'An inquiry lands in the “Advertiser Pipeline”. The workflow texts that a rep will call within 1 business day, emails the plans (from $500 a month) and alerts the sales rep. If there is no reply, a follow-up text goes out on day 1.',
+      'After the call the rep sends the plan and invoice from GoHighLevel. A draft invoice for the $950 Community Champion plan is linked to the deal and was never sent.',
+    ],
+    pipeline: { src: '/work/ghl/homefm-pipeline-1040.webp', alt: 'The Advertiser Pipeline in GoHighLevel, with a made-up test deal' },
+  },
+];
+
+// Email marketing graphics (never "social posts"). Figures from arrow-results.md: delivered
+// inboxes and unique human clickers, link-scanner bots filtered out; opens are not tracked.
+// The `how` line is Josh's approved wording: keep it exactly.
+export const emailGraphics = {
+  kicker: 'At work · Arrow Group Consulting · Oct 2026',
+  title: 'Email marketing graphics',
+  outcome: 'Four graphics I made for agency clients, each sent in a real newsletter.',
+  how: 'I made them with AI design tools (Claude and Codex), then checked the facts, the brand and the layout before they went out.',
+  items: [
+    { img: '/work/graphics/aoss-safety-bullet', w: 900, h: 1078, small: 480, client: 'Alpha Omega Safety Solutions', what: 'One-page monthly “Safety Bullet” bulletin, built from a real incident', date: 'Oct 14', delivered: '649', clicked: '12' },
+    { img: '/work/graphics/homefm-christmas-ads', w: 900, h: 1285, small: 480, client: 'HOME.FM 106.9', what: 'Christmas advertising packages launch email', date: 'Oct 20', delivered: '3,239', clicked: '8' },
+    { img: '/work/graphics/truecare-spine-day', w: 900, h: 1285, small: 480, client: 'TrueCare Chiropractic', what: 'World Spine Day patient email (the Spine Day mark is the campaign’s official logo)', date: 'Oct 19', delivered: '2,298', clicked: '22' },
+    { img: '/work/graphics/homefm-newsletter-hero', w: 1200, h: 456, small: 600, focus: 'center', client: 'HOME.FM 106.9', what: 'Newsletter hero collage: student hosts, the new studio and the show logos', date: 'Oct 22', delivered: '3,254', clicked: '11' },
+  ],
+  note: 'Clicks are unique people, with link-scanner bots filtered out. Opens aren’t tracked.',
+};
 
 // "What I build": three offers, framed as what the business gets.
 export const offers = [
@@ -127,10 +252,10 @@ export const offers = [
     proof: { label: 'AI Job Hunt engine', href: '/work/ai-job-hunt/' },
   },
   {
-    id: 'content',
-    title: 'Content at a cost you know first',
-    body: 'AI production pipelines (scripts, images, voice, video) that show a cost estimate before every paid step and never publish without a yes.',
-    proof: { label: 'AI Video Engine', href: '/work/ai-video-engine/' },
+    id: 'leads',
+    title: 'Follow up on every lead',
+    body: 'Forms, pipelines and follow-up workflows in GoHighLevel: every enquiry gets an instant reply, lands in a pipeline and gets a follow-up, so no lead is forgotten.',
+    proof: { label: 'GoHighLevel rebuilds', href: '#ghl-rebuilds' },
   },
   {
     id: 'own',
@@ -152,7 +277,7 @@ export const workWithMe = {
   examples: [
     { label: 'AI job hunt platform', note: 'An AI pipeline that vets, screens for scams and drafts honest applications', href: '/work/ai-job-hunt/' },
     { label: 'Agency email & SMS platform', note: 'An agency’s own platform, now replacing GoHighLevel', href: '#work-agency' },
-    { label: 'AI video engine', note: 'Content at a cost known before it runs', href: '/work/ai-video-engine/' },
+    { label: 'GoHighLevel lead follow-up', note: 'Funnel page, form, pipeline and follow-up workflow, rebuilt from my client work', href: '#ghl-rebuilds' },
   ],
   steps: [
     { title: '15-minute call', body: 'Free. Tell me the busywork.' },
@@ -168,12 +293,9 @@ export const results = [
   { value: '~89%', label: 'lower monthly platform cost for the agency (projected, not yet measured)', href: '#work-agency' },
   { value: '6,500/day', label: 'emails from HOME.FM’s sending domain, which I set up and warmed', href: '#clients' },
   { value: '6 in ~5 wks', label: 'client accounts live on the agency platform after the first commit', href: '#work-agency' },
-  { value: '~$1', label: 'per finished AI video, vs ~$12 for paid generative video', href: '/work/ai-video-engine/' },
-  { value: '$0.72', label: 'real API cost of a 2-part AI video story ($0.49 + $0.23)', href: '/work/ai-video-engine/' },
   { value: '~$1–2.50', label: 'estimated AI cost of a full job-hunt day, under a hard daily dollar budget', href: '/work/ai-job-hunt/' },
   { value: '3,200+', label: 'automated tests on the agency platform', href: '#work-agency' },
   { value: '700+', label: 'automated tests on the AI job hunt platform, run with no network', href: '/work/ai-job-hunt/' },
-  { value: '406 + 300', label: 'unit tests and acceptance checks on the AI video engine', href: '/work/ai-video-engine/' },
 ];
 export const agencyMarketingResult = 'From agency email work: a nonprofit’s average click rate went from 4.5% (April 2026) to 9.5% (May 2026). Two months compared, not an A/B test.';
 

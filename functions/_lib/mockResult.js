@@ -25,9 +25,9 @@ export const MOCK_RESULT = {
     },
     {
       requirement: 'Control AI costs',
-      evidence: 'His video pipeline shows a cost estimate before any paid call and holds cost to about $1 per video.',
+      evidence: 'His job-application platform prices every Claude call and stops at a hard daily budget.',
       outcome: 'Costs are known before money is spent.',
-      project_id: 'ytengine',
+      project_id: 'behindworks',
     },
     {
       requirement: 'Explain technical work to non-technical clients',
@@ -46,7 +46,7 @@ export const MOCK_RESULT = {
     'Put a cost estimate and a spend log around every model call, so finance sees the bill before it arrives.',
     'Write tests against fake provider credentials, so no test run can email a real customer.',
   ],
-  matching_projects: ['arrowplatform', 'behindworks', 'ytengine', 'fake-project-should-be-dropped'],
+  matching_projects: ['arrowplatform', 'behindworks', 'ghlrebuilds', 'fake-project-should-be-dropped'],
   interview_questions_to_ask_him: [
     'Walk us through how you would add retrieval over our help-center docs, given you have not built RAG yet.',
     'How did you decide what the approval queue lets through automatically?',

@@ -13,12 +13,6 @@ export const CONTACT = {
 // `link` is an anchor on this site (or a live client site the portfolio already links).
 export const PROJECTS = [
   {
-    id: 'ytengine',
-    title: 'AI video engine (yt-engine)',
-    summary: 'Turns a one-line topic into a finished, captioned vertical video: Claude writes the script, OpenAI makes the images and voice, FFmpeg renders it. About $1 per video, cost estimate before any paid step.',
-    link: '#work-ytengine',
-  },
-  {
     id: 'behindworks',
     title: 'Behind Works Platform (outreach and job applications)',
     summary: 'My own CRM and email platform on Cloudflare Workers + D1: pipeline board, campaigns that stop on a reply, an approval queue, and a jobs module with Claude-drafted applications, each with a fit score.',
@@ -60,6 +54,18 @@ export const PROJECTS = [
     summary: 'Launch site and back-office for a student consignment startup: live inventory and instant sale notifications via Apps Script.',
     link: '#work-adas',
   },
+  {
+    id: 'ghlrebuilds',
+    title: 'GoHighLevel rebuilds (TrueCare, Big Brothers Big Sisters, HOME.FM)',
+    summary: 'Three of his client projects rebuilt in GoHighLevel sample sub-accounts: a funnel page with the client’s real photos and offer, a native form, a pipeline, a follow-up workflow (instant text, confirmation email, team alert, follow-up text that stops on reply) and an email template, plus a draft invoice for HOME.FM. Workflows are off and leads are test data.',
+    link: '#ghl-rebuilds',
+  },
+  {
+    id: 'emailgraphics',
+    title: 'Email marketing graphics',
+    summary: 'Four graphics made with AI design tools (Claude and Codex) for agency clients and sent in October 2026 newsletters, each checked for facts, brand and layout: a safety bulletin (649 delivered, 12 people clicked), a radio Christmas ad launch (3,239 delivered, 8 clicked), a World Spine Day clinic email (2,298 delivered, 22 clicked), a newsletter hero (3,254 delivered, 11 clicked).',
+    link: '#work-graphics',
+  },
 ];
 
 export const PROJECT_IDS = new Set(PROJECTS.map((project) => project.id));
@@ -84,12 +90,11 @@ EXPERIENCE
 2. Virtual Marketing Assistant, Doneverse (agency placement, Philippines), Sep 2025 to Feb 2026, about 6 months. Technical implementer for 2 US founders. Worked in Wix (Wix Studio), Mailchimp, GoHighLevel, ActiveCampaign, Jotform, Kajabi and HubSpot. Learned HubSpot on the job, then recommended HubSpot and ActiveCampaign; the agency adopted both, and ActiveCampaign fixed one client's Mailchimp login errors. This placement led to the direct hire above.
 
 OWN AI PROJECTS (personal, built with Claude Code; walkthroughs on request)
-- yt-engine: Python/FastAPI pipeline, one-line topic to finished 1080x1920 MP4 with captions. Claude writes the script, OpenAI makes images and voiceover, custom FFmpeg engine renders. About $1 per video (vs about $12 for paid generative video; a real 2-part series cost $0.72). Shows a cost estimate before any paid call and tracks spend per provider. CLI + Claude Code skill so Claude runs it from chat; paid commands blocked until an explicit yes. Restart-safe job queue whose retries never pay twice; 406 unit tests and 300 acceptance checks against a fake paid-API stand-in. Never auto-posts.
 - Behind Works Platform: single-user CRM and email platform (JavaScript, Hono, Cloudflare Workers, D1, Cron Triggers, Email Routing). Contacts, 7-stage pipeline board, 1-5 step campaigns that stop on reply/unsubscribe/bounce, hosted forms, threaded conversations, approval queue. Jobs module: Claude-researched job posts and Claude-drafted applications with a fit score and verdict in an approve/hold/skip queue; auto-send only for strong fits with no open questions (database CHECK constraint, re-checked before sending). Gmail bridge (Apps Script) sends approved applications and reports the first real reply back. Real sending off by default, HMAC-signed links, suppression list, idempotent retries; 546 automated tests.
 - Job Tracker: Apps Script + Gmail API, checks replies every 10 minutes, logs to a Sheet, labels, sends one alert, flags look-alike scam emails, smallest Gmail permission, never deletes mail.
 
 SKILLS (as documented)
-Claude API (Haiku 4.5, Opus 5.5), OpenAI API (images, text-to-speech), prompt design, human-in-the-loop approval flows, cost estimates and spend tracking; Python (FastAPI), JavaScript, TypeScript, Hono, React, Vite, Tailwind; Cloudflare Workers, D1, Queues, Cron Triggers, R2, Pages, Tunnel; Firebase; Vercel; FFmpeg; Vitest; GitHub Actions; REST APIs, webhooks, Google Apps Script, Gmail API, Google Sheets API, GoHighLevel API, Resend, Twilio, Stripe, Square API. CRM/email: GoHighLevel, HubSpot, Kajabi, Mailchimp, ActiveCampaign, SPF/DKIM/DMARC, A2P 10DLC. n8n: familiar only (one 47-node workflow design, personal project, never run for a client).
+Claude API (Haiku 4.5, Opus 5.5), OpenAI API (images), prompt design, human-in-the-loop approval flows, cost estimates and spend tracking; Python (FastAPI), JavaScript, TypeScript, Hono, React, Vite, Tailwind; Cloudflare Workers, D1, Queues, Cron Triggers, R2, Pages, Tunnel; Firebase; Vercel; Vitest; GitHub Actions; REST APIs, webhooks, Google Apps Script, Gmail API, Google Sheets API, GoHighLevel API, Resend, Twilio, Stripe, Square API. CRM/email: GoHighLevel, HubSpot, Kajabi, Mailchimp, ActiveCampaign, SPF/DKIM/DMARC, A2P 10DLC. n8n: familiar only (one 47-node workflow design, personal project, never run for a client).
 
 EDUCATION: BS Computer Science, Gordon College, 2021-2025; thesis published at IRCITE 2025.
 

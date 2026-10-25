@@ -18,6 +18,10 @@
 /work/      /#work      301
 /work       /#work      301
 
+# Retired case study: not shown any more.
+/work/ai-video-engine/  /#work  301
+/work/ai-video-engine   /#work  301
+
 # /work/x without a slash: Cloudflare Pages adds the slash itself (no rule here, to avoid a loop).
 # Anything else that does not exist gets dist/404.html with a real 404 status.
 /play /  302

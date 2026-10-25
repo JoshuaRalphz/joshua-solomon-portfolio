@@ -1,5 +1,5 @@
-// The two full case studies. Every fact comes from the project's own README / CLAUDE.md /
-// GOTCHAS.md (yt-engine, Behind Works Pipeline) or the v8 CV. Nothing is estimated here
+// The full case study. Every fact comes from the project's own README / CLAUDE.md /
+// GOTCHAS.md (Behind Works Pipeline) or the v8 CV. Nothing is estimated here
 // unless the source calls it an estimate.
 //
 // Diagram nodes: kind = 'input' | 'ai' | 'code' | 'gate' | 'human'. `tag` is the small
@@ -82,77 +82,4 @@ export const jobHunt = {
   shotsNote: 'Screenshots use the app’s demo data (example.com addresses), not real applications.',
 };
 
-export const videoEngine = {
-  slug: 'ai-video-engine',
-  path: '/work/ai-video-engine/',
-  num: '02',
-  name: 'AI Video Engine',
-  kicker: 'Own product · runs on my own PC · makes shorts for my own channel',
-  outcome: 'A finished, captioned short from a one-line topic, for about $1 instead of about $12.',
-  summary: 'Claude writes the script, OpenAI makes the images and the voice, and my FFmpeg engine renders a 1080×1920 video with burned captions and covers. A cost estimate comes first; nothing is spent or posted without a yes.',
-  seo: 'Case study: an AI short-video pipeline on the Claude and OpenAI APIs with an FFmpeg render engine, a cost gate before paid steps and about $1 per finished video.',
-  problem: 'Short videos need a script, visuals, a voice, captions and an edit for every post. Paid generative video costs about $12 a video and drifts between shots; doing it by hand takes hours each time.',
-  businessAngle: 'Any team that needs a steady stream of content (product explainers, training clips, social posts) gets the same thing: AI drafts, code renders, a person approves before anything is published, at a cost known in advance.',
-  constraints: [
-    'About $1 per video, with a cost estimate before any paid step.',
-    'Never post by itself: I approve and post every video.',
-    'Render on my own PC: no hosted render bills.',
-    'One file that works on TikTok, YouTube Shorts and Facebook Reels.',
-    'A failed run must retry without paying twice.',
-  ],
-  diagram: {
-    title: 'How the AI video engine works',
-    rows: [
-      [
-        { kind: 'human', tag: 'ME · CHAT', title: 'A one-line topic', sub: 'Asked in Claude Code' },
-        { kind: 'gate', tag: 'COST GATE', title: 'Estimate, then yes', sub: 'Paid steps blocked until I agree' },
-        { kind: 'ai', tag: 'CLAUDE OPUS', title: 'Script and titles', sub: 'Checked against hook rules' },
-        { kind: 'ai', tag: 'OPENAI', title: 'Images', sub: 'One style anchor per video' },
-        { kind: 'ai', tag: 'OPENAI', title: 'Voiceover', sub: 'Text to speech' },
-      ],
-      [
-        { kind: 'code', tag: 'FFMPEG', title: 'Render 1080×1920', sub: 'Motion, captions, ducked music' },
-        { kind: 'code', tag: 'PYTHON', title: 'Covers and captions', sub: 'Per platform, ready to paste' },
-        { kind: 'input', tag: 'LIBRARY', title: 'Watch on my phone', sub: 'Download, copy captions' },
-        { kind: 'human', tag: 'ME', title: 'I post it', sub: 'Never auto-uploads' },
-      ],
-    ],
-    note: 'Restart-safe job queue: a retry picks up where it stopped and never pays twice for a step it already has. Every video records its real cost.',
-  },
-  built: [
-    { title: 'Run from chat', body: 'I ask Claude Code for a video. It drives the service through a small CLI and a Claude Code skill: estimate, make, status, retry. Paid commands are blocked until an explicit yes.' },
-    { title: 'Script', body: 'Claude Opus 5.5 writes the script plus title, description and tags, checked against hook rules. It can also suggest topics from real YouTube search suggestions.' },
-    { title: 'Images and voice', body: 'OpenAI makes the images and the voiceover. Claude sets one style-anchor sentence per video and the code adds it to every image prompt, so a video looks consistent. Providers are switchable (fal.ai, ElevenLabs).' },
-    { title: 'Render', body: 'A custom FFmpeg engine adds Ken Burns motion, crossfades, burned captions and music ducked under the voice, then makes covers and ready-to-paste captions for TikTok, Shorts and Reels.' },
-    { title: 'Queue and cost', body: 'A restart-safe job queue renders one video at a time. A retry never pays twice for a script, image or voiceover it already has, and every video records what it actually cost.' },
-  ],
-  decisions: [
-    { chose: 'Motion on AI stills (Ken Burns)', rejected: 'Paid generative video', why: 'About $1 a video instead of about $12, and stills don’t morph or drift between cuts the way generated video does in explainers.' },
-    { chose: 'One control path: Claude in chat', rejected: 'A web dashboard with make and retry buttons', why: 'Every paid action goes through one tool that shows the estimate and waits for a yes. The phone Library only watches, downloads and copies captions, so nothing there can spend money.' },
-    { chose: 'Render on my own PC', rejected: 'A hosted render service', why: 'No per-minute render billing. A 24-second vertical video renders in about 37 seconds here (measured on the test run).' },
-  ],
-  broke: [
-    { title: 'Every caption showed twice', body: 'Captions are burned into the video, but a caption file published next to the MP4 made VLC and mpv load it as a second track: every line twice, in another font. The caption script is now published under a name players don’t auto-load.' },
-    { title: 'An 8-pixel black strip', body: 'One effect needs RGB frames, and at width 1080 FFmpeg 8.1.1’s conversion left an 8 px black strip down the right edge of the whole shot. Converting to rgb24 first fixed it, and a test now renders the effect and checks the last 8 columns of every frame.' },
-    { title: 'The last word got clipped', body: 'Loudness normalization stamps its final audio a few dozen milliseconds late, so the length cut clipped the tail of the last word. Renumbering the audio timestamps fixed it on every audio path.' },
-  ],
-  results: [
-    { value: '~$1', label: 'per finished video, vs ~$12 for paid generative video' },
-    { value: '$0.72', label: 'real API cost of a 2-part story ($0.49 + $0.23)' },
-    { value: '406', label: 'unit tests, plus 300 acceptance checks on a fake paid-API stand-in' },
-    { value: '~37 s', label: 'to render a 24-second vertical video (test run)' },
-    { value: '1 file', label: '1080×1920 MP4 for TikTok, YouTube Shorts and Facebook Reels' },
-  ],
-  stack: ['Python', 'FastAPI', 'Claude API (Opus 5.5)', 'OpenAI API (images, text-to-speech)', 'FFmpeg', 'Cloudflare Tunnel', 'Built with Claude Code'],
-  video: {
-    src: '/media/video-engine-sample.mp4',
-    poster: '/media/video-engine-sample-poster.webp',
-    w: 432,
-    h: 768,
-    duration: '0:57',
-    title: 'Vikings in America: how a sun storm revealed the exact year',
-    label: 'One finished short from my channel, made end to end by the engine: Claude script, OpenAI images and voice, FFmpeg render. Captions are burned in.',
-  },
-};
-
-export const cases = [jobHunt, videoEngine];
+export const cases = [jobHunt];

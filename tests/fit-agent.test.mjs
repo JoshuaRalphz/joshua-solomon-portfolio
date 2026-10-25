@@ -200,8 +200,8 @@ describe('model output handling', () => {
   test('the client sees allowlisted projects only', async () => {
     const { json } = await run({ jobText: JOB });
     const ids = json.result.matching_projects.map((project) => project.id);
-    assert.deepEqual(ids, ['arrowplatform', 'behindworks', 'ytengine']);
-    assert.ok(json.result.strengths.every((s) => s.project === null || ['arrowplatform', 'behindworks', 'ytengine'].includes(s.project.id)));
+    assert.deepEqual(ids, ['arrowplatform', 'behindworks', 'ghlrebuilds']);
+    assert.ok(json.result.strengths.every((s) => s.project === null || ['arrowplatform', 'behindworks', 'ghlrebuilds'].includes(s.project.id)));
     assert.equal(json.result.strengths[4].project, null);
     assert.ok(json.result.matching_projects.every((p) => p.link.startsWith('#')));
   });
@@ -215,7 +215,7 @@ describe('normalizeResult', () => {
       strengths: Array.from({ length: 9 }, () => ({ requirement: 'r', evidence: 'e', outcome: 'o', project_id: 'nope' })),
       gaps: [],
       how_i_would_help: ['a', 'b', 'c', 'd'],
-      matching_projects: ['ytengine', 'ytengine', 'evil'],
+      matching_projects: ['ghlrebuilds', 'ghlrebuilds', 'evil'],
       interview_questions_to_ask_him: ['1', '2', '3', '4'],
       short_note: 'Hi.',
     });
@@ -223,7 +223,7 @@ describe('normalizeResult', () => {
     assert.equal(result.strengths.length, 5);
     assert.equal(result.gaps.length, 1);
     assert.equal(result.how_i_would_help.length, 3);
-    assert.deepEqual(result.matching_projects.map((p) => p.id), ['ytengine']);
+    assert.deepEqual(result.matching_projects.map((p) => p.id), ['ghlrebuilds']);
     assert.equal(result.interview_questions_to_ask_him.length, 3);
     assert.equal(normalizeResult({ fit_score: -5, verdict: 'No.' }).fit_score, 0);
   });

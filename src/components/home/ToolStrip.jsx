@@ -1,12 +1,12 @@
 import {
-  siAnthropic, siClaude, siCloudflare, siCloudflareworkers, siFastapi, siFfmpeg,
+  siAnthropic, siClaude, siCloudflare, siCloudflareworkers, siFastapi,
   siGoogleappsscript, siHono, siPython, siReact, siTypescript,
 } from 'simple-icons';
 import { alsoUsed, tools } from '../../data/content.js';
 
 // Named imports only, so the bundle carries these few paths, not the whole icon set.
 const ICONS = {
-  siAnthropic, siClaude, siCloudflare, siCloudflareworkers, siFastapi, siFfmpeg,
+  siAnthropic, siClaude, siCloudflare, siCloudflareworkers, siFastapi,
   siGoogleappsscript, siHono, siPython, siReact, siTypescript,
 };
 

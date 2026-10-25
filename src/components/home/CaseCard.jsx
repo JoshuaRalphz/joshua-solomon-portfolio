@@ -1,7 +1,6 @@
 import { ArrowRight } from 'lucide-react';
 import Diagram from '../Diagram.jsx';
 import BrowserShot from '../media/BrowserShot.jsx';
-import VideoFacade from '../media/VideoFacade.jsx';
 
 /** Three numbers from the case's results, as a dense proof row. */
 function ProofRow({ results }) {
@@ -22,11 +21,9 @@ function ProofRow({ results }) {
  * with the real product visual beside it and (on wide screens) the architecture.
  */
 export default function CaseCard({ study, showDiagram = false }) {
-  const hasVideo = Boolean(study.video);
-
   return (
     <article id={`work-${study.slug}`} className="tile case" aria-labelledby={`${study.slug}-title`}>
-      <div className={`case-grid ${hasVideo ? 'case-grid--video' : ''}`}>
+      <div className="case-grid">
         <div className="min-w-0">
           <p className="label"><span className="label-num">{study.num}</span> {study.kicker}</p>
           <h4 id={`${study.slug}-title`} className="t-h2 mt-3">{study.name}</h4>
@@ -55,9 +52,7 @@ export default function CaseCard({ study, showDiagram = false }) {
         </div>
 
         <div className="min-w-0">
-          {hasVideo
-            ? <VideoFacade video={study.video} />
-            : <BrowserShot shot={study.shots[0]} phone={study.phoneShots?.[0]} />}
+          <BrowserShot shot={study.shots[0]} phone={study.phoneShots?.[0]} />
         </div>
       </div>
 
