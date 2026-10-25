@@ -1,0 +1,46 @@
+<!doctype html>
+<!-- Source for public/og.png (1200x630). Serve the repo root (python -m http.server) and take a
+     1200x630 headless-Chrome screenshot of /og-card.html. Not deployed (outside public/). -->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<style>
+  @font-face { font-family: Brico; src: url(node_modules/@fontsource-variable/bricolage-grotesque/files/bricolage-grotesque-latin-opsz-normal.woff2) format('woff2'); font-weight: 200 800; }
+  @font-face { font-family: JBM; src: url(node_modules/@fontsource/jetbrains-mono/files/jetbrains-mono-latin-500-normal.woff2) format('woff2'); font-weight: 500; }
+  * { box-sizing: border-box; margin: 0; }
+  html, body { width: 1200px; height: 630px; }
+  body { font-family: Brico, sans-serif; font-optical-sizing: auto; background: #EEF2EC radial-gradient(rgba(13,43,35,.10) 1px, transparent 1.2px) 0 0 / 24px 24px; position: relative; overflow: hidden; color: #0D2B23; }
+  .card { position: absolute; left: 45px; top: 45px; width: 690px; height: 540px; background: #FBFCF9; border: 1px solid #CDD9CE; border-radius: 28px; box-shadow: 0 2px 0 rgba(13,43,35,.06), 0 22px 44px -18px rgba(13,43,35,.32); padding: 44px 48px; }
+  .kicker { display: flex; align-items: center; gap: 12px; font-family: JBM; font-size: 17px; letter-spacing: .14em; color: #2F4A41; }
+  .dot { width: 16px; height: 16px; border-radius: 50%; background: #C9F26C; box-shadow: 0 0 0 1.5px #0D2B23; }
+  h1 { margin-top: 22px; font-size: 68px; font-weight: 800; letter-spacing: -.035em; line-height: 1; }
+  .outcome { margin-top: 14px; font-size: 38px; font-weight: 800; letter-spacing: -.025em; line-height: 1.08; }
+  .lead { margin-top: 22px; font-size: 25px; line-height: 1.4; color: #2F4A41; max-width: 500px; }
+  .chips { position: absolute; left: 48px; right: 40px; bottom: 44px; display: flex; flex-wrap: wrap; gap: 10px; }
+  .chip { padding: 10px 16px; border-radius: 999px; background: #E2EAE0; border: 1px solid #CDD9CE; font-size: 19px; font-weight: 700; }
+  .chip.lime { background: #C9F26C; border: 1.5px solid #0D2B23; }
+  .photo { position: absolute; left: 764px; top: 45px; width: 392px; height: 540px; border-radius: 28px; overflow: hidden; background: #0D2B23; }
+  .photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; }
+  .badge { position: absolute; left: 18px; right: 18px; bottom: 18px; padding: 14px 18px; border-radius: 16px; background: rgba(13,43,35,.92); }
+  .badge .url { font-family: JBM; font-size: 15px; letter-spacing: .14em; color: #C9F26C; }
+  .badge .where { margin-top: 4px; font-size: 19px; font-weight: 700; color: #EEF2EC; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <p class="kicker"><span class="dot"></span>AI SOLUTIONS ENGINEER</p>
+    <h1>Joshua Solomon</h1>
+    <p class="outcome">I build AI that saves businesses<br />time and money.</p>
+    <p class="lead">Costs known, output checked, a person in charge of what matters.</p>
+    <div class="chips">
+      <span class="chip lime">AI job hunt on Claude</span>
+      <span class="chip">GoHighLevel funnels + workflows</span>
+      <span class="chip">Agency platform live in ~5 weeks</span>
+    </div>
+  </div>
+  <div class="photo">
+    <img src="public/joshua-solomon.webp" alt="" />
+    <div class="badge"><p class="url">SOLOMONJOSHUA.COM</p><p class="where">Remote · US hours</p></div>
+  </div>
+</body>
+</html>
