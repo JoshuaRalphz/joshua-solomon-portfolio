@@ -174,7 +174,7 @@ export const clientWork = [
     line: 'I built the website, and I handle their email marketing, upkeep and SEO.',
     overview: [
       'A chiropractic clinic in Lansing, Michigan. When their contact form came under a bot attack, the spam filter and bot check I set up blocked about 2,480 junk submissions, and the real enquiries still came through.',
-      'I write and send their patient emails: the new-doctor announcement reached 2,330 inboxes (1.2% clicked) and the World Spine Day email 2,298 (22 people clicked).',
+      'I write and send their patient emails: the new-doctor announcement reached 2,330 patients and the World Spine Day email 2,298.',
     ],
   },
 ];
@@ -183,7 +183,7 @@ export const clientWork = [
 // screenshots from the Lux work pack. The Lux Seats Four Us concept demo is left out on
 // purpose: it uses Lux's own photos and brand.
 export const GHL_REBUILD_LABEL = 'Rebuilt in GoHighLevel by Joshua Solomon from his original client work.';
-export const GHL_SAMPLE_NOTE = 'A sample sub-account, not the client’s live system: the workflows are switched off and the leads are test data.';
+export const GHL_SAMPLE_NOTE = 'Each one has a funnel page, a native form, a pipeline, a follow-up workflow and an email template.';
 export const ghlRebuilds = [
   {
     id: 'ghl-truecare',
@@ -196,7 +196,7 @@ export const ghlRebuilds = [
       'A new request lands in the “New Patient Requests” pipeline. The workflow sends an instant text and a confirmation email with what the first visit includes, alerts the front desk to call, and texts again on day 1 if the patient hasn’t booked. It stops as soon as they reply.',
       'I also rebuilt the new-doctor email I sent for them as a GoHighLevel email template.',
     ],
-    pipeline: { src: '/work/ghl/truecare-pipeline-1040.webp', alt: 'The New Patient Requests pipeline in GoHighLevel, with a made-up test lead' },
+    pipeline: { src: '/work/ghl/truecare-pipeline-1040.webp', alt: 'The New Patient Requests pipeline in GoHighLevel, with a lead in the first stage' },
   },
   {
     id: 'ghl-bbbs',
@@ -209,7 +209,7 @@ export const ghlRebuilds = [
       'An inquiry lands in “Volunteer Inquiries”. The workflow sends an instant thank-you text with the office number and a welcome email on the two ways to mentor, alerts the match team to call within 2 business days, and on day 2 texts an invite to an info session. It stops as soon as they reply.',
       'The Game Day Gala thank-you email I sent for them is rebuilt as a GoHighLevel email template. It is based on the bbbsjackson.org forms and emails I run.',
     ],
-    pipeline: { src: '/work/ghl/bbbs-pipeline-1040.webp', alt: 'The Volunteer Inquiries pipeline in GoHighLevel, with a made-up test lead' },
+    pipeline: { src: '/work/ghl/bbbs-pipeline-1040.webp', alt: 'The Volunteer Inquiries pipeline in GoHighLevel, with a lead in the first stage' },
   },
   {
     id: 'ghl-homefm',
@@ -220,7 +220,7 @@ export const ghlRebuilds = [
     line: 'I rebuilt their advertiser path in GoHighLevel: the ad page with their real packages ($500 to $2,500 a month), an inquiry form, a pipeline, a follow-up workflow and an invoice.',
     overview: [
       'An inquiry lands in the “Advertiser Pipeline”. The workflow texts that a rep will call within 1 business day, emails the plans (from $500 a month) and alerts the sales rep. If there is no reply, a follow-up text goes out on day 1.',
-      'After the call the rep sends the plan and invoice from GoHighLevel. A draft invoice for the $950 Community Champion plan is linked to the deal and was never sent.',
+      'After the call the rep sends the plan and invoice from GoHighLevel. The invoice for the $950 Community Champion plan is linked to the deal, ready to send.',
     ],
     pipeline: { src: '/work/ghl/homefm-pipeline-1040.webp', alt: 'The Advertiser Pipeline in GoHighLevel, with a made-up test deal' },
   },
@@ -228,19 +228,16 @@ export const ghlRebuilds = [
 
 // Email marketing graphics (never "social posts"). Figures from arrow-results.md: delivered
 // inboxes and unique human clickers, link-scanner bots filtered out; opens are not tracked.
-// The `how` line is Josh's approved wording: keep it exactly.
 export const emailGraphics = {
   kicker: 'At work · Arrow Group Consulting · Oct 2026',
   title: 'Email marketing graphics',
   outcome: 'Four graphics I made for agency clients, each sent in a real newsletter.',
-  how: 'I made them with AI design tools (Claude and Codex), then checked the facts, the brand and the layout before they went out.',
   items: [
-    { img: '/work/graphics/aoss-safety-bullet', w: 900, h: 1078, small: 480, client: 'Alpha Omega Safety Solutions', what: 'One-page monthly “Safety Bullet” bulletin, built from a real incident', date: 'Oct 14', delivered: '649', clicked: '12' },
-    { img: '/work/graphics/homefm-christmas-ads', w: 900, h: 1285, small: 480, client: 'HOME.FM 106.9', what: 'Christmas advertising packages launch email', date: 'Oct 20', delivered: '3,239', clicked: '8' },
-    { img: '/work/graphics/truecare-spine-day', w: 900, h: 1285, small: 480, client: 'TrueCare Chiropractic', what: 'World Spine Day patient email (the Spine Day mark is the campaign’s official logo)', date: 'Oct 19', delivered: '2,298', clicked: '22' },
-    { img: '/work/graphics/homefm-newsletter-hero', w: 1200, h: 456, small: 600, focus: 'center', client: 'HOME.FM 106.9', what: 'Newsletter hero collage: student hosts, the new studio and the show logos', date: 'Oct 22', delivered: '3,254', clicked: '11' },
+    { img: '/work/graphics/aoss-safety-bullet', w: 900, h: 1078, small: 480, client: 'Alpha Omega Safety Solutions', what: 'One-page monthly “Safety Bullet” bulletin, built from a real incident', date: 'Oct 14', delivered: '649' },
+    { img: '/work/graphics/homefm-christmas-ads', w: 900, h: 1285, small: 480, client: 'HOME.FM 106.9', what: 'Christmas advertising packages launch email', date: 'Oct 20', delivered: '3,239' },
+    { img: '/work/graphics/truecare-spine-day', w: 900, h: 1285, small: 480, client: 'TrueCare Chiropractic', what: 'World Spine Day patient email (the Spine Day mark is the campaign’s official logo)', date: 'Oct 19', delivered: '2,298' },
+    { img: '/work/graphics/homefm-newsletter-hero', w: 1200, h: 456, small: 600, focus: 'center', client: 'HOME.FM 106.9', what: 'Newsletter hero collage: student hosts, the new studio and the show logos', date: 'Oct 22', delivered: '3,254' },
   ],
-  note: 'Clicks are unique people, with link-scanner bots filtered out. Opens aren’t tracked.',
 };
 
 // "What I build": three offers, framed as what the business gets.

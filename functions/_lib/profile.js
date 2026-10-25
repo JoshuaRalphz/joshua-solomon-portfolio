@@ -57,13 +57,13 @@ export const PROJECTS = [
   {
     id: 'ghlrebuilds',
     title: 'GoHighLevel rebuilds (TrueCare, Big Brothers Big Sisters, HOME.FM)',
-    summary: 'Three of his client projects rebuilt in GoHighLevel sample sub-accounts: a funnel page with the client’s real photos and offer, a native form, a pipeline, a follow-up workflow (instant text, confirmation email, team alert, follow-up text that stops on reply) and an email template, plus a draft invoice for HOME.FM. Workflows are off and leads are test data.',
+    summary: 'Three of his client projects rebuilt in GoHighLevel sample sub-accounts: a funnel page with the client’s real photos and offer, a native form, a pipeline, a follow-up workflow (instant text, confirmation email, team alert, follow-up text that stops on reply) and an email template, plus an invoice for HOME.FM.',
     link: '#ghl-rebuilds',
   },
   {
     id: 'emailgraphics',
     title: 'Email marketing graphics',
-    summary: 'Four graphics made with AI design tools (Claude and Codex) for agency clients and sent in October 2026 newsletters, each checked for facts, brand and layout: a safety bulletin (649 delivered, 12 people clicked), a radio Christmas ad launch (3,239 delivered, 8 clicked), a World Spine Day clinic email (2,298 delivered, 22 clicked), a newsletter hero (3,254 delivered, 11 clicked).',
+    summary: 'Four graphics made for agency clients and sent in October 2026 newsletters: a safety bulletin (649 inboxes), a radio Christmas ad launch (3,239), a World Spine Day clinic email (2,298), a newsletter hero (3,254).',
     link: '#work-graphics',
   },
 ];

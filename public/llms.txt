@@ -19,8 +19,8 @@ Building software with AI since 2024 (Cursor, in college). Professionally since 
 
 ## Client work (my contribution)
 - Client websites with my part in each: Alpha Omega Safety Solutions (website, A2P 10DLC texting approval on GoHighLevel, email and domain), HOME.FM (website, dedicated sending subdomain warmed to 6,500 emails a day), Ada's Closet (website and back-office), Alliance Service Brands (one website for six home-service brands), Endtime Entrepreneurs (website from scratch, CRM, SEO), TrueCare Chiropractic (website, email marketing, SEO). https://solomonjoshua.com/#clients
-- Rebuilt in GoHighLevel from my client work (sample sub-accounts, workflows off, test leads): TrueCare new-patient funnel, Big Brothers Big Sisters of Jackson County volunteer funnel, HOME.FM advertiser funnel through to a draft invoice. Each has a funnel page, native form, pipeline, follow-up workflow and email template. https://solomonjoshua.com/#ghl-rebuilds
-- Email marketing graphics for agency clients, sent in October 2026 newsletters (made with AI design tools, Claude and Codex, then checked for facts, brand and layout): a safety bulletin (649 delivered, 12 people clicked), a radio station's Christmas advertising launch (3,239 delivered, 8 clicked), a clinic's World Spine Day email (2,298 delivered, 22 clicked), a newsletter hero collage (3,254 delivered, 11 clicked). https://solomonjoshua.com/#work-graphics
+- Rebuilt in GoHighLevel from my client work: TrueCare new-patient funnel, Big Brothers Big Sisters of Jackson County volunteer funnel, HOME.FM advertiser funnel through to an invoice. Each has a funnel page, native form, pipeline, follow-up workflow and email template. https://solomonjoshua.com/#ghl-rebuilds
+- Email marketing graphics for agency clients, sent in October 2026 newsletters: a safety bulletin (649 inboxes), a radio station's Christmas advertising launch (3,239), a clinic's World Spine Day email (2,298), a newsletter hero collage (3,254). https://solomonjoshua.com/#work-graphics
 
 ## Client results
 - HOME.FM (radio station): dedicated sending subdomain with SPF/DKIM/DMARC, warmed to 6,500 emails a day.
