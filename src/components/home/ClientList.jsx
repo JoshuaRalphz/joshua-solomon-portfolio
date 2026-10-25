@@ -6,7 +6,7 @@ import { webpSrcSet } from '../../lib/images.js';
 // 1 / 2 / 3 cards across (.sites, also used by GhlRebuilds); from 1024px the profile rail takes about a quarter of the width.
 export const THUMB_SIZES = '(min-width: 1280px) 24vw, (min-width: 1024px) 34vw, (min-width: 768px) 46vw, 92vw';
 
-/** "Ada’s Closet’s", but "Alliance Service Brands’". */
+/** "TrueCare Chiropractic’s", but "Alliance Service Brands’". */
 const possessive = (name) => (name.endsWith('s') ? `${name}’` : `${name}’s`);
 
 /** Client work as "my contribution" cards: one card per live site. */
@@ -20,7 +20,7 @@ export default function ClientList() {
             <ContributionCard
               key={client.name}
               id={`work-${client.thumb}`}
-              name={client.name}
+              name={client.formerly ? `${client.name} (formerly ${client.formerly})` : client.name}
               role={client.role}
               line={client.line}
               href={client.url}

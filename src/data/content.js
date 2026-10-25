@@ -111,7 +111,7 @@ export const agencyCase = {
 // a link out and a "Read more" project overview. `thumb` names public/work-thumbs/<thumb>.png
 // (+ -640/-1280.webp), a 1440x900 capture of the live homepage. `url` only where the domain
 // still belongs to that client: adasclosetsau.com and aoutilityservices.com now redirect to other brands.
-// Ada's Closet's site is arrowconsignment.com (Josh confirmed, 2026-10-20).
+// Ada's Closet is now Arrow Consignment (arrowconsignment.com); adasclosetsau.com still answers.
 // Campaign figures: arrow-results.md (human clicks only, link-scanner bots filtered out).
 export const clientWork = [
   {
@@ -137,7 +137,8 @@ export const clientWork = [
     ],
   },
   {
-    name: 'Ada’s Closet',
+    name: 'Arrow Consignment',
+    formerly: 'Ada’s Closet', // shown on the card as "Arrow Consignment (formerly Ada’s Closet)"
     thumb: 'adas',
     url: 'https://www.arrowconsignment.com/',
     role: 'Website · back-office',
@@ -183,7 +184,7 @@ export const clientWork = [
 // screenshots from the Lux work pack. The Lux Seats Four Us concept demo is left out on
 // purpose: it uses Lux's own photos and brand.
 export const GHL_REBUILD_LABEL = 'Rebuilt in GoHighLevel by Joshua Solomon from his original client work.';
-export const GHL_SAMPLE_NOTE = 'Each one has a funnel page, a native form, a pipeline, a follow-up workflow and an email template.';
+export const GHL_SAMPLE_NOTE = 'Why rebuilt: these clients now run on the in-house email and lead platform I built for the agency, which replaced its $297-a-month GoHighLevel plan. I rebuilt their funnels in GoHighLevel to show the same work on the platform most teams use.';
 export const ghlRebuilds = [
   {
     id: 'ghl-truecare',

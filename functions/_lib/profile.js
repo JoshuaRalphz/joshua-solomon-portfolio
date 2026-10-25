@@ -50,14 +50,14 @@ export const PROJECTS = [
   },
   {
     id: 'adas',
-    title: "Ada's Closet (startup back-office)",
+    title: 'Arrow Consignment, formerly Ada’s Closet (startup back-office, https://www.arrowconsignment.com)',
     summary: 'Launch site and back-office for a student consignment startup: live inventory and instant sale notifications via Apps Script.',
     link: '#work-adas',
   },
   {
     id: 'ghlrebuilds',
     title: 'GoHighLevel rebuilds (TrueCare, Big Brothers Big Sisters, HOME.FM)',
-    summary: 'Three of his client projects rebuilt in GoHighLevel sample sub-accounts: a funnel page with the client’s real photos and offer, a native form, a pipeline, a follow-up workflow (instant text, confirmation email, team alert, follow-up text that stops on reply) and an email template, plus an invoice for HOME.FM.',
+    summary: 'Three of his client projects rebuilt in GoHighLevel sample sub-accounts: a funnel page with the client’s real photos and offer, a native form, a pipeline, a follow-up workflow (instant text, confirmation email, team alert, follow-up text that stops on reply) and an email template, plus an invoice for HOME.FM. Why rebuilt: these clients now run on the in-house email and lead platform he built for the agency, which replaced its $297-a-month GoHighLevel plan; he rebuilt their funnels in GoHighLevel to show the same work on the platform most teams use.',
     link: '#ghl-rebuilds',
   },
   {
