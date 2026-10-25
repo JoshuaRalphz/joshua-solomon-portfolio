@@ -3,8 +3,8 @@ import { ArrowUpRight, Plus } from 'lucide-react';
 
 /**
  * "My contribution" card: screenshot, role tag, name, one first-person line, a link out
- * and a "Read more" toggle that shows the project overview. The overview is always in the
- * HTML (crawlers and no-JS readers get it); the toggle only shows or hides it.
+ * and a "Read more" toggle that shows the project overview. The overview is in the
+ * prerendered HTML (crawlers read it) but stays hidden until the toggle runs, so it needs JS.
  */
 export default function ContributionCard({ id, name, role, line, href, linkLabel, image, overview, children }) {
   const [isOpen, setIsOpen] = useState(false);

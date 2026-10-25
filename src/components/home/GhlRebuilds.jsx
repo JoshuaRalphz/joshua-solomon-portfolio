@@ -1,7 +1,6 @@
-import { Info } from 'lucide-react';
 import ContributionCard from './ContributionCard.jsx';
 import { THUMB_SIZES } from './ClientList.jsx';
-import { GHL_SAMPLE_NOTE, ghlRebuilds } from '../../data/content.js';
+import { ghlRebuilds } from '../../data/content.js';
 
 /** Three client projects rebuilt in GoHighLevel, as "my contribution" cards with a live preview link. */
 export default function GhlRebuilds() {
@@ -35,10 +34,6 @@ export default function GhlRebuilds() {
             decoding="async"
             className="mt-3 h-auto w-full rounded-inner border border-line"
           />
-          <p className="mt-3 flex items-start gap-2 text-sm font-medium leading-snug text-muted">
-            <Info size={16} aria-hidden="true" className="mt-0.5 flex-none text-action" />
-            {GHL_SAMPLE_NOTE}
-          </p>
         </ContributionCard>
       ))}
     </ul>

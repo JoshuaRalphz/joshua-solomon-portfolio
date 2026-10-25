@@ -3,7 +3,7 @@ import ContributionCard from './ContributionCard.jsx';
 import { clientWork } from '../../data/content.js';
 import { webpSrcSet } from '../../lib/images.js';
 
-// 1 / 2 / 3 cards across (.sites); from 1024px the profile rail takes about a quarter of the width.
+// 1 / 2 / 3 cards across (.sites, also used by GhlRebuilds); from 1024px the profile rail takes about a quarter of the width.
 export const THUMB_SIZES = '(min-width: 1280px) 24vw, (min-width: 1024px) 34vw, (min-width: 768px) 46vw, 92vw';
 
 /** "Ada’s Closet’s", but "Alliance Service Brands’". */

@@ -133,7 +133,7 @@ export const clientWork = [
     line: 'I built the website and set up email that reaches the inbox: a dedicated sending subdomain, warmed to 6,500 emails a day.',
     overview: [
       'A radio station in Spring Arbor, Michigan. I set up a dedicated sending subdomain with SPF, DKIM and DMARC and warmed it to 6,500 emails a day, for weekly emails to about 3,250 people.',
-      'Their website forms feed a sales pipeline: since Sep 9, 20 deals were created automatically from form submissions. My “Your ad reaches 15,000+ listeners” email reached 3,348 inboxes and 1.5% clicked.',
+      'Their website forms feed a sales pipeline: from Sep 9 to Oct 25, 2026, 20 deals were created automatically from form submissions. My “Your ad reaches 15,000+ listeners” email reached 3,348 inboxes and 1.5% clicked.',
     ],
   },
   {
@@ -207,7 +207,7 @@ export const ghlRebuilds = [
     line: 'I rebuilt their volunteer recruiting path in GoHighLevel: a “Become a Big” page with their own photos and numbers, a volunteer form, a pipeline and a follow-up workflow.',
     overview: [
       'An inquiry lands in “Volunteer Inquiries”. The workflow sends an instant thank-you text with the office number and a welcome email on the two ways to mentor, alerts the match team to call within 2 business days, and on day 2 texts an invite to an info session. It stops as soon as they reply.',
-      'The Game Day Gala thank-you email I sent for them is rebuilt as a GoHighLevel email template. The original: the bbbsjackson.org forms and emails I run.',
+      'The Game Day Gala thank-you email I sent for them is rebuilt as a GoHighLevel email template. It is based on the bbbsjackson.org forms and emails I run.',
     ],
     pipeline: { src: '/work/ghl/bbbs-pipeline-1040.webp', alt: 'The Volunteer Inquiries pipeline in GoHighLevel, with a made-up test lead' },
   },

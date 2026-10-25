@@ -6,7 +6,7 @@ import ClientList from './ClientList.jsx';
 import GhlRebuilds from './GhlRebuilds.jsx';
 import EmailGraphics from './EmailGraphics.jsx';
 import { cases } from '../../data/cases.js';
-import { GHL_REBUILD_LABEL } from '../../data/content.js';
+import { GHL_REBUILD_LABEL, GHL_SAMPLE_NOTE } from '../../data/content.js';
 
 /** Work shipped: client work with my part in each, the GoHighLevel rebuilds, then systems and marketing. */
 export default function Work() {
@@ -25,7 +25,7 @@ export default function Work() {
         </div>
         <div id="ghl-rebuilds">
           <h3 className="label sub-head text-ink">Rebuilt in GoHighLevel</h3>
-          <p className="mb-4 mt-2 text-sm font-medium leading-snug text-muted">{GHL_REBUILD_LABEL}</p>
+          <p className="mb-4 mt-2 max-w-[68ch] text-sm font-medium leading-snug text-muted">{GHL_REBUILD_LABEL} {GHL_SAMPLE_NOTE}</p>
           <Reveal><GhlRebuilds /></Reveal>
         </div>
         <div id="ai-systems">

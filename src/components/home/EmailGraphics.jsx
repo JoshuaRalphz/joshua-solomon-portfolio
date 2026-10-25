@@ -2,11 +2,12 @@ import { Info, Sparkles } from 'lucide-react';
 import { emailGraphics } from '../../data/content.js';
 
 // 2 across on phones, 4 across once the tile is wide enough (container query in styles.css).
-const GFX_SIZES = '(min-width: 1280px) 16vw, (min-width: 768px) 22vw, 45vw';
+const GFX_SIZES = '(min-width: 1440px) 16vw, 45vw';
 
 function Graphic({ item }) {
   const full = `${item.img}-${item.w}.webp`;
-  const alt = `${item.client}: ${item.what}`;
+  // The caption below names the piece, so the alt stays short instead of repeating it.
+  const alt = `${item.client} email graphic`;
 
   return (
     <li>
@@ -23,7 +24,7 @@ function Graphic({ item }) {
             decoding="async"
             style={item.focus ? { objectPosition: item.focus } : undefined}
           />
-          <span className="sr-only"> (open full size in a new tab)</span>
+          <span className="sr-only"> (full size, opens in a new tab)</span>
         </a>
         <figcaption className="mt-2.5">
           <span className="block text-sm font-bold leading-snug text-ink">{item.client}</span>
