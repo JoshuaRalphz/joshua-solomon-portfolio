@@ -94,7 +94,7 @@ export const agencyCase = {
   outcome: 'The agency stops renting its marketing platform: a projected ~89% lower monthly platform cost, with no external build spend.',
   changed: [
     '6 client accounts live on the platform about 5 weeks after the first commit (Aug–Sep 2026)',
-    'Now replacing GoHighLevel at the agency, with the old platform run in parallel',
+    'Replaced GoHighLevel at the agency: the $297-a-month plan was cancelled in Sep 2026; 9 client accounts and 11,600+ contacts now run on it',
     '3,200+ automated tests, run inside the Workers runtime so no test can send a real message',
     'Claude API helpers draft subject lines and preview text; OpenAI makes images',
   ],
@@ -274,7 +274,7 @@ export const workWithMe = {
   // Real systems I built that show the kind of thing, each with its own page or section.
   examples: [
     { label: 'AI job hunt platform', note: 'An AI pipeline that vets, screens for scams and drafts honest applications', href: '/work/ai-job-hunt/' },
-    { label: 'Agency email & SMS platform', note: 'An agency’s own platform, now replacing GoHighLevel', href: '#work-agency' },
+    { label: 'Agency email & SMS platform', note: 'An agency’s own platform, which replaced GoHighLevel', href: '#work-agency' },
     { label: 'GoHighLevel lead follow-up', note: 'Funnel page, form, pipeline and follow-up workflow, rebuilt from my client work', href: '#ghl-rebuilds' },
   ],
   steps: [
@@ -315,9 +315,9 @@ export const experience = [
     meta: 'US outsourced-CMO agency · Michigan, USA (remote) · Part-time contract, on-call',
     dates: 'Feb 2026 — Present',
     bullets: [
-      'Built and launched the agency’s in-house email/SMS platform with AI-assisted development in Claude Code: 6 client accounts live on it about 5 weeks after the first commit (Aug–Sep 2026). The agency is now replacing GoHighLevel with it.',
+      'Built and launched the agency’s in-house email/SMS platform with AI-assisted development in Claude Code: 6 client accounts live on it about 5 weeks after the first commit (Aug–Sep 2026). It replaced the agency’s GoHighLevel plan, cancelled in Sep 2026, and now runs 9 client accounts and 11,600+ contacts.',
       'Added Claude features: drafting helpers for subject lines and preview text, plus Claude Haiku 4.5 subject lines, revision suggestions, a help chat and task-image analysis in the team’s daily content-operations app.',
-      'Wrote the business case (projected ~89% lower monthly platform cost, no external build spend) and planned a phased migration of 10,000+ client contacts, running the old platform in parallel.',
+      'Wrote the business case (projected ~89% lower monthly platform cost, no external build spend) and moved 11,600+ client contacts across before GoHighLevel was cancelled.',
       'Handle 8 of the agency’s clients at once as their technical lead: onboarding end to end (GoHighLevel, Cloudflare sites, DNS, SPF/DKIM/DMARC, A2P 10DLC), explained in plain language on onboarding calls.',
       'Built client back-office tools on Cloudflare Workers (a nonprofit funnel-tracker dashboard and a resale startup’s admin dashboard) and integrated Square payments through the Square API.',
     ],
