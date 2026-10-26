@@ -5,7 +5,7 @@ export const SITE = 'https://solomonjoshua.com';
 // Unlisted interview demo: noindex, and not in the nav, home page, sitemap.xml or llms.txt.
 export const CLINIC_DEMO_PATH = '/demo/clinic/';
 
-const HOME_DESCRIPTION = 'AI Solutions Engineer: I build AI that saves businesses time and money. Claude or OpenAI does the drafting, writing or sorting; the code around it keeps costs known, output checked and a person in charge. Work: an AI system that checks job fit, catches scams and drafts honest applications for my approval (Claude Opus on Cloudflare Workers), client websites, GoHighLevel funnels and follow-up workflows, and email marketing graphics. For business owners: custom systems, built and then run every month.';
+const HOME_DESCRIPTION = 'AI Solutions Engineer: I build AI that saves businesses time and money. Claude or OpenAI does the drafting, writing or sorting; the code around it keeps costs known, output checked and a person in charge. Work: an AI system that checks job fit, catches scams and drafts honest applications for my approval (Claude Opus on Cloudflare Workers), client websites, GoHighLevel funnels and follow-up workflows, client email campaigns and social graphics. For business owners: custom systems, built and then run every month.';
 
 /** Every prerendered page: path, file to write, and its head. */
 export const routes = [

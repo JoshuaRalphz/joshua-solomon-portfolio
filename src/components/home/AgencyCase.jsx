@@ -28,7 +28,7 @@ export default function AgencyCase() {
     <article id="work-agency" className="tile case" aria-labelledby="agency-title">
       <div className="case-grid">
         <div className="min-w-0">
-          <p className="label"><span className="label-num">03</span> {agencyCase.kicker}</p>
+          <p className="label"><span className="label-num">02</span> {agencyCase.kicker}</p>
           <h4 id="agency-title" className="t-h2 mt-3">{agencyCase.title}</h4>
           <p className="t-outcome t-outcome--sm mt-3">{agencyCase.outcome}</p>
           <ul className="mt-5 space-y-2">

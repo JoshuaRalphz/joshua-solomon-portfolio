@@ -211,17 +211,63 @@
   .more-toggle[aria-expanded="true"] .more-icon { transform: rotate(45deg); }
   .overview { margin-top: .75rem; padding-top: .75rem; border-top: 1px solid theme('colors.line'); font-size: .875rem; line-height: 1.55; color: theme('colors.body'); }
 
-  /* Email graphics: 2 across, 4 across once the tile has room. Square crops; the link opens the full graphic. */
-  .gfx { display: grid; gap: var(--gap); grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .gfx > li { min-width: 0; }
-  @container (min-width: 44rem) { .gfx { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
-  .gfx-thumb { display: block; overflow: hidden; border: 1px solid theme('colors.line'); border-radius: theme('borderRadius.inner'); background: theme('colors.sunk'); box-shadow: theme('boxShadow.tile'); }
-  .gfx-thumb img { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; object-position: top; }
-  .gfx-thumb:hover { box-shadow: theme('boxShadow.lift'); }
+  /* Email campaigns + social graphics: thumbnail grids inside a .case tile (container queries).
+     Emails: 2 across, 4 once the tile has room (38rem). Social: 2, 3, then 5 across. */
+  .gfx, .soc { display: grid; gap: var(--gap); grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .gfx > li, .soc > li { min-width: 0; }
+  @container (min-width: 38rem) { .gfx { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+  @container (min-width: 34rem) { .soc { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @container (min-width: 56rem) { .soc { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+  .gfx-thumb { position: relative; display: block; overflow: hidden; border: 1px solid theme('colors.line'); border-radius: theme('borderRadius.inner'); background: theme('colors.sunk'); box-shadow: theme('boxShadow.tile'); transition: box-shadow 180ms; }
+  .gfx-thumb img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: top; }
+  /* Square email crops while the cards sit 2 across, so the tile stays compact on phones. */
+  .ec-thumb img { aspect-ratio: 1 / 1; }
+  @container (min-width: 38rem) { .ec-thumb img { aspect-ratio: 4 / 5; } }
+  .soc-thumb img { object-fit: contain; object-position: center; }
+  a.gfx-thumb:hover, .ec-card:hover .gfx-thumb, .ec-card:focus-visible .gfx-thumb { box-shadow: theme('boxShadow.lift'); }
   @media (prefers-reduced-motion: no-preference) {
     .gfx-thumb img { transition: transform 240ms; }
-    .gfx-thumb:hover img, .gfx-thumb:focus-visible img { transform: scale(1.03); }
+    a.gfx-thumb:hover img, a.gfx-thumb:focus-visible img, .ec-card:hover .gfx-thumb img, .ec-card:focus-visible .gfx-thumb img { transform: scale(1.03); }
   }
+
+  /* An email card is one button: thumbnail, client, subject, date and reach. */
+  .ec-card { display: block; width: 100%; padding: 0; text-align: left; border-radius: theme('borderRadius.inner'); cursor: pointer; }
+  .ec-card:focus-visible { outline-offset: 4px; }
+  .ec-chip { position: absolute; right: .375rem; bottom: .375rem; display: inline-flex; align-items: center; gap: .3rem; padding: .2rem .5rem; border-radius: 999px; background: theme('colors.ink'); color: theme('colors.mist'); font-size: .6875rem; font-weight: 600; line-height: 1.2; box-shadow: 0 6px 16px -8px rgba(13, 43, 35, .6); }
+  .ec-card:hover .ec-chip, .ec-card:focus-visible .ec-chip { background: theme('colors.lime.DEFAULT'); color: theme('colors.ink'); }
+
+  /* Email preview dialog: header with a Desktop / Phone toggle, then the email in a device frame. */
+  .ep { width: min(calc(100vw - 1.5rem), 46rem); height: min(calc(100dvh - 1.5rem), 64rem); max-width: none; max-height: none; margin: auto; padding: 0; border: 1px solid theme('colors.line-strong'); border-radius: theme('borderRadius.tile'); background: theme('colors.card'); color: theme('colors.body'); box-shadow: 0 30px 80px -24px rgba(13, 43, 35, .55); overflow: hidden; }
+  .ep::backdrop { background: rgba(13, 43, 35, .62); }
+  @media (prefers-reduced-motion: no-preference) {
+    .ep[open] { animation: ep-in 200ms cubic-bezier(.16, 1, .3, 1); }
+    @keyframes ep-in { from { opacity: 0; transform: translateY(12px) scale(.985); } }
+  }
+  .ep-panel { display: flex; flex-direction: column; height: 100%; }
+  .ep-head { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: .75rem 1rem; padding: 1rem 1rem .875rem 1.25rem; border-bottom: 1px solid theme('colors.line'); }
+  .ep-head > .min-w-0 { flex: 1 1 16rem; }
+  .ep-title { margin-top: .375rem; font-size: clamp(1.0625rem, 1rem + .4vw, 1.25rem); font-weight: 700; line-height: 1.2; letter-spacing: -.01em; color: theme('colors.ink'); text-wrap: balance; }
+  .ep-tools { display: flex; align-items: center; gap: .5rem; margin-left: auto; }
+  .seg { display: inline-flex; padding: .1875rem; border-radius: 999px; background: theme('colors.sunk'); box-shadow: theme('boxShadow.well'); }
+  .seg-btn { display: inline-flex; align-items: center; gap: .375rem; min-height: 2.75rem; padding: 0 .875rem; border-radius: 999px; font-size: .875rem; font-weight: 600; color: theme('colors.body'); transition: background-color 150ms, color 150ms; }
+  .seg-btn:hover { color: theme('colors.ink'); background: rgba(13, 43, 35, .06); }
+  .seg-btn[aria-pressed="true"] { background: theme('colors.ink'); color: theme('colors.mist'); }
+  .ep-close { display: inline-grid; place-items: center; width: 2.75rem; height: 2.75rem; border-radius: 999px; color: theme('colors.ink'); border: 1.5px solid theme('colors.line-strong'); background: theme('colors.card'); }
+  .ep-close:hover { border-color: theme('colors.ink'); }
+  .ep-stage { flex: 1; min-height: 0; display: flex; justify-content: center; padding: clamp(.75rem, .5rem + 1vw, 1.25rem); background: theme('colors.mist'); background-image: radial-gradient(rgba(13, 43, 35, .10) 1px, transparent 1.2px); background-size: 24px 24px; }
+  .ep-desktop, .ep-phone { display: flex; flex-direction: column; min-height: 0; max-width: 100%; overflow: hidden; background: #fff; }
+  .ep-desktop { width: calc(600px + 2px); height: 100%; border: 1px solid theme('colors.line-strong'); border-radius: theme('borderRadius.inner'); box-shadow: theme('boxShadow.lift'); }
+  .ep-chrome { flex: none; background: theme('colors.sunk'); border-bottom: 1px solid theme('colors.line'); }
+  .ep-chrome .shot-bar { border-bottom: 0; padding-bottom: .25rem; }
+  .ep-meta { display: flex; gap: .5rem; min-width: 0; padding: 0 .75rem .5rem; font-size: .75rem; line-height: 1.3; color: theme('colors.body'); white-space: nowrap; }
+  .ep-meta b { flex: none; color: theme('colors.ink'); }
+  .ep-meta span { overflow: hidden; text-overflow: ellipsis; }
+  .ep-phone { position: relative; width: calc(375px + 20px); height: min(100%, 812px); border: 10px solid theme('colors.ink'); border-radius: 2.5rem; box-shadow: theme('boxShadow.lift'); }
+  .ep-notch { position: absolute; z-index: 1; top: .375rem; left: 50%; translate: -50% 0; width: 5.5rem; height: 1.25rem; border-radius: 999px; background: theme('colors.ink'); }
+  .ep-phone .ep-scroll { padding-top: 2rem; }
+  .ep-scroll { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; background: #fff; }
+  .ep-scroll:focus-visible { outline-offset: -3px; }
+  .ep-scroll img { display: block; width: 100%; height: auto; }
 
   .site-thumb { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; }
   .site-title { color: theme('colors.ink'); text-underline-offset: 3px; }

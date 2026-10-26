@@ -122,7 +122,7 @@ export const clientWork = [
     line: 'I built their website, got the business approved for texting (A2P 10DLC on GoHighLevel), and set up their email and domain.',
     overview: [
       'A safety-training company in Michigan. I built the website, set up their email and domain, and registered the business for A2P 10DLC on GoHighLevel so it can send texts.',
-      'I also write, design and send their email campaigns. A “Meet the team” founder spotlight reached 528 inboxes and 2.1% of them clicked.',
+      'I also write, design and send their email campaigns, like the monthly “Safety Bullet” safety bulletin.',
     ],
   },
   {
@@ -175,7 +175,7 @@ export const clientWork = [
     line: 'I built the website, and I handle their email marketing, upkeep and SEO.',
     overview: [
       'A chiropractic clinic in Lansing, Michigan. When their contact form came under a bot attack, the spam filter and bot check I set up blocked about 2,480 junk submissions, and the real enquiries still came through.',
-      'I write and send their patient emails: the new-doctor announcement reached 2,330 patients and the World Spine Day email 2,298.',
+      'I write and send their patient emails: the new-doctor announcement reached 2,330 patients and the World Spine Day email 2,297.',
     ],
   },
 ];
@@ -227,17 +227,40 @@ export const ghlRebuilds = [
   },
 ];
 
-// Email marketing graphics (never "social posts"). Figures from arrow-results.md: delivered
-// inboxes and unique human clickers, link-scanner bots filtered out; opens are not tracked.
-export const emailGraphics = {
-  kicker: 'At work · Arrow Group Consulting · Oct 2026',
-  title: 'Email marketing graphics',
-  outcome: 'Four graphics I made for agency clients, each sent in a real newsletter.',
+// Emails Joshua built and launched on the agency platform: table A of arrow-results.md only
+// (the Workspace task record names him). Delivered = campaigns.delivered. No click figures here.
+// Images: public/work/emails/<img>-thumb|desktop|phone.webp; desktopH/phoneH are CSS px heights
+// at the 600px desktop and 375px phone widths.
+export const emailCampaigns = {
+  kicker: 'At work · Arrow Group Consulting · Sep–Oct 2026',
+  title: 'Email campaigns I launched',
+  outcome: 'Emails I built and launched for agency clients on the platform I built, Sep–Oct 2026.',
+  totals: '34 campaigns · 69,000+ inboxes',
   items: [
-    { img: '/work/graphics/aoss-safety-bullet', w: 900, h: 1078, small: 480, client: 'Alpha Omega Safety Solutions', what: 'One-page monthly “Safety Bullet” bulletin, built from a real incident', date: 'Oct 14', delivered: '649' },
-    { img: '/work/graphics/homefm-christmas-ads', w: 900, h: 1285, small: 480, client: 'HOME.FM 106.9', what: 'Christmas advertising packages launch email', date: 'Oct 20', delivered: '3,239' },
-    { img: '/work/graphics/truecare-spine-day', w: 900, h: 1285, small: 480, client: 'TrueCare Chiropractic', what: 'World Spine Day patient email (the Spine Day mark is the campaign’s official logo)', date: 'Oct 19', delivered: '2,298' },
-    { img: '/work/graphics/homefm-newsletter-hero', w: 1200, h: 456, small: 600, focus: 'center', client: 'HOME.FM 106.9', what: 'Newsletter hero collage: student hosts, the new studio and the show logos', date: 'Oct 22', delivered: '3,254' },
+    { img: 'homefm-heat-holidays', client: 'HOME.FM 106.9', subject: 'Heat for the Holidays: nominate a Jackson County family by Oct. 31', date: 'Oct 8, 2026', delivered: '3,221', desktopH: 2002, phoneH: 2314 },
+    { img: 'aoss-safety-bullet', client: 'Alpha Omega Safety Solutions', subject: 'Safety Bullet: Eyes on the line save lives.', date: 'Oct 14, 2026', delivered: '649', desktopH: 2894, phoneH: 3634 },
+    { img: 'bbbs-game-day-gala', client: 'Big Brothers Big Sisters of Jackson County', subject: 'Game Day Gala: thank you, Jackson County', date: 'Oct 14, 2026', delivered: '903', desktopH: 2535, phoneH: 2963 },
+    { img: 'truecare-spine-day', client: 'TrueCare Chiropractic', subject: 'World Spine Day, October 16: 4 small steps for your spine', date: 'Oct 19, 2026', delivered: '2,297', desktopH: 2191, phoneH: 2311 },
+    { img: 'homefm-christmas-sponsors', client: 'HOME.FM 106.9', subject: 'Christmas Music Around the Clock: sponsor spots now open', date: 'Oct 20, 2026', delivered: '3,238', desktopH: 2957, phoneH: 3553 },
+    { img: 'sau-tennis-pro-am', client: 'SAU Tennis', subject: 'Thank you for the Pro-Am: see what’s next at Jones', date: 'Oct 6, 2026', delivered: '350', desktopH: 4442, phoneH: 4297 },
+    { img: 'arrow-consignment-new-name', client: 'Arrow Consignment', subject: 'Ada’s Closet is now Arrow Consignment', date: 'Oct 12, 2026', delivered: '11', desktopH: 1821, phoneH: 2038 },
+    { img: 'homefm-top-teachers', client: 'HOME.FM 106.9', subject: 'Give a great teacher the recognition they’ve earned', date: 'Oct 1, 2026', delivered: '3,314', desktopH: 1917, phoneH: 2120 },
+  ],
+};
+
+// Social graphics confirmed posted (arrow-results.md, "Social media graphics"): the public
+// post's image matches the file. Unconfirmed or unposted ones are left out on purpose.
+// Images: public/work/social/<img>-480|960.webp.
+export const socialGraphics = {
+  kicker: 'At work · Arrow Group Consulting · Sep–Oct 2026',
+  title: 'Social media graphics',
+  outcome: 'Graphics I designed for agency clients, as they went out on their pages.',
+  items: [
+    { img: 'truecare-strunk-1', w: 1080, h: 1350, client: 'TrueCare Chiropractic', what: 'New-doctor launch, post 1: the $88 new-patient special', platform: 'Facebook + Instagram', date: 'Oct 9, 2026' },
+    { img: 'truecare-strunk-2', w: 1080, h: 1350, client: 'TrueCare Chiropractic', what: 'Post 2: meet the new doctor', platform: 'Facebook + Instagram', date: 'Oct 12, 2026' },
+    { img: 'truecare-strunk-3', w: 1080, h: 1350, client: 'TrueCare Chiropractic', what: 'Post 3: what to expect at your first visit', platform: 'Facebook + Instagram', date: 'Oct 15, 2026' },
+    { img: 'truecare-strunk-4', w: 1080, h: 1350, client: 'TrueCare Chiropractic', what: 'Post 4: K-Laser treatment included', platform: 'Facebook + Instagram', date: 'Oct 22, 2026' },
+    { img: 'aoss-pole-yard', w: 1200, h: 1200, client: 'Alpha Omega Safety Solutions', what: '“Seven minutes at the pole yard”: a training partner’s lineworker video', platform: 'Facebook', date: 'Sep 4, 2026' },
   ],
 };
 

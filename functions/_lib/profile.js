@@ -61,10 +61,16 @@ export const PROJECTS = [
     link: '#ghl-rebuilds',
   },
   {
-    id: 'emailgraphics',
-    title: 'Email marketing graphics',
-    summary: 'Four graphics made for agency clients and sent in October 2026 newsletters: a safety bulletin (649 inboxes), a radio Christmas ad launch (3,239), a World Spine Day clinic email (2,298), a newsletter hero (3,254).',
-    link: '#work-graphics',
+    id: 'emailcampaigns',
+    title: 'Email campaigns he launched (agency clients)',
+    summary: 'Emails he built and launched for agency clients on the platform he built, Sep-Oct 2026: 34 campaigns, 69,000+ inboxes. The portfolio shows 8 with a desktop and phone preview: a radio station (HOME.FM: Heat for the Holidays, Christmas sponsor spots, Top Teachers), a safety-training company (the Safety Bullet bulletin), a nonprofit (Big Brothers Big Sisters Game Day Gala thank-you), a chiropractic clinic (TrueCare World Spine Day), a university tennis team (SAU Pro-Am thank-you) and a consignment shop (Arrow Consignment rename).',
+    link: '#work-emails',
+  },
+  {
+    id: 'socialgraphics',
+    title: 'Social media graphics (agency clients)',
+    summary: "Five graphics he designed for agency clients, as they went out on the clients' pages: TrueCare Chiropractic's four-post new-doctor launch series on Facebook and Instagram (Oct 2026) and an Alpha Omega Safety Solutions Facebook post promoting a training partner's lineworker video (Sep 2026).",
+    link: '#work-social',
   },
 ];
 
