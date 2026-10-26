@@ -73,7 +73,7 @@ export default function Contact() {
           </ul>
           <p className="mt-5 border-t border-mist-dim/25 pt-4 text-sm leading-relaxed text-mist-dim">
             <strong className="block font-semibold text-mist">Working hours</strong>
-            US Eastern preferred; PH, AU or European hours also work. I reply within 24 hours.
+            US hours, Eastern or Central (10 PM to 7 AM Manila time). I reply within 24 hours.
           </p>
         </div>
       </Reveal>

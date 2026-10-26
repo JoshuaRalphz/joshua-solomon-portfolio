@@ -1,6 +1,6 @@
 # Joshua Solomon
 
-> AI Solutions Engineer: I build AI that saves businesses time and money. Claude or OpenAI does the drafting, writing or sorting; the code around it keeps costs known, output checked and a person in charge of anything customer-facing. Based in Olongapo City, Philippines; US Eastern hours preferred. Available for full-time remote work; can start within 1–2 weeks.
+> AI Solutions Engineer: I build AI that saves businesses time and money. Claude or OpenAI does the drafting, writing or sorting; the code around it keeps costs known, output checked and a person in charge of anything customer-facing. Based in Olongapo City, Philippines; remote, US hours (Eastern or Central, 10 PM to 7 AM Manila time). Available for full-time remote work; can start within 1–2 weeks.
 
 Building software with AI since 2024 (Cursor, in college). Professionally since 2025. Ships production systems by directing AI coding agents (Claude Code) and puts Claude and OpenAI to work inside them.
 

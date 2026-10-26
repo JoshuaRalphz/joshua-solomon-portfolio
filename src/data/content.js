@@ -322,7 +322,7 @@ export const agencyMarketingResult = 'From agency email work: a nonprofit’s av
 export const bio = 'I ship production systems by directing AI coding agents (Claude Code), and I put AI inside them: Claude and OpenAI do the reading, writing and generating; the code around them keeps every step checked, capped and approved by a person. At a US marketing agency I am the technical lead for client onboarding and built its in-house email and SMS platform. Before that, about 6 months as a marketing VA with US founders.';
 
 export const setup = [
-  'Olongapo City, Philippines · US Eastern hours preferred; PH, AU or European hours also work',
+  'Olongapo City, Philippines · Remote, US hours (Eastern or Central, 10 PM to 7 AM Manila time)',
   'Laptop, two internet providers (one as backup), and a UPS for the internet router',
   'English (professional working proficiency), Filipino (native)',
 ];

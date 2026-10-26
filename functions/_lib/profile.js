@@ -79,7 +79,7 @@ export const PROJECT_IDS = new Set(PROJECTS.map((project) => project.id));
 const projectLines = PROJECTS.map((p) => `- ${p.id}: ${p.title}. ${p.summary}`).join('\n');
 
 // Plain text the system prompt embeds. Keep it factual and short.
-export const PROFILE_TEXT = `NAME: ${CONTACT.name}. Based in Olongapo City, Philippines. Works remote; US Eastern hours preferred, PH/AU/European hours also work. Available for full-time work, can start within 1-2 weeks.
+export const PROFILE_TEXT = `NAME: ${CONTACT.name}. Based in Olongapo City, Philippines. Works remote, US hours only (Eastern or Central business hours, about 10 PM to 7 AM Manila time). Available for full-time work, can start within 1-2 weeks.
 
 POSITIONING: AI Solutions Engineer. Ships production systems with AI coding agents (Claude Code) and puts AI inside them (Claude API and OpenAI API features).
 Building software with AI since 2024 (Cursor, in college). Professionally since 2025.
