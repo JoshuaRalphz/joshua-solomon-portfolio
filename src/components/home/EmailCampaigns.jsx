@@ -25,7 +25,7 @@ function CampaignCard({ email, onOpen }) {
         </span>
         <span className="mt-0.5 block text-sm leading-snug text-body">{email.subject}</span>
         <span className="mt-1.5 block font-mono text-xs leading-relaxed text-muted">
-          {email.date} · sent to {email.delivered} inboxes
+          {email.date} · sent to {email.audience || `${email.delivered} inboxes`}
         </span>
       </button>
     </li>

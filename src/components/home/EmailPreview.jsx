@@ -53,7 +53,7 @@ export default function EmailPreview({ email, onClose }) {
           <div className="min-w-0">
             <p className="label">{email.client}</p>
             <h2 id={titleId} className="ep-title">{email.subject}</h2>
-            <p className="mt-1 font-mono text-xs text-muted">{email.date} · sent to {email.delivered} inboxes</p>
+            <p className="mt-1 font-mono text-xs text-muted">{email.date} · sent to {email.audience || `${email.delivered} inboxes`}</p>
           </div>
           <div className="ep-tools">
             <div className="seg" role="group" aria-label="Preview size">

@@ -243,7 +243,7 @@ export const emailCampaigns = {
     { img: 'truecare-spine-day', client: 'TrueCare Chiropractic', subject: 'World Spine Day, October 16: 4 small steps for your spine', date: 'Oct 19, 2026', delivered: '2,297', desktopH: 2191, phoneH: 2311 },
     { img: 'homefm-christmas-sponsors', client: 'HOME.FM 106.9', subject: 'Christmas Music Around the Clock: sponsor spots now open', date: 'Oct 20, 2026', delivered: '3,238', desktopH: 2957, phoneH: 3553 },
     { img: 'sau-tennis-pro-am', client: 'SAU Tennis', subject: 'Thank you for the Pro-Am: see what’s next at Jones', date: 'Oct 6, 2026', delivered: '350', desktopH: 4442, phoneH: 4297 },
-    { img: 'arrow-consignment-new-name', client: 'Arrow Consignment', subject: 'Ada’s Closet is now Arrow Consignment', date: 'Oct 12, 2026', delivered: '11', desktopH: 1821, phoneH: 2038 },
+    { img: 'arrow-consignment-new-name', client: 'Arrow Consignment', subject: 'Ada’s Closet is now Arrow Consignment', date: 'Oct 12, 2026', delivered: '11', audience: 'its consignors', desktopH: 1821, phoneH: 2038 },
     { img: 'homefm-top-teachers', client: 'HOME.FM 106.9', subject: 'Give a great teacher the recognition they’ve earned', date: 'Oct 1, 2026', delivered: '3,314', desktopH: 1917, phoneH: 2120 },
   ],
 };
