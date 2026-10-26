@@ -50,7 +50,7 @@ export const PROJECTS = [
   },
   {
     id: 'adas',
-    title: 'Arrow Consignment, formerly Ada’s Closet (startup back-office, https://www.arrowconsignment.com)',
+    title: 'Arrow Consignment (startup back-office, https://www.arrowconsignment.com)',
     summary: 'Launch site and back-office for a student consignment startup: live inventory and instant sale notifications via Apps Script.',
     link: '#work-adas',
   },

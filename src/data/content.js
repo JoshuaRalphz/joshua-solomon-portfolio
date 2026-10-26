@@ -138,7 +138,6 @@ export const clientWork = [
   },
   {
     name: 'Arrow Consignment',
-    formerly: 'Ada’s Closet', // shown on the card as "Arrow Consignment (formerly Ada’s Closet)"
     thumb: 'adas',
     url: 'https://www.arrowconsignment.com/',
     role: 'Website · back-office',
@@ -171,8 +170,8 @@ export const clientWork = [
     name: 'TrueCare Chiropractic',
     thumb: 'truecare',
     url: 'https://www.truecarechiro.com',
-    role: 'Website · email marketing · SEO',
-    line: 'I built the website, and I handle their email marketing, upkeep and SEO.',
+    role: 'Website · email · SEO · Google Ads',
+    line: 'I built the website, and I handle their email marketing, Google Ads, upkeep and SEO.',
     overview: [
       'A chiropractic clinic in Lansing, Michigan. When their contact form came under a bot attack, the spam filter and bot check I set up blocked about 2,480 junk submissions, and the real enquiries still came through.',
       'I write and send their patient emails: the new-doctor announcement reached 2,330 patients and the World Spine Day email 2,297.',
