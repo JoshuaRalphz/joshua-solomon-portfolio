@@ -10,7 +10,7 @@ export const jobHunt = {
   path: '/work/ai-job-hunt/',
   num: '01',
   name: 'AI Job Hunt engine',
-  kicker: 'Own product · live since 20 Oct 2026 · runs every day',
+  kicker: 'Own product · live since 20 Oct 2026',
   outcome: 'An AI system that checks job fit, catches scams and drafts honest applications, with my approval.',
   summary: 'Every day from 7 AM Manila time, Claude Opus 5.5 vets new remote AI roles from five public job boards: fit, scam risk and pay. It drafts an application for the best ones, and a second Claude pass strips any claim that is not in my CV. Job posts are treated as untrusted text, the send rules live in the database, and a hard daily budget caps the AI spend. Anything unclear waits for me. It runs on my own outreach platform (Behind Works) on Cloudflare, with my PC off.',
   seo: 'Case study: an AI job-fit system on Claude Opus and Cloudflare Workers that vets remote roles, screens for scams and prompt injection, drafts honest applications for my approval, enforces its rules in the database and caps its daily AI cost.',
@@ -63,10 +63,11 @@ export const jobHunt = {
     { title: 'One login, more than one Cloudflare account', body: 'My Cloudflare login can see more than one account, and wrangler stops at an account picker in scripts. The project pins its account_id in wrangler.toml and the key script pins it too, so a deploy or a secret cannot land in the wrong account.' },
   ],
   results: [
-    { value: '30/day', label: 'new remote roles vetted by Claude for fit, scam risk and pay' },
-    { value: '~$1–2.50', label: 'estimated AI cost of a full day (30 posts read, 10 written and checked), under a hard daily budget' },
+    // `short` is the caption in the home page's three-up proof row; the case study shows `label`.
+    { value: '30/day', label: 'new remote roles vetted by Claude for fit, scam risk and pay', short: 'remote roles vetted for fit, scam risk and pay' },
+    { value: '~$1–2.50', label: 'estimated AI cost of a full day (30 posts read, 10 written and checked), under a hard daily budget', short: 'estimated AI cost a day, under a hard budget' },
     { value: 'Every day', label: 'live since 20 Oct 2026: the search starts at 7 AM Manila and the engine checks in every 5 minutes, PC off' },
-    { value: '700+', label: 'automated tests, run with no server and no network' },
+    { value: '700+', label: 'automated tests, run with no server and no network', short: 'automated tests, run with no network' },
     { value: '10/day', label: 'application cap; at most 15 drafted answers a day' },
     { value: '0', label: 'bounces on the first 20 approved outreach emails, sent 10 a day on schedule' },
   ],

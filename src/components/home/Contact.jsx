@@ -41,7 +41,7 @@ export default function Contact() {
           id="contact"
           label="Contact"
           title="Hiring, or a project for your business?"
-          intro="Hiring: I’m available for full-time remote work and can start within 1–2 weeks of an offer. Running a business: pick “A project for my business” and tell me the busywork. I reply within 24 hours. References available on request."
+          intro="Hiring: I’m available for full-time remote work and can start within 1–2 weeks of an offer. Running a business: pick “A project for my business” and tell me the busywork. References available on request."
         />
       </div>
 

@@ -48,16 +48,15 @@ export const sections = [
 
 export const hero = {
   outcome: 'I build AI that saves businesses time and money.',
-  promise: 'Systems that take the busywork off a team: Claude or OpenAI does the drafting, writing or sorting, and the code around it keeps costs known, output checked and a person in charge of anything customer-facing. I ship them by directing AI coding agents (Claude Code).',
+  promise: 'Systems that take the busywork off a team. Claude or OpenAI does the drafting, writing or sorting; the code around it keeps costs known, output checked and a person in charge of anything customer-facing. I ship them with Claude Code.',
 };
 
-// Hero proof: business results first (client and agency work), each from the CV or a
-// case below. Test counts live in Results and on the case pages, not here.
+// Hero proof: three true figures from client and agency work (CV v9), short captions.
+// Never add the old nonprofit click-rate figure back (banned 2026-11-03).
 export const heroStats = [
-  { value: '6,500/day', label: 'emails from HOME.FM’s sending domain, which I set up and warmed' },
-  { value: '~89%', label: 'lower monthly platform cost for the agency (projected, in my business case)' },
-  { value: '82.7k', label: 'emails delivered in 54 campaigns on the agency platform I built (Sep 17 – Oct 25, 2026)' },
-  { value: '9.5%', label: 'a nonprofit client’s email click rate in May 2026, up from 4.5% in April (two months compared)' },
+  { value: '82,700+', label: 'emails delivered across 54 campaigns on the platform I built (Sep–Oct 2026)' },
+  { value: '9 accounts', label: 'and 11,600+ contacts run on that platform' },
+  { value: '6,500/day', label: 'from HOME.FM’s sending domain, which I set up and warmed' },
 ];
 
 // "How my AI systems run": a process, not live data.
@@ -93,8 +92,8 @@ export const agencyCase = {
   title: 'Agency email & SMS platform',
   outcome: 'The agency stops renting its marketing platform: a projected ~89% lower monthly platform cost, with no external build spend.',
   changed: [
-    '6 client accounts live on the platform about 5 weeks after the first commit (Aug–Sep 2026)',
-    'Replaced GoHighLevel at the agency: the $297-a-month plan was cancelled in Sep 2026; 9 client accounts and 11,600+ contacts now run on it',
+    '9 client accounts and 11,600+ contacts run on it',
+    'Replaced the agency’s $297-a-month GoHighLevel plan (cancelled Sep 2026)',
     '3,200+ automated tests, run inside the Workers runtime so no test can send a real message',
     'Claude API helpers draft subject lines and preview text; OpenAI makes images',
   ],
@@ -183,7 +182,7 @@ export const clientWork = [
 // screenshots from the Lux work pack. The Lux Seats Four Us concept demo is left out on
 // purpose: it uses Lux's own photos and brand.
 export const GHL_REBUILD_LABEL = 'Rebuilt in GoHighLevel by Joshua Solomon from his original client work.';
-export const GHL_SAMPLE_NOTE = 'Why rebuilt: these clients now run on the in-house email and lead platform I built for the agency, which replaced its $297-a-month GoHighLevel plan. I rebuilt their funnels in GoHighLevel to show the same work on the platform most teams use.';
+export const GHL_SAMPLE_NOTE = 'These clients now run on the platform I built for the agency, which replaced its $297-a-month GoHighLevel plan, so I rebuilt their funnels to show the same work on the platform most teams use.';
 export const ghlRebuilds = [
   {
     id: 'ghl-truecare',
@@ -307,17 +306,15 @@ export const workWithMe = {
   ],
 };
 
-// Numbers, each with its source. Business results lead, then costs, then test counts;
-// the one marketing figure sits under the grid.
+// Numbers, each with its source. Business results lead, then costs, then test counts.
 export const results = [
   { value: '~89%', label: 'lower monthly platform cost for the agency (projected, not yet measured)', href: '#work-agency' },
   { value: '6,500/day', label: 'emails from HOME.FM’s sending domain, which I set up and warmed', href: '#clients' },
-  { value: '6 in ~5 wks', label: 'client accounts live on the agency platform after the first commit', href: '#work-agency' },
+  { value: '9 accounts', label: 'and 11,600+ contacts run on the agency platform I built', href: '#work-agency' },
   { value: '~$1–2.50', label: 'estimated AI cost of a full job-hunt day, under a hard daily dollar budget', href: '/work/ai-job-hunt/' },
   { value: '3,200+', label: 'automated tests on the agency platform', href: '#work-agency' },
   { value: '700+', label: 'automated tests on the AI job hunt platform, run with no network', href: '/work/ai-job-hunt/' },
 ];
-export const agencyMarketingResult = 'From agency email work: a nonprofit’s average click rate went from 4.5% (April 2026) to 9.5% (May 2026). Two months compared, not an A/B test.';
 
 export const bio = 'I ship production systems by directing AI coding agents (Claude Code), and I put AI inside them: Claude and OpenAI do the reading, writing and generating; the code around them keeps every step checked, capped and approved by a person. At a US marketing agency I am the technical lead for client onboarding and built its in-house email and SMS platform. Before that, about 6 months as a marketing VA with US founders.';
 
@@ -337,7 +334,7 @@ export const experience = [
     meta: 'US outsourced-CMO agency · Michigan, USA (remote) · Part-time contract, on-call',
     dates: 'Feb 2026 — Present',
     bullets: [
-      'Built and launched the agency’s in-house email/SMS platform with AI-assisted development in Claude Code: 6 client accounts live on it about 5 weeks after the first commit (Aug–Sep 2026). It replaced the agency’s GoHighLevel plan, cancelled in Sep 2026, and now runs 9 client accounts and 11,600+ contacts.',
+      'Built and launched the agency’s in-house email/SMS platform with AI-assisted development in Claude Code. It replaced the agency’s GoHighLevel plan, cancelled in Sep 2026: 9 client accounts and 11,600+ contacts run on it.',
       'Added Claude features: drafting helpers for subject lines and preview text, plus Claude Haiku 4.5 subject lines, revision suggestions, a help chat and task-image analysis in the team’s daily content-operations app.',
       'Wrote the business case (projected ~89% lower monthly platform cost, no external build spend) and moved 11,600+ client contacts across before GoHighLevel was cancelled.',
       'Handle 8 of the agency’s clients at once as their technical lead: onboarding end to end (GoHighLevel, Cloudflare sites, DNS, SPF/DKIM/DMARC, A2P 10DLC), explained in plain language on onboarding calls.',

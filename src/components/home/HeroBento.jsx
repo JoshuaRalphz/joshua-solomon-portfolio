@@ -1,8 +1,9 @@
-import { ArrowRight, Download } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import PortraitMedia from './PortraitMedia.jsx';
 import { hero, heroStats, profile } from '../../data/content.js';
 
-/** Who, what it does for a business, the proof and the two actions. Never animated (largest paint). */
+/** Who, what it does for a business, one action and the proof. Never animated (largest paint).
+    The CV button and the experience line live in the profile rail and About, so they are not repeated here. */
 function HeadlineTile() {
   return (
     <div className="tile flex flex-col xl:[grid-column:1/9] xl:[grid-row:1]">
@@ -17,19 +18,15 @@ function HeadlineTile() {
           <span className="t-h1 mt-3 block">{profile.title}</span>
         </h1>
         <p className="t-outcome mt-4 max-w-[30ch]">{hero.outcome}</p>
-        <p className="t-lead mt-3 max-w-[62ch] text-body">{hero.promise}</p>
-        <p className="mt-3 font-mono text-xs leading-relaxed text-muted">{profile.experienceLine}</p>
+        <p className="t-lead mt-4 max-w-[60ch] text-body">{hero.promise}</p>
 
-        <div className="mb-7 mt-6 flex flex-wrap gap-2.5">
+        <div className="mb-8 mt-7">
           <a href="#fit-agent" className="btn btn-primary">
             See how I’d help your team <ArrowRight size={18} aria-hidden="true" />
           </a>
-          <a href={profile.resumeUrl} download className="btn btn-secondary">
-            <Download size={18} aria-hidden="true" /> Download CV
-          </a>
         </div>
 
-        <ul className="proof mt-auto pt-7" aria-label="Results from client, agency and own work">
+        <ul className="proof proof--3 mt-auto" aria-label="Results from client and agency work">
           {heroStats.map((stat) => (
             <li key={stat.label}>
               <span className="t-chip block text-ink">{stat.value}</span>{' '}
@@ -48,9 +45,6 @@ function PortraitTile() {
       <div className="portrait">
         <PortraitMedia />
       </div>
-      <p className="mt-3 text-sm font-medium leading-snug text-muted">
-        <span className="font-bold text-ink">{profile.name}</span> · {profile.shortLocation}
-      </p>
     </div>
   );
 }

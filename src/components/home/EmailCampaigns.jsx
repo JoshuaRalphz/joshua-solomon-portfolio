@@ -49,7 +49,7 @@ export default function EmailCampaigns() {
   return (
     <article id="work-emails" className="tile case" aria-labelledby="emails-title">
       <p className="label"><span className="label-num">03</span> {emailCampaigns.kicker}</p>
-      <h4 id="emails-title" className="t-h2 mt-3">{emailCampaigns.title}</h4>
+      <h4 id="emails-title" className="t-h2-card mt-3">{emailCampaigns.title}</h4>
       <p className="t-outcome t-outcome--sm mt-3">{emailCampaigns.outcome}</p>
       <p className="mt-2 font-mono text-xs font-medium uppercase tracking-wider text-action">{emailCampaigns.totals}</p>
       <ul className="gfx mt-5">

@@ -13,7 +13,7 @@ export const MOCK_RESULT = {
     },
     {
       requirement: 'Build integrations and automations',
-      evidence: "Built the agency's in-house email/SMS platform on Cloudflare Workers; 6 accounts went live about 5 weeks after the first commit.",
+      evidence: "Built the agency's in-house email/SMS platform on Cloudflare Workers; 9 client accounts and 11,600+ contacts run on it.",
       outcome: "A whole client roster's email and SMS runs from one system the agency owns.",
       project_id: 'arrowplatform',
     },

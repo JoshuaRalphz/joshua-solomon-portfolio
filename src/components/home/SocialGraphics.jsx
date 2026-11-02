@@ -36,7 +36,7 @@ export default function SocialGraphics() {
   return (
     <article id="work-social" className="tile case" aria-labelledby="social-title">
       <p className="label"><span className="label-num">04</span> {socialGraphics.kicker}</p>
-      <h4 id="social-title" className="t-h2 mt-3">{socialGraphics.title}</h4>
+      <h4 id="social-title" className="t-h2-card mt-3">{socialGraphics.title}</h4>
       <p className="t-outcome t-outcome--sm mt-3">{socialGraphics.outcome}</p>
       <ul className="soc mt-5">
         {socialGraphics.items.map((item) => <Graphic key={item.img} item={item} />)}

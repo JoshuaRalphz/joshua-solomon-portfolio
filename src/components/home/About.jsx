@@ -72,7 +72,7 @@ export default function About() {
       <Reveal as="ol" className="roles mt-[var(--gap)]">
         {experience.map((job) => <Role key={job.company} job={job} />)}
       </Reveal>
-      <p className="mt-[var(--gap)] rounded-tile border border-dashed border-line-strong px-[var(--pad)] py-4 text-sm leading-relaxed text-body">
+      <p className="mt-[var(--gap)] rounded-tile bg-sunk px-[var(--pad)] py-5 text-sm leading-relaxed text-body">
         <strong className="font-semibold text-ink">Education.</strong> {education} {earlierExperience}
       </p>
     </section>

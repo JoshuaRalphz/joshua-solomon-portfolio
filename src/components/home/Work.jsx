@@ -17,7 +17,7 @@ export default function Work() {
         id="work"
         label="Work"
         title="Work I’ve shipped."
-        intro="Client work first, each with my part in it, then my GoHighLevel builds, my AI systems, the emails I launched and my social graphics."
+        intro="Client work with my part in each, my GoHighLevel rebuilds, then my AI systems, emails and social graphics."
       />
       <div className="flex flex-col gap-[calc(var(--gap)*3)]">
         <div id="clients">
@@ -26,7 +26,7 @@ export default function Work() {
         </div>
         <div id="ghl-rebuilds">
           <h3 className="label sub-head text-ink">Rebuilt in GoHighLevel</h3>
-          <p className="mb-4 mt-2 max-w-[68ch] text-sm font-medium leading-snug text-muted">{GHL_REBUILD_LABEL} {GHL_SAMPLE_NOTE}</p>
+          <p className="mb-4 mt-2 max-w-[68ch] text-sm leading-relaxed text-muted">{GHL_REBUILD_LABEL} {GHL_SAMPLE_NOTE}</p>
           <Reveal><GhlRebuilds /></Reveal>
         </div>
         <div id="ai-systems">

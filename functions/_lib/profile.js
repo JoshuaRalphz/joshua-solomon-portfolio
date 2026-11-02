@@ -16,19 +16,19 @@ export const PROJECTS = [
     id: 'behindworks',
     title: 'Behind Works Platform (outreach and job applications)',
     summary: 'My own CRM and email platform on Cloudflare Workers + D1: pipeline board, campaigns that stop on a reply, an approval queue, and a jobs module with Claude-drafted applications, each with a fit score.',
-    link: '#work-behindworks',
+    link: '#work-ai-job-hunt',
   },
   {
     id: 'replytracker',
     title: 'Job Tracker (Gmail reply alerts in Apps Script)',
     summary: 'Google Apps Script that checks Gmail every 10 minutes for replies, logs them to a Sheet, labels them and flags look-alike scam emails.',
-    link: '#work-replytracker',
+    link: '#about',
   },
   {
     id: 'arrowplatform',
     title: 'Arrow Platform (in-house email and SMS platform)',
-    summary: 'Built for a US agency with Claude Code: contacts, newsletters, SMS, reply inbox. 6 accounts live about 5 weeks after the first commit, 3,200+ automated tests, now replacing GoHighLevel.',
-    link: '#work-arrowplatform',
+    summary: 'Built for a US agency with Claude Code: contacts, newsletters, SMS, reply inbox. 9 client accounts and 11,600+ contacts run on it, 3,200+ automated tests; it replaced the agency’s GoHighLevel plan.',
+    link: '#work-agency',
   },
   {
     id: 'contentops',
@@ -86,7 +86,7 @@ Building software with AI since 2024 (Cursor, in college). Professionally since 
 
 EXPERIENCE
 1. AI & Systems Lead, Arrow Group Consulting (US outsourced-CMO agency, Michigan; remote, part-time contract), Feb 2026 to now. Handles 8 client accounts at once.
-   - Built and launched the agency's in-house email/SMS platform (TypeScript, Cloudflare Workers + Hono, D1, Queues, Resend, Twilio, React/Vite) with Claude Code. 6 accounts live about 5 weeks after the first commit (Aug-Sep 2026); 3,200+ automated tests; the agency is replacing GoHighLevel with it.
+   - Built and launched the agency's in-house email/SMS platform (TypeScript, Cloudflare Workers + Hono, D1, Queues, Resend, Twilio, React/Vite) with Claude Code. 9 client accounts and 11,600+ contacts run on it; 3,200+ automated tests; it replaced the agency's GoHighLevel plan. 82,700+ emails delivered across 54 campaigns (Sep-Oct 2026).
    - Added Claude API drafting helpers for subject lines and preview text, plus OpenAI gpt-image-1 image generation.
    - Wrote the business case (PROJECTED about 89% lower monthly platform cost; a projection, not a result) and moved 11,600+ client contacts across; the $297/month GoHighLevel plan was cancelled 2026-09-23 and no client runs on it now (9 live client accounts).
    - Send-safety and access controls: test mode by default with a server-side recipient allowlist, opt-outs re-checked before every send, SMS blocked until A2P 10DLC approval, fail-closed API, 4-role default-deny authorization. Tests run inside workerd against isolated databases and fake provider credentials.

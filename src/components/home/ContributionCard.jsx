@@ -26,12 +26,12 @@ export default function ContributionCard({ id, name, role, line, href, linkLabel
           className="site-thumb"
         />
       </div>
-      <div className="flex flex-col px-2 pb-1 pt-4">
+      <div className="flex flex-1 flex-col px-2 pb-1 pt-4">
         <p className="role-tag">{role}</p>
-        <h4 className="t-h3 mt-2.5">{name}</h4>
-        <p className="mt-1.5 text-sm leading-snug text-body">{line}</p>
+        <h4 className="t-h3 mt-1.5">{name}</h4>
+        <p className="mt-2 text-sm leading-relaxed text-body">{line}</p>
 
-        <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1">
+        <div className="mt-auto flex flex-wrap items-center gap-x-3 gap-y-1 pt-4">
           <a href={href} target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-sm">
             {linkLabel}<span className="sr-only">: {name} (opens in a new tab)</span>
             <ArrowUpRight size={16} aria-hidden="true" />

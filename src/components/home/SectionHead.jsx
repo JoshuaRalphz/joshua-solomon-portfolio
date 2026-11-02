@@ -12,7 +12,7 @@ export default function SectionHead({ id, label, title, intro }) {
   const num = sections.find((section) => section.id === id)?.num;
 
   return (
-    <div className="mb-6">
+    <div className="mb-8">
       <p className="label flex items-center gap-2.5">
         <span className="wire-node" data-active={isActive} aria-hidden="true" />
         <span>

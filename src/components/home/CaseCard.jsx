@@ -2,14 +2,14 @@ import { ArrowRight } from 'lucide-react';
 import Diagram from '../Diagram.jsx';
 import BrowserShot from '../media/BrowserShot.jsx';
 
-/** Three numbers from the case's results, as a dense proof row. */
+/** Three numbers from the case's results (the ones with a short caption), as a proof row. */
 function ProofRow({ results }) {
   return (
     <ul className="proof proof--3 mt-6">
-      {results.slice(0, 3).map((r) => (
+      {results.filter((r) => r.short).slice(0, 3).map((r) => (
         <li key={r.label}>
           <span className="t-chip block text-ink">{r.value}</span>{' '}
-          <span className="mt-1 block text-sm font-medium leading-snug text-muted">{r.label}</span>
+          <span className="mt-1 block text-sm font-medium leading-snug text-muted">{r.short}</span>
         </li>
       ))}
     </ul>
@@ -26,7 +26,7 @@ export default function CaseCard({ study, showDiagram = false }) {
       <div className="case-grid">
         <div className="min-w-0">
           <p className="label"><span className="label-num">{study.num}</span> {study.kicker}</p>
-          <h4 id={`${study.slug}-title`} className="t-h2 mt-3">{study.name}</h4>
+          <h4 id={`${study.slug}-title`} className="t-h2-card mt-3">{study.name}</h4>
           <p className="t-outcome t-outcome--sm mt-3">{study.outcome}</p>
 
           <dl className="case-facts mt-5">

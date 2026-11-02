@@ -9,7 +9,7 @@
   :root {
     --gap: clamp(.75rem, .55rem + .6vw, 1.125rem);      /* inside a bento */
     --pad: clamp(1.125rem, .9rem + 1vw, 2rem);          /* tile padding */
-    --section: clamp(3rem, 2.25rem + 2.6vw, 5rem);      /* between sections */
+    --section: clamp(3.5rem, 2.6rem + 3vw, 5.75rem);     /* between sections */
     --shell-pad: clamp(1rem, .4rem + 2.4vw, 2rem);
     --rail: clamp(16.5rem, 22vw, 21rem);
     --shell-gap: clamp(1.5rem, 2.2vw, 2rem);
@@ -32,7 +32,7 @@
     line-height: 1.6;
     color: theme('colors.body');
     background-color: theme('colors.mist');
-    background-image: radial-gradient(rgba(13, 43, 35, .10) 1px, transparent 1.2px);
+    background-image: radial-gradient(rgba(13, 43, 35, .06) 1px, transparent 1.2px);
     background-size: 24px 24px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -119,18 +119,18 @@
 
   /* Proof rows: numbers divided by hairlines. 2x2 on phones, 4 across from 640px;
      the 3-up variant stacks below 480px. Each variant has its own rules (no overrides). */
-  .proof { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem 0; border-top: 1px solid theme('colors.line'); padding-top: 1.25rem; }
-  .proof > li { min-width: 0; padding-right: .875rem; }
+  .proof { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem 0; border-top: 1px solid theme('colors.line'); padding-top: 1.5rem; }
+  .proof > li { min-width: 0; padding-right: 1rem; }
   .proof:not(.proof--3) > li:nth-child(even) { border-left: 1px solid theme('colors.line'); padding-left: .875rem; }
   @media (min-width: 640px) {
     .proof:not(.proof--3) { grid-template-columns: repeat(4, minmax(0, 1fr)); }
     .proof:not(.proof--3) > li + li { border-left: 1px solid theme('colors.line'); padding-left: .875rem; }
   }
   .proof.proof--3 { grid-template-columns: minmax(0, 1fr); }
-  @media (max-width: 479.98px) { .proof--3 > li + li { border-top: 1px solid theme('colors.line'); padding-top: .75rem; } }
+  @media (max-width: 479.98px) { .proof--3 > li + li { border-top: 1px solid theme('colors.line'); padding-top: 1rem; } }
   @media (min-width: 480px) {
     .proof.proof--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .proof--3 > li + li { border-left: 1px solid theme('colors.line'); padding-left: .875rem; }
+    .proof--3 > li + li { border-left: 1px solid theme('colors.line'); padding-left: 1rem; }
   }
 
   /* Case studies */
@@ -199,11 +199,12 @@
   .sites > li { min-width: 0; }
   @media (min-width: 768px) { .sites { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   @media (min-width: 1280px) { .sites { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-  /* Cards keep their own height, so opening one "Read more" never stretches its row neighbours. */
-  .sites { align-items: start; }
+  /* Closed cards share a row height (actions line up at the bottom). While a "Read more" is open
+     the grid falls back to natural heights, so the open card never stretches its neighbours. */
+  .sites:has([aria-expanded="true"]) { align-items: start; }
 
   /* "My contribution" cards: role tag, link out, Read more toggle and the overview it opens. */
-  .role-tag { align-self: flex-start; padding: .25rem .5rem; border-radius: .5rem; background: theme('colors.sunk'); color: theme('colors.ink'); font-family: theme('fontFamily.mono'); font-size: .75rem; font-weight: 500; line-height: 1.35; letter-spacing: .06em; text-transform: uppercase; }
+  .role-tag { color: theme('colors.muted'); font-family: theme('fontFamily.mono'); font-size: .75rem; font-weight: 500; line-height: 1.45; letter-spacing: .08em; text-transform: uppercase; }
   .btn.btn-sm { min-height: 2.75rem; padding: 0 1rem; font-size: .875rem; gap: .375rem; }
   .more-toggle { display: inline-flex; align-items: center; gap: .375rem; min-height: 2.75rem; padding-inline: .375rem; border-radius: .5rem; font-size: .875rem; font-weight: 600; color: theme('colors.action'); text-underline-offset: 3px; }
   .more-toggle:hover { text-decoration: underline; }
@@ -346,6 +347,8 @@
     letter-spacing: -.02em;
     text-wrap: balance;
   }
+  /* A titled card inside a section (case, agency, emails, social): one step under .t-h2. */
+  .t-h2-card { font-size: clamp(1.5rem, 1.25rem + .9vw, 2.125rem); font-weight: 700; line-height: 1.08; letter-spacing: -.02em; text-wrap: balance; color: theme('colors.ink'); }
   .t-h3 { font-size: clamp(1.125rem, 1.05rem + .35vw, 1.375rem); font-weight: 700; line-height: 1.2; }
   .t-lead { font-size: clamp(1.0625rem, 1rem + .25vw, 1.125rem); line-height: 1.55; }
 
@@ -362,7 +365,7 @@
   .t-chip { font-size: clamp(1.375rem, 1.2rem + .6vw, 2rem); font-weight: 800; line-height: 1.05; letter-spacing: -.01em; }
   /* The business-outcome line: the second voice after the h1. */
   .t-outcome { font-size: clamp(1.375rem, 1.1rem + 1.2vw, 2.125rem); font-weight: 700; line-height: 1.12; letter-spacing: -.02em; color: theme('colors.ink'); text-wrap: balance; }
-  .t-outcome--sm { font-size: clamp(1.125rem, 1rem + .5vw, 1.375rem); line-height: 1.25; }
+  .t-outcome--sm { font-size: clamp(1.0625rem, 1rem + .3vw, 1.25rem); font-weight: 500; line-height: 1.45; letter-spacing: 0; color: theme('colors.body'); max-width: 58ch; }
 
   /* The "system voice": mono, uppercase, never under 12px. */
   .label {

@@ -1,6 +1,6 @@
 import { Reveal } from '../Reveal.jsx';
 import SectionHead from './SectionHead.jsx';
-import { agencyMarketingResult, results } from '../../data/content.js';
+import { results } from '../../data/content.js';
 
 /** System numbers only, each linked to where it comes from. No testimonials exist. */
 export default function Results() {
@@ -22,7 +22,6 @@ export default function Results() {
             </li>
           ))}
         </ul>
-        <p className="mt-6 border-t border-mist-dim/25 pt-4 text-sm leading-relaxed text-mist-dim">{agencyMarketingResult}</p>
       </Reveal>
     </section>
   );

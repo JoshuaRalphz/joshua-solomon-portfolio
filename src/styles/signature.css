@@ -132,7 +132,6 @@
   gap: .5rem;
   padding: .5rem .875rem;
   background: theme('colors.sunk');
-  border: 1px solid theme('colors.line');
   border-radius: 999px;
   color: theme('colors.ink');
   font-weight: 600;
