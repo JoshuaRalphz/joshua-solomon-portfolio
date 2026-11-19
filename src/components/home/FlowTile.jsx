@@ -22,11 +22,11 @@ export default function FlowTile({ className = '' }) {
         ))}
       </ol>
       <div className="mt-auto border-t border-white/15 pt-5">
-        <p className="label">Example: my job hunt</p>
+        <p className="label">Example: Behind Works quote follow-up</p>
         <p className="mt-2 max-w-[60ch] text-sm leading-relaxed opacity-90">
-          Every day at 7 AM → Claude vets up to 30 new roles for fit, scam risk and pay → a second pass strips any claim not in my CV → anything unclear waits for my approval, under a hard daily AI budget.
+          A quote goes out → polite follow-ups are scheduled → they stop the moment the customer replies, unsubscribes, bounces or the deal closes → nothing sends without approval, and the owner gets a Monday report of quotes won.
         </p>
-        <a href="/work/ai-job-hunt/" className="mt-3 inline-flex min-h-[44px] items-center text-sm font-bold underline underline-offset-4">
+        <a href="/work/behind-works/" className="mt-3 inline-flex min-h-[44px] items-center text-sm font-bold underline underline-offset-4">
           See how it’s built →
         </a>
       </div>

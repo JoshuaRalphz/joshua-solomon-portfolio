@@ -1,61 +1,55 @@
-// The full case study. Every fact comes from the project's own README / CLAUDE.md /
-// GOTCHAS.md (Behind Works Pipeline) or the v8 CV. Nothing is estimated here
-// unless the source calls it an estimate.
+// The full case study. Every fact comes from Behind Works' own notes (the CRM, "Pipeline",
+// and the quote follow-up offer), the v9 CV and the live demo at behindworks.com/how-it-works.
+// No clients, results or testimonials are claimed: Behind Works has none yet.
 //
 // Diagram nodes: kind = 'input' | 'ai' | 'code' | 'gate' | 'human'. `tag` is the small
 // mono label in each box. Two rows max; row 2 runs right-to-left under row 1 (a "snake").
 
-export const jobHunt = {
-  slug: 'ai-job-hunt',
-  path: '/work/ai-job-hunt/',
+export const behindWorks = {
+  slug: 'behind-works',
+  path: '/work/behind-works/',
   num: '01',
-  name: 'AI Job Hunt engine',
-  kicker: 'Own product · live since 20 Oct 2026',
-  outcome: 'An AI system that checks job fit, catches scams and drafts honest applications, with my approval.',
-  summary: 'Every day from 7 AM Manila time, Claude Opus 5.5 vets new remote AI roles from five public job boards: fit, scam risk and pay. It drafts an application for the best ones, and a second Claude pass strips any claim that is not in my CV. Job posts are treated as untrusted text, the send rules live in the database, and a hard daily budget caps the AI spend. Anything unclear waits for me. It runs on my own outreach platform (Behind Works) on Cloudflare, with my PC off.',
-  seo: 'Case study: an AI job-fit system on Claude Opus and Cloudflare Workers that vets remote roles, screens for scams and prompt injection, drafts honest applications for my approval, enforces its rules in the database and caps its daily AI cost.',
-  problem: 'Applying well is a part-time job: finding real remote roles, judging fit, writing an honest tailored application, sending it, then answering replies fast. By hand it ate my evenings, and rushing it means weak, generic applications.',
-  businessAngle: 'The same shape fits any team that qualifies leads, triages inbound email or screens applications: AI does the reading and drafting, code enforces the rules, and a person approves the exceptions.',
+  name: 'Behind Works: quote follow-up',
+  kicker: 'Co-founded studio · 2026',
+  outcome: 'Polite follow-ups after every quote that stop the moment the customer replies, on a CRM I built.',
+  summary: 'Behind Works is a small automation studio for home-service businesses that I co-founded. I built its quote follow-up system: after a quote goes out, a short series of polite follow-up emails is scheduled, and it stops by itself when the customer replies, unsubscribes, bounces or the deal closes. The owner gets a Monday report of quotes won. It runs on the CRM I built underneath it, on Cloudflare, and nothing sends without approval.',
+  seo: 'Case study: a quote follow-up system for home-service businesses and the CRM under it (contacts, a 7-stage pipeline board, forms, email templates, campaigns), built on Cloudflare Workers, Hono and D1, with follow-ups that stop on a reply and an approval queue before anything sends.',
+  problem: 'A home-service owner sends a quote, then gets busy. A quote with no second message is easy to lose to whoever followed up. Doing it by hand means remembering every quote, every day, and remembering to stop the moment the customer answers.',
+  businessAngle: 'The same shape fits any business that loses deals to silence: the system remembers every follow-up, code decides when to stop, and a person approves what goes out.',
   constraints: [
+    'Stop the moment the customer replies. Never email someone who already answered.',
+    'Respect every opt-out, remembered per address.',
+    'Nothing sends without approval.',
     'Run with my PC off.',
-    'Never claim anything that is not in my CV.',
-    'Spend no more than a fixed amount on AI per day.',
-    'Send from my real Gmail, so replies land in the same thread.',
-    'Read only job boards that publish an API for programs. No scraping.',
-    'Interview times, pay talk, tests and offers always wait for me.',
+    'Plain, polite emails in the owner’s words.',
   ],
   diagram: {
-    title: 'How the AI job hunt works',
+    title: 'How the quote follow-up works',
     rows: [
       [
-        { kind: 'input', tag: 'DAILY · 7 AM', title: '5 public job APIs', sub: 'Up to 30 new AI roles a day' },
-        { kind: 'ai', tag: 'CLAUDE OPUS', title: 'Vet each post', sub: 'Fit 1–10, scam risk, pay' },
-        { kind: 'ai', tag: 'CLAUDE OPUS', title: 'Write the best 10', sub: 'JSON in a fixed schema' },
-        { kind: 'ai', tag: 'CLAUDE OPUS', title: 'Honesty check', sub: 'Removes anything not in my CV' },
-        { kind: 'gate', tag: 'D1 CHECK', title: 'Rules gate', sub: 'Strong fit, low scam risk, nothing to ask' },
+        { kind: 'input', tag: 'QUOTE SENT', title: 'A quote goes out', sub: 'The customer lands on the pipeline board' },
+        { kind: 'code', tag: 'CRON', title: 'Follow-ups scheduled', sub: 'Short, polite emails, spaced out' },
+        { kind: 'human', tag: 'OWNER', title: 'Approval queue', sub: 'Nothing sends without approval' },
+        { kind: 'code', tag: 'WORKER', title: 'Sends on schedule', sub: 'Polite, plain emails' },
       ],
       [
-        { kind: 'human', tag: 'ME', title: 'My approval', sub: 'Anything unclear waits for me' },
-        { kind: 'code', tag: 'APPS SCRIPT', title: 'Gmail bridge', sub: 'Sends from my Gmail with CV' },
-        { kind: 'input', tag: 'GMAIL THREAD', title: 'Employer replies', sub: 'Stored in the same thread' },
-        { kind: 'ai', tag: 'CLAUDE OPUS', title: 'Drafts the answer', sub: 'Interview, pay, tests wait for me' },
+        { kind: 'gate', tag: 'STOP RULES', title: 'Stops by itself', sub: 'Reply, unsubscribe, bounce or closed deal' },
+        { kind: 'input', tag: 'MONDAY', title: 'Weekly report', sub: 'Quotes won, for the owner' },
       ],
     ],
-    note: 'Budget: a hard daily spend cap, and at most 3 Claude calls each time the engine checks in (every 5 minutes). Job posts and emails reach Claude as untrusted data.',
+    note: 'Opt-outs are remembered per address, so a customer who unsubscribed stays opted out.',
   },
   built: [
-    { title: 'Find and vet', body: 'Every day from 7 AM Manila time the Worker reads five public job APIs (Himalayas, Jobicy, RemoteOK, Remotive, Arbeitnow) and keeps up to 30 new AI roles. Claude Opus 5.5 vets each one: fit 1–10, apply / maybe / skip, scam risk, pay and how to apply.' },
-    { title: 'Screen for scams and prompt injection', body: 'Job posts and employer emails reach Claude as data inside <untrusted_…> tags. A post that tries to instruct Claude, or asks for applications to a free email address, turns into a “maybe” for me, and a scam risk that is not low never goes anywhere by itself.' },
-    { title: 'Write, then check for honesty', body: 'Claude writes the best 10 by fit as JSON in a fixed schema. A second, adversarial Claude pass removes anything not in my CV, and a check in code blocks claims I must not make (tools I don’t use, more than about a year of experience, the agency’s name).' },
-    { title: 'Rules in the database, not the prompt', body: 'Anything unclear (a question for me, a gap in my CV, a scam risk that is not low) waits in my approval queue. The one exception is narrow and can be switched off: a clean, strong fit with nothing to ask me may send itself after a 3-hour hold that I can stop. A database CHECK constraint refuses any other self-sending row, and the queue checks again right before sending.' },
-    { title: 'A hard daily cost cap', body: 'Every Claude call is priced from its token usage and stored. Once the day’s spend reaches the budget, no more calls are made until the next Manila day. A full day (30 posts read, 10 written and checked) is usually about $1–2.50, estimated.' },
-    { title: 'Send from my own Gmail', body: 'A Google Apps Script “Gmail bridge” claims approved applications every 5 minutes through secret-authenticated routes and sends them from my Gmail with my CV attached, at most 10 a day. If a send is never reported, the script looks in Sent instead of sending twice.' },
-    { title: 'Answer employers in the thread', body: 'The bridge brings employer emails back into the application’s thread. Claude drafts an answer: simple facts (CV, availability, timezone) may go by themselves; interview times, tests, offers, pay or anything not in my CV waits for me.' },
+    { title: 'Quote follow-up', body: 'When a quote goes out, the system schedules a short series of polite follow-up emails. The owner gets a Monday report of the quotes won. A demo of the whole flow is live at behindworks.com/how-it-works.' },
+    { title: 'Stop rules', body: 'Follow-ups stop by themselves on a reply, an unsubscribe, a bounce or a closed deal. Opt-outs are remembered per address, so that person stays opted out.' },
+    { title: 'The CRM underneath', body: 'Contacts, a 7-stage pipeline board, hosted forms, designed email templates and campaigns. The quote follow-up is one campaign running on it.' },
+    { title: 'An approval queue', body: 'Every email waits in an approval queue before it sends, so a person sees what goes out in the business’s name.' },
+    { title: 'Covered by tests', body: '700+ automated tests run against a stand-in for the database, with no server and no network.' },
   ],
   decisions: [
-    { chose: 'Enforce the send rules in the database', rejected: 'Trusting the prompt and the app code alone', why: 'A prompt can be talked around and code can regress. With a CHECK constraint a row that breaks the rules cannot even be stored, and the queue re-checks before every send.' },
-    { chose: 'Send through my own Gmail (Apps Script)', rejected: 'A transactional email service', why: 'Applications come from a real inbox, employers reply in the same thread, and the bridge reads those replies back into the app.' },
-    { chose: 'Run inside the Worker’s 5-minute cron', rejected: 'A scheduled task on my PC', why: 'It runs with my PC off. At most 3 Claude calls per run, and none started after 20 seconds, keep each run inside the Worker’s limits. The PC task stays as a backup.' },
+    { chose: 'Stop the follow-ups in code, on every reply', rejected: 'Leaving the owner to cancel them by hand', why: 'A follow-up after the customer already answered looks careless. The stop rules (reply, unsubscribe, bounce, closed deal) end the sequence by themselves.' },
+    { chose: 'An approval queue before anything sends', rejected: 'Sending automatically from day one', why: 'Every email carries the business’s name. A person approves what goes out.' },
+    { chose: 'Run on Cloudflare Workers with Cron Triggers', rejected: 'A scheduled task on my PC', why: 'Follow-ups are due on their day whether my PC is on or not.' },
   ],
   broke: [
     { title: 'Day one: approved emails did not send', body: 'On launch day (Oct 13) my first 20 approved outreach emails sat for hours, and the Worker log showed no cron runs at all. It cleared overnight and the cause was never confirmed, so I don’t claim a fix. What I do now: if an approval has not sent within a day, the cron log is the first place I look, and “Send due emails now” names the reason (outside the window, cap reached, no app URL). All 20 went out 10 a day on Oct 14–15, with no bounces.' },
@@ -64,23 +58,22 @@ export const jobHunt = {
   ],
   results: [
     // `short` is the caption in the home page's three-up proof row; the case study shows `label`.
-    { value: '30/day', label: 'new remote roles vetted by Claude for fit, scam risk and pay', short: 'remote roles vetted for fit, scam risk and pay' },
-    { value: '~$1–2.50', label: 'estimated AI cost of a full day (30 posts read, 10 written and checked), under a hard daily budget', short: 'estimated AI cost a day, under a hard budget' },
-    { value: 'Every day', label: 'live since 20 Oct 2026: the search starts at 7 AM Manila and the engine checks in every 5 minutes, PC off' },
-    { value: '700+', label: 'automated tests, run with no server and no network', short: 'automated tests, run with no network' },
-    { value: '10/day', label: 'application cap; at most 15 drafted answers a day' },
+    { value: '4', label: 'ways a follow-up stops by itself: a reply, an unsubscribe, a bounce or a closed deal', short: 'ways follow-ups stop: reply, unsubscribe, bounce, closed deal' },
+    { value: '700+', label: 'automated tests on the CRM, run with no server and no network', short: 'automated tests, run with no network' },
+    { value: '7', label: 'stages on the pipeline board every contact moves through', short: 'stage pipeline board under it' },
+    { value: 'Mondays', label: 'the owner gets a report of the quotes won' },
     { value: '0', label: 'bounces on the first 20 approved outreach emails, sent 10 a day on schedule' },
   ],
-  stack: ['Claude API (Opus 5.5, adaptive thinking, JSON schema)', 'Cloudflare Workers', 'Hono', 'D1', 'Cron Triggers', 'Email Routing', 'Google Apps Script', 'Gmail API', 'Built with Claude Code'],
+  stack: ['JavaScript', 'Cloudflare Workers', 'Hono', 'D1', 'Cron Triggers', 'Email Routing', 'Claude API', 'Google Apps Script', 'Gmail API', 'Built with Claude Code'],
   shots: [
-    { src: '/media/jobhunt-approve.webp', w: 800, h: 500, label: 'To approve: Claude’s drafted applications with their fit scores, waiting in my queue.' },
-    { src: '/media/jobhunt-replies.webp', w: 800, h: 500, label: 'Replies: an employer wrote back and Claude drafted the answer. Pay and start date are left for me.' },
+    { src: '/media/bw-followups-stop.webp', w: 1280, h: 720, label: 'From the demo: the customer replies, and the follow-ups still due are stopped.' },
+    { src: '/media/bw-monday-report.webp', w: 1280, h: 720, label: 'From the demo: the owner’s Monday report.' },
   ],
   phoneShots: [
-    { src: '/media/jobhunt-phone-list.webp', w: 375, h: 812, label: 'The same queue on a phone' },
-    { src: '/media/jobhunt-phone-detail.webp', w: 375, h: 812, label: 'One application: why it fits, the gaps, and Claude’s question for me' },
+    { src: '/media/bw-phone-home.webp', w: 375, h: 812, label: 'behindworks.com on a phone' },
+    { src: '/media/bw-phone-how.webp', w: 375, h: 812, label: 'The demo page on a phone' },
   ],
-  shotsNote: 'Screenshots use the app’s demo data (example.com addresses), not real applications.',
+  shotsNote: 'Demo stills use a made-up company and sample data, as labeled in the demo.',
 };
 
-export const cases = [jobHunt];
+export const cases = [behindWorks];

@@ -107,7 +107,7 @@ export default function CaseStudy({ slug }) {
             </Reveal>
           </Part>
 
-          <Part n="04" id="built" title="What I built, and the AI’s role inside it">
+          <Part n="04" id="built" title="What I built">
             <ol className="built">
               {study.built.map((b, i) => (
                 <li key={b.title}>

@@ -18,6 +18,10 @@
 /work/      /#work      301
 /work       /#work      301
 
+# Renamed case study (2026-11-20).
+/work/ai-job-hunt/  /work/behind-works/  301
+/work/ai-job-hunt   /work/behind-works/  301
+
 # Retired case study: not shown any more.
 /work/ai-video-engine/  /#work  301
 /work/ai-video-engine   /#work  301

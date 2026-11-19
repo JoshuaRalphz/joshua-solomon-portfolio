@@ -267,8 +267,8 @@ export const offers = [
   {
     id: 'busywork',
     title: 'Take the busywork off your team',
-    body: 'AI workflows that read, sort, draft and reply: inbound email, leads, applications, support. Code enforces the rules and caps; a person approves the exceptions.',
-    proof: { label: 'AI Job Hunt engine', href: '/work/ai-job-hunt/' },
+    body: 'AI workflows that read, sort, draft and reply: inbound email, leads, quotes, support. Code enforces the rules and caps; a person approves the exceptions.',
+    proof: { label: 'Behind Works quote follow-up', href: '/work/behind-works/' },
   },
   {
     id: 'leads',
@@ -294,7 +294,7 @@ export const workWithMe = {
   build: '$2,500',
   // Real systems I built that show the kind of thing, each with its own page or section.
   examples: [
-    { label: 'AI job hunt platform', note: 'An AI pipeline that vets, screens for scams and drafts honest applications', href: '/work/ai-job-hunt/' },
+    { label: 'Behind Works quote follow-up', note: 'Follow-ups after every quote that stop the moment the customer replies', href: '/work/behind-works/' },
     { label: 'Agency email & SMS platform', note: 'An agency’s own platform, which replaced GoHighLevel', href: '#work-agency' },
     { label: 'GoHighLevel lead follow-up', note: 'Funnel page, form, pipeline and follow-up workflow, rebuilt from my client work', href: '#ghl-rebuilds' },
   ],
@@ -311,9 +311,8 @@ export const results = [
   { value: '~89%', label: 'lower monthly platform cost for the agency (projected, not yet measured)', href: '#work-agency' },
   { value: '6,500/day', label: 'emails from HOME.FM’s sending domain, which I set up and warmed', href: '#clients' },
   { value: '9 accounts', label: 'and 11,600+ contacts run on the agency platform I built', href: '#work-agency' },
-  { value: '~$1–2.50', label: 'estimated AI cost of a full job-hunt day, under a hard daily dollar budget', href: '/work/ai-job-hunt/' },
   { value: '3,200+', label: 'automated tests on the agency platform', href: '#work-agency' },
-  { value: '700+', label: 'automated tests on the AI job hunt platform, run with no network', href: '/work/ai-job-hunt/' },
+  { value: '700+', label: 'automated tests on the Behind Works CRM, run with no network', href: '/work/behind-works/' },
 ];
 
 export const bio = 'I ship production systems by directing AI coding agents (Claude Code), and I put AI inside them: Claude and OpenAI do the reading, writing and generating; the code around them keeps every step checked, capped and approved by a person. At a US marketing agency I am the technical lead for client onboarding and built its in-house email and SMS platform. Before that, about 6 months as a marketing VA with US founders.';
