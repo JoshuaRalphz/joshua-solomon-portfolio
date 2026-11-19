@@ -92,7 +92,7 @@ export const agencyCase = {
   title: 'Agency email & SMS platform',
   outcome: 'The agency stops renting its marketing platform: a projected ~89% lower monthly platform cost, with no external build spend.',
   changed: [
-    '9 client accounts and 11,600+ contacts run on it',
+    '9 client accounts and 11,600+ contacts ran on it',
     'Replaced the agency’s $297-a-month GoHighLevel plan (cancelled Sep 2026)',
     '3,200+ automated tests, run inside the Workers runtime so no test can send a real message',
     'Claude API helpers draft subject lines and preview text; OpenAI makes images',
@@ -170,10 +170,10 @@ export const clientWork = [
     thumb: 'truecare',
     url: 'https://www.truecarechiro.com',
     role: 'Website · email · SEO · Google Ads',
-    line: 'I built the website, and I handle their email marketing, Google Ads, upkeep and SEO.',
+    line: 'I built the website, and I handled their email marketing, Google Ads, upkeep and SEO.',
     overview: [
       'A chiropractic clinic in Lansing, Michigan. When their contact form came under a bot attack, the spam filter and bot check I set up blocked about 2,480 junk submissions, and the real enquiries still came through.',
-      'I write and send their patient emails: the new-doctor announcement reached 2,330 patients and the World Spine Day email 2,297.',
+      'I wrote and sent their patient emails: the new-doctor announcement reached 2,330 patients and the World Spine Day email 2,297.',
     ],
   },
 ];
@@ -182,7 +182,7 @@ export const clientWork = [
 // screenshots from the Lux work pack. The Lux Seats Four Us concept demo is left out on
 // purpose: it uses Lux's own photos and brand.
 export const GHL_REBUILD_LABEL = 'Rebuilt in GoHighLevel by Joshua Solomon from his original client work.';
-export const GHL_SAMPLE_NOTE = 'These clients now run on the platform I built for the agency, which replaced its $297-a-month GoHighLevel plan, so I rebuilt their funnels to show the same work on the platform most teams use.';
+export const GHL_SAMPLE_NOTE = 'These clients moved onto the platform I built for the agency, which replaced its $297-a-month GoHighLevel plan, so I rebuilt their funnels to show the same work on the platform most teams use.';
 export const ghlRebuilds = [
   {
     id: 'ghl-truecare',
@@ -315,7 +315,7 @@ export const results = [
   { value: '700+', label: 'automated tests on the Behind Works CRM, run with no network', href: '/work/behind-works/' },
 ];
 
-export const bio = 'I ship production systems by directing AI coding agents (Claude Code), and I put AI inside them: Claude and OpenAI do the reading, writing and generating; the code around them keeps every step checked, capped and approved by a person. At a US marketing agency I am the technical lead for client onboarding and built its in-house email and SMS platform. Before that, about 6 months as a marketing VA with US founders.';
+export const bio = 'I ship production systems by directing AI coding agents (Claude Code), and I put AI inside them: Claude and OpenAI do the reading, writing and generating; the code around them keeps every step checked, capped and approved by a person. At a US marketing agency I was the technical lead for client onboarding and built its in-house email and SMS platform. Before that, about 6 months as a marketing VA with US founders.';
 
 export const setup = [
   'Olongapo City, Philippines · Remote, US hours (Eastern or Central, 10 PM to 7 AM Manila time)',
@@ -331,12 +331,12 @@ export const experience = [
     role: 'AI & Systems Lead',
     company: 'Arrow Group Consulting',
     meta: 'US outsourced-CMO agency · Michigan, USA (remote) · Part-time contract, on-call',
-    dates: 'Feb 2026 — Present',
+    dates: '2026',
     bullets: [
-      'Built and launched the agency’s in-house email/SMS platform with AI-assisted development in Claude Code. It replaced the agency’s GoHighLevel plan, cancelled in Sep 2026: 9 client accounts and 11,600+ contacts run on it.',
+      'Built and launched the agency’s in-house email/SMS platform with AI-assisted development in Claude Code. It replaced the agency’s GoHighLevel plan, cancelled in Sep 2026: 9 client accounts and 11,600+ contacts ran on it.',
       'Added Claude features: drafting helpers for subject lines and preview text, plus Claude Haiku 4.5 subject lines, revision suggestions, a help chat and task-image analysis in the team’s daily content-operations app.',
       'Wrote the business case (projected ~89% lower monthly platform cost, no external build spend) and moved 11,600+ client contacts across before GoHighLevel was cancelled.',
-      'Handle 8 of the agency’s clients at once as their technical lead: onboarding end to end (GoHighLevel, Cloudflare sites, DNS, SPF/DKIM/DMARC, A2P 10DLC), explained in plain language on onboarding calls.',
+      'Handled 8 of the agency’s clients at once as their technical lead: onboarding end to end (GoHighLevel, Cloudflare sites, DNS, SPF/DKIM/DMARC, A2P 10DLC), explained in plain language on onboarding calls.',
       'Built client back-office tools on Cloudflare Workers (a nonprofit funnel-tracker dashboard and a resale startup’s admin dashboard) and integrated Square payments through the Square API.',
     ],
   },

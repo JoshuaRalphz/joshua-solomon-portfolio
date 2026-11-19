@@ -15,7 +15,7 @@ Building software with AI since 2024 (Cursor, in college). Professionally since 
 ## Case studies
 
 - [Behind Works: quote follow-up](https://solomonjoshua.com/work/behind-works/): Behind Works is a small automation studio for home-service businesses that Josh co-founded (https://behindworks.com). He built its quote follow-up system: after a quote goes out, follow-up emails are scheduled and stop by themselves on a reply, unsubscribe, bounce or closed deal; the owner gets a Monday report of quotes won (demo: https://behindworks.com/how-it-works). He also built the CRM it runs on: contacts, a 7-stage pipeline board, hosted forms, designed email templates and campaigns, opt-outs remembered per address, an approval queue before anything sends, 700+ automated tests. Stack: JavaScript, Hono, Cloudflare Workers, D1, Cron Triggers, Email Routing, Apps Script, Gmail API. No paying clients yet.
-- Agency email & SMS platform (Arrow Group Consulting, 2026): built with Claude Code on Cloudflare Workers + D1; 9 client accounts and 11,600+ contacts run on it; 82,700+ emails delivered across 54 campaigns (Sep–Oct 2026); 3,200+ automated tests; projected ~89% lower monthly platform cost (a projection from the business case); it replaced the agency's $297/month GoHighLevel plan (cancelled Sep 2026).
+- Agency email & SMS platform (Arrow Group Consulting, 2026): built with Claude Code on Cloudflare Workers + D1; 9 client accounts and 11,600+ contacts ran on it; 82,700+ emails delivered across 54 campaigns (Sep–Oct 2026); 3,200+ automated tests; projected ~89% lower monthly platform cost (a projection from the business case); it replaced the agency's $297/month GoHighLevel plan (cancelled Sep 2026).
 
 ## Client work (my contribution)
 - Client websites with my part in each: Alpha Omega Safety Solutions (website, A2P 10DLC texting approval on GoHighLevel, email and domain), HOME.FM (website, dedicated sending subdomain warmed to 6,500 emails a day), Arrow Consignment (website and back-office, https://www.arrowconsignment.com), Alliance Service Brands (one website for six home-service brands), Endtime Entrepreneurs (website from scratch, CRM, SEO), TrueCare Chiropractic (website, email marketing, Google Ads, SEO). https://solomonjoshua.com/#clients
@@ -32,7 +32,7 @@ Building software with AI since 2024 (Cursor, in college). Professionally since 
 - Steps: free 15-minute call, fixed quote, I build it (you approve what goes out), then I run and improve it every month. Contact: https://solomonjoshua.com/#start-a-project or WhatsApp https://wa.me/639615562117
 
 ## Experience
-- AI & Systems Lead, Arrow Group Consulting (Michigan, USA; remote, part-time contract, on-call; handles 8 of the agency's clients at once), Feb 2026 – present.
+- AI & Systems Lead, Arrow Group Consulting (Michigan, USA; remote, part-time contract, on-call; handled 8 of the agency's clients at once), 2026.
 - Virtual Marketing Assistant (VMA), Doneverse (Philippines), Sep 2025 – Feb 2026, about 6 months.
 
 ## Education
