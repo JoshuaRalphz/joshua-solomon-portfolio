@@ -8,6 +8,8 @@ import { cases } from '../data/cases.js';
 
 // Which phone screenshot sits on the hero browser frame (the gallery skips it).
 const HERO_PHONE = 1;
+// A case can keep the phone off its screenshots (when it would cover what the caption describes).
+const heroPhoneIndex = (study) => (study.overlayPhone === false ? -1 : HERO_PHONE);
 
 /** Numbered section: mono step label + h2, the same voice as the home page heads. */
 function Part({ n, id, title, children, className = '' }) {
@@ -41,7 +43,7 @@ function Hero({ study }) {
         </ul>
       </div>
       <div className="min-w-0">
-        <BrowserShot shot={study.shots[0]} phone={study.phoneShots?.[HERO_PHONE]} isEager />
+        <BrowserShot shot={study.shots[0]} phone={study.phoneShots?.[heroPhoneIndex(study)]} isEager />
       </div>
     </header>
   );
@@ -124,9 +126,10 @@ export default function CaseStudy({ slug }) {
                 {study.shots.slice(1).map((shot) => <BrowserShot key={shot.src} shot={shot} />)}
                 {study.phoneShots && (
                   <figure className="flex items-end justify-center gap-[var(--gap)] rounded-inner bg-sunk p-4">
-                    {study.phoneShots.filter((_, i) => i !== HERO_PHONE).map((p) => (
+                    {study.phoneShots.filter((_, i) => i !== heroPhoneIndex(study)).map((p) => (
                       <img key={p.src} src={p.src} alt={p.label} width={p.w} height={p.h} loading="lazy" decoding="async" className="phone-shot" />
                     ))}
+                    <figcaption className="sr-only">{study.phoneShots.filter((_, i) => i !== heroPhoneIndex(study)).map((p) => p.label).join('. ')}</figcaption>
                   </figure>
                 )}
               </div>

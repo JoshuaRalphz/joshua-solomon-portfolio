@@ -9,7 +9,7 @@ export default function BrowserShot({ shot, phone, isEager = false }) {
         <span className="shot-bar" aria-hidden="true"><i /><i /><i /></span>
         <img
           src={shot.src}
-          alt={`Screenshot: ${shot.label.split(':')[0]}`}
+          alt={`Screenshot. ${shot.label}`}
           width={shot.w}
           height={shot.h}
           loading={isEager ? 'eager' : 'lazy'}

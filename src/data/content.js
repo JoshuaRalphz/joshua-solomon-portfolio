@@ -268,7 +268,7 @@ export const offers = [
     id: 'busywork',
     title: 'Take the busywork off your team',
     body: 'AI workflows that read, sort, draft and reply: inbound email, leads, quotes, support. Code enforces the rules and caps; a person approves the exceptions.',
-    proof: { label: 'Behind Works quote follow-up', href: '/work/behind-works/' },
+    proof: { label: 'Agency email & SMS platform', href: '#work-agency' },
   },
   {
     id: 'leads',

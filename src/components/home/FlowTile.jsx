@@ -22,9 +22,9 @@ export default function FlowTile({ className = '' }) {
         ))}
       </ol>
       <div className="mt-auto border-t border-white/15 pt-5">
-        <p className="label">Example: Behind Works quote follow-up</p>
+        <p className="label">The same checks, no AI needed: Behind Works quote follow-up</p>
         <p className="mt-2 max-w-[60ch] text-sm leading-relaxed opacity-90">
-          A quote goes out → polite follow-ups are scheduled → they stop the moment the customer replies, unsubscribes, bounces or the deal closes → nothing sends without approval, and the owner gets a Monday report of quotes won.
+          A quote goes out → follow-up emails are scheduled → code stops them the moment the customer replies, unsubscribes, bounces or the deal closes → nothing sends without approval, and the owner gets a Monday report of quotes won.
         </p>
         <a href="/work/behind-works/" className="mt-3 inline-flex min-h-[44px] items-center text-sm font-bold underline underline-offset-4">
           See how it’s built →

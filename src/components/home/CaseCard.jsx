@@ -52,7 +52,7 @@ export default function CaseCard({ study, showDiagram = false }) {
         </div>
 
         <div className="min-w-0">
-          <BrowserShot shot={study.shots[0]} phone={study.phoneShots?.[0]} />
+          <BrowserShot shot={study.shots[0]} phone={study.overlayPhone === false ? undefined : study.phoneShots?.[0]} />
         </div>
       </div>
 

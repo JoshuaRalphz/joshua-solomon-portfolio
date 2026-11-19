@@ -152,10 +152,10 @@ function Vertical({ id, diagram }) {
 }
 
 /** One swatch per kind, so meaning never rests on colour alone (each box also has a tag). */
-function Legend() {
+function Legend({ kinds }) {
   return (
     <ul className="dg-legend" aria-label="Diagram key">
-      {LEGEND.map(({ kind, label }) => {
+      {LEGEND.filter(({ kind }) => kinds.has(kind)).map(({ kind, label }) => {
         const k = KINDS[kind];
         return (
           <li key={kind}>
@@ -176,7 +176,7 @@ export default function Diagram({ id, diagram, showNote = true }) {
       <Horizontal id={id} diagram={diagram} />
       <Vertical id={id} diagram={diagram} />
       <figcaption className="mt-4 flex flex-col gap-3">
-        <Legend />
+        <Legend kinds={new Set(diagram.rows.flat().map((n) => n.kind))} />
         {showNote && diagram.note && <p className="text-sm font-medium leading-snug text-body">{diagram.note}</p>}
       </figcaption>
     </figure>
