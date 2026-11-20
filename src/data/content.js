@@ -169,8 +169,8 @@ export const clientWork = [
     name: 'TrueCare Chiropractic',
     thumb: 'truecare',
     url: 'https://www.truecarechiro.com',
-    role: 'Website · email · SEO · Google Ads',
-    line: 'I built the website, and I handled their email marketing, Google Ads, upkeep and SEO.',
+    role: 'Website · email · SEO',
+    line: 'I built the website, and I handled their email marketing, upkeep and SEO.',
     overview: [
       'A chiropractic clinic in Lansing, Michigan. When their contact form came under a bot attack, the spam filter and bot check I set up blocked about 2,480 junk submissions, and the real enquiries still came through.',
       'I wrote and sent their patient emails: the new-doctor announcement reached 2,330 patients and the World Spine Day email 2,297.',
